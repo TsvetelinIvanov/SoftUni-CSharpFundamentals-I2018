@@ -7,7 +7,7 @@ namespace _01OddLines
     {
         static void Main(string[] args)
         {
-            using (StreamReader reader = new StreamReader("../../../Resources/text.txt"))
+            using (StreamReader reader = new StreamReader("../Resources/text.txt"))
             {
                 int lineNumber = 0;
                 string line = string.Empty;
