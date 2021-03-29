@@ -1,4 +1,4 @@
-﻿class Tomcat : Cat
+﻿public class Tomcat : Cat
 {
     private const string ProducedSound = "MEOW";
 
