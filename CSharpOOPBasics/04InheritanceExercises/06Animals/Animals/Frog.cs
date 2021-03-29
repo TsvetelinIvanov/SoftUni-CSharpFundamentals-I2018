@@ -1,4 +1,4 @@
-﻿class Frog : Animal
+﻿public class Frog : Animal
 {
     private const string ProducedSound = "Ribbit";
 
