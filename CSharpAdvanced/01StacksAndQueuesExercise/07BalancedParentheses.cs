@@ -12,6 +12,7 @@ namespace _07BalancedParentheses
             if (parentheses.Length % 2 != 0)
             {
                 Console.WriteLine("NO");
+                
                 Environment.Exit(0);
             }
 
@@ -34,6 +35,7 @@ namespace _07BalancedParentheses
                     if (openingIndex != closingIndex)
                     {
                         Console.WriteLine("NO");
+                        
                         Environment.Exit(0);
                     }
                 }
