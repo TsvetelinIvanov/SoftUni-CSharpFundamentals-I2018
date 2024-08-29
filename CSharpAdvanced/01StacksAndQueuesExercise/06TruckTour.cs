@@ -19,7 +19,7 @@ namespace _06TruckTour
             for (int startPump = 0; startPump < n; startPump++)
             {
                 int fuel = 0;
-                bool isRounded = true;
+                bool hasBeenCircled = true;
                 for (int pump = 0; pump < n; pump++)
                 {
                     int[] currentPump = queue.Dequeue();
@@ -30,14 +30,15 @@ namespace _06TruckTour
                     if (fuel < 0)
                     {
                         startPump += pump;
-                        isRounded = false;
+                        hasBeenCircled = false;
                         break;
                     }
                 }
 
-                if (isRounded)
+                if (hasBeenCircled)
                 {
                     Console.WriteLine(startPump);
+                    
                     Environment.Exit(0);
                 }
             }
