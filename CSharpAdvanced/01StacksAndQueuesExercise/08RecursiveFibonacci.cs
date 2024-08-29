@@ -7,11 +7,11 @@ namespace _08RecursiveFibonacci
         static long[] numbers;
         static void Main(string[] args)
         {
-            int n = int.Parse(Console.ReadLine());
+            int n = int.Parse(Console.ReadLine());            
             numbers = new long[n + 2];
             numbers[1] = 1;
             numbers[2] = 1;
-            long fibonacciNumber = Fibonacci(n);
+            long fibonacciNumber = Fibonacci(n);            
             Console.WriteLine(fibonacciNumber);
         }
 
