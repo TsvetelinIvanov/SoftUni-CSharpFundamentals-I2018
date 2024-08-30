@@ -10,6 +10,7 @@ namespace _06TrafficLight
             int n = int.Parse(Console.ReadLine());
             Queue<string> queue = new Queue<string>();
             int count = 0;
+            
             string command = string.Empty;
             while ((command = Console.ReadLine()) != "end")
             {
