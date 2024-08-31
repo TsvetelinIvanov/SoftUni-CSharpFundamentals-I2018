@@ -7,8 +7,7 @@ namespace _03SquaresInMatrixWhithTwoByTwoSize
     {
         static void Main(string[] args)
         {
-            int[] matrixDimensions = Console.ReadLine()
-                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+            int[] matrixDimensions = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse).ToArray();
             int rowsCount = matrixDimensions[0];
             int colsCount = matrixDimensions[1];
