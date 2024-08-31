@@ -67,7 +67,7 @@ namespace _05RubiksMatrix
                 }
             }
 
-            StringBuilder rearangingReport = new StringBuilder();
+            StringBuilder rearangedReport = new StringBuilder();
             int expectedValue = 1;
             for (int row = 0; row < rubiksMatrix.Length; row++)
             {
@@ -76,18 +76,18 @@ namespace _05RubiksMatrix
                     if (rubiksMatrix[row][col] != expectedValue)
                     {
                         string swaping = Swap(rubiksMatrix, row, col, expectedValue);
-                        rearangingReport.Append(swaping);
+                        rearangedReport.Append(swaping);
                     }
                     else
                     {
-                        rearangingReport.Append("No swap required" + Environment.NewLine);
+                        rearangedReport.Append("No swap required" + Environment.NewLine);
                     }
 
                     expectedValue++;
                 }
             }
 
-            Console.Write(rearangingReport);            
+            Console.Write(rearangedReport);            
         }
 
         private static void MoveRow(int[][] rubiksMatrix, int index, int row)
