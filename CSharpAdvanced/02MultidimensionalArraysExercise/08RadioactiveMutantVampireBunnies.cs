@@ -189,6 +189,18 @@ namespace _08RadioactiveMutantVampireBunnies
                                 bunnyLair[row + 1, col] = 'B';
                             }
 
+                            if(IsInLair(lair, row, col - 1))
+                            {
+                                if (lair[row, col - 1] == 'P')
+                                {
+                                    isDead = true;
+                                    lastCellRow = row;
+                                    lastCellCol = col - 1;
+                                }
+
+                                bunnyLair[row, col - 1] = 'B';
+                            }
+
                             if (IsInLair(lair, row, col + 1))
                             {
                                 if (lair[row, col + 1] == 'P')
@@ -200,18 +212,6 @@ namespace _08RadioactiveMutantVampireBunnies
 
                                 bunnyLair[row, col + 1] = 'B';
                             }
-
-                            if(IsInLair(lair, row, col - 1))
-                            {
-                                if (lair[row, col - 1] == 'P')
-                                {
-                                    isDead = true;
-                                    lastCellRow = row;
-                                    lastCellCol = col - 1;
-                                }
-
-                                bunnyLair[row, col - 1] = 'B';
-                            }                           
                         }
                     }
                 }               
