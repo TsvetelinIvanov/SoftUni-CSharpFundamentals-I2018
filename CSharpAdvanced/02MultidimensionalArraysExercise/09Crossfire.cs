@@ -7,13 +7,13 @@ namespace _09Crossfire
     {
         static void Main(string[] args)
         {
-            int[] jaggedDimsions = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+            int[] jaggedDimensions = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse).ToArray();
-            int[][] jaggedTarget = new int[jaggedDimsions[0]][];
+            int[][] jaggedTarget = new int[jaggedDimensions[0]][];
             int cellNumber = 0;
             for (int i = 0; i < jaggedTarget.Length; i++)
             {                
-                jaggedTarget[i] = new int[jaggedDimsions[1]];
+                jaggedTarget[i] = new int[jaggedDimensions[1]];
                 for (int j = 0; j < jaggedTarget[i].Length; j++)
                 {
                     cellNumber++;
@@ -55,7 +55,7 @@ namespace _09Crossfire
                     int distanceCol = Math.Abs(shotCol - col);
                     if (row == shotRow || col == shotCol)
                     {
-                        if (IsInjaggedTarget(jaggedTarget, row, col) && distanceRow <= radius && distanceCol <= radius)
+                        if (IsInJaggedTarget(jaggedTarget, row, col) && distanceRow <= radius && distanceCol <= radius)
                         {
                             jaggedTarget[row][col] = -1;
                         }
@@ -66,9 +66,9 @@ namespace _09Crossfire
             return jaggedTarget;
         }
 
-        private static bool IsInjaggedTarget(int[][] matrix, int row, int col)
+        private static bool IsInJaggedTarget(int[][] jaggedMatrix, int row, int col)
         {
-            return row >= 0 && row < matrix.Length && col >= 0 && col < matrix[row].Length;
+            return row >= 0 && row < jaggedMatrix.Length && col >= 0 && col < jaggedMatrix[row].Length;
         }
 
         private static int[][] RemoveAffected(int[][] jaggedMatrix)
