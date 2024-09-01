@@ -8,8 +8,7 @@ namespace _06TargetPractice
     {
         static void Main(string[] args)
         {
-            int[] stairsDimensions = Console.ReadLine()
-                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+            int[] stairsDimensions = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse).ToArray();
             int rowsCount = stairsDimensions[0];
             int colsCount = stairsDimensions[1];
