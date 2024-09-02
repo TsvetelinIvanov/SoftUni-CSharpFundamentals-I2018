@@ -7,18 +7,16 @@ namespace _02SquareWithMaximumSum
     {
         static void Main(string[] args)
         {
-            int[] rowsAndColumns = Console.ReadLine()
-                .Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
+            int[] rowsAndColumns = Console.ReadLine().Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse).ToArray();
             int[,] matrix = new int[rowsAndColumns[0], rowsAndColumns[1]];
-            for (int rows = 0; rows < rowsAndColumns[0]; rows++)
+            for (int row = 0; row < rowsAndColumns[0]; row++)
             {
-                int[] rowValues = Console.ReadLine()
-                    .Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
+                int[] rowValues = Console.ReadLine().Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray();
-                for (int columns = 0; columns < rowsAndColumns[1]; columns++)
+                for (int column = 0; column < rowsAndColumns[1]; column++)
                 {
-                    matrix[rows, columns] = rowValues[columns];
+                    matrix[row, column] = rowValues[column];
                 }
             }
 
