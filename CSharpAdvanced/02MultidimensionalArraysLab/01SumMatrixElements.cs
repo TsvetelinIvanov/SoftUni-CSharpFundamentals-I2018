@@ -12,13 +12,13 @@ namespace _01SumMatrixElements
             int rowsCount = rowsAndColumns[0];
             int columnsCount = rowsAndColumns[1];
             int[,] matrix = new int[rowsCount, columnsCount];
-            for (int rows = 0; rows < rowsCount; rows++)
+            for (int row = 0; row < rowsCount; row++)
             {
                 int[] rowValues = Console.ReadLine().Split(new[] { ", " }, StringSplitOptions.None)
                     .Select(int.Parse).ToArray();
-                for (int columns = 0; columns < columnsCount; columns++)
+                for (int column = 0; column < columnsCount; column++)
                 {
-                    matrix[rows, columns] = rowValues[columns];
+                    matrix[row, column] = rowValues[column];
                 }
             }
 
