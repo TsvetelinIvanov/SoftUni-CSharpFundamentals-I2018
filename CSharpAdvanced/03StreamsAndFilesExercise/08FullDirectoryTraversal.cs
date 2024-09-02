@@ -14,6 +14,7 @@ namespace _08FullDirectoryTraversal
             if (!files.Any())
             {
                 Console.WriteLine("No directories found!");
+                
                 Environment.Exit(0);
             }
 
@@ -26,6 +27,7 @@ namespace _08FullDirectoryTraversal
             if (!filesDictionary.Any())
             {
                 Console.WriteLine("No files found!");
+                
                 Environment.Exit(0);
             }
 
@@ -60,11 +62,11 @@ namespace _08FullDirectoryTraversal
             }
 
             allDirectories.Add(directoryPath);
+            
             return allDirectories;
         }
 
-        private static void GetDirectoryFilesByExtention(string directoryPath,
-            Dictionary<string, List<FileInfo>> files)
+        private static void GetDirectoryFilesByExtention(string directoryPath, Dictionary<string, List<FileInfo>> files)
         {
             string[] fullPaths = Directory.GetFiles(directoryPath);
             foreach (string file in fullPaths)
