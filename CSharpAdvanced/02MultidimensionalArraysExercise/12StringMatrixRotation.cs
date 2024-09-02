@@ -7,8 +7,8 @@ namespace _12StringMatrixRotation
     {
         static void Main(string[] args)
         {
-            string[] rotationString = Console.ReadLine().Split(new char[] { ' ', '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
-            int rotation = int.Parse(rotationString[1]);
+            string[] rotationForString = Console.ReadLine().Split(new char[] { ' ', '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
+            int rotation = int.Parse(rotationForString[1]);
             rotation %= 360;
             List<string> inputStrings = new List<string>();
             int maxLength = 0;
