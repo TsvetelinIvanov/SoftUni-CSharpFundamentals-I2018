@@ -15,7 +15,7 @@ namespace _01SumMatrixElements
             for (int rows = 0; rows < rowsCount; rows++)
             {
                 int[] rowValues = Console.ReadLine().Split(new[] { ", " }, StringSplitOptions.None)
-                .Select(int.Parse).ToArray();
+                    .Select(int.Parse).ToArray();
                 for (int columns = 0; columns < columnsCount; columns++)
                 {
                     matrix[rows, columns] = rowValues[columns];
