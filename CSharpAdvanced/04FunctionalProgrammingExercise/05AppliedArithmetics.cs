@@ -14,6 +14,7 @@ namespace _05AppliedArithmetics
             Func<int, int> multiplier = x => x * 2;
             Func<int, int> subtracter = x => x - 1;
             Action<int> printer = x => Console.Write(x + " ");
+            
             string command = string.Empty;
             while ((command = Console.ReadLine()) != "end")
             {
