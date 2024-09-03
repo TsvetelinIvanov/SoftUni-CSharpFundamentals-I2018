@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace _06PredicateForNames
+namespace _07PredicateForNames
 {
     class Program
     {
@@ -10,9 +10,10 @@ namespace _06PredicateForNames
             int n = int.Parse(Console.ReadLine());
             string[] names = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             Func<string, bool> filter = name => name.Length <= n;
-            string[] filtredNames = names.Where(filter).ToArray();            
+            string[] filteredNames = names.Where(filter).ToArray();
+            
             Action<string[]> printer = fn => Console.WriteLine(string.Join(Environment.NewLine, fn)); 
-            printer(filtredNames);            
+            printer(filteredNames);
         }
     }
 }
