@@ -23,6 +23,7 @@ namespace _01KeyRevolver
             int [] locksInput = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse).ToArray();
             Queue<int> locks = new Queue<int>(locksInput);
+            
             int intelligenceValue = int.Parse(Console.ReadLine());
             bool isSafeOpened = false;
 
@@ -36,7 +37,6 @@ namespace _01KeyRevolver
                 {
                     Console.WriteLine("Bang!");
                     locks.Dequeue();
-
                     if (locks.Count == 0)
                     {
                         isSafeOpened = true;
