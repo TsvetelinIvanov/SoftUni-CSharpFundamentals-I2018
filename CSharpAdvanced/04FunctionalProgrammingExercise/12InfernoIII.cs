@@ -44,6 +44,7 @@ namespace _12InfernoIII
                         {
                             currentGems.Remove(gems[0]);
                         }
+                        
                         for (int i = 1; i < gems.Length; i++)
                         {                           
                             if (gems[i] + gems[i - 1] == purpose)
@@ -58,6 +59,7 @@ namespace _12InfernoIII
                         {
                             currentGems.Remove(gems[gems.Length - 1]);
                         }
+                        
                         for (int i = 0; i < gems.Length - 1; i++)
                         {
                             if (gems[i] + gems[i + 1] == purpose)
@@ -90,7 +92,7 @@ namespace _12InfernoIII
 
                         for (int i = 1; i < gems.Length - 1; i++)
                         {
-                            if (gems[i - 1] + gems[i] + gems[i + 1]== purpose)
+                            if (gems[i - 1] + gems[i] + gems[i + 1] == purpose)
                             {
                                 currentGems.Remove(gems[i]);
                             }
