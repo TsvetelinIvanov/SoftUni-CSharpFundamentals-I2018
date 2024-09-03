@@ -8,8 +8,7 @@ namespace _10PredicateParty
     {
         static void Main(string[] args)
         {
-            List<string> names = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                .ToList();
+            List<string> names = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             string commandLine = string.Empty;
             while ((commandLine = Console.ReadLine()) != "Party!")
             {
