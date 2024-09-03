@@ -24,7 +24,6 @@ namespace _04HitList
                 {
                     string personKey = personInfo[i].Split(':').First();
                     string personValue = personInfo[i].Split(':').Last();
-
                     if (!names[name].ContainsKey(personKey))
                     {
                         names[name][personKey] = string.Empty;
