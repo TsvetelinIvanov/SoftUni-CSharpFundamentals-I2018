@@ -12,8 +12,7 @@ namespace _05FilterByAge
             Dictionary<string, int> people = new Dictionary<string, int>();
             for (int i = 0; i < n; i++)
             {
-                string[] nameAndAge = Console.ReadLine()
-                    .Split(new string[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+                string[] nameAndAge = Console.ReadLine().Split(new string[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
                 people.Add(nameAndAge[0], int.Parse(nameAndAge[1]));
             }
 
