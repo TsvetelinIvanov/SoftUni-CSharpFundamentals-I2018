@@ -5,6 +5,7 @@ namespace _02Sneaking
     class Program
     {
         static char[][] room;
+        
         static void Main()
         {
             int n = int.Parse(Console.ReadLine());
@@ -68,20 +69,20 @@ namespace _02Sneaking
                     }
                 }
 
-                if (samPosition[1] < enemy[1] && room[enemy[0]][enemy[1]] == 'd' &&
-                    enemy[0] == samPosition[0])
+                if (samPosition[1] < enemy[1] && room[enemy[0]][enemy[1]] == 'd' && enemy[0] == samPosition[0])
                 {
                     room[samPosition[0]][samPosition[1]] = 'X';
                     Console.WriteLine($"Sam died at {samPosition[0]}, {samPosition[1]}");
                     PrintRoom(room);
+                    
                     return;
                 }
-                else if (enemy[1] < samPosition[1] && room[enemy[0]][enemy[1]] == 'b'
-                    && enemy[0] == samPosition[0])
+                else if (enemy[1] < samPosition[1] && room[enemy[0]][enemy[1]] == 'b' && enemy[0] == samPosition[0])
                 {
                     room[samPosition[0]][samPosition[1]] = 'X';
                     Console.WriteLine($"Sam died at {samPosition[0]}, {samPosition[1]}");
                     PrintRoom(room);
+                    
                     return;
                 }
 
@@ -103,6 +104,7 @@ namespace _02Sneaking
                     room[enemy[0]][enemy[1]] = 'X';
                     Console.WriteLine("Nikoladze killed!");
                     PrintRoom(room);
+                    
                     return;
                 }
             }
