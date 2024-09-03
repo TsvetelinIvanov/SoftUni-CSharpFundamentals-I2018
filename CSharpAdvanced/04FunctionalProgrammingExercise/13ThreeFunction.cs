@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace _13TruFunction
+namespace _13ThreeFunction
 {
     class Program
     {
