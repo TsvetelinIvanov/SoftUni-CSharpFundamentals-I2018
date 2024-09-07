@@ -2,14 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace _01ArrayManipulator//in this case the zero is an even number (in Judge tests), without zero - (//) use comments!
+namespace _01ArrayManipulator//In this case the zero is an even number (in Judge tests), without zero - (//) use comments!
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int[] array = Console.ReadLine()
-                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+            int[] array = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse).ToArray();
             string inputCommands = string.Empty;
             while ((inputCommands = Console.ReadLine()) != "end")
@@ -87,6 +86,7 @@ namespace _01ArrayManipulator//in this case the zero is an even number (in Judge
                                 PrintNLastOddElements(array, countOfNLastElements);
                             }
                         }
+                        
                         break;
                 }
             }
@@ -96,16 +96,16 @@ namespace _01ArrayManipulator//in this case the zero is an even number (in Judge
 
         private static int[] ExchangeArray(int[] array, int indexExchange)
         {
-            int[] arrayTaked = array.Take(indexExchange + 1).ToArray();
+            int[] arrayTaken = array.Take(indexExchange + 1).ToArray();
             int[] arrayRest = array.Skip(indexExchange + 1).ToArray();
             for (int i = 0; i < arrayRest.Length; i++)
             {
                 array[i] = arrayRest[i];
             }
 
-            for (int i = 0; i < arrayTaked.Length; i++)
+            for (int i = 0; i < arrayTaken.Length; i++)
             {
-                array[i + arrayRest.Length] = arrayTaked[i];
+                array[i + arrayRest.Length] = arrayTaken[i];
             }
 
             return array;
