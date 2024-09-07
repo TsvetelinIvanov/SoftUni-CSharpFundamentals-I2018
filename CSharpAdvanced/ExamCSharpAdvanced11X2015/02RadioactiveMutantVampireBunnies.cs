@@ -10,15 +10,15 @@ namespace _02RadioactiveMutantVampireBunnies
         {
             int[] lairDimensions = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse).ToArray();
-            int rows = lairDimensions[0];
-            int cols = lairDimensions[1];
-            char[,] lair = new char[rows, cols];
-            char[,] bunnyLair = new char[rows, cols];
+            int rowsCount = lairDimensions[0];
+            int colsCount = lairDimensions[1];
+            char[,] lair = new char[rowsCount, colsCount];
+            char[,] bunnyLair = new char[rowsCount, colsCount];
             int[] playerPosition = new int[2];
-            for (int row = 0; row < rows; row++)
+            for (int row = 0; row < rowsCount; row++)
             {
                 char[] rowValues = Console.ReadLine().ToCharArray();
-                for (int col = 0; col < cols; col++)
+                for (int col = 0; col < colsCount; col++)
                 {
                     lair[row, col] = rowValues[col];
                     bunnyLair[row, col] = rowValues[col];
@@ -190,18 +190,6 @@ namespace _02RadioactiveMutantVampireBunnies
                                 bunnyLair[row + 1, col] = 'B';
                             }
 
-                            if (IsInLair(lair, row, col + 1))
-                            {
-                                if (lair[row, col + 1] == 'P')
-                                {
-                                    isDead = true;
-                                    lastCellRow = row;
-                                    lastCellCol = col + 1;
-                                }
-
-                                bunnyLair[row, col + 1] = 'B';
-                            }
-
                             if (IsInLair(lair, row, col - 1))
                             {
                                 if (lair[row, col - 1] == 'P')
@@ -213,6 +201,18 @@ namespace _02RadioactiveMutantVampireBunnies
 
                                 bunnyLair[row, col - 1] = 'B';
                             }
+
+                            if (IsInLair(lair, row, col + 1))
+                            {
+                                if (lair[row, col + 1] == 'P')
+                                {
+                                    isDead = true;
+                                    lastCellRow = row;
+                                    lastCellCol = col + 1;
+                                }
+
+                                bunnyLair[row, col + 1] = 'B';
+                            }                            
                         }
                     }
                 }
