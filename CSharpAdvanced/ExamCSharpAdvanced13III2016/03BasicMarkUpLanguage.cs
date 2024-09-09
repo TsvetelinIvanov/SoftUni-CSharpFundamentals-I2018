@@ -71,7 +71,6 @@ namespace _03BasicMarkUpLanguage
                 {
                     inversedWord += (char)(word[i] + 32);
                 }
-
                 else if (Regex.IsMatch(word[i].ToString(), "[a-z]"))
                 {
                     inversedWord += (char)(word[i] - 32);
