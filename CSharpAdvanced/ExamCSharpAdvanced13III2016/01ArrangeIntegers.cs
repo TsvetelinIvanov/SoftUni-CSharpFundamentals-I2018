@@ -32,8 +32,7 @@ namespace _01ArrangeIntegers
 
             string[] orderedNumbersAsNames = numbersAsNames.OrderBy(n => n.Substring(0, n.IndexOf(" ")))
                 .ThenBy(n => n.Substring(n.IndexOf(" ") + 1).Length).ToArray();
-            string[] orderedNumbersAsStrings = orderedNumbersAsNames
-                .Select(n => n.Substring(n.IndexOf(" ") + 1)).ToArray();
+            string[] orderedNumbersAsStrings = orderedNumbersAsNames.Select(n => n.Substring(n.IndexOf(" ") + 1)).ToArray();
             Console.WriteLine(string.Join(", ", orderedNumbersAsStrings));
         }
 
