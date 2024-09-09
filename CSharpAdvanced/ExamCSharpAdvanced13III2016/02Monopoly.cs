@@ -7,8 +7,8 @@ namespace _02Monopoly
     {
         static void Main(string[] args)
         {
-            int[] monopolyBoardDimensions = Console.ReadLine()
-                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            int[] monopolyBoardDimensions = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToArray();
             int rowsCount = monopolyBoardDimensions[0];
             int colsCount = monopolyBoardDimensions[1];
             char[][] monopolyBoard = new char[rowsCount][];
