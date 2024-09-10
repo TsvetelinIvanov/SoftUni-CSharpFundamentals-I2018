@@ -18,8 +18,10 @@ namespace _03NumberWars
             while (turnCount < 1000000 && firsPlayerCards.Count > 0 && secondPlayerCards.Count > 0 && !gameOver)
             {
                 turnCount++;
+                
                 string firstCard = firsPlayerCards.Dequeue();
                 int firstCardNumber = GetNumber(firstCard);
+                
                 string secondCard = secondPlayerCards.Dequeue();
                 int secondCardNumber = GetNumber(secondCard);
 
@@ -102,8 +104,7 @@ namespace _03NumberWars
 
         private static void AddCardsToWinner(Queue<string> playerCards, List<string> cardsHand)
         {
-            foreach (string card in cardsHand.OrderByDescending(c => GetNumber(c))
-                .ThenByDescending(c => GetCharNumber(c)))
+            foreach (string card in cardsHand.OrderByDescending(c => GetNumber(c)).ThenByDescending(c => GetCharNumber(c)))
             {
                 playerCards.Enqueue(card);
             }
