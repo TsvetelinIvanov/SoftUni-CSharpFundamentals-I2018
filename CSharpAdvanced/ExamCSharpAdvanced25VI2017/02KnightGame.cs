@@ -48,7 +48,6 @@ namespace _02KnightGame
                         }
                     }
                 }
-
             } while (attacksMaxCount > 0);
 
             Console.WriteLine(removedKnightCount);
