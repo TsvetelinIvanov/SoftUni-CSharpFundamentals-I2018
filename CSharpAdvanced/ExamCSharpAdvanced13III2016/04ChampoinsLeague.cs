@@ -17,9 +17,9 @@ namespace _04ChampoinsLeague
                 string firstTeam = matchData[0];
                 string secondTeam = matchData[1];
                 int firstGoalsHome = int.Parse(matchData[2].Split(':').First());
-                int firstGoalsGuest = int.Parse(matchData[3].Split(':').Last());
-                int secondGoalsGuest = int.Parse(matchData[2].Split(':').Last());
                 int secondGoalsHome = int.Parse(matchData[3].Split(':').First());
+                int firstGoalsGuest = int.Parse(matchData[3].Split(':').Last());
+                int secondGoalsGuest = int.Parse(matchData[2].Split(':').Last());                
 
                 if (!teemsScores.ContainsKey(firstTeam))
                 {
