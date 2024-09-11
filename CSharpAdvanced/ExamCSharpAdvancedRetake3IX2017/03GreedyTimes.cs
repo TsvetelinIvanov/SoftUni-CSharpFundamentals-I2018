@@ -28,15 +28,15 @@ namespace _03GreedyTimes
                     continue;
                 }
 
-                long bagFulfil = goldQuantity + gemQuantity + cashQuantity;
-                if (bagFulfil > bagCapacity)
+                long bagFilling = goldQuantity + gemQuantity + cashQuantity;
+                if (bagFilling > bagCapacity)
                 {
                     continue;
                 }                    
 
                 if (itemType == "Gold")
                 {
-                    if (bagFulfil + itemQuantity > bagCapacity)
+                    if (bagFilling + itemQuantity > bagCapacity)
                     {
                         continue;
                     }                        
@@ -51,7 +51,7 @@ namespace _03GreedyTimes
                 }
                 else if (itemType == "Gem")
                 {
-                    if (bagFulfil + itemQuantity > bagCapacity || gemQuantity + itemQuantity > goldQuantity)
+                    if (bagFilling + itemQuantity > bagCapacity || gemQuantity + itemQuantity > goldQuantity)
                     {
                         continue;
                     }                        
@@ -66,7 +66,7 @@ namespace _03GreedyTimes
                 }
                 else if (itemType == "Cash")
                 {
-                    if (bagFulfil + itemQuantity > bagCapacity || cashQuantity + itemQuantity > gemQuantity)
+                    if (bagFilling + itemQuantity > bagCapacity || cashQuantity + itemQuantity > gemQuantity)
                     {
                         continue;
                     }                        
