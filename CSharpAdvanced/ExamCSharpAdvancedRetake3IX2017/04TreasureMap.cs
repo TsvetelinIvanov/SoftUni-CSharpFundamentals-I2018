@@ -15,6 +15,7 @@ namespace _04TreasureMap
                 string input = Console.ReadLine();
                 MatchCollection matches = Regex.Matches(input, pattern);
                 Match correctMatch = matches[matches.Count / 2];
+                
                 string streetName = correctMatch.Groups["streetName"].Value;
                 string streetNumber = correctMatch.Groups["streetNumber"].Value;
                 string password = correctMatch.Groups["password"].Value;
