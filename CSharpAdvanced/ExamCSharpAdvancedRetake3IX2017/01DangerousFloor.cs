@@ -69,11 +69,13 @@ namespace _01DangerousFloor
                     bool horizontalMove = startingRow == targetRow && startingCol != targetCol;
                     bool verticalMove = startingRow != targetRow && startingCol == targetCol;
                     bool diagonalMove = Math.Abs(startingRow - targetRow) == Math.Abs(startingCol - targetCol);
+                    
                     return horizontalMove || verticalMove || diagonalMove;
                 case 'K':
                     bool rowMove = Math.Abs(startingRow - targetRow) == 1 && Math.Abs(startingCol - targetCol) == 0;
                     bool colMove = Math.Abs(startingRow - targetRow) == 0 && Math.Abs(startingCol - targetCol) == 1;
                     bool diagonalOneMove = Math.Abs(startingRow - targetRow) == 1 && Math.Abs(startingCol - targetCol) == 1;
+                    
                     return rowMove || colMove || diagonalOneMove;
                 default:
                     return false;
