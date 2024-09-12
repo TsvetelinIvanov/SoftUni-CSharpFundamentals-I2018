@@ -3,7 +3,7 @@ using System.Linq;
 
 public class Department
 {
-    string name;
+    private string name;
     private List<Employee> employees;    
 
     public Department(string name)
