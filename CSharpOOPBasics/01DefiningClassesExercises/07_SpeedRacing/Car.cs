@@ -40,10 +40,10 @@ public class Car
 
     public void DriveCar(int distance)
     {
-        if (distance * FuelConsumptionFor1km <= FuelAmount)
+        if (distance * this.FuelConsumptionFor1km <= this.FuelAmount)
         {
-            TraveledDistance += distance;
-            FuelAmount -= distance * FuelConsumptionFor1km;
+            this.TraveledDistance += distance;
+            this.FuelAmount -= distance * this.FuelConsumptionFor1km;
         }
         else
         {
