@@ -39,11 +39,12 @@
 
         public void Drive(double kilometers)
         {
-            var neededFuel = kilometers * this.fuelConsumptionPerKm;
+            double neededFuel = kilometers * this.fuelConsumptionPerKm;
 
             if (this.fuelAmount < neededFuel)
             {
                 System.Console.WriteLine("Insufficient fuel for the drive");
+                
                 return;
             }
 
