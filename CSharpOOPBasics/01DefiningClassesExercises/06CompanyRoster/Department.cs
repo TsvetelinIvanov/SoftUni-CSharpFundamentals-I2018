@@ -24,7 +24,7 @@ public class Department
         private set { this.employees = value; }
     }
 
-    public decimal AverigeSalary => this.Employees.Select(e => e.Salary).Average();
+    public decimal AverageSalary => this.Employees.Select(e => e.Salary).Average();
 
     public void AddEmployee(Employee employee)
     {
