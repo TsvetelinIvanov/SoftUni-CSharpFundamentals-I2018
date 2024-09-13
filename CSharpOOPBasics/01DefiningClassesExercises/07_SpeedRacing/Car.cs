@@ -4,14 +4,14 @@ public class Car
 {
     private string model;
     private double fuelAmount;
-    private double fuelConsumptionFor1km;
+    private double fuelConsumptionPerKm;
     private int traveledDistance = 0;
 
-    public Car(string model, double fuelAmount, double fuelConsumptionFor1km)
+    public Car(string model, double fuelAmount, double fuelConsumptionPerKm)
     {
         this.Model = model;
         this.FuelAmount = fuelAmount;
-        this.FuelConsumptionFor1km = fuelConsumptionFor1km;        
+        this.FuelConsumptionPerKm = fuelConsumptionPerKm;        
     }
 
     public string Model
@@ -26,10 +26,10 @@ public class Car
         set { this.fuelAmount = value; }
     }
 
-    public double FuelConsumptionFor1km
+    public double FuelConsumptionPerKm
     {
-        get { return this.fuelConsumptionFor1km; }
-        set { this.fuelConsumptionFor1km = value; }
+        get { return this.fuelConsumptionPerKm; }
+        set { this.fuelConsumptionPerKm = value; }
     }
 
     public int TraveledDistance
@@ -40,10 +40,10 @@ public class Car
 
     public void DriveCar(int distance)
     {
-        if (distance * this.FuelConsumptionFor1km <= this.FuelAmount)
+        if (distance * this.FuelConsumptionPerKm <= this.FuelAmount)
         {
             this.TraveledDistance += distance;
-            this.FuelAmount -= distance * this.FuelConsumptionFor1km;
+            this.FuelAmount -= distance * this.FuelConsumptionPerKm;
         }
         else
         {
