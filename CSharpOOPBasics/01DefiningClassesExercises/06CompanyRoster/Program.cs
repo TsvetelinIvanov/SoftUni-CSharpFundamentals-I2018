@@ -10,8 +10,7 @@ public class Program
         int n = int.Parse(Console.ReadLine());
         for (int person = 0; person < n; person++)
         {
-            string[] employeeInfo = Console.ReadLine()
-                .Split(new char[] { ' ' },StringSplitOptions.RemoveEmptyEntries);
+            string[] employeeInfo = Console.ReadLine().Split(new char[] { ' ' },StringSplitOptions.RemoveEmptyEntries);
             string departmentName = employeeInfo[3];
 
             if (!departments.Any(d => d.Name == departmentName))
@@ -25,9 +24,9 @@ public class Program
             department.AddEmployee(employee);
         }
 
-        Department highestAverageDepartment = departments.OrderByDescending(d => d.AverigeSalary).First();
-        Console.WriteLine($"Highest Average Salary: {highestAverageDepartment.Name}");
-        foreach (Employee employee1 in highestAverageDepartment.Employees.OrderByDescending(e => e.Salary))
+        Department highestAverageSalaryDepartment = departments.OrderByDescending(d => d.AverageSalary).First();
+        Console.WriteLine($"Highest Average Salary: {highestAverageSalaryDepartment.Name}");
+        foreach (Employee employee1 in highestAverageSalaryDepartment.Employees.OrderByDescending(e => e.Salary))
         {
             Console.WriteLine($"{employee1.Name} {employee1.Salary:f2} {employee1.Email} {employee1.Age}");
         }
@@ -57,6 +56,7 @@ public class Program
         }
 
         Employee employee = new Employee(name, position, salary, age, email);
+        
         return employee;
     }
 }
