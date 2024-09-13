@@ -13,8 +13,9 @@ public class Program
             string[] carsData = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string model = carsData[0];
             double fuelAmount = double.Parse(carsData[1]);
-            double fuelConsumptionFor1km = double.Parse(carsData[2]);
-            Car car = new Car(model, fuelAmount, fuelConsumptionFor1km);
+            double fuelConsumptionPerKm = double.Parse(carsData[2]);
+            
+            Car car = new Car(model, fuelAmount, fuelConsumptionPerKm);
             cars.Add(car);
         }
 
