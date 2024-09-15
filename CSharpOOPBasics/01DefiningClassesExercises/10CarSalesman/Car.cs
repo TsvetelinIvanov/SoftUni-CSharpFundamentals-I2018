@@ -15,20 +15,17 @@ public class Car
         this.Color = "n/a";
     }
 
-    public Car(string model, Engine engine, int weight)
-        : this(model, engine)
+    public Car(string model, Engine engine, int weight) : this(model, engine)
     {        
         this.Weight = weight;        
     }
 
-    public Car(string model, Engine engine, string color)
-        : this(model, engine)
+    public Car(string model, Engine engine, string color) : this(model, engine)
     {
         this.Color = color;
     }
 
-    public Car(string model, Engine engine, int weight, string color)
-        : this(model, engine)
+    public Car(string model, Engine engine, int weight, string color) : this(model, engine)
     {
         this.Weight = weight;
         this.Color = color;
@@ -65,6 +62,7 @@ public class Car
         carData.Append(this.Engine.ToString());
         carData.AppendFormat("  Weight: {0}\r\n", this.Weight == -1 ? "n/a" : this.Weight.ToString());
         carData.AppendFormat("  Color: {0}", this.Color);
+        
         return carData.ToString();
     }
 }
