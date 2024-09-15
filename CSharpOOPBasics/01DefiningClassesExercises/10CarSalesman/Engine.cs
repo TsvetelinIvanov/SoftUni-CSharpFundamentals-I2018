@@ -15,20 +15,17 @@ public class Engine
         this.Efficiency = "n/a";
     }
 
-    public Engine(string model, int power, int displacement)
-        : this(model, power)
+    public Engine(string model, int power, int displacement) : this(model, power)
     {        
         this.Displacement = displacement;        
     }
 
-    public Engine(string model, int power, string efficiency)
-        : this(model, power)
+    public Engine(string model, int power, string efficiency) : this(model, power)
     {
         this.Efficiency = efficiency;
     }
 
-    public Engine(string model, int power, int displacement, string efficiency)
-       : this(model, power)
+    public Engine(string model, int power, int displacement, string efficiency) : this(model, power)
     {
         this.Displacement = displacement;
         this.Efficiency = efficiency;
@@ -63,8 +60,7 @@ public class Engine
         StringBuilder engineData = new StringBuilder();
         engineData.AppendFormat("  {0}:\r\n", this.Model);
         engineData.AppendFormat("    Power: {0}\r\n", this.Power);
-        engineData.AppendFormat("    Displacement: {0}\r\n", 
-            this.Displacement == -1 ? "n/a" : this.Displacement.ToString());
+        engineData.AppendFormat("    Displacement: {0}\r\n", this.Displacement == -1 ? "n/a" : this.Displacement.ToString());
         engineData.AppendFormat("    Efficiency: {0}\r\n", this.Efficiency);
 
         return engineData.ToString();
