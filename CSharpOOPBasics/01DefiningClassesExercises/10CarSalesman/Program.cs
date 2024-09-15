@@ -27,8 +27,7 @@ public class Program
 
     private static Engine ReadEngineDataInput()
     {
-        string[] engineDataInput = Console.ReadLine()
-            .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        string[] engineDataInput = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         string model = engineDataInput[0];
         int power = int.Parse(engineDataInput[1]);
 
@@ -61,6 +60,7 @@ public class Program
         else
         {
             Engine engine = new Engine(model, power);
+            
             return engine;
         }
     }
@@ -77,6 +77,7 @@ public class Program
             int weight = int.Parse(carDataInput[2]);
             string color = carDataInput[3];
             Car car = new Car(model, engine, weight, color);
+            
             return car;
         }
         else if (carDataInput.Length == 3)
@@ -100,6 +101,7 @@ public class Program
         else
         {
             Car car = new Car(model, engine);
+            
             return car;
         }
     }    
