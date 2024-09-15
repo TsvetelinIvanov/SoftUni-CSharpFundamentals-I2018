@@ -26,13 +26,14 @@ public class Program
 
     private static Rectangle ReadRectangleData()
     {
-        string[] rectangleData = Console.ReadLine()
-            .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        string[] rectangleData = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        
         string id = rectangleData[0];
         double width = double.Parse(rectangleData[1]);
         double hight = double.Parse(rectangleData[2]);
         double topLeftHorizonal = double.Parse(rectangleData[3]);
         double topLeftVertical = double.Parse(rectangleData[4]);
+        
         Rectangle rectangle = new Rectangle(id, width, hight, topLeftHorizonal, topLeftVertical);
 
         return rectangle;
@@ -41,10 +42,13 @@ public class Program
     private static bool CheckForIntersection(List<Rectangle> rectangles)
     {
         string[] rectangleIds = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        
         string firstRectangleId = rectangleIds[0];
-        string secondRectangleId = rectangleIds[1];
         Rectangle firstRectangle = rectangles.Single(r => r.Id == firstRectangleId);
+        
+        string secondRectangleId = rectangleIds[1];        
         Rectangle secondRectangle = rectangles.Single(r => r.Id == secondRectangleId);
+        
         bool isIntersection = firstRectangle.IsIntersection(secondRectangle);
 
         return isIntersection;
