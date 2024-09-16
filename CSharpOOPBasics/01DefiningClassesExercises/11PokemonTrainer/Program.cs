@@ -17,6 +17,7 @@ public class Program
     private static List<Trainer> GetTrainers()
     {
         List<Trainer> trainers = new List<Trainer>();
+        
         string pokemonInput;
         while ((pokemonInput = Console.ReadLine()) != "Tournament")
         {
