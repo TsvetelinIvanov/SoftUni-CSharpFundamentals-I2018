@@ -5,7 +5,7 @@ public class RectangulareFigureDrawer
     private double width;
     private double height;
 
-    public RectangulareFigureDrawer(double width, double height)
+    public RectangularFigureDrawer(double width, double height)
     {
         this.Width = width;
         this.Height = height;
