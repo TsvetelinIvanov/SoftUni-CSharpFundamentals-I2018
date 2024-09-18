@@ -17,10 +17,10 @@ public class Program
         string input;
         while ((input = Console.ReadLine()) != "End")
         {
-            string[] catsInfo = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            string breed = catsInfo[0];
-            string name = catsInfo[1];
-            double characteristicValue = double.Parse(catsInfo[2]);
+            string[] catInfo = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);            
+            string breed = catInfo[0];
+            string name = catInfo[1];
+            double characteristicValue = double.Parse(catInfo[2]);            
             Cat cat = new Cat(name, breed, characteristicValue);
             cats.Add(cat);
         }
