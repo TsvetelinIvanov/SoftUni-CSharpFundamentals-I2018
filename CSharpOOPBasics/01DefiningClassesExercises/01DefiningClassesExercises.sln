@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07SpeedRacing", "07SpeedRac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07_SpeedRacing", "07_SpeedRacing\07_SpeedRacing.csproj", "{98567CE5-ECA9-429D-8EC9-177141A6AE7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08Raw__Data", "08Raw__Data\08Raw__Data.csproj", "{1347F2AD-7F5F-4380-94CB-09527C43A2C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08RawData", "08RawData\08RawData.csproj", "{1347F2AD-7F5F-4380-94CB-09527C43A2C2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09RectangleIntersection", "09RectangleIntersection\09RectangleIntersection.csproj", "{049A6932-1E5A-4CE3-8A39-229161BF037B}"
 EndProject
