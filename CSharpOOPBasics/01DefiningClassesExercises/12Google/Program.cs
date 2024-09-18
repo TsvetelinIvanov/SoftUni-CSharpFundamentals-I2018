@@ -7,6 +7,7 @@ public class Program
     static void Main(string[] args)
     {
         List<Person> people = CollectDataForPeople();
+        
         string name = Console.ReadLine();
         Person person = people.Single(p => p.Name == name);
         Console.Write(person);
