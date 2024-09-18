@@ -16,8 +16,8 @@ public class Program
             height = double.Parse(Console.ReadLine());
         }
 
-        RectangulareFigureDrawer figure = new RectangulareFigureDrawer(width, height);
-        string drawedFigure = figure.DrawRectangleOrSquare();
+        RectangularFigureDrawer figureDrawer = new RectangularFigureDrawer(width, height);
+        string drawedFigure = figureDrawer.DrawRectangleOrSquare();
         Console.WriteLine(drawedFigure);
     }
 }
