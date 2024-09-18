@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05DateModifier", "05DateMod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06CompanyRoster", "06CompanyRoster\06CompanyRoster.csproj", "{E1A847B6-04B1-4837-A2AD-E657121D8047}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07SpeedRacing_", "07SpeedRacing\07SpeedRacing_.csproj", "{40992B36-0EFD-41FB-B94D-ED94803DD330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07SpeedRacing", "07SpeedRacing\07SpeedRacing.csproj", "{40992B36-0EFD-41FB-B94D-ED94803DD330}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07_SpeedRacing", "07_SpeedRacing\07_SpeedRacing.csproj", "{98567CE5-ECA9-429D-8EC9-177141A6AE7F}"
 EndProject
