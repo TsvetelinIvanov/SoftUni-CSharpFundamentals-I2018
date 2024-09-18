@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-public class RectangulareFigureDrawer
+public class RectangularFigureDrawer
 {
     private double width;
     private double height;
