@@ -11,16 +11,14 @@ namespace _07LegoBlocks
             int[][] block1 = new int[n][];
             for (int i = 0; i < n; i++)
             {
-                block1[i] = Console.ReadLine().Trim()
-                    .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                block1[i] = Console.ReadLine().Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray();
             }
 
             int[][] block2 = new int[n][];
             for (int i = 0; i < n; i++)
             {
-                block2[i] = Console.ReadLine().Trim()
-                    .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                block2[i] = Console.ReadLine().Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray();
                 block2[i] = block2[i].Reverse().ToArray();
             }
