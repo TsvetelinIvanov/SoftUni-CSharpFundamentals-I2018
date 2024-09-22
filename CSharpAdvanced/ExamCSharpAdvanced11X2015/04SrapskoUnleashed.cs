@@ -18,11 +18,11 @@ namespace _04SrapskoUnleashed
                     string singer = rawConcertsData[0].Trim();
 
                     string[] venueData = rawConcertsData[1].Split();
-                    if (long.TryParse(venueData[venueData.Length - 1], out long ticketCount)
+                    if (long.TryParse(venueData[venueData.Length - 1], out long ticketsCount)
                         && long.TryParse(venueData[venueData.Length - 2], out long ticketPrice)
                         && venueData.Length >= 3)
                     {                        
-                        long ticketIncom = ticketCount * ticketPrice;
+                        long ticketsIncom = ticketsCount * ticketPrice;
                         string venue = string.Empty;
                         for (int i = 0; i < venueData.Length - 2; i++)
                         {
@@ -39,7 +39,7 @@ namespace _04SrapskoUnleashed
                             concerts[venue][singer] = 0;
                         }
 
-                        concerts[venue][singer] += ticketIncom;
+                        concerts[venue][singer] += ticketsIncom;
                     }
                 }
             }
