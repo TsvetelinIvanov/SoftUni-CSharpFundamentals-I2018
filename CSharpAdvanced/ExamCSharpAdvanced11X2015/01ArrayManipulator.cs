@@ -244,15 +244,15 @@ namespace _01ArrayManipulator//In this case the zero is an even number (in Judge
 
         private static void PrintNLastOddElements(int[] array, int countOfNLastElements)
         {
-            List<int> LastNOddElementsInArray = new List<int>();
+            List<int> lastNOddElementsInArray = new List<int>();
             int[] oddElementsInArray = array.Where(x => x % 2 != 0).ToArray();
             Array.Reverse(oddElementsInArray);
             for (int i = 0; i < Math.Min(countOfNLastElements, oddElementsInArray.Length); i++)
             {
-                LastNOddElementsInArray.Add(oddElementsInArray[i]);
+                lastNOddElementsInArray.Add(oddElementsInArray[i]);
             }
 
-            int[] arrayOfLastNOddElementsInArray = LastNOddElementsInArray.ToArray();
+            int[] arrayOfLastNOddElementsInArray = lastNOddElementsInArray.ToArray();
             arrayOfLastNOddElementsInArray = arrayOfLastNOddElementsInArray.Reverse().ToArray();
             Console.WriteLine($"[{string.Join(", ", arrayOfLastNOddElementsInArray)}]");
         }
