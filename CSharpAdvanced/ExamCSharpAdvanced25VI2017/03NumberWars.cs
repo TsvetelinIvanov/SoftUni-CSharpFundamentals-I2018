@@ -12,12 +12,12 @@ namespace _03NumberWars
                 StringSplitOptions.RemoveEmptyEntries));
             Queue<string> secondPlayerCards = new Queue<string>(Console.ReadLine().Split(new char[] { ' ' }, 
                 StringSplitOptions.RemoveEmptyEntries));
-            int turnCount = 0;
+            int turnsCount = 0;
             bool gameOver = false;
 
-            while (turnCount < 1000000 && firsPlayerCards.Count > 0 && secondPlayerCards.Count > 0 && !gameOver)
+            while (turnsCount < 1000000 && firsPlayerCards.Count > 0 && secondPlayerCards.Count > 0 && !gameOver)
             {
-                turnCount++;
+                turnsCount++;
                 
                 string firstCard = firsPlayerCards.Dequeue();
                 int firstCardNumber = GetNumber(firstCard);
@@ -80,15 +80,15 @@ namespace _03NumberWars
 
             if (firsPlayerCards.Count > secondPlayerCards.Count)
             {
-                Console.WriteLine($"First player wins after {turnCount} turns");
+                Console.WriteLine($"First player wins after {turnsCount} turns");
             }
             else if (firsPlayerCards.Count < secondPlayerCards.Count)
             {
-                Console.WriteLine($"Second player wins after {turnCount} turns");
+                Console.WriteLine($"Second player wins after {turnsCount} turns");
             }
             else
             {
-                Console.WriteLine($"Draw after {turnCount} turns");
+                Console.WriteLine($"Draw after {turnsCount} turns");
             }
         }
 
