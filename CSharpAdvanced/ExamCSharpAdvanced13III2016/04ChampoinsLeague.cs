@@ -8,8 +8,8 @@ namespace _04ChampoinsLeague
     {
         static void Main(string[] args)
         {
-            Dictionary<string, int> teemsScores = new Dictionary<string, int>();
-            Dictionary<string, List<string>> teemsOpponents = new Dictionary<string, List<string>>();
+            Dictionary<string, int> teamsScores = new Dictionary<string, int>();
+            Dictionary<string, List<string>> teamsOpponents = new Dictionary<string, List<string>>();
             string input;
             while ((input = Console.ReadLine()) != "stop")
             {
@@ -21,38 +21,38 @@ namespace _04ChampoinsLeague
                 int firstGoalsGuest = int.Parse(matchData[3].Split(':').Last());
                 int secondGoalsGuest = int.Parse(matchData[2].Split(':').Last());                
 
-                if (!teemsScores.ContainsKey(firstTeam))
+                if (!teamsScores.ContainsKey(firstTeam))
                 {
-                    teemsScores[firstTeam] = 0;
-                    teemsOpponents[firstTeam] = new List<string>();
+                    teamsScores[firstTeam] = 0;
+                    teamsOpponents[firstTeam] = new List<string>();
                 }
 
-                if (!teemsScores.ContainsKey(secondTeam))
+                if (!teamsScores.ContainsKey(secondTeam))
                 {
-                    teemsScores[secondTeam] = 0;
-                    teemsOpponents[secondTeam] = new List<string>();
+                    teamsScores[secondTeam] = 0;
+                    teamsOpponents[secondTeam] = new List<string>();
                 }
 
-                teemsOpponents[firstTeam].Add(secondTeam);
-                teemsOpponents[secondTeam].Add(firstTeam);
+                teamsOpponents[firstTeam].Add(secondTeam);
+                teamsOpponents[secondTeam].Add(firstTeam);
 
                 if (firstGoalsHome + firstGoalsGuest > secondGoalsHome + secondGoalsGuest)
                 {
-                    teemsScores[firstTeam]++;
+                    teamsScores[firstTeam]++;
                 }
                 else if (firstGoalsHome + firstGoalsGuest < secondGoalsHome + secondGoalsGuest)
                 {
-                    teemsScores[secondTeam]++;
+                    teamsScores[secondTeam]++;
                 }
                 else
                 {
                     if (firstGoalsGuest > secondGoalsGuest)
                     {
-                        teemsScores[firstTeam]++;
+                        teamsScores[firstTeam]++;
                     }
                     else if (firstGoalsGuest < secondGoalsGuest)
                     {
-                        teemsScores[secondTeam]++;
+                        teamsScores[secondTeam]++;
                     }
                     else
                     {
@@ -61,11 +61,11 @@ namespace _04ChampoinsLeague
                 }
             }
 
-            foreach (KeyValuePair<string, int> teem in teemsScores.OrderByDescending(t => t.Value).ThenBy(t => t.Key))
+            foreach (KeyValuePair<string, int> team in teamsScores.OrderByDescending(t => t.Value).ThenBy(t => t.Key))
             {
-                Console.WriteLine(teem.Key);
-                Console.WriteLine("- Wins: " + teem.Value);
-                Console.WriteLine("- Opponents: " + string.Join(", ", teemsOpponents[teem.Key].OrderBy(o => o)));
+                Console.WriteLine(team.Key);
+                Console.WriteLine("- Wins: " + team.Value);
+                Console.WriteLine("- Opponents: " + string.Join(", ", teamsOpponents[team.Key].OrderBy(o => o)));
             }
         }
     }
