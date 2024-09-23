@@ -1,9 +1,9 @@
 ﻿public class Employee
 {
     private string name;
-    private int age;
-    private decimal salary;
     private string position;
+    private decimal salary;
+    private int age;
     private string email;
 
     public Employee(string name, string position, decimal salary, int age, string email)
