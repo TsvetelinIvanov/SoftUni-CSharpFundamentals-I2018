@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class StartUp
+    public class Program
     {
         private static object cars;
 
@@ -46,7 +46,7 @@
 
         private static void PrintCars(Queue<Car> cars)
         {
-            Console.WriteLine(string.Join(Environment.NewLine, cars.Select(c => $"{c.Model} {c.FuelAmount:F2} {c.DistanceTravelled}")));
+            Console.WriteLine(string.Join(Environment.NewLine, cars.Select(c => $"{c.Model} {c.FuelAmount:F2} {c.TraveledDistance}")));
         }
     }
 }
