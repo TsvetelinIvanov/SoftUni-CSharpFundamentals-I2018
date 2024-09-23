@@ -30,11 +30,11 @@ public class Program
         
         string id = rectangleData[0];
         double width = double.Parse(rectangleData[1]);
-        double hight = double.Parse(rectangleData[2]);
+        double height = double.Parse(rectangleData[2]);
         double topLeftHorizonal = double.Parse(rectangleData[3]);
         double topLeftVertical = double.Parse(rectangleData[4]);
         
-        Rectangle rectangle = new Rectangle(id, width, hight, topLeftHorizonal, topLeftVertical);
+        Rectangle rectangle = new Rectangle(id, width, height, topLeftHorizonal, topLeftVertical);
 
         return rectangle;
     }
