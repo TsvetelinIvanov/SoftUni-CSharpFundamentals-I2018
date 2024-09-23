@@ -32,7 +32,6 @@
         private static void DriveCars(Queue<Car> cars)
         {
             string[] command = Console.ReadLine().Split();
-
             while (command[0] != "End")
             {
                 Car currentCar = cars.Where(c => c.Model == command[1]).FirstOrDefault();
