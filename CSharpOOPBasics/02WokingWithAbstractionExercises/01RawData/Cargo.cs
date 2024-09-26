@@ -5,8 +5,8 @@
 
     public Cargo(string type, int weight)
     {
-        this.type = type;
-        this.weight = weight;
+        this.Type = type;
+        this.Weight = weight;
     }
 
     public string Type
