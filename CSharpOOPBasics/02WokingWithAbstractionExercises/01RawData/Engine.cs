@@ -5,8 +5,8 @@
 
     public Engine(int speed, int power)
     {
-        this.speed = speed;
-        this.power = power;
+        this.Speed = speed;
+        this.Power = power;
     }
 
     public int Speed
