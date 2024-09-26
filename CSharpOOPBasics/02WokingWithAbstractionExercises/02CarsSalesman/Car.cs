@@ -2,7 +2,7 @@
 
 public class Car
 {
-    private const string offset = "  ";
+    private const string Offset = "  ";
 
     public string model;
     public Engine engine;
@@ -17,20 +17,17 @@ public class Car
         this.color = "n/a";
     }
 
-    public Car(string model, Engine engine, int weight)
-        : this(model, engine)
+    public Car(string model, Engine engine, int weight) : this(model, engine)
     {       
         this.weight = weight;        
     }
 
-    public Car(string model, Engine engine, string color)
-        : this(model, engine)
+    public Car(string model, Engine engine, string color) : this(model, engine)
     {        
         this.color = color;
     }
 
-    public Car(string model, Engine engine, int weight, string color)
-        : this(model, engine)
+    public Car(string model, Engine engine, int weight, string color) : this(model, engine)
     {        
         this.weight = weight;
         this.color = color;
@@ -39,12 +36,12 @@ public class Car
 
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
-        sb.AppendFormat("{0}:\n", this.model);
-        sb.Append(this.engine.ToString());
-        sb.AppendFormat("{0}Weight: {1}\n", offset, this.weight == -1 ? "n/a" : this.weight.ToString());
-        sb.AppendFormat("{0}Color: {1}", offset, this.color);
+        StringBuilder carBuilder = new StringBuilder();
+        carBuilder.AppendFormat("{0}:\n", this.model);
+        carBuilder.Append(this.engine.ToString());
+        carBuilder.AppendFormat("{0}Weight: {1}\n", Offset, this.weight == -1 ? "n/a" : this.weight.ToString());
+        carBuilder.AppendFormat("{0}Color: {1}", Offset, this.color);
 
-        return sb.ToString();
+        return carBuilder.ToString();
     }
 }
