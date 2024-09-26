@@ -2,7 +2,7 @@
 
 public class Engine
 {
-    private const string offset = "  ";
+    private const string Offset = "  ";
 
     public string model;
     public int power;
@@ -17,8 +17,7 @@ public class Engine
         this.efficiency = "n/a";
     }
 
-    public Engine(string model, int power, int displacement)
-        :this(model, power)
+    public Engine(string model, int power, int displacement) :this(model, power)
     {        
         this.displacement = displacement;        
     }
