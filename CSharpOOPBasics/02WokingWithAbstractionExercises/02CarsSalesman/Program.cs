@@ -11,24 +11,24 @@ public class CarSalesman
         int enginesCount = int.Parse(Console.ReadLine());
         for (int i = 0; i < enginesCount; i++)
         {
-            string[] parameters = Console.ReadLine().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            string model = parameters[0];
-            int power = int.Parse(parameters[1]);
+            string[] engineParameters = Console.ReadLine().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string model = engineParameters[0];
+            int power = int.Parse(engineParameters[1]);
 
             int displacement = -1;
-            if (parameters.Length == 3 && int.TryParse(parameters[2], out displacement))
+            if (engineParameters.Length == 3 && int.TryParse(engineParameters[2], out displacement))
             {
                 engines.Add(new Engine(model, power, displacement));
             }
-            else if (parameters.Length == 3)
+            else if (engineParameters.Length == 3)
             {
-                string efficiency = parameters[2];
+                string efficiency = engineParameters[2];
                 engines.Add(new Engine(model, power, efficiency));
             }
-            else if (parameters.Length == 4)
+            else if (engineParameters.Length == 4)
             {
-                string efficiency = parameters[3];
-                engines.Add(new Engine(model, power, int.Parse(parameters[2]), efficiency));
+                string efficiency = engineParameters[3];
+                engines.Add(new Engine(model, power, int.Parse(engineParameters[2]), efficiency));
             }
             else
             {
@@ -39,25 +39,25 @@ public class CarSalesman
         int carsCount = int.Parse(Console.ReadLine());
         for (int i = 0; i < carsCount; i++)
         {
-            string[] parameters = Console.ReadLine().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            string model = parameters[0];
-            string engineModel = parameters[1];
+            string[] carParameters = Console.ReadLine().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string model = carParameters[0];
+            string engineModel = carParameters[1];
             Engine engine = engines.FirstOrDefault(e => e.model == engineModel);
 
             int weight = -1;
-            if (parameters.Length == 3 && int.TryParse(parameters[2], out weight))
+            if (carParameters.Length == 3 && int.TryParse(parameters[2], out weight))
             {
                 cars.Add(new Car(model, engine, weight));
             }
-            else if (parameters.Length == 3)
+            else if (carParameters.Length == 3)
             {
-                string color = parameters[2];
+                string color = carParameters[2];
                 cars.Add(new Car(model, engine, color));
             }
-            else if (parameters.Length == 4)
+            else if (carParameters.Length == 4)
             {
                 string color = parameters[3];
-                cars.Add(new Car(model, engine, int.Parse(parameters[2]), color));
+                cars.Add(new Car(model, engine, int.Parse(carParameters[2]), color));
             }
             else
             {
