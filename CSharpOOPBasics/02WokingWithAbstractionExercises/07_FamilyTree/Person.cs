@@ -14,14 +14,12 @@ public class Person
         this.Children = new List<Person>();
     }
 
-    //public Person(string name)
-    //    : this()
+    //public Person(string name) : this()
     //{
     //    this.Name = name;
     //}
 
-    //public Person(string name, string birthday)
-    //    : this()
+    //public Person(string name, string birthday) : this()
     //{
     //    this.Name = name;
     //    this.Birthday = birthday;
