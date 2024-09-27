@@ -7,30 +7,29 @@ public class Program
     static void Main(string[] args)
     {
         long bagCapacity = long.Parse(Console.ReadLine());
-        string[] safeInners = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
+        string[] safeContent = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         Dictionary<string, Dictionary<string, long>> bag = new Dictionary<string, Dictionary<string, long>>();
         
-        for (int i = 0; i < safeInners.Length; i += 2)
+        for (int i = 0; i < safeContent.Length; i += 2)
         {
-            string itemType = safeInners[i];
-            long itemQuantity = long.Parse(safeInners[i + 1]);
+            string itemType = safeContent[i];
+            long itemQuantity = long.Parse(safeContent[i + 1]);
 
-            string worthinesType = string.Empty;
+            string valueType = string.Empty;
             if (itemType.Length == 3)
             {
-                worthinesType = "Cash";
+                valueType = "Cash";
             }
             else if (itemType.ToLower().EndsWith("gem"))
             {
-                worthinesType = "Gem";
+                valueType = "Gem";
             }
             else if (itemType.ToLower() == "gold")
             {
-                worthinesType = "Gold";
+                valueType = "Gold";
             }
 
-            if (worthinesType == "")
+            if (valueType == "")
             {
                 continue;
             }
@@ -39,10 +38,10 @@ public class Program
                 continue;
             }
 
-            switch (worthinesType)
+            switch (valueType)
             {
                 case "Gem":
-                    if (!bag.ContainsKey(worthinesType))
+                    if (!bag.ContainsKey(valueType))
                     {
                         if (bag.ContainsKey("Gold"))
                         {
@@ -56,14 +55,14 @@ public class Program
                             continue;
                         }
                     }
-                    else if (bag[worthinesType].Values.Sum() + itemQuantity > bag["Gold"].Values.Sum())
+                    else if (bag[valueType].Values.Sum() + itemQuantity > bag["Gold"].Values.Sum())
                     {
                         continue;
                     }
 
                     break;
                 case "Cash":
-                    if (!bag.ContainsKey(worthinesType))
+                    if (!bag.ContainsKey(valueType))
                     {
                         if (bag.ContainsKey("Gem"))
                         {
@@ -77,7 +76,7 @@ public class Program
                             continue;
                         }
                     }
-                    else if (bag[worthinesType].Values.Sum() + itemQuantity > bag["Gem"].Values.Sum())
+                    else if (bag[valueType].Values.Sum() + itemQuantity > bag["Gem"].Values.Sum())
                     {
                         continue;
                     }
@@ -85,25 +84,25 @@ public class Program
                     break;
             }
 
-            if (!bag.ContainsKey(worthinesType))
+            if (!bag.ContainsKey(valueType))
             {
-                bag[worthinesType] = new Dictionary<string, long>();
+                bag[valueType] = new Dictionary<string, long>();
             }
 
-            if (!bag[worthinesType].ContainsKey(itemType))
+            if (!bag[valueType].ContainsKey(itemType))
             {
-                bag[worthinesType][itemType] = 0;
+                bag[valueType][itemType] = 0;
             }
 
-            bag[worthinesType][itemType] += itemQuantity;            
+            bag[valueType][itemType] += itemQuantity;            
         }
 
-        foreach (KeyValuePair<string, Dictionary<string, long>> worthinesType in bag)
+        foreach (KeyValuePair<string, Dictionary<string, long>> valueType in bag)
         {
-            Console.WriteLine($"<{worthinesType.Key}> ${worthinesType.Value.Values.Sum()}");
-            foreach (KeyValuePair<string, long> worthines in worthinesType.Value.OrderByDescending(wt => wt.Key).ThenBy(wt => wt.Value))
+            Console.WriteLine($"<{valueType.Key}> ${valueType.Value.Values.Sum()}");
+            foreach (KeyValuePair<string, long> currentValue in valueType.Value.OrderByDescending(vt => vt.Key).ThenBy(vt => vt.Value))
             {
-                Console.WriteLine($"##{worthines.Key} - {worthines.Value}");
+                Console.WriteLine($"##{currentValue.Key} - {currentValue.Value}");
             }
         }
     }
