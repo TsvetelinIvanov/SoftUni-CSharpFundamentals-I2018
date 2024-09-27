@@ -9,15 +9,15 @@ public class Program
         Dictionary<string, List<string>> doktors = new Dictionary<string, List<string>>();
         Dictionary<string, List<List<string>>> departments = new Dictionary<string, List<List<string>>>();
 
-        string patientsInfoInput = Console.ReadLine();
-        while (patientsInfoInput != "Output")
+        string patientInfoInput = Console.ReadLine();
+        while (patientInfoInput != "Output")
         {
-            string[] patientsInfo = patientsInfoInput
-                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            string departament = patientsInfo[0];
-            string doctorFirstName = patientsInfo[1];
-            string doctorSecondName = patientsInfo[2];
-            string pacient = patientsInfo[3];
+            string[] patientInfo = patientInfoInput.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string departament = patientInfo[0];
+            string doctorFirstName = patientInfo[1];
+            string doctorSecondName = patientInfo[2];
+            string pacient = patientInfo[3];
+            
             string doctorFullName = doctorFirstName + " " + doctorSecondName;
             if (!doktors.ContainsKey(doctorFullName))
             {
@@ -50,7 +50,7 @@ public class Program
                 departments[departament][roomNumber].Add(pacient);
             }
 
-            patientsInfoInput = Console.ReadLine();
+            patientInfoInput = Console.ReadLine();
         }
 
         string commandInput = Console.ReadLine().Trim();
@@ -59,8 +59,7 @@ public class Program
             string[] command = commandInput.Split();
             if (command.Length == 1)
             {
-                Console.WriteLine(string.Join("\n", departments[command[0]]
-                    .Where(x => x.Count > 0).SelectMany(x => x)));
+                Console.WriteLine(string.Join("\n", departments[command[0]].Where(x => x.Count > 0).SelectMany(x => x)));
             }
             else if (command.Length == 2 && int.TryParse(command[1], out int room))
             {
