@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 public class StudentSystem
 {
-    private Dictionary<string, Student> repo;
+    private Dictionary<string, Student> students;
 
     public StudentSystem()
     {
-        this.Repo = new Dictionary<string, Student>();
+        this.Students = new Dictionary<string, Student>();
     }
 
-    public Dictionary<string, Student> Repo
+    public Dictionary<string, Student> Students
     {
-        get { return repo; }
-        private set { repo = value; }
+        get { return this.students; }
+        private set { this.students = value; }
     }
 
     public void ParseCommand(string command)
@@ -25,20 +25,19 @@ public class StudentSystem
             string name = args[1];
             int age = int.Parse(args[2]);
             double grade = double.Parse(args[3]);
-            if (!repo.ContainsKey(name))
+            if (!this.Students.ContainsKey(name))
             {
                 Student student = new Student(name, age, grade);
-                Repo[name] = student;
+                this.Students[name] = student;
             }
         }
         else if (args[0] == "Show")
         {
             string name = args[1];
-            if (Repo.ContainsKey(name))
+            if (this.Students.ContainsKey(name))
             {
-                Student student = Repo[name];
+                Student student = this.Students[name];
                 string view = $"{student.Name} is {student.Age} years old.";
-
                 if (student.Grade >= 5.00)
                 {
                     view += " Excellent student.";
