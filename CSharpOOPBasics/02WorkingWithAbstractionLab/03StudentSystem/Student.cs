@@ -11,21 +11,21 @@
         this.Grade = grade;
     }
 
-    public double Grade
+    public string Name
     {
-        get { return grade; }
-        set { grade = value; }
+        get { return this.name; }
+        set { this.name = value; }
     }
 
     public int Age
     {
-        get { return age; }
-        set { age = value; }
+        get { return this.age; }
+        set { this.age = value; }
     }
 
-    public string Name
+    public double Grade
     {
-        get { return name; }
-        set { name = value; }
-    }    
+        get { return this.grade; }
+        set { this.grade = value; }
+    }
 }
