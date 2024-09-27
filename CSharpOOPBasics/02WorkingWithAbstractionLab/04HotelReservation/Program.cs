@@ -25,8 +25,8 @@ namespace _04HotelReservation
             int multiplier = (int)season;
             decimal discountMultiplier = (decimal)discount / 100;
             decimal priceBeforeDiscount = pricePerDay * daysCount * multiplier;
-            decimal discountedAmount = priceBeforeDiscount * discountMultiplier;
-            decimal finalPrice = priceBeforeDiscount - discountedAmount;
+            decimal discountNumber = priceBeforeDiscount * discountMultiplier;
+            decimal finalPrice = priceBeforeDiscount - discountNumber;
 
             return finalPrice;
         }
