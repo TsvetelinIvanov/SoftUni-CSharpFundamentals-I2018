@@ -4,49 +4,37 @@ using System.Text;
 
 public class FamilyTreeBuilder
 {
-    private List<Person> FamilyTree { get; set; }
-    private Person MainPerson { get; set; }
+    private List<Person> familyTree { get; set; }
+    private Person mainPerson { get; set; }
 
     public FamilyTreeBuilder(string mainPersonImput)
     {
-        FamilyTree = new List<Person>();
-        MainPerson = Person.CreatePerson(mainPersonImput);
-        FamilyTree.Add(MainPerson);
+        this.familyTree = new List<Person>();
+        this.mainPerson = Person.CreatePerson(mainPersonImput);
+        this.familyTree.Add(mainPerson);
     }
 
     public string Build()
     {
-        StringBuilder buildedResult = new StringBuilder();
-        buildedResult.AppendLine(this.MainPerson.ToString());
-        buildedResult.AppendLine("Parents:");
-        foreach (Person parent in this.MainPerson.Parents)
+        StringBuilder familyTreeResultBuilder = new StringBuilder();
+        familyTreeResultBuilder.AppendLine(this.mainPerson.ToString());
+        familyTreeResultBuilder.AppendLine("Parents:");
+        foreach (Person parent in this.mainPerson.Parents)
         {
-            buildedResult.AppendLine(parent.ToString());
+            familyTreeResultBuilder.AppendLine(parent.ToString());
         }
 
-        buildedResult.AppendLine("Children:");
-        foreach (Person child in this.MainPerson.Children)
+        familyTreeResultBuilder.AppendLine("Children:");
+        foreach (Person child in this.mainPerson.Children)
         {
-            buildedResult.AppendLine(child.ToString());
+            familyTreeResultBuilder.AppendLine(child.ToString());
         }
 
-        string finalResult = buildedResult.ToString().TrimEnd();
+        string familyTreeResult = familyTreeResultBuilder.ToString().TrimEnd();
 
-        return finalResult;
+        return familyTreeResult;
     }
-
-    private Person FindOrCreate(string personImput)
-    {
-        Person person = this.FamilyTree.FirstOrDefault(p => p.Name == personImput || p.Birthday == personImput);
-        if (person == null)
-        {
-            person = Person.CreatePerson(personImput);
-            this.FamilyTree.Add(person);
-        }
-
-        return person;
-    }
-
+    
     public void SetParentChildRelation(string parentInput, string childInput)
     {
         Person parent = FindOrCreate(parentInput);
@@ -60,13 +48,25 @@ public class FamilyTreeBuilder
         child.Parents.Add(parent);
     }
 
+    private Person FindOrCreate(string personImput)
+    {
+        Person person = this.familyTree.FirstOrDefault(p => p.Name == personImput || p.Birthday == personImput);
+        if (person == null)
+        {
+            person = Person.CreatePerson(personImput);
+            this.familyTree.Add(person);
+        }
+
+        return person;
+    }
+
     public void SetFullInfo(string name, string birthday)
     {
-        Person person = this.FamilyTree.FirstOrDefault(p => p.Name == name || p.Birthday == birthday);
+        Person person = this.familyTree.FirstOrDefault(p => p.Name == name || p.Birthday == birthday);
         if (person == null)
         {
             person = new Person();
-            this.FamilyTree.Add(person);
+            this.familyTree.Add(person);
         }
 
         person.Name = name;
@@ -78,8 +78,7 @@ public class FamilyTreeBuilder
     {
         string name = person.Name;
         string birthday = person.Birthday;
-        Person duplicate = this.FamilyTree.Where(p => p.Name == name || p.Birthday == birthday)
-            .Skip(1).FirstOrDefault();
+        Person duplicate = this.familyTree.Where(p => p.Name == name || p.Birthday == birthday).Skip(1).FirstOrDefault();
         if (duplicate != null)
         {
             this.RemoveDuplicate(person, duplicate);
@@ -88,7 +87,7 @@ public class FamilyTreeBuilder
 
     private void RemoveDuplicate(Person person, Person duplicate)
     {
-        this.FamilyTree.Remove(duplicate);
+        this.familyTree.Remove(duplicate);
         person.Parents.AddRange(duplicate.Parents);
         foreach (Person parent in duplicate.Parents)
         {
