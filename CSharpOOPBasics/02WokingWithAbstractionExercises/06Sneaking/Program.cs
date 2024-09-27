@@ -17,12 +17,13 @@ public class Sneaking
                 {
                     samPosition[0] = row;
                     samPosition[1] = col;
+                    break;
                 }
             }
         }
 
-        char[] moves = Console.ReadLine().ToCharArray();       
-        for (int i = 0; i < moves.Length; i++)
+        char[] movements = Console.ReadLine().ToCharArray();       
+        for (int i = 0; i < movements.Length; i++)
         {
             for (int row = 0; row < room.Length; row++)
             {
@@ -56,51 +57,52 @@ public class Sneaking
                 }
             }
 
-            int[] getEnemy = new int[2];
+            int[] enemyPosition = new int[2];
             for (int j = 0; j < room[samPosition[0]].Length; j++)
             {
                 if (room[samPosition[0]][j] != '.' && room[samPosition[0]][j] != 'S')
                 {
-                    getEnemy[0] = samPosition[0];
-                    getEnemy[1] = j;
+                    enemyPosition[0] = samPosition[0];
+                    enemyPosition[1] = j;
                 }
             }
 
-            if (samPosition[1] < getEnemy[1] && room[getEnemy[0]][getEnemy[1]] == 'd' && 
-                getEnemy[0] == samPosition[0])
+            if (samPosition[1] < enemyPosition[1] && room[enemyPosition[0]][enemyPosition[1]] == 'd' && enemyPosition[0] == samPosition[0])
             {
                 room[samPosition[0]][samPosition[1]] = 'X';
                 Console.WriteLine($"Sam died at {samPosition[0]}, {samPosition[1]}");
                 PrintRoom(room);
+                
                 return;
             }
-            else if (getEnemy[1] < samPosition[1] && room[getEnemy[0]][getEnemy[1]] == 'b' 
-                && getEnemy[0] == samPosition[0])
+            else if (enemyPosition[1] < samPosition[1] && room[enemyPosition[0]][enemyPosition[1]] == 'b' && enemyPosition[0] == samPosition[0])
             {
                 room[samPosition[0]][samPosition[1]] = 'X';
                 Console.WriteLine($"Sam died at {samPosition[0]}, {samPosition[1]}");
                 PrintRoom(room);
+                
                 return;
             }
 
             room[samPosition[0]][samPosition[1]] = '.';
-            MoveSam(samPosition, moves[i]);            
+            MoveSam(samPosition, movements[i]);            
             room[samPosition[0]][samPosition[1]] = 'S';
 
             for (int j = 0; j < room[samPosition[0]].Length; j++)
             {
                 if (room[samPosition[0]][j] != '.' && room[samPosition[0]][j] != 'S')
                 {
-                    getEnemy[0] = samPosition[0];
-                    getEnemy[1] = j;
+                    enemyPosition[0] = samPosition[0];
+                    enemyPosition[1] = j;
                 }
             }
 
-            if (room[getEnemy[0]][getEnemy[1]] == 'N' && samPosition[0] == getEnemy[0])
+            if (room[enemyPosition[0]][enemyPosition[1]] == 'N' && samPosition[0] == enemyPosition[0])
             {
-                room[getEnemy[0]][getEnemy[1]] = 'X';
+                room[enemyPosition[0]][enemyPosition[1]] = 'X';
                 Console.WriteLine("Nikoladze killed!");
                 PrintRoom(room);
+                
                 return;
             }
         }
