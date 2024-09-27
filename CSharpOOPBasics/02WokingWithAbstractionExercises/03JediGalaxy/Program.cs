@@ -5,11 +5,10 @@ public class Program
 {
     static void Main()
     {
-        int[] dimestions = Console.ReadLine()
-        .Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+        int[] dimestions = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(int.Parse).ToArray();
         int rowsCount = dimestions[0];
         int colsCount = dimestions[1];
-
         int[,] matrix = new int[rowsCount, colsCount];
 
         int starValue = 0;
@@ -25,10 +24,10 @@ public class Program
         long sum = 0;
         while (command != "Let the Force be with you")
         {
-            int[] ivoStartPoint = command
-            .Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
-            int[] evilStartPoint = Console.ReadLine()
-            .Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            int[] ivoStartPoint = command.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToArray();
+            int[] evilStartPoint = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToArray();
             int evilRow = evilStartPoint[0];
             int evilCol = evilStartPoint[1];
             while (evilRow >= 0 && evilCol >= 0)
