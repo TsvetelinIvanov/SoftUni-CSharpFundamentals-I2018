@@ -37,11 +37,6 @@
         set { this.salary = value; }
     }
 
-    public override string ToString()
-    {
-        return $"{this.FirstName} {this.LastName} receives {this.Salary:f2} leva.";
-    }
-
     public void IncreaseSalary(decimal percentage)
     {
         if (this.Age > 30)
@@ -52,5 +47,10 @@
         {
             this.salary += this.salary * percentage / 200;
         }
+    }
+
+     public override string ToString()
+    {
+        return $"{this.FirstName} {this.LastName} receives {this.Salary:f2} leva.";
     }
 }
