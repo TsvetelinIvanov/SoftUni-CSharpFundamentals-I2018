@@ -19,7 +19,7 @@ public class Player
 
     public Player(string name, int endurance, int sprint, int dribble, int passing ,int shooting)
     {
-        bool isStateValid = IsStateValid(endurance, sprint, dribble, passing, shooting);
+        bool isStateValid = this.IsStateValid(endurance, sprint, dribble, passing, shooting);
         if (!isStateValid)
         {
             return;
@@ -31,7 +31,6 @@ public class Player
         this.Stats["Dribble"] = dribble;
         this.Stats["Passing"] = passing;
         this.Stats["Shooting"] = shooting;
-
     }    
 
     public string Name
@@ -61,10 +60,7 @@ public class Player
 
     public double Rating
     {
-        get
-        {
-            return this.Stats.Values.Average();
-        }
+        get { return this.Stats.Values.Average(); }
     }
 
     private bool IsStateValid(int endurance, int sprint, int dribble, int passing, int shooting)
