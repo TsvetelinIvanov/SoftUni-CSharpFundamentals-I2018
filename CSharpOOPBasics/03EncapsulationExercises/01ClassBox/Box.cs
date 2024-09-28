@@ -33,8 +33,7 @@ public class Box
 
     public double SurfaceArea
     {
-        get { return (2 * this.Length * this.Width) + (2 * this.Length * this.Height)
-                + (2 * this.Width * this.Height); }
+        get { return (2 * this.Length * this.Width) + (2 * this.Length * this.Height) + (2 * this.Width * this.Height); }
     }
 
     public double LateralSurfaceArea
@@ -49,11 +48,11 @@ public class Box
 
     public override string ToString()
     {
-        StringBuilder boxData = new StringBuilder();
-        boxData.AppendLine($"Surface Area - {this.SurfaceArea:f2}");
-        boxData.AppendLine($"Lateral Surface Area - {this.LateralSurfaceArea:f2}");
-        boxData.Append($"Volume - {this.Volume:f2}");
+        StringBuilder boxDataBuilder = new StringBuilder();
+        boxDataBuilder.AppendLine($"Surface Area - {this.SurfaceArea:f2}");
+        boxDataBuilder.AppendLine($"Lateral Surface Area - {this.LateralSurfaceArea:f2}");
+        boxDataBuilder.Append($"Volume - {this.Volume:f2}");
 
-        return boxData.ToString();
+        return boxDataBuilder.ToString();
     }
 }
