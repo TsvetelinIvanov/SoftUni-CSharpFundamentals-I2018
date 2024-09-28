@@ -9,8 +9,10 @@ public class Program
         {
             string pizzaName = Console.ReadLine().Split().Last();
             Pizza pizza = new Pizza(pizzaName);
+            
             Dough dough = ReadDoughInput();
-            pizza.Dough = dough;            
+            pizza.Dough = dough;
+            
             string toppingInput;
             while ((toppingInput = Console.ReadLine()) != "END")
             {
@@ -28,8 +30,7 @@ public class Program
 
     private static Dough ReadDoughInput()
     {
-        string[] doughInput = Console.ReadLine()
-        .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        string[] doughInput = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         string flourType = doughInput[1];
         string bakingTechiques = doughInput[2];
         double weight = double.Parse(doughInput[3]);
