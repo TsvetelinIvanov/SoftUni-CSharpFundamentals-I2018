@@ -10,11 +10,14 @@ public class Program
         {
             List<Person> people = new List<Person>();
             List<Product> products = new List<Product>();
+            
             string[] peopleInput = ReadInput();
             string[] productsInput = ReadInput();
+            
             people = AddPeople(people, peopleInput);
             products = AddProducts(products, productsInput);
             ProcessBuyings(people, products);
+            
             foreach (Person person in people)
             {
                 Console.WriteLine(person);
@@ -72,12 +75,14 @@ public class Program
             {
                 string buyingPerson = buyingsInput.Split().First();
                 string boughtProduct = buyingsInput.Split().Last();
+                
                 Person person = people.First(p => p.Name == buyingPerson);
                 Product product = products.First(p => p.Name == boughtProduct);
+                
                 if (person.Money >= product.Cost)
                 {
                     person.Money -= product.Cost;
-                    person.BagOfProducts.Add(product);
+                    person.ProductsBag.Add(product);
                     Console.WriteLine($"{person.Name} bought {product.Name}");
                 }
                 else
