@@ -88,4 +88,3 @@ public class Person
         return $"{this.FirstName} {this.LastName} gets {this.Salary:f2} leva.";
     }
 }
-
