@@ -66,6 +66,7 @@ public class Person
             {
                 throw new ArgumentException("Salary cannot be less than 460 leva!");
             }
+            
             this.salary = value;
         }
     }
