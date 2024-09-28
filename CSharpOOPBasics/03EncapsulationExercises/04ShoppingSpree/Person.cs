@@ -7,15 +7,14 @@ public class Person
 {
     private string name;
     private decimal money;
-    private List<Product> bagOfProducts;
+    private List<Product> productsBag;
 
     public Person()
     {
-        this.BagOfProducts = new List<Product>();
+        this.ProductsBag = new List<Product>();
     }
 
-    public Person(string name, decimal money)
-        : this()
+    public Person(string name, decimal money) : this()
     {
         this.Name = name;
         this.Money = money;
@@ -49,19 +48,18 @@ public class Person
         }
     }
 
-    public List<Product> BagOfProducts
+    public List<Product> ProductsBag
     {
-        get { return this.bagOfProducts; }
-        set { this.bagOfProducts = value; }
+        get { return this.productsBag; }
+        set { this.productsBag = value; }
     }
 
     public override string ToString()
     {
         StringBuilder boughtProducts = new StringBuilder();
-        if (this.BagOfProducts.Count > 0)
+        if (this.ProductsBag.Count > 0)
         {
-            boughtProducts.AppendFormat("{0} - {1}", 
-                this.Name, string.Join(", ", this.BagOfProducts.Select(p => p.Name)));
+            boughtProducts.AppendFormat("{0} - {1}", this.Name, string.Join(", ", this.ProductsBag.Select(p => p.Name)));
         }
         else
         {
