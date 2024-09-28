@@ -77,8 +77,7 @@ public class Dough
     {
         get
         {
-            return 2 * Weight * validFlorTypes[this.FlourType.ToLower()] *
-              validBakingTechniques[this.BakingTechnique.ToLower()];
+            return 2 * Weight * validFlorTypes[this.FlourType.ToLower()] * validBakingTechniques[this.BakingTechnique.ToLower()];
         }
     }
 }
