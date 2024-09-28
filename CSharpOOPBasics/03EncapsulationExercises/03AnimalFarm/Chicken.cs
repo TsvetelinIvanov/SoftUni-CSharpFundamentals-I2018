@@ -16,11 +16,7 @@ public class Chicken
 
     public string Name
     {
-        get
-        {
-            return this.name;
-        }
-
+        get { return this.name; }
         set
         {
             if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
@@ -34,11 +30,7 @@ public class Chicken
 
     public int Age
     {
-        get
-        {
-            return this.age;
-        }
-
+        get { return this.age; }
         set
         {
             if (value < MinAge || value > MaxAge)
@@ -52,10 +44,7 @@ public class Chicken
 
     public double ProductPerDay
     {
-        get
-        {
-            return this.CalculateProductPerDay();
-        }
+        get { return this.CalculateProductPerDay(); }
     }
 
    private double CalculateProductPerDay()
