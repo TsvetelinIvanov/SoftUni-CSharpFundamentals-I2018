@@ -57,10 +57,9 @@ public class Pizza
 
     public void AddTopping(Topping topping)
     {
-        if (ToppingsCount > MaxToppingsCount)
+        if (this.ToppingsCount > MaxToppingsCount)
         {
-            throw new ArgumentException($"Number of toppings should " +
-                $"be in range [{MinToppingsCount}..{MaxToppingsCount}].");
+            throw new ArgumentException($"Number of toppings should be in range [{MinToppingsCount}..{MaxToppingsCount}].");
         }
 
         this.Toppings.Add(topping);
