@@ -21,7 +21,7 @@ public class Topping
     public Topping(string type, double weight)
     {
         this.Type = type;
-        ValidateWeight(type, weight);
+        this.ValidateWeight(type, weight);
         this.Weight = weight;
     }    
 
