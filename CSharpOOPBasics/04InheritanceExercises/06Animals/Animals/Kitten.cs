@@ -2,8 +2,7 @@
 {
     private const string ProducedSound = "Meow";
 
-    public Kitten(string name, int age)
-        : base(name, age, "Female")
+    public Kitten(string name, int age) : base(name, age, "Female")
     {
 
     }
