@@ -2,8 +2,7 @@
 {
     private const string ProducedSound = "Ribbit";
 
-    public Frog(string name, int age, string gender)
-        : base(name, age, gender)
+    public Frog(string name, int age, string gender) : base(name, age, gender)
     {
 
     }
