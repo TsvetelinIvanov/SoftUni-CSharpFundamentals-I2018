@@ -63,9 +63,9 @@ public class Book
     {
         StringBuilder bookInfoBuilder = new StringBuilder();
         bookInfoBuilder.AppendLine($"Type: {this.GetType().Name}")
-        .AppendLine($"Title: {this.Title}")
-        .AppendLine($"Author: {this.Author}")
-        .AppendLine($"Price: {this.Price:f2}");
+            .AppendLine($"Title: {this.Title}")
+            .AppendLine($"Author: {this.Author}")
+            .AppendLine($"Price: {this.Price:f2}");
         
         string bookInfo = bookInfoBuilder.ToString().TrimEnd();
 
