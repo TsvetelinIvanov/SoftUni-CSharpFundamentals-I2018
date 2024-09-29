@@ -18,7 +18,7 @@ public class StackOfStrings
     public string Peek()
     {
         string element = string.Empty;
-        if (!IsEmpty())
+        if (!this.IsEmpty())
         {
             element = this.data.Last();
         }
@@ -29,7 +29,7 @@ public class StackOfStrings
     public string Pop()
     {
         string element = string.Empty;
-        if (!IsEmpty())
+        if (!this.IsEmpty())
         {
             element = this.data.Last();
             this.data.Remove(element);
