@@ -8,8 +8,7 @@ public class Worker : Human
     private decimal weekSalary;
     private double workHoursPerDay;
 
-    public Worker(string firstName, string lastName, decimal weekSalary, double workHoursPerDay)
-        : base(firstName, lastName)
+    public Worker(string firstName, string lastName, decimal weekSalary, double workHoursPerDay) : base(firstName, lastName)
     {
         this.WeekSalary = weekSalary;
         this.WorkHoursPerDay = workHoursPerDay;
@@ -47,11 +46,11 @@ public class Worker : Human
 
     public override string ToString()
     {
-        StringBuilder workerData = new StringBuilder(base.ToString());
-        workerData.AppendLine($"Week Salary: {this.WeekSalary:f2}")
+        StringBuilder workerDataBuilder = new StringBuilder(base.ToString());
+        workerDataBuilder.AppendLine($"Week Salary: {this.WeekSalary:f2}")
             .AppendLine($"Hours per day: {this.WorkHoursPerDay:f2}")
             .Append($"Salary per hour: {this.HourSalary:f2}");
 
-        return workerData.ToString();
+        return workerDataBuilder.ToString();
     }
 }
