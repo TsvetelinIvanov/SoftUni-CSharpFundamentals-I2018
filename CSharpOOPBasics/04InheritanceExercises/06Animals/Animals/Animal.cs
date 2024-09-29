@@ -3,7 +3,7 @@ using System.Text;
 
 public class Animal : ISoundProducable
 {
-    private const string ProducedSound = "Animal produce sound!";
+    private const string ProducedSound = "Animal produces sound!";
 
     private string name;
     private int age;
