@@ -52,10 +52,10 @@ public class Human
 
     public override string ToString()
     {
-        StringBuilder humanData = new StringBuilder();
-        humanData.AppendLine("First Name: " + this.FirstName)
+        StringBuilder humanDataBuilder = new StringBuilder();
+        humanDataBuilder.AppendLine("First Name: " + this.FirstName)
             .AppendLine("Last Name: " + this.LastName);
 
-        return humanData.ToString();
+        return humanDataBuilder.ToString();
     }
 }
