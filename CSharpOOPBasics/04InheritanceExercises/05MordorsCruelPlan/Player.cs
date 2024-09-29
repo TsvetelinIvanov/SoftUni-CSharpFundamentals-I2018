@@ -7,7 +7,7 @@
         foreach (string inputFood in inputFoods)
         {
             Food food = FoodFactory.GetFood(inputFood);
-            HappinessPointsSize += food.PointsOfHappinessCount;
+            this.HappinessPointsSize += food.PointsOfHappinessCount;
         }
     }
 
