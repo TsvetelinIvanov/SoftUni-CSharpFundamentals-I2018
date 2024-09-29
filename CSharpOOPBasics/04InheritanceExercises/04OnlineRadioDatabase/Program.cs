@@ -39,6 +39,7 @@ public class Program
         }
 
         Console.WriteLine("Songs added: " + songs.Count);
+        
         int totalLengthInSeconds = songs.Select(s => s.SongLengthInSeconds).Sum();
         int totalHours = totalLengthInSeconds / 3600;
         int totalMinutes = (totalLengthInSeconds % 3600) / 60;
