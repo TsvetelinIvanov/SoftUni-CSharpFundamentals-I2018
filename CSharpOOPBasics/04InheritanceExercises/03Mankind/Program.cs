@@ -21,11 +21,9 @@ public class Program
 
             Console.WriteLine(student + Environment.NewLine);
             Console.WriteLine(worker);
-
         }
         catch (ArgumentException ae)
         {
-
             Console.WriteLine(ae.Message); 
         }
     }
