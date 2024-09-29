@@ -3,7 +3,7 @@ using System.Text;
 
 public class Book
 {
-    private const int MinTitleLength = 3;
+    private const int TitleMinLength = 3;
 
     private string author;
     private string title;
@@ -36,7 +36,7 @@ public class Book
         get { return this.title; }
         set
         {
-            if (value.Length < MinTitleLength)
+            if (value.Length < TitleMinLength)
             {
                 throw new ArgumentException("Title not valid!");
             }
@@ -66,6 +66,7 @@ public class Book
         .AppendLine($"Title: {this.Title}")
         .AppendLine($"Author: {this.Author}")
         .AppendLine($"Price: {this.Price:f2}");
+        
         string bookInfo = bookInfoBuilder.ToString().TrimEnd();
 
         return bookInfo;
