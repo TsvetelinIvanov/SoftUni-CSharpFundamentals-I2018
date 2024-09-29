@@ -8,8 +8,7 @@ public class Student : Human
 
     private string facultyNumber;
 
-    public Student(string firstName, string lastName, string facultyNumber)
-        : base(firstName, lastName)
+    public Student(string firstName, string lastName, string facultyNumber) : base(firstName, lastName)
     {
         this.FacultyNumber = facultyNumber;
     }
@@ -30,9 +29,9 @@ public class Student : Human
 
     public override string ToString()
     {
-        StringBuilder studentData = new StringBuilder(base.ToString());
-        studentData.Append("Faculty number: " + facultyNumber);
+        StringBuilder studentDataBuilder = new StringBuilder(base.ToString());
+        studentDataBuilder.Append("Faculty number: " + facultyNumber);
 
-        return studentData.ToString();
+        return studentDataBuilder.ToString();
     }
 }
