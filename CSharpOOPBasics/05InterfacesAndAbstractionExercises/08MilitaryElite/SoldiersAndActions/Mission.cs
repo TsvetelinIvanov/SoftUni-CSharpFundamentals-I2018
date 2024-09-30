@@ -33,7 +33,7 @@ public class Mission : IMission
 
     public void CompleteMission()
     {
-        
+        this.State = "Finished";
     }
 
     public override string ToString()
