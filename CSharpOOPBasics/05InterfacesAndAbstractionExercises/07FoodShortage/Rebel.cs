@@ -1,10 +1,8 @@
 ﻿public class Rebel : Person, IBuyer
-{
-    
+{    
     private string group;    
 
-    public Rebel(string name, int age, string group)
-        : base(name, age)
+    public Rebel(string name, int age, string group) : base(name, age)
     {        
         this.Group = group;        
     }    
