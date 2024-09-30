@@ -3,8 +3,7 @@
     private string id;
     private string birthDate;    
 
-    public Citizen(string name, int age, string id, string birthDate)
-        : base(name, age)
+    public Citizen(string name, int age, string id, string birthDate) : base(name, age)
     {
         this.Id = id;
         this.BirthDate = birthDate;
