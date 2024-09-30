@@ -24,6 +24,7 @@ public class Car : ICar
     public override string ToString()
     {
         return $"{this.Color} {this.GetType()} {this.Model}{Environment.NewLine}" +
-            $"{this.Start()}{Environment.NewLine}{this.Stop()}";
+            $"{this.Start()}{Environment.NewLine}" + 
+            $"{this.Stop()}";            
     }
 }
