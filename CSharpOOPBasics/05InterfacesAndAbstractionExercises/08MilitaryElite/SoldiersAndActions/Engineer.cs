@@ -6,7 +6,8 @@ public class Engineer : SpecialisedSoldier, IEngineer
 {
     private List<Repair> repairs;
 
-    public Engineer(string id, string firstName, string lastName, decimal salary, string corps) : base(id, firstName, lastName, salary, corps)
+    public Engineer(string id, string firstName, string lastName, decimal salary, string corps) 
+        : base(id, firstName, lastName, salary, corps)
     {
         this.Repairs = new List<Repair>();
     }
