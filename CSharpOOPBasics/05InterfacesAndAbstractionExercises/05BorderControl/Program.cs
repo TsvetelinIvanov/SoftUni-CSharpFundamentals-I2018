@@ -11,7 +11,6 @@ public class Program
         while ((input = Console.ReadLine()) != "End")
         {
             string[] citizenData = input.Split();
-
             if (citizenData.Length == 2)
             {
                 string model = citizenData[0];
