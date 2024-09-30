@@ -2,8 +2,7 @@
 {
     private decimal salary;
 
-    public Private(string id, string firstName, string lastName, decimal salary)
-        : base(id, firstName, lastName)
+    public Private(string id, string firstName, string lastName, decimal salary) : base(id, firstName, lastName)
     {
         this.Salary = salary;
     }
