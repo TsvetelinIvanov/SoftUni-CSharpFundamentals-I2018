@@ -4,8 +4,7 @@ public class Spy : Soldier, ISpy
 {
     private int codeNumber;
 
-    public Spy(string id, string firstName, string lastName, int codeNumber)
-        : base(id, firstName, lastName)
+    public Spy(string id, string firstName, string lastName, int codeNumber) : base(id, firstName, lastName)
     {
         this.CodeNumber = codeNumber;
     }
