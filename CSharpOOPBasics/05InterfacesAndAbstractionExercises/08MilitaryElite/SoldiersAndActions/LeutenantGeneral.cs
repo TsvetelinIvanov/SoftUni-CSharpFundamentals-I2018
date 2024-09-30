@@ -5,8 +5,7 @@ public class LeutenantGeneral : Private, ILeutenantGeneral
 {
     private List<Private> privates;
 
-    public LeutenantGeneral(string id, string firstName, string lastName, decimal salary)
-        : base(id, firstName, lastName, salary)
+    public LeutenantGeneral(string id, string firstName, string lastName, decimal salary) : base(id, firstName, lastName, salary)
     {
         this.Privates = new List<Private>();
     }
