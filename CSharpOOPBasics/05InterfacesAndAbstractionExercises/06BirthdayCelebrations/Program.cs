@@ -31,8 +31,7 @@ public class Program
         }
 
         string searchJear = Console.ReadLine();
-        List<IOrganicable> searchedOrganicCratures = organicCreatures
-            .Where(o => o.BirthDate.EndsWith(searchJear)).ToList();
+        List<IOrganicable> searchedOrganicCratures = organicCreatures.Where(o => o.BirthDate.EndsWith(searchJear)).ToList();
         foreach (IOrganicable organicCreature in searchedOrganicCratures)
         {
             Console.WriteLine(organicCreature.BirthDate);
