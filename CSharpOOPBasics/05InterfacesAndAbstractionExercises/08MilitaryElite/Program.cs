@@ -24,6 +24,7 @@ public class Program
             string id = soldierData[1];
             string firstName = soldierData[2];
             string lastName = soldierData[3];
+            
             switch (soldierType)
             {
                 case "Spy":
@@ -38,8 +39,7 @@ public class Program
                     break;
                 case "LeutenantGeneral":
                     decimal lieutenantGeneralSalary = decimal.Parse(soldierData[4]);
-                    LeutenantGeneral lieutenantGeneral =
-                        new LeutenantGeneral(id, firstName, lastName, lieutenantGeneralSalary);
+                    LeutenantGeneral lieutenantGeneral = new LeutenantGeneral(id, firstName, lastName, lieutenantGeneralSalary);
                     for (int i = 5; i < soldierData.Length; i++)
                     {
                         string soldierId = soldierData[i];
