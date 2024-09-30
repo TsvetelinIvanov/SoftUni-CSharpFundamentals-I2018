@@ -6,8 +6,8 @@ public class Commando : SpecialisedSoldier, ICommando
 {
     private List<Mission> missions;
 
-    public Commando(string id, string firstName, string lastName,
-        decimal salary, string corps) : base(id, firstName, lastName, salary, corps)
+    public Commando(string id, string firstName, string lastName, decimal salary, string corps) 
+        : base(id, firstName, lastName, salary, corps)
     {
         this.Missions = new List<Mission>();
     }
@@ -27,6 +27,7 @@ public class Commando : SpecialisedSoldier, ICommando
         {
             commandoBuilber.AppendLine("  " + mission.ToString());
         }
+        
         string builtCommando = commandoBuilber.ToString().TrimEnd();
 
         return builtCommando;
