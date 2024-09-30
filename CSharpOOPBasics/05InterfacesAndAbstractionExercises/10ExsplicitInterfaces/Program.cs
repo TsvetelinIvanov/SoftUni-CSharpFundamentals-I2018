@@ -15,6 +15,7 @@ public class Program
             string name = citizenData[0];
             string country = citizenData[1];
             int age = int.Parse(citizenData[2]);
+            
             Citizen citizen = new Citizen(name, country, age);
             persons.Add(citizen);
             residents.Add(citizen);
