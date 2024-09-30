@@ -7,13 +7,17 @@ public class Program
         AddCollection addCollection = new AddCollection();
         AddRemoveCollection addRemoveCollection = new AddRemoveCollection();
         MyList myList = new MyList();
+        
         string[] itemsToAdd = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         AddItemsToColections(addCollection, addRemoveCollection, myList, itemsToAdd);
+        
         int removedItemsCount = int.Parse(Console.ReadLine());
         RemoveItemsFromCollections(addRemoveCollection, myList, removedItemsCount);
+        
         addCollection.PrintIndexes();
         addRemoveCollection.PrintIndexes();
         myList.PrintIndexes();
+        
         addRemoveCollection.PrintRemovedItems();
         myList.PrintRemovedItems();
     }
