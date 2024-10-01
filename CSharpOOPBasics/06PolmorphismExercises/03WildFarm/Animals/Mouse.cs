@@ -5,8 +5,7 @@ public class Mouse : Mammal
 {
     private const double WeightFoodMultiplier = 0.10;
 
-    public Mouse(string name, double weight, string livingRegion)
-        : base(name, weight, livingRegion)
+    public Mouse(string name, double weight, string livingRegion) : base(name, weight, livingRegion)
     {
 
     }
