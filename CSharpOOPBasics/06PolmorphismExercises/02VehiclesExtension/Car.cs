@@ -4,7 +4,7 @@ public class Car : Vehicle
 {
     private const double ConsumptionIncreaser = 0.9;
 
-    public Car(double fuelQuantity, double fuelConsumptionLPerKm, double tankCapacity)
+    public Car(double fuelQuantity, double fuelConsumptionLPerKm, double tankCapacity) 
         : base(fuelQuantity, fuelConsumptionLPerKm, tankCapacity)
     {
 
