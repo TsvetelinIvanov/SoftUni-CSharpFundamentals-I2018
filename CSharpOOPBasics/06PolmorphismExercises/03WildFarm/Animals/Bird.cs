@@ -2,8 +2,7 @@
 {
     private double wingSize;
 
-    public Bird(string name, double weight, double wingSize)
-        : base(name, weight)
+    public Bird(string name, double weight, double wingSize) : base(name, weight)
     {
         this.WingSize = wingSize;
     }
