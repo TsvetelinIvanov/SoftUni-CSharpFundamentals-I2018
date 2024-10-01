@@ -14,6 +14,7 @@ public class Program
 
             animal.MakeSound();
             animal.TryEatFood(food);
+            
             animals.Add(animal);
         }
 
