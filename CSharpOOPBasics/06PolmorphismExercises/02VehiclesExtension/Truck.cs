@@ -31,12 +31,14 @@ public class Truck : Vehicle
         if (quantity <= 0)
         {
             Console.WriteLine("Fuel must be a positive number");
+            
             return;
         }
 
         if (this.FuelQuantity + (quantity * HoleLossDecreaseCoefficient) > this.TankCapacity)
         {
             Console.WriteLine($"Cannot fit {quantity} fuel in the tank");
+            
             return;
         }
 
