@@ -5,8 +5,7 @@ public class Cat : Feline
 {
     private const double WeightFoodMultiplier = 0.30;
 
-    public Cat(string name, double weight, string livingRegion, string breed)
-        : base(name, weight, livingRegion, breed)
+    public Cat(string name, double weight, string livingRegion, string breed) : base(name, weight, livingRegion, breed)
     {
 
     }
