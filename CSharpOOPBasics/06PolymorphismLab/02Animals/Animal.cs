@@ -7,6 +7,7 @@
     }
 
     public string Name { get; protected set; }
+     
     public string FavouriteFood { get; protected set; }
 
     public virtual string ExplainSelf()
