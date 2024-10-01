@@ -5,8 +5,7 @@ public class Owl : Bird
 {
     private const double WeightFoodMultiplier = 0.25;
 
-    public Owl(string name, double weight, double wingSize)
-        : base(name, weight, wingSize)
+    public Owl(string name, double weight, double wingSize) : base(name, weight, wingSize)
     {
 
     }
