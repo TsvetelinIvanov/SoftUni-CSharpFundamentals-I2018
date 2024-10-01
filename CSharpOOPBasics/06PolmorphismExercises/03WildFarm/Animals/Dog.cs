@@ -5,8 +5,7 @@ public class Dog : Mammal
 {
     private const double WeightFoodMultiplier = 0.40;
 
-    public Dog(string name, double weight, string livingRegion)
-        : base(name, weight, livingRegion)
+    public Dog(string name, double weight, string livingRegion) : base(name, weight, livingRegion)
     {
 
     }
