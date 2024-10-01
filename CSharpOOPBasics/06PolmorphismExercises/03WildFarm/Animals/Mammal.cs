@@ -2,8 +2,7 @@
 {
     private string livingRegion;
 
-    public Mammal(string name, double weight, string livingRegion)
-        : base(name, weight)
+    public Mammal(string name, double weight, string livingRegion) : base(name, weight)
     {
         this.LivingRegion = livingRegion;
     }
