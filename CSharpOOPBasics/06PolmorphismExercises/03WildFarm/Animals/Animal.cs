@@ -34,8 +34,7 @@ public abstract class Animal
         set { this.foodEaten = value; }
     }
 
-    public virtual Type[] EatenFoods => new Type[] { typeof(Vegetable), typeof(Fruit),
-    typeof(Meat), typeof(Seeds)};
+    public virtual Type[] EatenFoods => new Type[] { typeof(Vegetable), typeof(Fruit), typeof(Meat), typeof(Seeds)};
 
     public virtual void MakeSound()
     {
