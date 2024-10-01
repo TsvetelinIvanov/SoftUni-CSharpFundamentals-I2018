@@ -5,8 +5,7 @@ public class Truck : Vehicle
     private const double ConsumptionIncreaser = 1.6;
     private const double HoleLossDecreaseCoefficient = 0.95;
 
-    public Truck(double fuelQuantity, double fuelConsumptionLPerKm)
-        : base(fuelQuantity, fuelConsumptionLPerKm)
+    public Truck(double fuelQuantity, double fuelConsumptionLPerKm) : base(fuelQuantity, fuelConsumptionLPerKm)
     {
 
     }
