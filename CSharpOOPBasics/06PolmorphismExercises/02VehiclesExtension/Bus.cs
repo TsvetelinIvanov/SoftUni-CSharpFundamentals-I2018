@@ -6,7 +6,7 @@ public class Bus : Vehicle
 
     private bool isBusEmpty;
 
-    public Bus(double fuelQuantity, double fuelConsumptionLPerKm, double tankCapacity)
+    public Bus(double fuelQuantity, double fuelConsumptionLPerKm, double tankCapacity) 
         : base(fuelQuantity, fuelConsumptionLPerKm, tankCapacity)
     {
         this.IsBusEmpty = false;
@@ -18,8 +18,7 @@ public class Bus : Vehicle
         set { this.isBusEmpty = value; }
     }
 
-    private double IncreasedConsumpionLPerKm => (this.IsBusEmpty) ? base.FuelConsumptionLPerKm :
-        base.FuelConsumptionLPerKm + ConsumptionIncreaser;
+    private double IncreasedConsumpionLPerKm => (this.IsBusEmpty) ? base.FuelConsumptionLPerKm : base.FuelConsumptionLPerKm + ConsumptionIncreaser;
 
     public override void Drive(double distance)
     {
