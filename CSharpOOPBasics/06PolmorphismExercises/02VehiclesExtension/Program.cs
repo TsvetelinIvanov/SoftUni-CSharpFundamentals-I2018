@@ -53,8 +53,7 @@ public class Program
         int commandsCount = int.Parse(Console.ReadLine());
         for (int i = 0; i < commandsCount; i++)
         {
-            string[] commandLine = Console.ReadLine()
-                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] commandLine = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string command = commandLine[0];
             string vehicleType = commandLine[1];
             double distanceOrFuelQuantity = double.Parse(commandLine[2]);
