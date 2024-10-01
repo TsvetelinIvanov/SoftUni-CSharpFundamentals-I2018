@@ -5,8 +5,7 @@ public class Hen : Bird
 {
     private const double WeightFoodMultiplier = 0.35;
 
-    public Hen(string name, double weight, double wingSize)
-        : base(name, weight, wingSize)
+    public Hen(string name, double weight, double wingSize) : base(name, weight, wingSize)
     {
 
     }
