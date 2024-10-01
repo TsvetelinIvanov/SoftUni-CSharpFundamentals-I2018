@@ -7,10 +7,10 @@ public abstract class Vehicle : IVehicle
     private double tankCapacity;
 
     public Vehicle(double fuelQuantity, double fuelConsumptionLPerKm, double tankCapacity)
-    {
-        this.TankCapacity = tankCapacity;
+    {        
         this.FuelQuantity = fuelQuantity;
-        this.FuelConsumptionLPerKm = fuelConsumptionLPerKm;        
+        this.FuelConsumptionLPerKm = fuelConsumptionLPerKm;
+        this.TankCapacity = tankCapacity;
     }
 
     public double FuelQuantity
@@ -46,12 +46,14 @@ public abstract class Vehicle : IVehicle
         if (quantity <= 0)
         {
             Console.WriteLine("Fuel must be a positive number");
+            
             return;
         }
 
         if (this.FuelQuantity + quantity > this.TankCapacity)
         {
             Console.WriteLine($"Cannot fit {quantity} fuel in the tank");
+            
             return;
         }
 
