@@ -1,12 +1,12 @@
 ﻿namespace Forum.App.Controllers
 {
+    using System.Linq;
     using Forum.App.Controllers.Contracts;
     using Forum.App.Services;
     using Forum.App.UserInterface;
     using Forum.App.UserInterface.Contracts;
     using Forum.App.UserInterface.Input;
-    using Forum.App.UserInterface.ViewModels;    
-    using System.Linq;
+    using Forum.App.UserInterface.ViewModels;
 
     public class AddPostController : IController
     {
