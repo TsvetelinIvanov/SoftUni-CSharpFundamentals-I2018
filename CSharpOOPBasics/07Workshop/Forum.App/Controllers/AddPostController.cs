@@ -34,6 +34,13 @@
 
         private TextArea TextArea { get; set; }
 
+        public void ResetPost()
+        {
+            this.Error = false;
+            this.Post = new PostViewModel();
+            this.TextArea = new TextArea(centerLeft - 18, centerTop - 7, TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT, POST_MAX_LENGTH);
+        }
+
         public void ReadTitle()
         {
             this.Post.Title = ForumViewEngine.ReadRow();
@@ -46,21 +53,13 @@
             ForumViewEngine.HideCursor();
         }
 
-        public void ResetPost()
-        {
-            this.Error = false;
-            this.Post = new PostViewModel();
-            this.TextArea = new TextArea(centerLeft - 18, centerTop - 7,
-                TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT, POST_MAX_LENGTH);
-        }
-
         public MenuState ExecuteCommand(int index)
         {
             switch ((Command)index)
             {
                 case Command.AddTitle:
                     this.ReadTitle();
-                   return MenuState.AddPost;
+                    return MenuState.AddPost;
                 case Command.AddCategory:
                     this.ReadCategory();
                     return MenuState.AddPost;
@@ -73,6 +72,7 @@
                     if (!validPost)
                     {
                         this.Error = true;
+                        
                         return MenuState.Rerender;
                     }
 
