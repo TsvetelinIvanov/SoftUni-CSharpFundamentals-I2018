@@ -1,16 +1,16 @@
 ﻿namespace Forum.App.Controllers
 {
-	using Forum.App;
-	using Forum.App.Controllers.Contracts;
+    using System;
+    using Forum.App;
+    using Forum.App.Controllers.Contracts;
     using Forum.App.Services;
     using Forum.App.UserInterface;
     using Forum.App.UserInterface.Contracts;
-    using System;
 
     public class SignUpController : IController, IReadUserInfoController
-	{
-		private const string DETAILS_ERROR = "Invalid Username or Password!";
-		private const string USERNAME_TAKEN_ERROR = "Username already in use!";
+    {
+	private const string DETAILS_ERROR = "Invalid Username or Password!";
+	private const string USERNAME_TAKEN_ERROR = "Username already in use!";
 
         private enum Command
         {
@@ -65,22 +65,22 @@
 
             throw new InvalidOperationException();
         }
-
-        public IView GetView(string userName)
+	
+	public void ReadUsername()
         {
-            return new SignUpView(this.ErrorMessage);
+            this.Username = ForumViewEngine.ReadRow();
+            ForumViewEngine.HideCursor();
         }
-
-        public void ReadPassword()
+	
+	public void ReadPassword()
         {
             this.Password = ForumViewEngine.ReadRow();
             ForumViewEngine.HideCursor();
         }
 
-        public void ReadUsername()
+        public IView GetView(string userName)
         {
-            this.Username = ForumViewEngine.ReadRow();
-            ForumViewEngine.HideCursor();
+            return new SignUpView(this.ErrorMessage);
         }
 
         private void ResetSignUp()
