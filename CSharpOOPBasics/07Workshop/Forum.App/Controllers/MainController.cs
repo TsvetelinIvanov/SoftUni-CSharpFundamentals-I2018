@@ -25,11 +25,6 @@
 
         public bool LoggedInUser { get; private set; }
 
-        public IView GetView(string userName)
-        {
-            return new MainView(userName);
-        }
-
         public MenuState ExecuteCommand(int index)
         {      
             if (LoggedInUser)
@@ -58,6 +53,11 @@
             throw new InvalidCommandException();
         }
 
+        public IView GetView(string userName)
+        {
+            return new MainView(userName);
+        }
+
         public void UserLogIn()
         {
             this.LoggedInUser = true;
@@ -66,6 +66,6 @@
         public void UserLogOut()
         {
             this.LoggedInUser = false;
-        }        
+        }
     }
 }
