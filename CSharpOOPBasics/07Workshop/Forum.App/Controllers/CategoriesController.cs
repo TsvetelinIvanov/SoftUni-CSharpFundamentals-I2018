@@ -68,16 +68,15 @@
             return new CategoriesView(this.CurrentPageCategories, this.IsFirstPage, this.IsLastPage);
         }
 
+        private void LoadCategories()
+        {
+            this.AllCategoryNames = PostService.GetAllCategoryNames();
+            this.CurrentPageCategories = this.AllCategoryNames.Skip(this.CurrentPage * PAGE_OFFSET).Take(PAGE_OFFSET).ToArray();
+        }
+
         private void ChangePage(bool forward = true)
         {
             this.CurrentPage += forward ? 1 : -1;
         }
-
-        private void LoadCategories()
-        {
-            this.AllCategoryNames = PostService.GetAllCategoryNames();
-            this.CurrentPageCategories = this.AllCategoryNames.Skip(this.CurrentPage * PAGE_OFFSET)
-                .Take(PAGE_OFFSET).ToArray();
-        }        
     }
 }
