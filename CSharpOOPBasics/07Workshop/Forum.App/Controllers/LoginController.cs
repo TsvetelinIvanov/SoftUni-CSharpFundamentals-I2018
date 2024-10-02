@@ -1,11 +1,11 @@
 ﻿namespace Forum.App.Controllers
 {
+    using System;
     using Forum.App.Controllers.Contracts;
     using Forum.App.Services;
     using Forum.App.UserInterface;
     using Forum.App.UserInterface.Contracts;
     using Forum.App.Views;
-    using System;
 
     public class LogInController : IController, IReadUserInfoController
     {
@@ -37,13 +37,14 @@
                     return MenuState.Login;
                 case Command.LogIn:
                     bool loggedIn = UserService.TryLogInUser(this.Username, this.Password);
-                    if (loggedIn)
+                    if (!loggedIn)
                     {
-                        return MenuState.SuccessfulLogIn;
+                        this.Error = true;
+
+                        return MenuState.Error;
                     }
 
-                    this.Error = true;
-                    return MenuState.Error;
+                    return MenuState.SuccessfulLogIn;
                 case Command.Back:
                     this.ResetLogin();
                     return MenuState.Back;                
@@ -52,9 +53,10 @@
             throw new InvalidOperationException();
         }
 
-        public IView GetView(string userName)
+        public void ReadUsername()
         {
-            return new LogInView(this.Error, this.Username, this.Password.Length);
+            this.Username = ForumViewEngine.ReadRow();
+            ForumViewEngine.HideCursor();
         }
 
         public void ReadPassword()
@@ -63,10 +65,9 @@
             ForumViewEngine.HideCursor();
         }
 
-        public void ReadUsername()
+        public IView GetView(string userName)
         {
-            this.Username = ForumViewEngine.ReadRow();
-            ForumViewEngine.HideCursor();
+            return new LogInView(this.Error, this.Username, this.Password.Length);
         }
 
         private void ResetLogin()
