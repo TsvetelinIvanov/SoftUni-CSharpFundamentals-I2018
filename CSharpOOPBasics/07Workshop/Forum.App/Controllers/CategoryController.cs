@@ -93,14 +93,13 @@
         private void ChangePage(bool forward = true)
         {
             this.CurrentPage += forward ? 1 : -1;
-            GetPosts();
+            this.GetPosts();
         }
 
         private void GetPosts()
         {
             IEnumerable<Post> allCategoriyPosts = PostService.GetPostByCategory(this.CategoryId);
-            this.PostTitles = allCategoriyPosts.Skip(this.CurrentPage * PAGE_OFFSET)
-                .Take(PAGE_OFFSET).Select(p => p.Title).ToArray();
+            this.PostTitles = allCategoriyPosts.Skip(this.CurrentPage * PAGE_OFFSET).Take(PAGE_OFFSET).Select(p => p.Title).ToArray();
         }        
     }
 }
