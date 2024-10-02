@@ -29,19 +29,18 @@
             ResetReply();
         }
 
-        private TextArea TextArea { get; set; }
-
         public ReplyViewModel Reply { get; private set; }        
 
-        public bool Error { get; private set; }                
+        public bool Error { get; private set; }
+
+        private TextArea TextArea { get; set; }
 
         public void ResetReply()
         {
             this.Error = false;
             this.Reply = new ReplyViewModel();
             int contentLength = postViewModel?.Content.Count ?? 0;
-            this.TextArea = new TextArea(centerLeft - 18, centerTop + contentLength - 6,
-                TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT, POST_MAX_LENGTH);
+            this.TextArea = new TextArea(centerLeft - 18, centerTop + contentLength - 6, TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT, POST_MAX_LENGTH);
         }
 
         public void SetPostId(int postId)
