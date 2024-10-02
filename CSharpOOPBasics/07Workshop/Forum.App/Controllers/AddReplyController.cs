@@ -1,13 +1,13 @@
 ﻿namespace Forum.App.Controllers
 {
+    using System.Linq;
     using Forum.App.Controllers.Contracts;
     using Forum.App.Services;
     using Forum.App.UserInterface.Contracts;
     using Forum.App.UserInterface.Input;
     using Forum.App.UserInterface.ViewModels;
     using Forum.App.Views;    
-    using System.Linq;
-
+    
     public class AddReplyController : IController
     {
         private const int TEXT_AREA_WIDTH = 37;
