@@ -8,39 +8,6 @@
 
     public static class PostService
     {
-        internal static string[] GetAllCategoryNames()
-        {
-            ForumData forumData = new ForumData();
-            string[] allCategoryNames = forumData.Categories.Select(c => c.Name).ToArray();
-
-            return allCategoryNames;
-        }
-        
-        internal static Category GetCategory(int categoryId)
-        {
-            ForumData forumData = new ForumData();
-            Category category = forumData.Categories.Find(c => c.Id == categoryId);
-            //Category category = forumData.Categories.SingleOrDefault(c => c.Id == categoryId);
-            
-            return category;
-        }
-
-        internal static IList<ReplyViewModel> GetPostReplies(int postId)
-        {
-            ForumData forumData = new ForumData();
-            Post post = forumData.Posts.Find(p => p.Id == postId);
-            //Post post = forumData.Posts.Single(p => p.Id == postId);
-            IList<ReplyViewModel> replies = new List<ReplyViewModel>();
-            foreach (int replyId in post.ReplyIds)
-            {
-                Reply reply = forumData.Replies.Find(r => r.Id == replyId);
-                //Reply reply = forumData.Replies.Single(r => r.Id == replyId);
-                replies.Add(new ReplyViewModel(reply));
-            }
-
-            return replies;
-        }
-
         public static IEnumerable<Post> GetPostByCategory(int categoryId)
         {
             ForumData forumData = new ForumData();
@@ -121,6 +88,39 @@
             forumData.SaveChanges();
 
             return true;
+        }
+
+        internal static IList<ReplyViewModel> GetPostReplies(int postId)
+        {
+            ForumData forumData = new ForumData();
+            Post post = forumData.Posts.Find(p => p.Id == postId);
+            //Post post = forumData.Posts.Single(p => p.Id == postId);
+            IList<ReplyViewModel> replies = new List<ReplyViewModel>();
+            foreach (int replyId in post.ReplyIds)
+            {
+                Reply reply = forumData.Replies.Find(r => r.Id == replyId);
+                //Reply reply = forumData.Replies.Single(r => r.Id == replyId);
+                replies.Add(new ReplyViewModel(reply));
+            }
+
+            return replies;
+        }
+        
+        internal static Category GetCategory(int categoryId)
+        {
+            ForumData forumData = new ForumData();
+            Category category = forumData.Categories.Find(c => c.Id == categoryId);
+            //Category category = forumData.Categories.SingleOrDefault(c => c.Id == categoryId);
+            
+            return category;
+        }
+
+        internal static string[] GetAllCategoryNames()
+        {
+            ForumData forumData = new ForumData();
+            string[] allCategoryNames = forumData.Categories.Select(c => c.Name).ToArray();
+
+            return allCategoryNames;
         }
     }
 }
