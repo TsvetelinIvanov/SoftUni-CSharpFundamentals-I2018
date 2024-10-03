@@ -1,18 +1,27 @@
 ﻿namespace Forum.App.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Forum.App.UserInterface.ViewModels;
     using Forum.Data;
     using Forum.Models;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public static class PostService
     {
+        internal static string[] GetAllCategoryNames()
+        {
+            ForumData forumData = new ForumData();
+            string[] allCategoryNames = forumData.Categories.Select(c => c.Name).ToArray();
+
+            return allCategoryNames;
+        }
+        
         internal static Category GetCategory(int categoryId)
         {
             ForumData forumData = new ForumData();
             Category category = forumData.Categories.Find(c => c.Id == categoryId);
             //Category category = forumData.Categories.SingleOrDefault(c => c.Id == categoryId);
+            
             return category;
         }
 
@@ -25,19 +34,11 @@
             foreach (int replyId in post.ReplyIds)
             {
                 Reply reply = forumData.Replies.Find(r => r.Id == replyId);
-                //var reply = forumData.Replies.Single(r => r.Id == replyId);
+                //Reply reply = forumData.Replies.Single(r => r.Id == replyId);
                 replies.Add(new ReplyViewModel(reply));
             }
 
             return replies;
-        }
-
-        internal static string[] GetAllCategoryNames()
-        {
-            ForumData forumData = new ForumData();
-            string[] allCategoryNames = forumData.Categories.Select(c => c.Name).ToArray();
-
-            return allCategoryNames;
         }
 
         public static IEnumerable<Post> GetPostByCategory(int categoryId)
@@ -58,25 +59,9 @@
             return postViewModel;
         }
 
-        public static Category EnsureCategory(PostViewModel postView, ForumData forumData)
-        {
-            string categoryName = postView.Category;
-            Category category = forumData.Categories.FirstOrDefault(c => c.Name == categoryName);
-            if (category == null)
-            {
-                List<Category> categories = forumData.Categories;
-                int categoryId = forumData.Categories.Any() ? categories.LastOrDefault().Id + 1 : 1;
-                category = new Category(categoryId, categoryName, new List<int>());
-                forumData.Categories.Add(category);
-            }
-
-            return category;
-        }
-
         public static bool TrySavePost(PostViewModel postView)
         {
-            bool emptyCategory = string.IsNullOrWhiteSpace(postView.Category) || 
-                string.IsNullOrEmpty(postView.Category);
+            bool emptyCategory = string.IsNullOrWhiteSpace(postView.Category) || string.IsNullOrEmpty(postView.Category);
             bool emptyTitle = string.IsNullOrWhiteSpace(postView.Title) || string.IsNullOrEmpty(postView.Title);
             bool emptyContent = !postView.Content.Any();
 
@@ -95,13 +80,28 @@
 
             forumData.Posts.Add(post);
             author.PostIds.Add(post.Id);
-            category.PostIds.Add(post.Id);
+            category.PostIds.Add(post.Id);            
             forumData.SaveChanges();
             postView.PostId = postId;
 
             return true;
         }
+        
+        public static Category EnsureCategory(PostViewModel postView, ForumData forumData)
+        {
+            string categoryName = postView.Category;
+            Category category = forumData.Categories.FirstOrDefault(c => c.Name == categoryName);
+            if (category == null)
+            {
+                List<Category> categories = forumData.Categories;
+                int categoryId = forumData.Categories.Any() ? categories.LastOrDefault().Id + 1 : 1;
+                category = new Category(categoryId, categoryName, new List<int>());
+                forumData.Categories.Add(category);
+            }
 
+            return category;
+        }
+        
         public static bool TrySaveReply(ReplyViewModel replyViewModel, int postId)
         {
            if (replyViewModel.Content.Any())
