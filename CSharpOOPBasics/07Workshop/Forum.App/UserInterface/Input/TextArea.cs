@@ -32,12 +32,10 @@
         private int MaxLength { get; set; }
 
         public int Left { get => this.x; }
+        
         public int Top { get => this.y; }
 
-        public IEnumerable<string> Lines
-        {
-            get => this.lines;
-        }
+        public IEnumerable<string> Lines { get => this.lines; }
 
         public string Text
         {
@@ -49,10 +47,7 @@
             }
         }
 
-        public Position DisplayCursor
-        {
-            get => this.displayCursor;
-        }        
+        public Position DisplayCursor { get => this.displayCursor; }        
 
         public bool AddCharacter(char character)
         {
