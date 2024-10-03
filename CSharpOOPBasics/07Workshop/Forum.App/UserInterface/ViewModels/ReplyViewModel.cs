@@ -1,9 +1,9 @@
 ﻿namespace Forum.App.UserInterface.ViewModels
 {
-    using Forum.App.Services;
-    using Forum.Models;    
     using System.Collections.Generic;
     using System.Linq;
+    using Forum.App.Services;
+    using Forum.Models;
 
     public class ReplyViewModel
     {
@@ -17,7 +17,7 @@
         public ReplyViewModel(Reply reply)
         {
             this.Author = UserService.GetUser(reply.AuthorId).Username;
-            this.Content = GetLines(reply.Content);
+            this.Content = this.GetLines(reply.Content);
         }
 
         public string Author { get; set; }
