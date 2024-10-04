@@ -15,6 +15,7 @@
         public AddReplyView(PostViewModel postViewModel, ReplyViewModel reply, TextArea textArea, bool error = false)
 	{
             this.Post = postViewModel;
+	    
             this.SetBuffer();
             this.InitalizeLabels();
         }
