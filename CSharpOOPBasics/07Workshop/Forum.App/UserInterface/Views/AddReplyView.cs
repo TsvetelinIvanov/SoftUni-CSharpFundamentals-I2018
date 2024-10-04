@@ -7,13 +7,13 @@
     using Forum.App.UserInterface.ViewModels;
 
     public class AddReplyView : IView
-	{
+    {
         private const int AUTHOR_OFFSET = 8;
         private const int LEFT_OFFSET = 18;
         private const int TOP_OFFSET = 7;
 
         public AddReplyView(PostViewModel postViewModel, ReplyViewModel reply, TextArea textArea, bool error = false)
-		{
+	{
             this.Post = postViewModel;
             this.SetBuffer();
             this.InitalizeLabels();
@@ -37,7 +37,6 @@
         private void InitalizeLabels()
         {
             Position consoleCenter = Position.ConsoleCenter();
-
             Position titlePosition = new Position(consoleCenter.Left - this.Post.Title.Length / 2, consoleCenter.Top - 10);
             Position authorPosition = new Position(consoleCenter.Left - this.Post.Author.Length, consoleCenter.Top - 9);
 
@@ -67,7 +66,6 @@
         private void InitializeButtons(int left, int top)
         {
             this.Buttons = new ILabel[3];
-
             this.Buttons[0] = new Label("Write", new Position(left + 28, top - 1));
             this.Buttons[1] = new Label("Submit", new Position(left + 28, top + 12));
             this.Buttons[2] = new Label("Back", new Position(left + 28, top + 13));
