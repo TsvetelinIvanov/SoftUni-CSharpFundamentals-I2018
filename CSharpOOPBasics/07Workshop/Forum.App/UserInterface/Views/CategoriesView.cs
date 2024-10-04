@@ -8,10 +8,11 @@
     {
         public CategoriesView(string[] categoryNames, bool isFirstPage = false, bool isLastPage = false)
         {
+            this.CategoryNames = categoryNames;
             this.IsFirstPage = isFirstPage;
             this.IsLastPage = isLastPage;
-            this.CategoryNames = categoryNames;
-            InitializeLabels();
+            
+            this.InitializeLabels();
         }
 
         public bool IsFirstPage { get; }
