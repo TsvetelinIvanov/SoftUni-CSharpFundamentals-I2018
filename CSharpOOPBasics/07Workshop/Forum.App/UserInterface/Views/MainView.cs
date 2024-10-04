@@ -7,6 +7,7 @@
         public MainView(string userName)
         {
             this.Username = userName;
+            
             this.InitializeLabels();
         }
 
