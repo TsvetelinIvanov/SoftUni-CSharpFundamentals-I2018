@@ -7,6 +7,7 @@
         public LogInView(bool error, string userName, int passwordLength)
         {
             this.Error = error;
+            
             this.InitializeLabels();
         }
 
