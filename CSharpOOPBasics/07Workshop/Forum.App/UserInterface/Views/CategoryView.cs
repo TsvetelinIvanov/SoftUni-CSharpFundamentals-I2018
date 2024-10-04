@@ -20,7 +20,6 @@
         {
             this.categoryName = categoryName;
             this.PostTitles = postNames;
-
             this.IsFirstPage = isFirstPage;
             this.IsLastPage = isLastPage;
 
