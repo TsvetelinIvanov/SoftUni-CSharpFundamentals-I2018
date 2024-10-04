@@ -15,6 +15,7 @@
         {
             this.Post = post;
             this.IsLoggedIn = isLoggedIn;
+            
             this.SetBuffer();
             this.InitalizeLabels();
         }
@@ -70,7 +71,6 @@
             // Add replies
             Position repliesStartPosition = new Position(leftPosition, currentRow++);
             int repliesCount = this.Post.Replies.Count;
-
             labels.Add(new Label($"Replies: {repliesCount}", repliesStartPosition));
             foreach (ReplyViewModel reply in this.Post.Replies)
             {
@@ -91,7 +91,6 @@
         private void InitializeButtons(int left, int top)
         {
             this.Buttons = new ILabel[2];
-
             this.Buttons[0] = new Label("Back", new Position(left + 33, top));
             this.Buttons[1] = new Label("Add Reply", new Position(left + 28, top - 1), !IsLoggedIn);
         }
