@@ -7,6 +7,7 @@
         public SignUpView(string errorMessage)
         {
             this.ErrorMessage = errorMessage;
+            
             this.InitializeLabels();
         }
 
@@ -30,7 +31,6 @@
         private void InitializeStaticLabels(Position consoleCenter)
         {
             string[] labelContents = new string[] { this.ErrorMessage, "Name:", "Password:" };
-
             Position[] labelPositions = new Position[]
             {
                 new Position(consoleCenter.Left - 16, consoleCenter.Top - 14),   // Error
