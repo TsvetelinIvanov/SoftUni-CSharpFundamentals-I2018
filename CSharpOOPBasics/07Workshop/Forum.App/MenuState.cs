@@ -13,12 +13,12 @@
         AddReplyToPost,
         Back,
         SuccessfulLogIn,
-		Error,
+	Error,
         Rerender,
         SignedUp,
         SignUpError,
         LoggedOut,
         PostAdded,
-        ReplyAdded,
+        ReplyAdded
     }
 }
