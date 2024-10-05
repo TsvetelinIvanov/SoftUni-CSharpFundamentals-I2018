@@ -30,11 +30,15 @@
         }
 
         private string Username { get; set; }
+        
         private IView CurrentView { get; set; }
 
         private MenuState State => (MenuState)controllerHistory.Peek();
+        
         private int CurrentControllerIndex => this.controllerHistory.Peek();
+        
         private IController CurrentController => this.controllers[this.controllerHistory.Peek()];
+        
         internal ILabel CurrentLabel => this.CurrentView.Buttons[currentOptionIndex];
 
         private void InitializeControllerHistory()
@@ -142,65 +146,6 @@
             }
         }
 
-        private void AddReply()
-        {
-            this.Back();
-        }
-
-        private void RedirectToAddReply()
-        {
-            PostDetailsController postDetailsController = (PostDetailsController)this.CurrentController;
-            AddReplyController addReplyController = (AddReplyController)this.controllers[(int)MenuState.AddReply];
-            addReplyController.SetPostId(postDetailsController.PostId);
-            RedirectToMenu(MenuState.AddReply);
-        }
-
-        private void LogOut()
-        {
-            this.Username = string.Empty;
-            this.LogOutUser();
-            this.RenderCurrentView();
-        }
-
-        private void SuccessfulLogin()
-        {
-            IReadUserInfoController loginController = (IReadUserInfoController)this.CurrentController;
-            this.Username = loginController.Username;
-            this.LogInUser();
-            RedirectToMenu(MenuState.Main);
-        }
-
-        private void ViewPost()
-        {
-            CategoryController categoryController = (CategoryController)this.CurrentController;
-            int categoryId = categoryController.CategoryId;
-            Post[] posts = PostService.GetPostByCategory(categoryId).ToArray();
-            int postIndex = categoryController.CurrentPage * CategoryController.PAGE_OFFSET + this.currentOptionIndex;
-            int postId = posts[postIndex - 1].Id;
-            PostDetailsController postController = (PostDetailsController)this.controllers[(int)MenuState.ViewPost];
-            postController.SetPostId(postId);
-            this.RedirectToMenu(MenuState.ViewPost);
-        }
-
-        private void OpenCategory()
-        {
-            CategoriesController categoriesController = (CategoriesController)this.CurrentController;
-            int categoryIndex = categoriesController.CurrentPage * CategoriesController.PAGE_OFFSET + this.currentOptionIndex;
-            CategoryController categoryController = (CategoryController)this.controllers[(int)MenuState.OpenCategory];
-            this.RedirectToMenu(MenuState.OpenCategory);
-        }
-
-        private void AddPost()
-        {
-            AddPostController addPostController = (AddPostController)this.CurrentController;
-            int postId = addPostController.Post.PostId;
-            PostDetailsController postViewer = (PostDetailsController)this.controllers[(int)MenuState.ViewPost];
-            postViewer.SetPostId(postId);
-            addPostController.ResetPost();
-            this.controllerHistory.Pop();
-            this.RedirectToMenu(MenuState.ViewPost);
-        }
-
         private bool RedirectToMenu(MenuState newState)
         {
             if (this.State != newState)
@@ -213,6 +158,50 @@
 
             return false;
         }
+        
+        private void AddPost()
+        {
+            AddPostController addPostController = (AddPostController)this.CurrentController;
+            int postId = addPostController.Post.PostId;
+            PostDetailsController postViewer = (PostDetailsController)this.controllers[(int)MenuState.ViewPost];
+            postViewer.SetPostId(postId);
+            addPostController.ResetPost();
+            
+            this.controllerHistory.Pop();
+            this.RedirectToMenu(MenuState.ViewPost);
+        }
+        
+        private void OpenCategory()
+        {
+            CategoriesController categoriesController = (CategoriesController)this.CurrentController;
+            int categoryIndex = categoriesController.CurrentPage * CategoriesController.PAGE_OFFSET + this.currentOptionIndex;
+            CategoryController categoryController = (CategoryController)this.controllers[(int)MenuState.OpenCategory];
+            
+            this.RedirectToMenu(MenuState.OpenCategory);
+        }
+
+        private void ViewPost()
+        {
+            CategoryController categoryController = (CategoryController)this.CurrentController;
+            int categoryId = categoryController.CategoryId;
+            Post[] posts = PostService.GetPostByCategory(categoryId).ToArray();
+            
+            int postIndex = categoryController.CurrentPage * CategoryController.PAGE_OFFSET + this.currentOptionIndex;
+            int postId = posts[postIndex - 1].Id;
+            PostDetailsController postController = (PostDetailsController)this.controllers[(int)MenuState.ViewPost];
+            postController.SetPostId(postId);
+            
+            this.RedirectToMenu(MenuState.ViewPost);
+        }
+
+        private void SuccessfulLogin()
+        {
+            IReadUserInfoController loginController = (IReadUserInfoController)this.CurrentController;
+            this.Username = loginController.Username;
+            this.LogInUser();
+            
+            RedirectToMenu(MenuState.Main);
+        }
 
         private void LogInUser()
         {
@@ -222,10 +211,16 @@
                 {
                     userRestrictedController.UserLogIn();
                 }
-
             }
         }
 
+        private void LogOut()
+        {
+            this.Username = string.Empty;
+            this.LogOutUser();            
+            this.RenderCurrentView();
+        }
+        
         private void LogOutUser()
         {
             foreach (IController controller in this.controllers)
@@ -235,6 +230,20 @@
                     userRestrictedController.UserLogOut();
                 }
             }
+        }
+
+        private void RedirectToAddReply()
+        {
+            PostDetailsController postDetailsController = (PostDetailsController)this.CurrentController;
+            AddReplyController addReplyController = (AddReplyController)this.controllers[(int)MenuState.AddReply];
+            addReplyController.SetPostId(postDetailsController.PostId);
+            
+            RedirectToMenu(MenuState.AddReply);
+        }
+
+        private void AddReply()
+        {
+            this.Back();
         }
     }
 }
