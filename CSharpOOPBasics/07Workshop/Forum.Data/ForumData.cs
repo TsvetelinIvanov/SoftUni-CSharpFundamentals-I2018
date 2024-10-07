@@ -1,7 +1,7 @@
 ﻿namespace Forum.Data
 {
-    using Forum.Models;
     using System.Collections.Generic;
+    using Forum.Models;
 
     public class ForumData
     {
