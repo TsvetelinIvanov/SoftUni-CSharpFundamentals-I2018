@@ -1,17 +1,20 @@
 ﻿namespace Forum.Data
 {
-    using Forum.Models;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using Forum.Models;
 
     public class DataMapper
     {
         private const string DATA_PATH = "../data/";
         private const string CONFIG_PATH = "config.ini";
-        private const string DEFAULT_CONFIG = "users=users.csv\r\ncategories=categories.csv\r\nposts=posts.csv" +
-            "\r\nreplies=replies.csv";
+        private const string DEFAULT_CONFIG = "users=users.csv\r\ncategories=categories.csv\r\nposts=posts.csv\r\nreplies=replies.csv";
+        private const string CATEGIRY_FORMAT = "{0};{1};{2}";
+        private const string USER_FORMAT = "{0};{1};{2};{3}";
+        private const string POST_FORMAT = "{0};{1};{2};{3};{4};{5}";
+        private const string REPLY_FORMAT = "{0};{1};{2};{3}";
 
         private static readonly Dictionary<string, string> config;
 
@@ -25,8 +28,7 @@
         {
             EnsureConfigFile(configPath);
             string[] contents = ReadLines(configPath);
-            Dictionary<string, string> config = contents.Select(l => l.Split('='))
-                .ToDictionary(t => t[0], t => DATA_PATH + t[1]);
+            Dictionary<string, string> config = contents.Select(l => l.Split('=')).ToDictionary(t => t[0], t => DATA_PATH + t[1]);
 
             return config;
         }
@@ -81,9 +83,8 @@
         {
             List<string> lines = new List<string>();
             foreach (Category category in categories)
-            {
-                const string categoryFormat = "{0};{1};{2}";
-                string line = string.Format(categoryFormat, category.Id, category.Name, string.Join(",", category.PostIds));
+            {                
+                string line = string.Format(CATEGIRY_FORMAT, category.Id, category.Name, string.Join(",", category.PostIds));
                 lines.Add(line);
             }
 
@@ -113,8 +114,7 @@
             List<string> lines = new List<string>();
             foreach (User user in users)
             {
-                const string userFormat = "{0};{1};{2};{3}";
-                string line = string.Format(userFormat, user.Id, user.Username, user.Password, string.Join("", user.PostIds));
+                string line = string.Format(USER_FORMAT, user.Id, user.Username, user.Password, string.Join("", user.PostIds));
                 lines.Add(line);
             }
 
@@ -134,7 +134,7 @@
                 int categoryId = int.Parse(postData[3]);
                 int authorId = int.Parse(postData[4]);
                 int[] replyIds = postData[5].Split(",", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
-                Post post = new Post(id,title, content, categoryId, authorId, replyIds);
+                Post post = new Post(id, title, content, categoryId, authorId, replyIds);
                 posts.Add(post);
             }
 
@@ -146,8 +146,7 @@
             List<string> lines = new List<string>();
             foreach (Post post in posts)
             {
-                const string postFormat = "{0};{1};{2};{3};{4};{5}";
-                string line = string.Format(postFormat, post.Id, post.Title, post.Content, post.CategoryId, post.AuthorId, string.Join(",", post.ReplyIds));
+                string line = string.Format(POST_FORMAT, post.Id, post.Title, post.Content, post.CategoryId, post.AuthorId, string.Join(",", post.ReplyIds));
                 lines.Add(line);
             }
 
@@ -177,8 +176,7 @@
             List<string> lines = new List<string>();
             foreach (Reply reply in replies)
             {
-                const string replyFormat = "{0};{1};{2};{3}";
-                string line = string.Format(replyFormat, reply.Id, reply.Content, reply.AuthorId, reply.PostId);
+                string line = string.Format(REPLY_FORMAT, reply.Id, reply.Content, reply.AuthorId, reply.PostId);
                 lines.Add(line);
             }
 
