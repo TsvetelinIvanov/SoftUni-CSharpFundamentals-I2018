@@ -9,8 +9,8 @@ namespace BashSoft.Executor.Commands
     {
         private const int DataLengthForPrintFiltredStudents = 5;
 
-        public PrintFiltredStudentsCommand(string input, string[] data, Tester judge, StudentsRepository repository,
-            IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        public PrintFiltredStudentsCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager)
+            : base(input, data, judge, repository, inputOutputManager)
         {
 
         }
