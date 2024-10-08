@@ -9,7 +9,8 @@ namespace BashSoft.Executor.Commands
     {
         private const int DataLengthForChangeAbsolutePath = 2;
 
-        public ChangeAbsolutePathCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        public ChangeAbsolutePathCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) 
+            : base(input, data, judge, repository, inputOutputManager)
         {
 
         }
