@@ -9,7 +9,8 @@ namespace BashSoft.Executor.Commands
     {
         private const int DataLenghtForCreateDirectory = 2;
 
-        public MakeDirectoryCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        public MakeDirectoryCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager)
+            : base(input, data, judge, repository, inputOutputManager)
         {
 
         }
