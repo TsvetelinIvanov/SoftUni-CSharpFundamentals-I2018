@@ -9,7 +9,8 @@ namespace BashSoft.Executor.Commands
     {
         private const int DataLengthForChangeRelativePath = 2;
 
-        public ChangeRelativePathCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        public ChangeRelativePathCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager)
+            : base(input, data, judge, repository, inputOutputManager)
         {
 
         }
