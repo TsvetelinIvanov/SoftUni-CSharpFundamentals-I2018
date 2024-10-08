@@ -1,9 +1,9 @@
-﻿using BashSoft.Exceptions;
+using System;
+using BashSoft.Exceptions;
 using BashSoft.Executor.Commands;
 using BashSoft.IO;
 using BashSoft.Judge;
 using BashSoft.Repository;
-using System;
 
 namespace BashSoft.Executor
 {
@@ -126,8 +126,6 @@ namespace BashSoft.Executor
     //        {
     //            OutputWriter.DisplayException(e.Message);
     //        }
-
-
     //    }
 
     //    private void ParseCommand(string input, string command, string[] data)
@@ -185,28 +183,12 @@ namespace BashSoft.Executor
     //        }
     //    }
 
-    //    private void TryDropDb(string input, string[] data)
+    //    private void TryOpenFile(string input, string[] data)
     //    {
-    //        if (data.Length != 1)
+    //        if (data.Length == DataLengthForOpenFile)
     //        {
-    //            this.DisplyInvalidCommandMessage(input);
-    //            return;
-    //        }
-
-    //        this.repository.UnloadData();
-    //        OutputWriter.WriteMessageOnNewLine("Database dropped!");
-    //    }
-
-    //    private void TryOrderAndTake(string input, string[] data)
-    //    {
-    //        if (data.Length == DataLengthForOrderStudents)
-    //        {
-    //            string courseName = data[1];
-    //            string comparision = data[2].ToLower();
-    //            string takeCommand = data[3].ToLower();
-    //            string takeQuantity = data[4].ToLower();
-
-    //            this.TryParseParametersForOrderAndTake(takeCommand, takeQuantity, courseName, comparision);
+    //            string fileName = data[1];
+    //            Process.Start(SessionData.currentPath + "\\" + fileName);
     //        }
     //        else
     //        {
@@ -214,171 +196,12 @@ namespace BashSoft.Executor
     //        }
     //    }
 
-    //    private void TryParseParametersForOrderAndTake(string takeCommand, string takeQuantity,
-    //        string courseName, string comparision)
+    //    private void TryCreateDirectory(string input, string[] data)
     //    {
-    //        if (takeCommand == "take")
+    //        if (data.Length == DataLenghtForCreateDirectory)
     //        {
-    //            if (takeQuantity == "all")
-    //            {
-    //                this.repository.FilterAndTake(courseName, comparision);
-    //            }
-    //            else
-    //            {
-    //                int studentsToTake;
-    //                bool hasParsed = int.TryParse(takeQuantity, out studentsToTake);
-    //                if (hasParsed)
-    //                {
-    //                    this.repository.OrderAndTake(courseName, comparision, studentsToTake);
-    //                }
-    //                else
-    //                {
-    //                    OutputWriter.DisplayException(ExceptionMessages.InvalidTakeQantityParameterExceptionMessage);
-    //                }
-    //            }
-    //        }
-    //        else
-    //        {
-    //            OutputWriter.DisplayException(ExceptionMessages.InvalidTakeQantityParameterExceptionMessage);
-    //        }
-    //    }
-
-    //    private void TryFilterAndTake(string input, string[] data)
-    //    {
-    //        if (data.Length == DataLengthForFilterStudents)
-    //        {
-    //            string courseName = data[1];
-    //            string filter = data[2].ToLower();
-    //            string takeCommand = data[3].ToLower();
-    //            string takeQuantity = data[4].ToLower();
-
-    //            this.TryParseParametersForFilterAndTake(takeCommand, takeQuantity, courseName, filter);
-    //        }
-    //        else
-    //        {
-    //            this.DisplyInvalidCommandMessage(input);
-    //        }
-    //    }
-
-    //    private void TryParseParametersForFilterAndTake(string takeCommand, string takeQuantity,
-    //        string courseName, string filter)
-    //    {
-    //        if (takeCommand == "take")
-    //        {
-    //            if (takeQuantity == "all")
-    //            {
-    //                this.repository.FilterAndTake(courseName, filter);
-    //            }
-    //            else
-    //            {
-    //                int studentsToTake;
-    //                bool hasParsed = int.TryParse(takeQuantity, out studentsToTake);
-    //                if (hasParsed)
-    //                {
-    //                    this.repository.FilterAndTake(courseName, filter, studentsToTake);
-    //                }
-    //                else
-    //                {
-    //                    OutputWriter.DisplayException(ExceptionMessages.InvalidTakeQantityParameterExceptionMessage);
-    //                }
-    //            }
-    //        }
-    //        else
-    //        {
-    //            OutputWriter.DisplayException(ExceptionMessages.InvalidTakeQantityParameterExceptionMessage);
-    //        }
-    //    }
-
-    //    private void TryShowWantedData(string input, string[] data)
-    //    {
-    //        if (data.Length == DataLengthForShowWantedDataByCourse)
-    //        {
-    //            string courseName = data[1];
-    //            this.repository.GetAllStudentsFromCourse(courseName);
-    //        }
-    //        else if (data.Length == DataLengthForShowWantedDataByCourseAndUsername)
-    //        {
-    //            string coursName = data[1];
-    //            string userName = data[2];
-    //            this.repository.GetStudentsScoresFromCourse(coursName, userName);
-    //        }
-    //        else
-    //        {
-    //            this.DisplyInvalidCommandMessage(input);
-    //        }
-    //    }
-
-    //    private void TryGetHelp(string input, string[] data)
-    //    {
-    //        if (data.Length == DataLengthForGetHelp)
-    //        {
-    //            OutputWriter.WriteMessageOnNewLine($"{new string('_', 100)}");
-    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "make directory - mkdir: path "));
-    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "traverse directory - ls: depth "));
-    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "comparing files - cmp: path1 path2"));
-    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "change directory - changeDirREl:relative path"));
-    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "change directory - changeDir:absolute path"));
-    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "read students data base - readDb: path"));
-    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "filter {courseName} excelent/average/poor  take 2/5/all students - filterExcelent (the output is written on the console)"));
-    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "order increasing students - order {courseName} ascending/descending take 20/10/all (the output is written on the console)"));
-    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "download file - download: path of file (saved in current directory)"));
-    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "download file asinchronously - downloadAsynch: path of file (save in the current directory)"));
-    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "get help – help"));
-    //            OutputWriter.WriteMessageOnNewLine($"{new string('_', 100)}");
-    //            OutputWriter.WriteEmptyLine();
-    //        }
-    //        else
-    //        {
-    //            this.DisplyInvalidCommandMessage(input);
-    //        }
-    //    }
-
-    //    private void TryReadDatabaseFromFile(string input, string[] data)
-    //    {
-    //        if (data.Length == DataLengthForReadDatabaseFromFile)
-    //        {
-    //            string filename = data[1];
-    //            this.repository.LoadData(filename);
-    //        }
-    //        else
-    //        {
-    //            this.DisplyInvalidCommandMessage(input);
-    //        }
-    //    }
-
-    //    private void TryChangePathAbsolute(string input, string[] data)
-    //    {
-    //        if (data.Length == DataLengthForChangePathAbsolute)
-    //        {
-    //            string absolutePath = data[1];
-    //            this.inputOutputManager.ChangeCurrentDirectoryAbsolute(absolutePath);
-    //        }
-    //        else
-    //        {
-    //            this.DisplyInvalidCommandMessage(input);
-    //        }
-    //    }
-
-    //    private void TryChangePathRelatively(string input, string[] data)
-    //    {
-    //        if (data.Length == DataLengthForChangePathRelatively)
-    //        {
-    //            string relativePath = data[1];
-    //            this.inputOutputManager.ChangeCurrentDirectoryRelative(relativePath);
-    //        }
-    //        else
-    //        {
-    //            this.DisplyInvalidCommandMessage(input);
-    //        }
-    //    }
-
-    //    private void TryCompareFiles(string input, string[] data)
-    //    {
-    //        if (data.Length == DataLengthForCompareFiles)
-    //        {
-    //            string firstPath = data[1];
-    //            string secondPath = data[2];
-    //            this.judge.CompareContent(firstPath, secondPath);
+    //            string folderName = data[1];
+    //            this.inputOutputManager.CreateDirectoryInCurrentFolder(folderName);
     //        }
     //        else
     //        {
@@ -412,12 +235,13 @@ namespace BashSoft.Executor
     //        }
     //    }
 
-    //    private void TryCreateDirectory(string input, string[] data)
+    //    private void TryCompareFiles(string input, string[] data)
     //    {
-    //        if (data.Length == DataLenghtForCreateDirectory)
+    //        if (data.Length == DataLengthForCompareFiles)
     //        {
-    //            string folderName = data[1];
-    //            this.inputOutputManager.CreateDirectoryInCurrentFolder(folderName);
+    //            string firstPath = data[1];
+    //            string secondPath = data[2];
+    //            this.judge.CompareContent(firstPath, secondPath);
     //        }
     //        else
     //        {
@@ -425,12 +249,12 @@ namespace BashSoft.Executor
     //        }
     //    }
 
-    //    private void TryOpenFile(string input, string[] data)
+    //    private void TryChangePathRelatively(string input, string[] data)
     //    {
-    //        if (data.Length == DataLengthForOpenFile)
+    //        if (data.Length == DataLengthForChangePathRelatively)
     //        {
-    //            string fileName = data[1];
-    //            Process.Start(SessionData.currentPath + "\\" + fileName);
+    //            string relativePath = data[1];
+    //            this.inputOutputManager.ChangeCurrentDirectoryRelative(relativePath);
     //        }
     //        else
     //        {
@@ -438,6 +262,179 @@ namespace BashSoft.Executor
     //        }
     //    }
 
+    //    private void TryChangePathAbsolute(string input, string[] data)
+    //    {
+    //        if (data.Length == DataLengthForChangePathAbsolute)
+    //        {
+    //            string absolutePath = data[1];
+    //            this.inputOutputManager.ChangeCurrentDirectoryAbsolute(absolutePath);
+    //        }
+    //        else
+    //        {
+    //            this.DisplyInvalidCommandMessage(input);
+    //        }
+    //    }
+
+    //    private void TryReadDatabaseFromFile(string input, string[] data)
+    //    {
+    //        if (data.Length == DataLengthForReadDatabaseFromFile)
+    //        {
+    //            string filename = data[1];
+    //            this.repository.LoadData(filename);
+    //        }
+    //        else
+    //        {
+    //            this.DisplyInvalidCommandMessage(input);
+    //        }
+    //    }
+
+    //    private void TryGetHelp(string input, string[] data)
+    //    {
+    //        if (data.Length == DataLengthForGetHelp)
+    //        {
+    //            OutputWriter.WriteMessageOnNewLine($"{new string('_', 100)}");
+    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "make directory - mkdir: path "));
+    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "traverse directory - ls: depth "));
+    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "comparing files - cmp: path1 path2"));
+    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "change directory - changeDirREl:relative path"));
+    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "change directory - changeDir:absolute path"));
+    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "read students data base - readDb: path"));
+    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "filter {courseName} excelent/average/poor  take 2/5/all students - filterExcelent (the output is written on the console)"));
+    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "order increasing students - order {courseName} ascending/descending take 20/10/all (the output is written on the console)"));
+    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "download file - download: path of file (saved in current directory)"));
+    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "download file asinchronously - downloadAsynch: path of file (save in the current directory)"));
+    //            OutputWriter.WriteMessageOnNewLine(string.Format("|{0, -98}|", "get help – help"));
+    //            OutputWriter.WriteMessageOnNewLine($"{new string('_', 100)}");
+    //            OutputWriter.WriteEmptyLine();
+    //        }
+    //        else
+    //        {
+    //            this.DisplyInvalidCommandMessage(input);
+    //        }
+    //    }
+
+    //    private void TryShowWantedData(string input, string[] data)
+    //    {
+    //        if (data.Length == DataLengthForShowWantedDataByCourse)
+    //        {
+    //            string courseName = data[1];
+    //            this.repository.GetAllStudentsFromCourse(courseName);
+    //        }
+    //        else if (data.Length == DataLengthForShowWantedDataByCourseAndUsername)
+    //        {
+    //            string coursName = data[1];
+    //            string userName = data[2];
+    //            this.repository.GetStudentsScoresFromCourse(coursName, userName);
+    //        }
+    //        else
+    //        {
+    //            this.DisplyInvalidCommandMessage(input);
+    //        }
+    //    }
+
+    //    private void TryFilterAndTake(string input, string[] data)
+    //    {
+    //        if (data.Length == DataLengthForFilterStudents)
+    //        {
+    //            string courseName = data[1];
+    //            string filter = data[2].ToLower();
+    //            string takeCommand = data[3].ToLower();
+    //            string takeQuantity = data[4].ToLower();
+
+    //            this.TryParseParametersForFilterAndTake(takeCommand, takeQuantity, courseName, filter);
+    //        }
+    //        else
+    //        {
+    //            this.DisplyInvalidCommandMessage(input);
+    //        }
+    //    }
+
+    //    private void TryParseParametersForFilterAndTake(string takeCommand, string takeQuantity, string courseName, string filter)
+    //    {
+    //        if (takeCommand == "take")
+    //        {
+    //            if (takeQuantity == "all")
+    //            {
+    //                this.repository.FilterAndTake(courseName, filter);
+    //            }
+    //            else
+    //            {
+    //                int studentsToTake;
+    //                bool hasParsed = int.TryParse(takeQuantity, out studentsToTake);
+    //                if (hasParsed)
+    //                {
+    //                    this.repository.FilterAndTake(courseName, filter, studentsToTake);
+    //                }
+    //                else
+    //                {
+    //                    OutputWriter.DisplayException(ExceptionMessages.InvalidTakeQantityParameterExceptionMessage);
+    //                }
+    //            }
+    //        }
+    //        else
+    //        {
+    //            OutputWriter.DisplayException(ExceptionMessages.InvalidTakeQantityParameterExceptionMessage);
+    //        }
+    //    }
+
+    //    private void TryOrderAndTake(string input, string[] data)
+    //    {
+    //        if (data.Length == DataLengthForOrderStudents)
+    //        {
+    //            string courseName = data[1];
+    //            string comparison = data[2].ToLower();
+    //            string takeCommand = data[3].ToLower();
+    //            string takeQuantity = data[4].ToLower();
+
+    //            this.TryParseParametersForOrderAndTake(takeCommand, takeQuantity, courseName, comparison);
+    //        }
+    //        else
+    //        {
+    //            this.DisplyInvalidCommandMessage(input);
+    //        }
+    //    }
+
+    //    private void TryParseParametersForOrderAndTake(string takeCommand, string takeQuantity, string courseName, string comparison)
+    //    {
+    //        if (takeCommand == "take")
+    //        {
+    //            if (takeQuantity == "all")
+    //            {
+    //                this.repository.FilterAndTake(courseName, comparison);
+    //            }
+    //            else
+    //            {
+    //                int studentsToTake;
+    //                bool hasParsed = int.TryParse(takeQuantity, out studentsToTake);
+    //                if (hasParsed)
+    //                {
+    //                    this.repository.OrderAndTake(courseName, comparison, studentsToTake);
+    //                }
+    //                else
+    //                {
+    //                    OutputWriter.DisplayException(ExceptionMessages.InvalidTakeQantityParameterExceptionMessage);
+    //                }
+    //            }
+    //        }
+    //        else
+    //        {
+    //            OutputWriter.DisplayException(ExceptionMessages.InvalidTakeQantityParameterExceptionMessage);
+    //        }
+    //    }
+
+    //    private void TryDropDb(string input, string[] data)
+    //    {
+    //        if (data.Length != 1)
+    //        {
+    //            this.DisplyInvalidCommandMessage(input);
+    
+    //            return;
+    //        }
+
+    //        this.repository.UnloadData();
+    //        OutputWriter.WriteMessageOnNewLine("Database dropped!");
+    //    }
+    
     //    private void DisplyInvalidCommandMessage(string input)
     //    {
     //        OutputWriter.WriteMessageOnNewLine($"The command {input} is invalid");
