@@ -1,8 +1,8 @@
-﻿using BashSoft.Exceptions;
+using System;
+using BashSoft.Exceptions;
 using BashSoft.IO;
 using BashSoft.Judge;
 using BashSoft.Repository;
-using System;
 
 namespace BashSoft.Executor.Commands
 {
