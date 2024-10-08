@@ -10,7 +10,8 @@ namespace BashSoft.Executor.Commands
         private const int DataLengthForShowDataByCourse = 2;
         private const int DataLengthForShowDataByCourseAndUsername = 3;
 
-        public ShowCourseCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        public ShowCourseCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager)
+            : base(input, data, judge, repository, inputOutputManager)
         {
 
         }
