@@ -10,7 +10,8 @@ namespace BashSoft.Executor.Commands
         private const int DataLengthForTraverseFolders = 1;
         private const int DataLengthForTraverseFoldersWithGivenDepth = 2;
 
-        public TraverseFolderCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        public TraverseFolderCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager)
+            : base(input, data, judge, repository, inputOutputManager)
         {
 
         }
