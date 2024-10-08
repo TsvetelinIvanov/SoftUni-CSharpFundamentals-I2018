@@ -9,7 +9,8 @@ namespace BashSoft.Executor.Commands
     {
         private const int DataLengthForDropDatabase = 1;
 
-        public DropDatabaseCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        public DropDatabaseCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager)
+            : base(input, data, judge, repository, inputOutputManager)
         {
 
         }
