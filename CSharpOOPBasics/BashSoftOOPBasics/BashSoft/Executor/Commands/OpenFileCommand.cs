@@ -1,9 +1,9 @@
-﻿using BashSoft.Exceptions;
+using System.Diagnostics;
+using BashSoft.Exceptions;
 using BashSoft.IO;
 using BashSoft.Judge;
 using BashSoft.Repository;
 using BashSoft.StaticData;
-using System.Diagnostics;
 
 namespace BashSoft.Executor.Commands
 {
@@ -11,7 +11,8 @@ namespace BashSoft.Executor.Commands
     {
         private const int DataLengthForOpenFile = 2;
 
-        public OpenFileCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        public OpenFileCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager)
+            : base(input, data, judge, repository, inputOutputManager)
         {
 
         }
