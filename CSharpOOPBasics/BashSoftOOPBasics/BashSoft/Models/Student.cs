@@ -1,6 +1,6 @@
-﻿using BashSoft.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
+﻿using BashSoft.Exceptions;
 
 namespace BashSoft.Models
 {
@@ -47,10 +47,9 @@ namespace BashSoft.Models
             if (this.enrolledCourses.ContainsKey(course.Name))
             {
                 throw new DuplicateEntryInStructureException(this.UserName, course.Name);
-                //throw new ArgumentException(string.Format(ExceptionMessages.StudentAlreadyEnrolledInGivenCourse, 
-                //    this.userName, course.Name));
-                //OutputWriter.DisplayException(string.Format(ExceptionMessages.StudentAlreadyEnrolledInGivenCourse,
-                //    this.userName, course.Name));
+                //throw new ArgumentException(string.Format(ExceptionMessages.StudentAlreadyEnrolledInGivenCourse, this.userName, course.Name));
+                //OutputWriter.DisplayException(string.Format(ExceptionMessages.StudentAlreadyEnrolledInGivenCourse, this.userName, course.Name));
+                
                 //return;
             }
 
@@ -64,6 +63,7 @@ namespace BashSoft.Models
                 throw new NotEnrolledInCourseException();
                 //throw new ArgumentException(ExceptionMessages.NotEnrolledInCourseExceptionMessage);
                 //OutputWriter.DisplayException(ExceptionMessages.NotEnrolledInCourseExceptionMessage);
+                
                 //return;
             }
 
@@ -72,6 +72,7 @@ namespace BashSoft.Models
                 throw new InvalidNumberOfScoresException();
                 //throw new ArgumentException(ExceptionMessages.InvalidNumberOfScoresExceptionMessage);
                 //OutputWriter.DisplayException(ExceptionMessages.InvalidNumberOfScoresExceptionMessage);
+                
                 //return;
             }
 
