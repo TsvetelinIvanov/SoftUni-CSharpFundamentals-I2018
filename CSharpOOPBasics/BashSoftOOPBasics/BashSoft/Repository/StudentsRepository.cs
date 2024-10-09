@@ -192,32 +192,28 @@ namespace BashSoft.Repository
             else
             {
                 OutputWriter.DisplayException(ExceptionMessages.InexistingStudentInDataBase);
-            }
 
-            return false;
+                return false;
+            }            
         }
 
         private bool IsQueryForCoursePossible(string courseName)
         {
-            if (isDataInitialized)
-            {
-                return true;
-            }
-            else
+            if (!isDataInitialized)
             {
                 OutputWriter.DisplayException(ExceptionMessages.DataNotInitializedExceptionMessage);
+
+                return false;
             }
 
-            if (this.courses.ContainsKey(courseName))
-            {
-                return true;
-            }
-            else
+            if (!this.courses.ContainsKey(courseName))
             {
                 OutputWriter.DisplayException(ExceptionMessages.InexistingCourseInDataBase);
+                
+                return false;
             }
-
-            return false;
+            
+            return true;
         }
         
         //Old version:
@@ -270,7 +266,7 @@ namespace BashSoft.Repository
         //    if (IsQueryForCoursePossible(corseName))
         //    {
         //        OutputWriter.WriteMessageOnNewLine($"{corseName}:");
-        //        foreach (var studentMarksEntry in studentsByCourse[corseName])
+        //        foreach (KeyValuePair<string, List<int>> studentMarksEntry in studentsByCourse[corseName])
         //        {
         //            OutputWriter.PrintStudent(studentMarksEntry);
         //        }
@@ -290,7 +286,7 @@ namespace BashSoft.Repository
         //    }
         //}
 
-        //public void OrderAndTake(string courseName, string comparision, int? studentsToTake = null)
+        //public void OrderAndTake(string courseName, string comparison, int? studentsToTake = null)
         //{
         //    if (IsQueryForCoursePossible(courseName))
         //    {
@@ -299,7 +295,7 @@ namespace BashSoft.Repository
         //            studentsToTake = studentsByCourse[courseName].Count;
         //        }
 
-        //        sorter.OrderAndTake(studentsByCourse[courseName], comparision, studentsToTake.Value);
+        //        sorter.OrderAndTake(studentsByCourse[courseName], comparison, studentsToTake.Value);
         //    }
         //}
 
@@ -354,29 +350,6 @@ namespace BashSoft.Repository
         //    }
         //}
 
-        //private bool IsQueryForCoursePossible(string corseName)
-        //{
-        //    if (isDataInitialized)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        OutputWriter.DisplayException(ExceptionMessages.DataNotInitializedExceptionMessage);
-        //    }
-
-        //    if (studentsByCourse.ContainsKey(corseName))
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        OutputWriter.DisplayException(ExceptionMessages.InexistingCourseInDataBase);
-        //    }
-
-        //    return false;
-        //}
-
         //private bool IsQueryForStudentPossible(string courseName, string studentUserName)
         //{
         //    if (IsQueryForCoursePossible(courseName) && studentsByCourse[courseName].ContainsKey(studentUserName))
@@ -386,9 +359,28 @@ namespace BashSoft.Repository
         //    else
         //    {
         //        OutputWriter.DisplayException(ExceptionMessages.InexistingStudentInDataBase);
-        //    }
 
-        //    return false;
+        //        return false;
+        //    }        
+        //}
+
+        //private bool IsQueryForCoursePossible(string corseName)
+        //{
+        //    if (!isDataInitialized)
+        //    {
+        //        OutputWriter.DisplayException(ExceptionMessages.DataNotInitializedExceptionMessage);
+
+        //        return false;
+        //    }
+        
+        //    if (!studentsByCourse.ContainsKey(corseName))
+        //    {
+        //        OutputWriter.DisplayException(ExceptionMessages.InexistingCourseInDataBase);
+
+        //        return false;
+        //    }
+        
+        //    return true;
         //}
     }
 }
