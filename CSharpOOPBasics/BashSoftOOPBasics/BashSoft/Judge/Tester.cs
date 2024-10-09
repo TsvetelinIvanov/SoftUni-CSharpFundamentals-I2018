@@ -49,7 +49,7 @@ namespace BashSoft.Judge
             {
                 hasMismatch = true;
                 minOutputLinesCount = Math.Min(actualOutputLines.Length, expectedOutputLines.Length);
-                OutputWriter.WriteMessageOnNewLine(ExceptionMessages.ComparisionOfFilesWithDifferentSizes);
+                OutputWriter.WriteMessageOnNewLine(ExceptionMessages.ComparisonOfFilesWithDifferentSizes);
             }
 
             string[] mismatches = new string[minOutputLinesCount];
