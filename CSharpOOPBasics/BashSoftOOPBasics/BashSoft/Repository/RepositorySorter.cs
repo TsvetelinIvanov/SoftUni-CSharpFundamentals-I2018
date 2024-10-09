@@ -1,8 +1,8 @@
-﻿using BashSoft.IO;
-using BashSoft.StaticData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+﻿using BashSoft.IO;
+using BashSoft.StaticData;
 
 namespace BashSoft.Repository
 {
@@ -26,9 +26,9 @@ namespace BashSoft.Repository
             }
         }
 
-        private void PrintStudents(Dictionary<string, double> studentsSorted)
+        private void PrintStudents(Dictionary<string, double> sortedStudents)
         {
-            foreach (KeyValuePair<string, double> student in studentsSorted)
+            foreach (KeyValuePair<string, double> student in sortedStudents)
             {
                 OutputWriter.PrintStudent(student);
             }
@@ -40,13 +40,11 @@ namespace BashSoft.Repository
         //    comparison = comparison.ToLower();
         //    if (comparison == "ascending")
         //    {
-        //        PrintStudents(wantedData.OrderBy(s => s.Value.Sum()).Take(studentsToTake)
-        //            .ToDictionary(s => s.Key, s => s.Value));
+        //        PrintStudents(wantedData.OrderBy(s => s.Value.Sum()).Take(studentsToTake).ToDictionary(s => s.Key, s => s.Value));
         //    }
         //    else if (comparison == "descending")
         //    {
-        //        PrintStudents(wantedData.OrderByDescending(s => s.Value.Sum()).Take(studentsToTake)
-        //            .ToDictionary(s => s.Key, s => s.Value));
+        //        PrintStudents(wantedData.OrderByDescending(s => s.Value.Sum()).Take(studentsToTake).ToDictionary(s => s.Key, s => s.Value));
         //    }
         //    else
         //    {
@@ -54,9 +52,9 @@ namespace BashSoft.Repository
         //    }
         //}
 
-        //private void PrintStudents(Dictionary<string, List<int>> studentsSorted)
+        //private void PrintStudents(Dictionary<string, List<int>> sortedStudents)
         //{
-        //    foreach (KeyValuePair<string, List<int>> student in studentsSorted)
+        //    foreach (KeyValuePair<string, List<int>> student in sortedStudents)
         //    {
         //        OutputWriter.PrintStudent(student);
         //    }
