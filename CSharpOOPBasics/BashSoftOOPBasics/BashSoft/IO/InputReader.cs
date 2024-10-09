@@ -1,6 +1,6 @@
-﻿using BashSoft.Executor;
-using BashSoft.StaticData;
 using System;
+using BashSoft.Executor;
+using BashSoft.StaticData;
 
 namespace BashSoft.IO
 {
@@ -29,6 +29,7 @@ namespace BashSoft.IO
                 }
 
                 this.interpreter.InterpredCommand(input);
+                
                 OutputWriter.WriteMessage($"{SessionData.currentPath}>");
                 input = Console.ReadLine();
                 input = input.Trim();
