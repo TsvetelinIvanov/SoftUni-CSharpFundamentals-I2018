@@ -43,7 +43,7 @@ namespace BashSoft.Repository
                 
                 if (givenFilter(studentWithMark.Value))
                 {
-                    OutputWriter.PrintStudent(new KeyValuePair<string,double> (studentMark.Key, studentMark.Value));
+                    OutputWriter.PrintStudent(new KeyValuePair<string,double> (studentWithMark.Key, studentWithMark.Value));
                     counterForPrinted++;
                 }
             }
@@ -73,19 +73,19 @@ namespace BashSoft.Repository
         //private void FilterAndTake(Dictionary<string, List<int>> wantedData, Predicate<double> givenFilter, int studentsToTake)
         //{
         //    int counterForPrinted = 0;
-        //    foreach (KeyValuePair<string, List<int>> studentPoints in wantedData)
+        //    foreach (KeyValuePair<string, List<int>> studentWithPoints in wantedData)
         //    {
         //        if (counterForPrinted == studentsToTake)
         //        {
         //            break;
         //        }
 
-        //        double averageScore = studentPoints.Value.Average();
+        //        double averageScore = studentWithPoints.Value.Average();
         //        double percentageOfFullfilment = averageScore / 100;
         //        double averageMark = percentageOfFullfilment * 4 + 2;
         //        if (givenFilter(averageMark))
         //        {
-        //            OutputWriter.PrintStudent(studentPoints);
+        //            OutputWriter.PrintStudent(studentWithPoints);
         //            counterForPrinted++;
         //        }
         //    }
