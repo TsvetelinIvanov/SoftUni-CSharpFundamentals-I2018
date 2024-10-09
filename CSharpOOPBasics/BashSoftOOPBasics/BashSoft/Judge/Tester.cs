@@ -1,8 +1,8 @@
-﻿using BashSoft.Exceptions;
-using BashSoft.IO;
-using BashSoft.StaticData;
 using System;
 using System.IO;
+using BashSoft.Exceptions;
+using BashSoft.IO;
+using BashSoft.StaticData;
 
 namespace BashSoft.Judge
 {
@@ -18,8 +18,7 @@ namespace BashSoft.Judge
                 string[] actualOutputLines = File.ReadAllLines(userOutputPath);
                 string[] expectedOutputLines = File.ReadAllLines(expectedOutputPath);
 
-                string[] mismatches = this.GetLineWithPossibleMismatches(actualOutputLines, expectedOutputLines,
-                    out bool hasMismatch);
+                string[] mismatches = this.GetLineWithPossibleMismatches(actualOutputLines, expectedOutputLines, out bool hasMismatch);
 
                 PrintOutput(mismatches, hasMismatch, mismatchPath);
                 OutputWriter.WriteMessageOnNewLine("Files read!");
