@@ -233,6 +233,19 @@ namespace BashSoft.Repository
         //    this.studentsByCourse = new Dictionary<string, Dictionary<string, List<int>>>();
         //}
 
+        //public void LoadData(string fileName)
+        //{
+        //    if (this.isDataInitialized)
+        //    {
+        //        OutputWriter.WriteMessageOnNewLine(ExceptionMessages.DataAlreadyInitializedExceptionMessage);
+        
+        //        return;
+        //    }
+
+        //    OutputWriter.WriteMessageOnNewLine("Reading data...");
+        //    ReadData(fileName);
+        //}
+
         //public void UnloadData()
         //{
         //    if (!this.isDataInitialized)
@@ -244,16 +257,50 @@ namespace BashSoft.Repository
         //    this.isDataInitialized = false;
         //}
 
-        //public void LoadData(string fileName)
+        //public void GetStudentsScoresFromCourse(string courseName, string userName)
         //{
-        //    if (this.isDataInitialized)
+        //    if (IsQueryForStudentPossible(courseName, userName))
         //    {
-        //        OutputWriter.WriteMessageOnNewLine(ExceptionMessages.DataAlreadyInitializedExceptionMessage);
-        //        return;
+        //        OutputWriter.PrintStudent(new KeyValuePair<string, List<int>>(userName, studentsByCourse[courseName][userName]));
         //    }
+        //}
 
-        //    OutputWriter.WriteMessageOnNewLine("Reading data...");
-        //    ReadData(fileName);
+        //public void GetAllStudentsFromCourse(string corseName)
+        //{
+        //    if (IsQueryForCoursePossible(corseName))
+        //    {
+        //        OutputWriter.WriteMessageOnNewLine($"{corseName}:");
+        //        foreach (var studentMarksEntry in studentsByCourse[corseName])
+        //        {
+        //            OutputWriter.PrintStudent(studentMarksEntry);
+        //        }
+        //    }
+        //}
+
+        //public void FilterAndTake(string courseName, string givenFilter, int? studentsToTake = null)
+        //{
+        //    if (IsQueryForCoursePossible(courseName))
+        //    {
+        //        if (studentsToTake == null)
+        //        {
+        //            studentsToTake = studentsByCourse[courseName].Count;
+        //        }
+
+        //        filter.FilterAndTake(studentsByCourse[courseName], givenFilter, studentsToTake.Value);
+        //    }
+        //}
+
+        //public void OrderAndTake(string courseName, string comparision, int? studentsToTake = null)
+        //{
+        //    if (IsQueryForCoursePossible(courseName))
+        //    {
+        //        if (studentsToTake == null)
+        //        {
+        //            studentsToTake = studentsByCourse[courseName].Count;
+        //        }
+
+        //        sorter.OrderAndTake(studentsByCourse[courseName], comparision, studentsToTake.Value);
+        //    }
         //}
 
         //private void ReadData(string fileName)
@@ -342,53 +389,6 @@ namespace BashSoft.Repository
         //    }
 
         //    return false;
-        //}
-
-        //public void GetStudentsScoresFromCourse(string courseName, string userName)
-        //{
-        //    if (IsQueryForStudentPossible(courseName, userName))
-        //    {
-        //        OutputWriter.PrintStudent(new KeyValuePair<string, List<int>>(userName,
-        //            studentsByCourse[courseName][userName]));
-        //    }
-        //}
-
-        //public void GetAllStudentsFromCourse(string corseName)
-        //{
-        //    if (IsQueryForCoursePossible(corseName))
-        //    {
-        //        OutputWriter.WriteMessageOnNewLine($"{corseName}:");
-        //        foreach (var studentMarksEntry in studentsByCourse[corseName])
-        //        {
-        //            OutputWriter.PrintStudent(studentMarksEntry);
-        //        }
-        //    }
-        //}
-
-        //public void FilterAndTake(string courseName, string givenFilter, int? studentsToTake = null)
-        //{
-        //    if (IsQueryForCoursePossible(courseName))
-        //    {
-        //        if (studentsToTake == null)
-        //        {
-        //            studentsToTake = studentsByCourse[courseName].Count;
-        //        }
-
-        //        filter.FilterAndTake(studentsByCourse[courseName], givenFilter, studentsToTake.Value);
-        //    }
-        //}
-
-        //public void OrderAndTake(string courseName, string comparision, int? studentsToTake = null)
-        //{
-        //    if (IsQueryForCoursePossible(courseName))
-        //    {
-        //        if (studentsToTake == null)
-        //        {
-        //            studentsToTake = studentsByCourse[courseName].Count;
-        //        }
-
-        //        sorter.OrderAndTake(studentsByCourse[courseName], comparision, studentsToTake.Value);
-        //    }
         //}
     }
 }
