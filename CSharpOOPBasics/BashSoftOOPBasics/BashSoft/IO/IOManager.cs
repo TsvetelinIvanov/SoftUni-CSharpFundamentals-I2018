@@ -1,8 +1,8 @@
-﻿using BashSoft.Exceptions;
-using BashSoft.StaticData;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using BashSoft.Exceptions;
+using BashSoft.StaticData;
 
 namespace BashSoft.IO
 {
@@ -18,8 +18,7 @@ namespace BashSoft.IO
             {
                 string currentPath = subFolders.Dequeue();
                 int indentitation = currentPath.Split('\\').Length - initialIndentitation;
-                OutputWriter.WriteMessageOnNewLine(string.Format("{0}{1}", new string('-', indentitation),
-                    currentPath));
+                OutputWriter.WriteMessageOnNewLine(string.Format("{0}{1}", new string('-', indentitation), currentPath));
                 try
                 {
                     foreach (string file in Directory.GetFiles(currentPath))
