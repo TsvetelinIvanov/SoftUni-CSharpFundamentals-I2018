@@ -1,7 +1,7 @@
-﻿using BashSoft.IO;
-using BashSoft.StaticData;
 using System;
 using System.Collections.Generic;
+using BashSoft.IO;
+using BashSoft.StaticData;
 
 namespace BashSoft.Repository
 {
@@ -34,14 +34,14 @@ namespace BashSoft.Repository
         private void FilterAndTake(Dictionary<string, double> studentsWithMarks, Predicate<double> givenFilter, int studentsToTake)
         {
             int counterForPrinted = 0;
-            foreach (KeyValuePair<string, double> studentMark in studentsWithMarks)
+            foreach (KeyValuePair<string, double> studentWithMark in studentsWithMarks)
             {
                 if (counterForPrinted == studentsToTake)
                 {
                     break;
                 }
                 
-                if (givenFilter(studentMark.Value))
+                if (givenFilter(studentWithMark.Value))
                 {
                     OutputWriter.PrintStudent(new KeyValuePair<string,double> (studentMark.Key, studentMark.Value));
                     counterForPrinted++;
@@ -50,8 +50,7 @@ namespace BashSoft.Repository
         }
 
         //Old version:
-        //public void FilterAndTake(Dictionary<string, List<int>> wantedData, string wantedFilter, 
-        //int studentsToTake)
+        //public void FilterAndTake(Dictionary<string, List<int>> wantedData, string wantedFilter, int studentsToTake)
         //{
         //    if (wantedFilter == "excellent")
         //    {
@@ -71,11 +70,10 @@ namespace BashSoft.Repository
         //    }
         //}
 
-        //private void FilterAndTake(Dictionary<string, List<int>> wantedData, Predicate<double> givenFilter,
-        //    int studentsToTake)
+        //private void FilterAndTake(Dictionary<string, List<int>> wantedData, Predicate<double> givenFilter, int studentsToTake)
         //{
         //    int counterForPrinted = 0;
-        //    foreach (var studentPoints in wantedData)
+        //    foreach (KeyValuePair<string, List<int>> studentPoints in wantedData)
         //    {
         //        if (counterForPrinted == studentsToTake)
         //        {
