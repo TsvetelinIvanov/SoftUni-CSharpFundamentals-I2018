@@ -191,7 +191,7 @@ namespace BashSoft.Repository
             }
             else
             {
-                OutputWriter.DisplayException(ExceptionMessages.InexistingStudentInDataBase);
+                OutputWriter.DisplayException(ExceptionMessages.InexistantStudentInDatabase);
 
                 return false;
             }            
@@ -208,7 +208,7 @@ namespace BashSoft.Repository
 
             if (!this.courses.ContainsKey(courseName))
             {
-                OutputWriter.DisplayException(ExceptionMessages.InexistingCourseInDataBase);
+                OutputWriter.DisplayException(ExceptionMessages.InexistantCourseInDatabase);
                 
                 return false;
             }
@@ -358,7 +358,7 @@ namespace BashSoft.Repository
         //    }
         //    else
         //    {
-        //        OutputWriter.DisplayException(ExceptionMessages.InexistingStudentInDataBase);
+        //        OutputWriter.DisplayException(ExceptionMessages.InexistantStudentInDatabase);
 
         //        return false;
         //    }        
@@ -375,7 +375,7 @@ namespace BashSoft.Repository
         
         //    if (!studentsByCourse.ContainsKey(corseName))
         //    {
-        //        OutputWriter.DisplayException(ExceptionMessages.InexistingCourseInDataBase);
+        //        OutputWriter.DisplayException(ExceptionMessages.InexistantCourseInDatabase);
 
         //        return false;
         //    }
