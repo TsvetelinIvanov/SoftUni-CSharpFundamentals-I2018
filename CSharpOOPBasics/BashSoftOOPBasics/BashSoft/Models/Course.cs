@@ -44,6 +44,7 @@ namespace BashSoft.Models
                 throw new DuplicateEntryInStructureException(student.UserName, this.Name);
                 //throw new ArgumentException(string.Format(ExceptionMessages.StudentAlreadyEnrolledInGivenCourse, student.UserName, this.name));
                 //OutputWriter.DisplayException(string.Format(ExceptionMessages.StudentAlreadyEnrolledInGivenCourse, student.UserName, this.name));
+                
                 //return;
             }
 
