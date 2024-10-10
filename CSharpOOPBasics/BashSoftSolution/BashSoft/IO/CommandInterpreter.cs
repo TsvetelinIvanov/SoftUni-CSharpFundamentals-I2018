@@ -25,7 +25,6 @@ namespace BashSoft
         {
             string[] data = input.Split();
             string command = data[0];
-
             switch (command)
             {
                 case "open":
@@ -74,11 +73,6 @@ namespace BashSoft
                     DisplyInvalidCommandMessage(input);
                     break;
             }
-        }
-
-        private static void DisplyInvalidCommandMessage(string input)
-        {
-            OutputWriter.WriteMessageOnNewLine($"The command {input} is invalid");
         }
 
         private static void TryOpenFile(string input, string[] data)
@@ -280,11 +274,11 @@ namespace BashSoft
             if (data.Length == DataLengthForOrderStudents)
             {
                 string courseName = data[1];
-                string comparision = data[2].ToLower();
+                string comparison = data[2].ToLower();
                 string takeCommand = data[3].ToLower();
                 string takeQuantity = data[4].ToLower();
 
-                TryParseParametersForOrderAndTake(takeCommand, takeQuantity, courseName, comparision);
+                TryParseParametersForOrderAndTake(takeCommand, takeQuantity, courseName, comparison);
             }
             else
             {
@@ -292,13 +286,13 @@ namespace BashSoft
             }
         }
 
-        private static void TryParseParametersForOrderAndTake(string takeCommand, string takeQuantity, string courseName, string comparision)
+        private static void TryParseParametersForOrderAndTake(string takeCommand, string takeQuantity, string courseName, string comparison)
         {
             if (takeCommand == "take")
             {
                 if (takeQuantity == "all")
                 {
-                    StudentsRepository.FilterAndTake(courseName, comparision);
+                    StudentsRepository.FilterAndTake(courseName, comparison);
                 }
                 else
                 {
@@ -306,7 +300,7 @@ namespace BashSoft
                     bool hasParsed = int.TryParse(takeQuantity, out studentsToTake);
                     if (hasParsed)
                     {
-                        StudentsRepository.OrderAndTake(courseName, comparision, studentsToTake);
+                        StudentsRepository.OrderAndTake(courseName, comparison, studentsToTake);
                     }
                     else
                     {
@@ -318,6 +312,11 @@ namespace BashSoft
             {
                 OutputWriter.DisplayException(ExceptionMessages.InvalidTakeQantityParameterExceptionMessage);
             }
-        }                                                                             
+        }
+
+        private static void DisplyInvalidCommandMessage(string input)
+        {
+            OutputWriter.WriteMessageOnNewLine($"The command {input} is invalid");
+        }
     }
 }
