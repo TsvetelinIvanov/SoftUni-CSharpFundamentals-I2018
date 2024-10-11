@@ -79,7 +79,7 @@ namespace BashSoft
             }
             else
             {
-                OutputWriter.DisplayException(ExceptionMessages.InexistingStudentInDataBase);
+                OutputWriter.DisplayException(ExceptionMessages.InexistantStudentInDatabase);
 
                 return false;
             }
@@ -96,7 +96,7 @@ namespace BashSoft
 
             if (!studentsByCourse.ContainsKey(corseName))
             {
-                OutputWriter.DisplayException(ExceptionMessages.InexistingCourseInDataBase);
+                OutputWriter.DisplayException(ExceptionMessages.InexistantStudentInDatabase);
                 
                 return false;
             }
