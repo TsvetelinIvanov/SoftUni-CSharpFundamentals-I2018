@@ -29,9 +29,10 @@ namespace BashSoft
 
         private static string GetMismatchPath(string expectedOutputPath)
         {
-            int indexOf = expectedOutputPath.LastIndexOf('\\');
-            string directoryPath = expectedOutputPath.Substring(0, indexOf);
+            int indexOflastSlash = expectedOutputPath.LastIndexOf('\\');
+            string directoryPath = expectedOutputPath.Substring(0, indexOflastSlash);
             string finalPath = directoryPath + @"Mismatches.txt";
+            
             return finalPath;
         }
 
