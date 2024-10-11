@@ -26,6 +26,52 @@ namespace BashSoft
             }
         }
 
+        public static void GetStudentsScoresFromCourse(string courseName, string userName)
+        {
+            if (IsQueryForStudentPossible(courseName, userName))
+            {
+                OutputWriter.PrintStudent(new KeyValuePair<string, List<int>>(userName, studentsByCourse[courseName][userName]));
+            }
+        }
+
+        public static void GetAllStudentsFromCourse(string corseName)
+        {
+            if (IsQueryForCoursePossible(corseName))
+            {
+                OutputWriter.WriteMessageOnNewLine($"{corseName}:");
+                foreach (KeyValuePair<string, List<int>> studentMarksEntry in studentsByCourse[corseName])
+                {
+                    OutputWriter.PrintStudent(studentMarksEntry);
+                }
+            }
+        }
+
+        public static void FilterAndTake(string courseName, string givenFilter, int? studentsToTake = null)
+        {
+            if (IsQueryForCoursePossible(courseName))
+            {
+                if (studentsToTake == null)
+                {
+                    studentsToTake = studentsByCourse[courseName].Count;
+                }
+
+                RepositoryFilters.FilterAndTake(studentsByCourse[courseName], givenFilter, studentsToTake.Value);
+            }
+        }
+
+        public static void OrderAndTake(string courseName, string comparison, int? studentsToTake = null)
+        {
+            if (IsQueryForCoursePossible(courseName))
+            {
+                if (studentsToTake == null)
+                {
+                    studentsToTake = studentsByCourse[courseName].Count;
+                }
+
+                RepositorySorters.OrderAndTake(studentsByCourse[courseName], comparison, studentsToTake.Value);
+            }
+        }
+
         private static void ReadData(string fileName)
         {
             string path = SessionData.currentPath + "\\" + fileName;
@@ -71,29 +117,6 @@ namespace BashSoft
             }
         }
 
-        private static bool IsQueryForCoursePossible(string corseName)
-        {
-            if (isDataInitialized)
-            {
-                return true;
-            }
-            else
-            {
-                OutputWriter.DisplayException(ExceptionMessages.DataNotInitializedExceptionMessage);
-            }
-
-            if (studentsByCourse.ContainsKey(corseName))
-            {
-                return true;
-            }
-            else
-            {
-                OutputWriter.DisplayException(ExceptionMessages.InexistingCourseInDataBase);
-            }
-
-            return false;
-        }
-
         private static bool IsQueryForStudentPossible(string courseName, string studentUserName)
         {
             if (IsQueryForCoursePossible(courseName) && studentsByCourse[courseName].ContainsKey(studentUserName))
@@ -102,56 +125,29 @@ namespace BashSoft
             }
             else
             {
-                OutputWriter.DisplayException(ExceptionMessages.InexistingStudentInDataBase);
-            }
+                OutputWriter.DisplayException(ExceptionMessages.InexistantStudentInDatabase);
 
-            return false;
-        }
-
-        public static void GetStudentsScoresFromCourse(string courseName, string userName)
-        {
-            if (IsQueryForStudentPossible(courseName, userName))
-            {
-                OutputWriter.PrintStudent(new KeyValuePair<string, List<int>>(userName, studentsByCourse[courseName][userName]));
+                return false;
             }
         }
 
-        public static void GetAllStudentsFromCourse(string corseName)
+        private static bool IsQueryForCoursePossible(string corseName)
         {
-            if (IsQueryForCoursePossible(corseName))
+            if (!isDataInitialized)
             {
-                OutputWriter.WriteMessageOnNewLine($"{corseName}:");
-                foreach (KeyValuePair<string, List<int>> studentMarksEntry in studentsByCourse[corseName])
-                {
-                    OutputWriter.PrintStudent(studentMarksEntry);
-                }
+                OutputWriter.DisplayException(ExceptionMessages.DataNotInitializedExceptionMessage);
+                
+                return false;
             }
-        }
-
-        public static void FilterAndTake(string courseName, string givenFilter, int? studentsToTake = null)
-        {
-            if (IsQueryForCoursePossible(courseName))
+            
+            if (!studentsByCourse.ContainsKey(corseName))
             {
-                if (studentsToTake == null)
-                {
-                    studentsToTake = studentsByCourse[courseName].Count;
-                }
-
-                RepositoryFilters.FilterAndTake(studentsByCourse[courseName], givenFilter, studentsToTake.Value);
+                OutputWriter.DisplayException(ExceptionMessages.InexistantStudentInDatabase);
+                
+                return false;
             }
-        }
-
-        public static void OrderAndTake(string courseName, string comparision, int? studentsToTake = null)
-        {
-            if (IsQueryForCoursePossible(courseName))
-            {
-                if (studentsToTake == null)
-                {
-                    studentsToTake = studentsByCourse[courseName].Count;
-                }
-
-                RepositorySorters.OrderAndTake(studentsByCourse[courseName], comparision, studentsToTake.Value);
-            }
+            
+            return true;
         }
     }
 }
