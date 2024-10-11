@@ -9,8 +9,7 @@ namespace BashSoft
         private const double ExcellentBorder = 5.0;
         private const double AverageBorder = 3.5;
 
-        public static void FilterAndTake(Dictionary<string, List<int>> wantedData, string wantedFilter,
-            int studentsToTake)
+        public static void FilterAndTake(Dictionary<string, List<int>> wantedData, string wantedFilter, int studentsToTake)
         {
             if (wantedFilter == "excellent")
             {
@@ -30,8 +29,7 @@ namespace BashSoft
             }
         }
 
-        private static void FilterAndTake(Dictionary<string, List<int>> wantedData, Predicate<double> givenFilter,
-            int studentsToTake)
+        private static void FilterAndTake(Dictionary<string, List<int>> wantedData, Predicate<double> givenFilter, int studentsToTake)
         {
             int counterForPrinted = 0;
             foreach (KeyValuePair<string, List<int>> studentPoints in wantedData)
@@ -107,15 +105,15 @@ namespace BashSoft
         //    }
         //}
 
-        //private static double Average(List<int> scoresOnTascs)
+        //private static double Average(List<int> scoresOnTasks)
         //{
         //    int totalScore = 0;
-        //    foreach (int score in scoresOnTascs)
+        //    foreach (int score in scoresOnTasks)
         //    {
         //        totalScore += score;
         //    }
 
-        //    double percentageOfAll = (double)totalScore / (scoresOnTascs.Count * 100);
+        //    double percentageOfAll = (double)totalScore / (scoresOnTasks.Count * 100);
         //    double mark = percentageOfAll * 4 + 2;
 
         //    return mark;
