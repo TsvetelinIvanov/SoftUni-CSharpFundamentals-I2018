@@ -29,8 +29,8 @@ namespace BashSoft
 
         private static string GetMismatchPath(string expectedOutputPath)
         {
-            int indexOflastSlash = expectedOutputPath.LastIndexOf('\\');
-            string directoryPath = expectedOutputPath.Substring(0, indexOflastSlash);
+            int indexOfLastSlash = expectedOutputPath.LastIndexOf('\\');
+            string directoryPath = expectedOutputPath.Substring(0, indexOfLastSlash);
             string finalPath = directoryPath + @"Mismatches.txt";
             
             return finalPath;
@@ -46,11 +46,11 @@ namespace BashSoft
             {
                 hasMismatch = true;
                 minOutputLines = Math.Min(actualOutputLines.Length, expectedOutputLines.Length);
-                OutputWriter.WriteMessageOnNewLine(ExceptionMessages.ComparisionOfFilesWithDifferentSizes);
+                OutputWriter.WriteMessageOnNewLine(ExceptionMessages.ComparisonOfFilesWithDifferentSizes);
             }
 
             string[] mismatches = new string[minOutputLines];
-            OutputWriter.WriteMessageOnNewLine("Compring files...");
+            OutputWriter.WriteMessageOnNewLine("Comparing files...");
             for (int i = 0; i < minOutputLines; i++)
             {
                 string actualLine = actualOutputLines[i];
