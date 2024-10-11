@@ -16,8 +16,7 @@ namespace BashSoft
             {
                 string currentPath = subFolders.Dequeue();
                 int indentitation = currentPath.Split('\\').Length - initialIndentitation;
-                OutputWriter.WriteMessageOnNewLine(string.Format("{0}{1}", new string('-', indentitation),
-                    currentPath));
+                OutputWriter.WriteMessageOnNewLine(string.Format("{0}{1}", new string('-', indentitation), currentPath));
 
                 foreach (string drectoryPath in Directory.GetDirectories(currentPath))
                 {
