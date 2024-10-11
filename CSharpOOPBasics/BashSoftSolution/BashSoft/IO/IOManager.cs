@@ -86,6 +86,7 @@ namespace BashSoft
             if (!Directory.Exists(absolutePath))
             {
                 OutputWriter.DisplayException(ExceptionMessages.InvalidPath);
+                
                 return;
             }
 
