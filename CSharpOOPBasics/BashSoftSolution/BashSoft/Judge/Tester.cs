@@ -78,7 +78,7 @@ namespace BashSoft
         {
             if (hasMismatch)
             {
-                foreach (var line in mismatches)
+                foreach (string line in mismatches)
                 {
                     OutputWriter.WriteMessageOnNewLine(line);
                 }
@@ -91,8 +91,8 @@ namespace BashSoft
                 {
                     OutputWriter.DisplayException(ExceptionMessages.InvalidPath);
                 }
+                
                 return;
-
             }
 
             OutputWriter.WriteMessageOnNewLine("Files are identical. There are no mismatches.");
