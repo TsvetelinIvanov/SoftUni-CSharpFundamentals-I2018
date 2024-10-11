@@ -22,72 +22,6 @@ namespace BashSoft
             }
         }
 
-        private static void ReadData()
-        {
-            string input = Console.ReadLine();
-
-            while (!string.IsNullOrEmpty(input))
-            {
-                string[] studentData = input.Split();
-                string course = studentData[0];
-                string student = studentData[1];
-                int mark = int.Parse(studentData[2]);
-
-                if (!studentsByCourse.ContainsKey(course))
-                {
-                    studentsByCourse[course] = new Dictionary<string, List<int>>();
-                }
-
-                if (!studentsByCourse[course].ContainsKey(student))
-                {
-                    studentsByCourse[course][student] = new List<int>();
-                }
-
-                studentsByCourse[course][student].Add(mark);
-                input = Console.ReadLine();
-            }
-
-            isDataInitialized = true;
-            OutputWriter.WriteMessageOnNewLine("Data read!");
-        }
-
-        private static bool IsQueryForCoursePossible(string corseName)
-        {
-            if (isDataInitialized)
-            {
-                return true;
-            }
-            else
-            {
-                OutputWriter.DisplayException(ExceptionMessages.DataNotInitializedExceptionMessage);
-            }
-
-            if (studentsByCourse.ContainsKey(corseName))
-            {
-                return true;
-            }
-            else
-            {
-                OutputWriter.DisplayException(ExceptionMessages.InexistingCourseInDataBase);
-            }
-
-            return false;
-        }
-
-        private static bool IsQueryForStudentPossible(string courseName, string studentUserName)
-        {
-            if (IsQueryForCoursePossible(courseName) && studentsByCourse[courseName].ContainsKey(studentUserName))
-            {
-                return true;
-            }
-            else
-            {
-                OutputWriter.DisplayException(ExceptionMessages.InexistingStudentInDataBase);
-            }
-
-            return false;
-        }
-
         public static void GetStudentsScoresFromCourse(string courseName, string userName)
         {
             if (IsQueryForStudentPossible(courseName, userName))
@@ -106,6 +40,68 @@ namespace BashSoft
                     OutputWriter.PrintStudent(studentMarksEntry);
                 }
             }
+        }
+
+        private static void ReadData()
+        {
+            string input = Console.ReadLine();
+            while (!string.IsNullOrEmpty(input))
+            {
+                string[] studentData = input.Split();
+                string course = studentData[0];
+                string student = studentData[1];
+                int mark = int.Parse(studentData[2]);
+
+                if (!studentsByCourse.ContainsKey(course))
+                {
+                    studentsByCourse[course] = new Dictionary<string, List<int>>();
+                }
+
+                if (!studentsByCourse[course].ContainsKey(student))
+                {
+                    studentsByCourse[course][student] = new List<int>();
+                }
+
+                studentsByCourse[course][student].Add(mark);
+                
+                input = Console.ReadLine();
+            }
+
+            isDataInitialized = true;
+            OutputWriter.WriteMessageOnNewLine("Data read!");
+        }
+
+        private static bool IsQueryForStudentPossible(string courseName, string studentUserName)
+        {
+            if (IsQueryForCoursePossible(courseName) && studentsByCourse[courseName].ContainsKey(studentUserName))
+            {
+                return true;
+            }
+            else
+            {
+                OutputWriter.DisplayException(ExceptionMessages.InexistingStudentInDataBase);
+
+                return false;
+            }
+        }
+
+        private static bool IsQueryForCoursePossible(string corseName)
+        {
+            if (!isDataInitialized)
+            {
+                OutputWriter.DisplayException(ExceptionMessages.DataNotInitializedExceptionMessage);
+                
+                return false;
+            }
+
+            if (!studentsByCourse.ContainsKey(corseName))
+            {
+                OutputWriter.DisplayException(ExceptionMessages.InexistingCourseInDataBase);
+                
+                return false;
+            }
+
+            return true;
         }
     }
 }
