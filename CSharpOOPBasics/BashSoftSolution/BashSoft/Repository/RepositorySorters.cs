@@ -5,9 +5,7 @@ namespace BashSoft
 {
     public static class RepositorySorters
     {
-
-        public static void OrderAndTake(Dictionary<string, List<int>> wantedData, string comparison,
-            int studentsToTake)
+        public static void OrderAndTake(Dictionary<string, List<int>> wantedData, string comparison, int studentsToTake)
         {
             comparison = comparison.ToLower();
             if (comparison == "ascending")
@@ -24,9 +22,9 @@ namespace BashSoft
             }
         }
 
-        private static void PrintStudents(Dictionary<string, List<int>> studentsSorted)
+        private static void PrintStudents(Dictionary<string, List<int>> sortedStudents)
         {
-            foreach (KeyValuePair<string, List<int>> student in studentsSorted)
+            foreach (KeyValuePair<string, List<int>> student in sortedStudents)
             {
                 OutputWriter.PrintStudent(student);
             }
@@ -50,15 +48,15 @@ namespace BashSoft
         //    }
         //}
 
-        //private static void OrderAndTake(Dictionary<string, List<int>> wantedData, int studentsToTake, Func<KeyValuePair<string, List<int>>, KeyValuePair<string, List<int>>, int> comparationFunc)
+        //private static void OrderAndTake(Dictionary<string, List<int>> wantedData, int studentsToTake, Func<KeyValuePair<string, List<int>>, KeyValuePair<string, List<int>>, int> comparisonFunc)
         //{
-        //    Dictionary<string, List<int>> studentsSorted = GetSortedStudents(wantedData, studentsToTake, comparationFunc);
+        //    Dictionary<string, List<int>> sortedStudents = GetSortedStudents(wantedData, studentsToTake, comparisonFunc);
         //}
 
-        //private static Dictionary<string, List<int>> GetSortedStudents(Dictionary<string, List<int>> wantedData, int studentsToTake, Func<KeyValuePair<string, List<int>>, KeyValuePair<string, List<int>>, int> comparisionFunc)
+        //private static Dictionary<string, List<int>> GetSortedStudents(Dictionary<string, List<int>> wantedData, int studentsToTake, Func<KeyValuePair<string, List<int>>, KeyValuePair<string, List<int>>, int> comparisonFunc)
         //{
         //    int studentsTaken = 0;
-        //    Dictionary<string, List<int>> studentsSorted = new Dictionary<string, List<int>>();
+        //    Dictionary<string, List<int>> sortedStudents = new Dictionary<string, List<int>>();
         //    KeyValuePair<string, List<int>> nextInOrder = new KeyValuePair<string, List<int>>();
         //    bool isSorted = false;
 
@@ -69,8 +67,8 @@ namespace BashSoft
         //        {
         //            if (!string.IsNullOrEmpty(nextInOrder.Key))
         //            {
-        //                int comparisonResult = comparisionFunc(studentScore, nextInOrder);
-        //                if (comparisonResult >= 0 && !studentsSorted.ContainsKey(studentScore.Key))
+        //                int comparisonResult = comparisonFunc(studentScore, nextInOrder);
+        //                if (comparisonResult >= 0 && !sortedStudents.ContainsKey(studentScore.Key))
         //                {
         //                    nextInOrder = studentScore;
         //                    isSorted = false;
@@ -78,7 +76,7 @@ namespace BashSoft
         //            }
         //            else
         //            {
-        //                if (!studentsSorted.ContainsKey(studentScore.Key))
+        //                if (!sortedStudents.ContainsKey(studentScore.Key))
         //                {
         //                    nextInOrder = studentScore;
         //                    isSorted = false;
@@ -88,13 +86,13 @@ namespace BashSoft
 
         //        if (!isSorted)
         //        {
-        //            studentsSorted.Add(nextInOrder.Key, nextInOrder.Value);
+        //            sortedStudents.Add(nextInOrder.Key, nextInOrder.Value);
         //            studentsTaken++;
         //            nextInOrder = new KeyValuePair<string, List<int>>();
         //        }
         //    }
 
-        //    return studentsSorted;
+        //    return sortedStudents;
         //}
 
         //private static int CompareInOrder(KeyValuePair<string, List<int>> firstValue, KeyValuePair<string, List<int>> secondValue)
