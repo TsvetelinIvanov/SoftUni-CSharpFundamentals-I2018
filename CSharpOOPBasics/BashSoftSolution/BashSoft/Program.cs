@@ -19,8 +19,8 @@ namespace BashSoft
             //Tester.CompareContent(@"C:\Users\User\Desktop\SoftUni\Uprajneniq\CSharpFundamentals.CSharpAdvanced\BashSoft-Resources\test2.txt",
             //@"C:\Users\User\Desktop\SoftUni\Uprajneniq\CSharpFundamentals.CSharpAdvanced\BashSoft-Resources\test3.txt");
 
-            //Tester.CompareContent(@"C:\Users\User\Desktop\SoftUni\Uprajneniq\CSharpFundamentals.CSharpAdvanced\BashSoft-Resources\actua.txt",
-            //@"C:\Users\User\Desktop\SoftUni\Uprajneniq\CSharpFundamentals.CSharpAdvanced\BashSoft-Resources\expecte.txt");
+            //Tester.CompareContent(@"C:\Users\User\Desktop\SoftUni\Uprajneniq\CSharpFundamentals.CSharpAdvanced\BashSoft-Resources\actual.txt",
+            //@"C:\Users\User\Desktop\SoftUni\Uprajneniq\CSharpFundamentals.CSharpAdvanced\BashSoft-Resources\expected.txt");
             
             //IOManager.CreateDirectoryInCurrentFolder("Pesho");
 
