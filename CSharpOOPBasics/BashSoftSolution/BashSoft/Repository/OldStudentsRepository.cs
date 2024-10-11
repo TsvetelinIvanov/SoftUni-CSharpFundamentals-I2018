@@ -96,7 +96,7 @@ namespace BashSoft
 
             if (!studentsByCourse.ContainsKey(corseName))
             {
-                OutputWriter.DisplayException(ExceptionMessages.InexistantStudentInDatabase);
+                OutputWriter.DisplayException(ExceptionMessages.InexistantCourseInDatabase);
                 
                 return false;
             }
