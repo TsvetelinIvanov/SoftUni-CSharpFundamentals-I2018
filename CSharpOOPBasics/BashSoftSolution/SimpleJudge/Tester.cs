@@ -1,6 +1,6 @@
-﻿using BashSoft;
 using System;
 using System.IO;
+using BashSoft;
 
 namespace SimpleJudge
 {
@@ -30,9 +30,10 @@ namespace SimpleJudge
 
         private static string GetMismatchPath(string expectedOutputPath)
         {
-            int indexOf = expectedOutputPath.LastIndexOf('\\');
-            string directoryPath = expectedOutputPath.Substring(0, indexOf);
+            int indexOflastSlash = expectedOutputPath.LastIndexOf('\\');
+            string directoryPath = expectedOutputPath.Substring(0, indexOflastSlash);
             string finalPath = directoryPath + @"Mismatches.txt";
+            
             return finalPath;
         }
 
@@ -46,7 +47,7 @@ namespace SimpleJudge
             {
                 hasMismatch = true;
                 minOutputLines = Math.Min(actualOutputLines.Length, expectedOutputLines.Length);
-                OutputWriter.WriteMessageOnNewLine(ExceptionMessages.ComparisionOfFilesWithDifferentSizes);
+                OutputWriter.WriteMessageOnNewLine(ExceptionMessages.ComparisonOfFilesWithDifferentSizes);
             }
 
             string[] mismatches = new string[minOutputLines];
@@ -78,7 +79,7 @@ namespace SimpleJudge
         {
             if (hasMismatch)
             {
-                foreach (var line in mismatches)
+                foreach (string line in mismatches)
                 {
                     OutputWriter.WriteMessageOnNewLine(line);
                 }
