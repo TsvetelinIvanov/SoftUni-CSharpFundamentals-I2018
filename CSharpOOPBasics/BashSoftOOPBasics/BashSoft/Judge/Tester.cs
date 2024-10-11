@@ -32,8 +32,8 @@ namespace BashSoft.Judge
 
         private string GetMismatchPath(string expectedOutputPath)
         {
-            int indexOf = expectedOutputPath.LastIndexOf('\\');
-            string directoryPath = expectedOutputPath.Substring(0, indexOf);
+            int indexOfLastSlash = expectedOutputPath.LastIndexOf('\\');
+            string directoryPath = expectedOutputPath.Substring(0, indexOfLastSlash);
             string finalPath = directoryPath + @"Mismatches.txt";
 
             return finalPath;
