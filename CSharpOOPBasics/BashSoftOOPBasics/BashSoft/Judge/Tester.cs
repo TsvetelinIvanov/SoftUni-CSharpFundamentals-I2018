@@ -53,7 +53,7 @@ namespace BashSoft.Judge
             }
 
             string[] mismatches = new string[minOutputLinesCount];
-            OutputWriter.WriteMessageOnNewLine("Compring files...");
+            OutputWriter.WriteMessageOnNewLine("Comparing files...");
             for (int i = 0; i < minOutputLinesCount; i++)
             {
                 string actualLine = actualOutputLines[i];
