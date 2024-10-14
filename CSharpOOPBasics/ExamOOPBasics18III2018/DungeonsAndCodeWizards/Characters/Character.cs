@@ -210,8 +210,7 @@ namespace DungeonsAndCodeWizards
 
         public override string ToString()
         {
-            return $"{this.Name} - HP: {this.Health}/{this.BaseHealth}, AP: {this.Armor}/{this.BaseArmor}, " +
-                $"Status: {this.TakeStatus()}";
+            return $"{this.Name} - HP: {this.Health}/{this.BaseHealth}, AP: {this.Armor}/{this.BaseArmor}, Status: {this.TakeStatus()}";
         }
 
         private string TakeStatus()
