@@ -9,9 +9,9 @@ namespace DungeonsAndCodeWizards
         public Character CreateCharacter(string factionString, string type, string name)
         //public Character CreateCharacter(string[] methodArgs)
         {
-            //string name = methodArgs[2];
-            //string type = methodArgs[1];            
             //string factionString = methodArgs[0];
+            //string type = methodArgs[1];
+            //string name = methodArgs[2];
 
             bool isValidFaction = Enum.TryParse(typeof(Faction), factionString, out object factionObjekt);
             if (!isValidFaction)
@@ -19,13 +19,13 @@ namespace DungeonsAndCodeWizards
                 throw new ArgumentException($"Invalid faction \"{factionString}\"!");
             }
 
-            Faction faction = (Faction)factionObjekt;
-
             //if (!Enum.TryParse<Faction>(factionString, out var faction))
             //{
             //    throw new ArgumentException($"Invalid faction \"{factionString}\"!");
             //}
 
+            Faction faction = (Faction)factionObjekt;
+            
             switch (type)
             {
                 case "Warrior":
