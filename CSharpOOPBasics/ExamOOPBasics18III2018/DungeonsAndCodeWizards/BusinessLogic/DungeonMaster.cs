@@ -13,7 +13,7 @@ namespace DungeonsAndCodeWizards.BusinessLogic
         private Stack<Item> items;
         private CharacterFactory characterFactory;
         private ItemFactory itemFactory;
-        private int lastSurvivorRoudsCount;
+        private int lastSurvivorRoundsCount;
 
         public DungeonMaster()
         {
@@ -58,9 +58,9 @@ namespace DungeonsAndCodeWizards.BusinessLogic
         {
             string characterName = args[0];
             Character character = FindCharacter(characterName);
-            //Character character = characters.FirstOrDefault(ch => ch.Name == characterName);
-            //Character character = cSharpCharacters.FirstOrDefault(ch => ch.Name == characterName) ??
-            //    javaCharacters.FirstOrDefault(ch => ch.Name == characterName);
+            //Character character = this.characters.FirstOrDefault(ch => ch.Name == characterName);
+            //Character character = this.cSharpCharacters.FirstOrDefault(ch => ch.Name == characterName) ??
+            //    this.javaCharacters.FirstOrDefault(ch => ch.Name == characterName);
             //if (character == null)
             //{
             //    throw new ArgumentException($"Character {characterName} not found!");
@@ -81,8 +81,8 @@ namespace DungeonsAndCodeWizards.BusinessLogic
         {
             string characterName = args[0];
             Character character = this.FindCharacter(characterName);
-            //Character character = cSharpCharacters.FirstOrDefault(ch => ch.Name == characterName) ??
-            //    javaCharacters.FirstOrDefault(ch => ch.Name == characterName);
+            //Character character = this.cSharpCharacters.FirstOrDefault(ch => ch.Name == characterName) ??
+            //    this.javaCharacters.FirstOrDefault(ch => ch.Name == characterName);
             //if (character == null)
             //{
             //    throw new ArgumentException($"Character {characterName} not found!");
@@ -102,16 +102,16 @@ namespace DungeonsAndCodeWizards.BusinessLogic
             string itemName = args[2];
 
             Character giver = this.FindCharacter(giverName);
-            //Character giver = cSharpCharacters.FirstOrDefault(ch => ch.Name == giverName) ??
-            //    javaCharacters.FirstOrDefault(ch => ch.Name == giverName);
+            //Character giver = this.cSharpCharacters.FirstOrDefault(ch => ch.Name == giverName) ??
+            //    this.javaCharacters.FirstOrDefault(ch => ch.Name == giverName);
             //if (giver == null)
             //{
-            //    throw new ArgumentException($"Giver {giver} not found!");
+            //    throw new ArgumentException($"Giver {giverName} not found!");
             //}
 
             Character receiver = this.FindCharacter(receiverName);
-            //Character receiver = cSharpCharacters.FirstOrDefault(ch => ch.Name == receiverName) ??
-            //    javaCharacters.FirstOrDefault(ch => ch.Name == receiverName);
+            //Character receiver = this.cSharpCharacters.FirstOrDefault(ch => ch.Name == receiverName) ??
+            //    this.javaCharacters.FirstOrDefault(ch => ch.Name == receiverName);
             //if (receiver == null)
             //{
             //    throw new ArgumentException($"Receiver {receiverName} not found!");
@@ -129,18 +129,18 @@ namespace DungeonsAndCodeWizards.BusinessLogic
             string receiverName = args[1];
             string itemName = args[2];
 
-            Character giver = FindCharacter(giverName);
-            //Character giver = cSharpCharacters.FirstOrDefault(ch => ch.Name == giverName) ??
-            //    javaCharacters.FirstOrDefault(ch => ch.Name == giverName);
+            Character giver = this.FindCharacter(giverName);
+            //Character giver = this.cSharpCharacters.FirstOrDefault(ch => ch.Name == giverName) ??
+            //    this.javaCharacters.FirstOrDefault(ch => ch.Name == giverName);
             //if (giver == null)
             //{
             //    throw new ArgumentException($"Character {giverName} not found!");
             //    //throw new ArgumentException($"Giver {giverName} not found!");
             //}
 
-            Character receiver = FindCharacter(receiverName);
-            //Character receiver = cSharpCharacters.FirstOrDefault(ch => ch.Name == receiverName) ??
-            //    javaCharacters.FirstOrDefault(ch => ch.Name == receiverName);
+            Character receiver = this.FindCharacter(receiverName);
+            //Character receiver = this.cSharpCharacters.FirstOrDefault(ch => ch.Name == receiverName) ??
+            //    this.javaCharacters.FirstOrDefault(ch => ch.Name == receiverName);
             //if (receiver == null)
             //{
             //    throw new ArgumentException($"Character {receiverName} not found!");
@@ -162,9 +162,11 @@ namespace DungeonsAndCodeWizards.BusinessLogic
         public string GetStats()
         {
             //List<Character> characters = cSharpCharacters.Concat(javaCharacters).ToList();
-            List<Character> liveCharacters = characters.Where(ch => ch.IsAlive).OrderByDescending(ch => ch.Health).ToList();
-            List<Character> deadCharacters = characters.Where(ch => !ch.IsAlive).OrderByDescending(ch => ch.Health).ToList();
-            List<Character> orderedCharacters = liveCharacters.Concat(deadCharacters).ToList();
+            //List<Character> aliveCharacters = characters.Where(ch => ch.IsAlive).OrderByDescending(ch => ch.Health).ToList();
+            //List<Character> deadCharacters = characters.Where(ch => !ch.IsAlive).OrderByDescending(ch => ch.Health).ToList();
+            List<Character> aliveCharacters = this.characters.Where(ch => ch.IsAlive).OrderByDescending(ch => ch.Health).ToList();
+            List<Character> deadCharacters = this.characters.Where(ch => !ch.IsAlive).OrderByDescending(ch => ch.Health).ToList();
+            List<Character> orderedCharacters = aliveCharacters.Concat(deadCharacters).ToList();
 
             StringBuilder getStatsBuilder = new StringBuilder();
             foreach (Character character in orderedCharacters)
@@ -180,18 +182,18 @@ namespace DungeonsAndCodeWizards.BusinessLogic
             string attackerName = args[0];
             string receiverName = args[1];
 
-            Character attacker = FindCharacter(attackerName);
-            //Character attacker = cSharpCharacters.FirstOrDefault(ch => ch.Name == attackerName) ??
-            //    javaCharacters.FirstOrDefault(ch => ch.Name == attackerName);
+            Character attacker = this.FindCharacter(attackerName);
+            //Character attacker = this.cSharpCharacters.FirstOrDefault(ch => ch.Name == attackerName) ??
+            //    this.javaCharacters.FirstOrDefault(ch => ch.Name == attackerName);
             //if (attacker == null)
             //{
             //    throw new ArgumentException($"Character {attackerName} not found!");
-            //    //throw new ArgumentException($"Attacker {attacker} not found!");
+            //    //throw new ArgumentException($"Attacker {attackerName} not found!");
             //}
 
-            Character receiver = FindCharacter(receiverName);
-            //Character receiver = cSharpCharacters.FirstOrDefault(ch => ch.Name == receiverName) ??
-            //   javaCharacters.FirstOrDefault(ch => ch.Name == receiverName);
+            Character receiver = this.FindCharacter(receiverName);
+            //Character receiver = this.cSharpCharacters.FirstOrDefault(ch => ch.Name == receiverName) ??
+            //   this.javaCharacters.FirstOrDefault(ch => ch.Name == receiverName);
             //if (receiver == null)
             //{
             //    throw new ArgumentException($"Character {receiverName} not found!");
@@ -211,10 +213,8 @@ namespace DungeonsAndCodeWizards.BusinessLogic
             attackerWarrior.Attack(receiver);
 
             StringBuilder attackBuilder = new StringBuilder();
-            attackBuilder.Append($"{attacker.Name} attacks {receiver.Name} " +
-                $"for {attacker.AbilityPoints} hit points! {receiver.Name} has " +
+            attackBuilder.Append($"{attacker.Name} attacks {receiver.Name} for {attacker.AbilityPoints} hit points! {receiver.Name} has " +
                 $"{receiver.Health}/{receiver.BaseHealth} HP and {receiver.Armor}/{receiver.BaseArmor} AP left!");
-
             if (!receiver.IsAlive)
             {
                 attackBuilder.Append($"{Environment.NewLine}{receiver.Name} is dead!");
@@ -228,18 +228,18 @@ namespace DungeonsAndCodeWizards.BusinessLogic
             string healerName = args[0];
             string receiverName = args[1];
 
-            Character healer = FindCharacter(healerName);
-            //Character healer = cSharpCharacters.FirstOrDefault(ch => ch.Name == healerName) ??
-            //    javaCharacters.FirstOrDefault(ch => ch.Name == healerName);
+            Character healer = this.FindCharacter(healerName);
+            //Character healer = this.cSharpCharacters.FirstOrDefault(ch => ch.Name == healerName) ??
+            //    this.javaCharacters.FirstOrDefault(ch => ch.Name == healerName);
             //if (healer == null)
             //{
             //    throw new ArgumentException($"Character {healerName} not found!");
-            //    //throw new ArgumentException($"Healer {healer} not found!");
+            //    //throw new ArgumentException($"Healer {healerName} not found!");
             //}
 
-            Character receiver = FindCharacter(receiverName);
-            //Character receiver = cSharpCharacters.FirstOrDefault(ch => ch.Name == receiverName) ??
-            //   javaCharacters.FirstOrDefault(ch => ch.Name == receiverName);
+            Character receiver = this.FindCharacter(receiverName);
+            //Character receiver = this.cSharpCharacters.FirstOrDefault(ch => ch.Name == receiverName) ??
+            //   this.javaCharacters.FirstOrDefault(ch => ch.Name == receiverName);
             //if (receiver == null)
             //{
             //    throw new ArgumentException($"Character {receiverName} not found!");
@@ -258,29 +258,27 @@ namespace DungeonsAndCodeWizards.BusinessLogic
 
             healerCleric.Heal(receiver);
 
-            return $"{healer.Name} heals {receiver.Name} for {healer.AbilityPoints}! " +
-                $"{receiver.Name} has {receiver.Health} health now!";
+            return $"{healer.Name} heals {receiver.Name} for {healer.AbilityPoints}! {receiver.Name} has {receiver.Health} health now!";
 
         }
 
         //public string EndTurn()
         public string EndTurn(string[] args)
         {
-            //List<Character> characters = cSharpCharacters.Concat(javaCharacters).ToList();            
-            //List<Character> liveCharacters = characters.Where(ch => ch.IsAlive)
-            //    .OrderByDescending(ch => ch.Health).ToList();
-            List<Character> liveCharacters = characters.Where(ch => ch.IsAlive).ToList();
+            //List<Character> characters = this.cSharpCharacters.Concat(this.javaCharacters).ToList();            
+            //List<Character> aliveCharacters = characters.Where(ch => ch.IsAlive).OrderByDescending(ch => ch.Health).ToList();
+            List<Character> aliveCharacters = this.characters.Where(ch => ch.IsAlive).ToList();
             StringBuilder endTurnBuilder = new StringBuilder();
-            foreach (Character character in liveCharacters)
+            foreach (Character character in aliveCharacters)
             {
                 double healthBeforeRest = character.Health;
                 character.Rest();
                 endTurnBuilder.AppendLine($"{character.Name} rests ({healthBeforeRest} => {character.Health})");
             }
 
-            if (liveCharacters.Count <= 1)
+            if (aliveCharacters.Count <= 1)
             {
-                this.lastSurvivorRoudsCount++;
+                this.lastSurvivorRoundsCount++;
             }
 
             return endTurnBuilder.ToString().TrimEnd();
@@ -288,12 +286,11 @@ namespace DungeonsAndCodeWizards.BusinessLogic
 
         public bool IsGameOver()
         {
-            //List<Character> characters = cSharpCharacters.Concat(javaCharacters).ToList();            
-            //List<Character> liveCharacters = characters.Where(ch => ch.IsAlive)
-            //    .OrderByDescending(ch => ch.Health).ToList();
-            List<Character> liveCharacters = characters.Where(ch => ch.IsAlive).ToList();
-            bool isOneOrZeroSurvivor = liveCharacters.Count <= 1;
-            bool isGameOverRound = this.lastSurvivorRoudsCount > 1;
+            //List<Character> characters = this.cSharpCharacters.Concat(this.javaCharacters).ToList();            
+            //List<Character> aliveCharacters = characters.Where(ch => ch.IsAlive).OrderByDescending(ch => ch.Health).ToList();
+            List<Character> aliveCharacters = this.characters.Where(ch => ch.IsAlive).ToList();
+            bool isOneOrZeroSurvivor = aliveCharacters.Count <= 1;
+            bool isGameOverRound = this.lastSurvivorRoundsCount > 1;
 
             return isOneOrZeroSurvivor && isGameOverRound;
         }
