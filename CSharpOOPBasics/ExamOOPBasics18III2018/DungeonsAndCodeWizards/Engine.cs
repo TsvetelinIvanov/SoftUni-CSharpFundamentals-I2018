@@ -1,6 +1,6 @@
-﻿using DungeonsAndCodeWizards.BusinessLogic;
 using System;
 using System.Linq;
+﻿using DungeonsAndCodeWizards.BusinessLogic;
 
 namespace DungeonsAndCodeWizards
 {
@@ -21,7 +21,6 @@ namespace DungeonsAndCodeWizards
         internal void Run()
         {
             this.isRunning = true;
-
             while (this.isRunning)
             {
                 string command = this.reader.ReadLine();
