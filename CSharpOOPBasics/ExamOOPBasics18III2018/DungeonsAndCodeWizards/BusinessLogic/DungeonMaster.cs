@@ -27,9 +27,9 @@ namespace DungeonsAndCodeWizards.BusinessLogic
 
         public string JoinParty(string[] args)
         {
-            string name = args[2];
-            string type = args[1];
             string factionString = args[0];
+            string type = args[1];
+            string name = args[2];
             Character character = characterFactory.CreateCharacter(factionString, type, name);
             //if (character.Faction == Faction.CSharp)
             //{
@@ -80,7 +80,7 @@ namespace DungeonsAndCodeWizards.BusinessLogic
         public string UseItem(string[] args)
         {
             string characterName = args[0];
-            Character character = FindCharacter(characterName);
+            Character character = this.FindCharacter(characterName);
             //Character character = cSharpCharacters.FirstOrDefault(ch => ch.Name == characterName) ??
             //    javaCharacters.FirstOrDefault(ch => ch.Name == characterName);
             //if (character == null)
@@ -101,7 +101,7 @@ namespace DungeonsAndCodeWizards.BusinessLogic
             string receiverName = args[1];
             string itemName = args[2];
 
-            Character giver = FindCharacter(giverName);
+            Character giver = this.FindCharacter(giverName);
             //Character giver = cSharpCharacters.FirstOrDefault(ch => ch.Name == giverName) ??
             //    javaCharacters.FirstOrDefault(ch => ch.Name == giverName);
             //if (giver == null)
@@ -109,7 +109,7 @@ namespace DungeonsAndCodeWizards.BusinessLogic
             //    throw new ArgumentException($"Giver {giver} not found!");
             //}
 
-            Character receiver = FindCharacter(receiverName);
+            Character receiver = this.FindCharacter(receiverName);
             //Character receiver = cSharpCharacters.FirstOrDefault(ch => ch.Name == receiverName) ??
             //    javaCharacters.FirstOrDefault(ch => ch.Name == receiverName);
             //if (receiver == null)
