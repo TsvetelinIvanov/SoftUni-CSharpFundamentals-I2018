@@ -19,6 +19,7 @@ namespace MusicShopManager.Engine
                 }
 
                 yield return currentLine;
+                
                 currentLine = Console.ReadLine();
             }
         }
