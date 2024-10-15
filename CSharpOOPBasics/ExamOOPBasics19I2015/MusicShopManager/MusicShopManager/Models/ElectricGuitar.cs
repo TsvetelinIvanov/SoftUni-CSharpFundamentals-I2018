@@ -1,6 +1,6 @@
-﻿using MusicShopManager.Interfaces;
 using System;
 using System.Text;
+﻿using MusicShopManager.Interfaces;
 
 namespace MusicShopManager.Models
 {
@@ -9,7 +9,8 @@ namespace MusicShopManager.Models
         private int numberOfAdapters;
         private int numberOfFrets;
 
-        public ElectricGuitar(string make, string model, decimal price, string color, string bodyWood, string fingerboardWood, int numberOfAdapters, int numberOfFrets) : base(make, model, price, color, bodyWood, fingerboardWood)
+        public ElectricGuitar(string make, string model, decimal price, string color, string bodyWood, string fingerboardWood, int numberOfAdapters, int numberOfFrets)
+            : base(make, model, price, color, bodyWood, fingerboardWood)
         {
             this.NumberOfAdapters = numberOfAdapters;
             this.NumberOfFrets = numberOfFrets;
@@ -38,7 +39,7 @@ namespace MusicShopManager.Models
                 if (value <= 0)
                 {
                     //throw new ArgumentException("The number of frets of a guitar must be positive.");
-                    throw new ArgumentException("The number of frets of a electronic guitar must be positive.");
+                    throw new ArgumentException("The number of frets of an electronic guitar must be positive.");
                 }
 
                 this.numberOfFrets = value;
