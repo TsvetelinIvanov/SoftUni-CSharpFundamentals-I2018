@@ -1,6 +1,6 @@
-﻿using MusicShopManager.Interfaces;
 using System;
 using System.Text;
+﻿using MusicShopManager.Interfaces;
 
 namespace MusicShopManager.Models
 {
