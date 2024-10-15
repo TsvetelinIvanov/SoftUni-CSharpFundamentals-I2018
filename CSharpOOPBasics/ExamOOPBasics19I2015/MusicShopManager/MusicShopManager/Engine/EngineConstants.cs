@@ -19,9 +19,9 @@
         internal const string MusicShopExistsMessage = "The music shop {0} already exists";
         internal const string ArticleExistsMessage = "The article {0} already exists";
         internal const string ArticleExistsInShopMessage = "The article {0} already exists in shop {1}";
-        internal const string ArticleDoesNotExistInShopMessage = "The article {0} does not exist in shop {1}";
         internal const string MusicShopDoesNotExistMessage = "The music shop {0} does not exist";
         internal const string ArticleDoesNotExistMessage = "The article {0} does not exist";
+        internal const string ArticleDoesNotExistInShopMessage = "The article {0} does not exist in shop {1}";
         #endregion
 
         #region Success messages
