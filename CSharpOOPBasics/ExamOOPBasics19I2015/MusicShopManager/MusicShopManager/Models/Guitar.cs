@@ -1,6 +1,6 @@
-﻿using MusicShopManager.Interfaces;
 using System;
 using System.Text;
+﻿using MusicShopManager.Interfaces;
  
 namespace MusicShopManager.Models
 {
@@ -11,7 +11,8 @@ namespace MusicShopManager.Models
         private string bodyWood;
         private string fingerboardWood;
 
-        protected Guitar(string make, string model, decimal price, string color, string bodyWood, string fingerboardWood) : base(make, model, price, color)
+        protected Guitar(string make, string model, decimal price, string color, string bodyWood, string fingerboardWood)
+            : base(make, model, price, color)
         {
             this.BodyWood = bodyWood;
             this.FingerboardWood = fingerboardWood;
