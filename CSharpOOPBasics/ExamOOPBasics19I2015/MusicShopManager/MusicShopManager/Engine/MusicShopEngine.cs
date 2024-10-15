@@ -106,31 +106,6 @@ namespace MusicShopManager.Engine
             return commandResults;
         }
 
-        private bool ParseBoolean(string boolValue)
-        {
-            if (boolValue == "yes")
-            {
-                return true;
-            }
-            else if (boolValue == "no")
-            {
-                return false;
-            }
-            else
-            {
-                throw new ArgumentException("Invalid boolean value provided: " + boolValue);
-            }
-        }
-
-        private void EnsureUniqueArticle(string make, string model)
-        {
-            string name = make + " " + model;
-            if (this.articles.ContainsKey(name))
-            {
-                throw new ArgumentException(EngineConstants.ArticleExistsMessage, name);
-            }
-        }
-
         private string CreateMusicShop(string name)
         {
             if (this.musicShops.ContainsKey(name))
@@ -288,6 +263,31 @@ namespace MusicShopManager.Engine
             }
 
             return this.musicShops[shopName].ListArticles();
+        }
+
+        private bool ParseBoolean(string boolValue)
+        {
+            if (boolValue == "yes")
+            {
+                return true;
+            }
+            else if (boolValue == "no")
+            {
+                return false;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid boolean value provided: " + boolValue);
+            }
+        }
+
+        private void EnsureUniqueArticle(string make, string model)
+        {
+            string name = make + " " + model;
+            if (this.articles.ContainsKey(name))
+            {
+                throw new ArgumentException(EngineConstants.ArticleExistsMessage, name);
+            }
         }
     }
 }
