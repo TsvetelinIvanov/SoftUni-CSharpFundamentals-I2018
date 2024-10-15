@@ -6,7 +6,8 @@ namespace MusicShopManager.Models
     {
         private const int DefaultNumberOfStrings = 4;
 
-        public BassGuitar(string make, string model, decimal price, string color, string bodyWood, string figerboardWood) : base(make, model, price, color, bodyWood, figerboardWood)
+        public BassGuitar(string make, string model, decimal price, string color, string bodyWood, string figerboardWood)
+            : base(make, model, price, color, bodyWood, figerboardWood)
         {
 
         }
