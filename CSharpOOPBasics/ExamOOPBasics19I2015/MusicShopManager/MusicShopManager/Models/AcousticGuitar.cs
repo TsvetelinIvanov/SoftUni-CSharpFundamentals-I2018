@@ -1,11 +1,12 @@
-﻿using MusicShopManager.Interfaces;
 using System.Text;
+using MusicShopManager.Interfaces;
 
 namespace MusicShopManager.Models
 {
     public class AcousticGuitar : Guitar, IAcousticGuitar
     {
-        public AcousticGuitar(string make, string model, decimal price, string color, string bodyWood, string fingerboardWood, bool caseIncluded, StringMaterial stringMaterial) : base(make, model, price, color, bodyWood, fingerboardWood)
+        public AcousticGuitar(string make, string model, decimal price, string color, string bodyWood, string fingerboardWood, bool caseIncluded, StringMaterial stringMaterial)
+            : base(make, model, price, color, bodyWood, fingerboardWood)
         {
             this.CaseIncluded = caseIncluded;
             this.StringMaterial = stringMaterial;
