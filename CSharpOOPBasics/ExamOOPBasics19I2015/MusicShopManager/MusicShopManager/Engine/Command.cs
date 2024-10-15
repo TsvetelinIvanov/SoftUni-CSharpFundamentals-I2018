@@ -49,14 +49,13 @@ namespace MusicShopManager.Engine
         private void TranslateInput(string input)
         {
             int parametersBeginning = input.IndexOf(CommandNameSeparator);
-
             this.Name = input.Substring(0, parametersBeginning);
             string[] parametersKeysAndValues = input.Substring(parametersBeginning + 1, input.Length - parametersBeginning - 2)
                 .Split(new[] { CommandParameterSeparator }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string parameter in parametersKeysAndValues)
             {
-                string[] splitedParameter = parameter.Split(new[] { CommandValueSeparator }, StringSplitOptions.RemoveEmptyEntries);
-                this.Parameters.Add(splitedParameter[0], splitedParameter[1]);
+                string[] splittedParameter = parameter.Split(new[] { CommandValueSeparator }, StringSplitOptions.RemoveEmptyEntries);
+                this.Parameters.Add(splittedParameter[0], splittedParameter[1]);
             }
         }
 
