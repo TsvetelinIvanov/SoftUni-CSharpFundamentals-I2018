@@ -1,8 +1,8 @@
-﻿using MusicShopManager.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MusicShopManager.Interfaces;
 
 namespace MusicShopManager.Models
 {
@@ -55,6 +55,7 @@ namespace MusicShopManager.Models
             if (!this.Articles.Any())
             {
                 musicShopBuilder.AppendLine("The shop is empty. Come back soon.");
+                
                 return musicShopBuilder.ToString();
             }
 
@@ -84,16 +85,16 @@ namespace MusicShopManager.Models
             }
             
             articles = articles.OrderBy(a => a.Make + " " + a.Model);
-            StringBuilder articlesAsStringBuilder = new StringBuilder();
-            articlesAsStringBuilder.AppendFormat("{0} {1} {0}", new string('-', 5), title)
+            StringBuilder articlesBuilder = new StringBuilder();
+            articlesBuilder.AppendFormat("{0} {1} {0}", new string('-', 5), title)
                 .AppendLine();
             foreach (IArticle article in articles)
             {
-                //articlesAsStringBuilder.Append(article.ToString());
-                articlesAsStringBuilder.Append(article);
+                //articlesBuilder.Append(article.ToString());
+                articlesBuilder.Append(article);
             }
 
-            return articlesAsStringBuilder.ToString();
+            return articlesBuilder.ToString();
         }
     }
 }
