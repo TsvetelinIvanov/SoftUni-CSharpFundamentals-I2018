@@ -2,5 +2,6 @@
 {
     public interface IBassGuitar : IGuitar
     {
+        
     }
 }
