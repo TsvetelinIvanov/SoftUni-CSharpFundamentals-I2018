@@ -77,6 +77,68 @@ namespace MyTunesShop
             this.mediaSupplies.Add(album, new SalesInfo());
             this.Printer.PrintLine("Album {0} by {1} added successfully", album.Title, performer.Name);
         }
+        
+        protected override void ExecuteInsertPerformerCommand(string[] commandWords)
+        {
+            switch (commandWords[2])
+            {
+                case "band":
+                    IBand band = new Band(commandWords[3]);
+                    this.InsertPerformer(band);
+                    break;
+                default:
+                    base.ExecuteInsertPerformerCommand(commandWords);
+                    break;
+            }
+        }
+
+        protected override void ExecuteSupplyCommand(string[] commandWords)
+        {
+            switch (commandWords[1])
+            {
+                case "album":
+                    IAlbum album = this.media.FirstOrDefault(a => a is IAlbum && a.Title == commandWords[2]) as IAlbum;
+                    if (album == null)
+                    {
+                        Printer.PrintLine("The album does not exist in the database.");
+                        
+                        return;
+                    }
+
+                    int quantity = int.Parse(commandWords[3]);
+                    this.mediaSupplies[album].Supply(quantity);
+                    
+                    this.Printer.PrintLine("{0} items of album {1} successfully supplied.", quantity, album.Title);
+                    break;
+                default:
+                    base.ExecuteSupplyCommand(commandWords);
+                    break;
+            }
+        }
+
+        protected override void ExecuteSellCommand(string[] commandWords)
+        {
+            switch (commandWords[1])
+            {
+                case "album":
+                    IMedia album = this.media.FirstOrDefault(a => a is IAlbum && a.Title == commandWords[2]);
+                    if (album == null)
+                    {
+                        this.Printer.PrintLine("The album does not exist in the database.");
+                        
+                        return;
+                    }
+
+                    int quantity = int.Parse(commandWords[3]);
+                    this.mediaSupplies[album].Sell(quantity);
+                    
+                    this.Printer.PrintLine("{0} items of album {1} successfully sold.", quantity, album.Title);
+                    break;
+                default:
+                    base.ExecuteSellCommand(commandWords);
+                    break;
+            }
+        }
 
         protected override void ExecuteReportMediaCommand(string[] commandWords)
         {
@@ -168,68 +230,6 @@ namespace MyTunesShop
             }
 
             return bandInfoBuilder.ToString();
-        }
-
-        protected override void ExecuteInsertPerformerCommand(string[] commandWords)
-        {
-            switch (commandWords[2])
-            {
-                case "band":
-                    IBand band = new Band(commandWords[3]);
-                    this.InsertPerformer(band);
-                    break;
-                default:
-                    base.ExecuteInsertPerformerCommand(commandWords);
-                    break;
-            }
-        }
-
-        protected override void ExecuteSupplyCommand(string[] commandWords)
-        {
-            switch (commandWords[1])
-            {
-                case "album":
-                    IAlbum album = this.media.FirstOrDefault(a => a is IAlbum && a.Title == commandWords[2]) as IAlbum;
-                    if (album == null)
-                    {
-                        Printer.PrintLine("The album does not exist in the database.");
-                        
-                        return;
-                    }
-
-                    int quantity = int.Parse(commandWords[3]);
-                    this.mediaSupplies[album].Supply(quantity);
-                    
-                    this.Printer.PrintLine("{0} items of album {1} successfully supplied.", quantity, album.Title);
-                    break;
-                default:
-                    base.ExecuteSupplyCommand(commandWords);
-                    break;
-            }
-        }
-
-        protected override void ExecuteSellCommand(string[] commandWords)
-        {
-            switch (commandWords[1])
-            {
-                case "album":
-                    IMedia album = this.media.FirstOrDefault(a => a is IAlbum && a.Title == commandWords[2]);
-                    if (album == null)
-                    {
-                        this.Printer.PrintLine("The album does not exist in the database.");
-                        
-                        return;
-                    }
-
-                    int quantity = int.Parse(commandWords[3]);
-                    this.mediaSupplies[album].Sell(quantity);
-                    
-                    this.Printer.PrintLine("{0} items of album {1} successfully sold.", quantity, album.Title);
-                    break;
-                default:
-                    base.ExecuteSellCommand(commandWords);
-                    break;
-            }
         }
 
         protected override void ExecuteRateCommand(string[] commandWords)
