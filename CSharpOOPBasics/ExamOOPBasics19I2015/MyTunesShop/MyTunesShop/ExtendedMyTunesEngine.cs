@@ -140,54 +140,6 @@ namespace MyTunesShop
             }
         }
 
-        protected override void ExecuteReportMediaCommand(string[] commandWords)
-        {
-            switch (commandWords[2])
-            {
-                case "album":
-                    IAlbum album = this.media.FirstOrDefault(a => a is IAlbum && a.Title == commandWords[3]) as IAlbum;
-                    if (album == null)
-                    {
-                        Printer.PrintLine("The album does not exist in the database.");
-                        
-                        return;
-                    }
-
-                    this.Printer.PrintLine(this.GetAlbumReport(album));
-                    break;
-                default:
-                    base.ExecuteReportMediaCommand(commandWords);
-                    break;
-            }
-        }
-
-        private string GetAlbumReport(IAlbum album)
-        {
-            SalesInfo albumSalesInfo = this.mediaSupplies[album];
-            StringBuilder albumInfoBuilder = new StringBuilder();
-            albumInfoBuilder.AppendFormat("{0} ({1}) by {2}", album.Title, album.Year, album.Performer.Name)
-                .AppendLine()
-                .AppendFormat("Genre: {0}, Price: ${1:F2}", album.Genre, album.Price)
-                .AppendLine()
-                //.AppendFormat("Rating: {0}", album.Songs.Select(s => s.Ratings.Sum()).Sum())
-                //.AppendLine()
-                .AppendFormat("Supplies: {0}, Sold: {1}", albumSalesInfo.Supplies, albumSalesInfo.QuantitySold)
-                .AppendLine();
-
-            if (album.Songs.Any())
-            {
-                IEnumerable<string> songs = album.Songs.Select(s => s.Title + " (" + s.Duration + ")");
-                albumInfoBuilder.AppendLine("Songs:")
-                    .Append(string.Join(Environment.NewLine, songs));
-            }
-            else
-            {
-                albumInfoBuilder.Append("No songs");
-            }
-
-            return albumInfoBuilder.ToString();
-        }
-
         protected override void ExecuteReportPerformerCommand(string[] commandWords)
         {
             switch (commandWords[2])
@@ -230,6 +182,56 @@ namespace MyTunesShop
             }
 
             return bandInfoBuilder.ToString();
+        }
+
+        protected override void ExecuteReportMediaCommand(string[] commandWords)
+        {
+            switch (commandWords[2])
+            {
+                case "album":
+                    IAlbum album = this.media.FirstOrDefault(a => a is IAlbum && a.Title == commandWords[3]) as IAlbum;
+                    if (album == null)
+                    {
+                        Printer.PrintLine("The album does not exist in the database.");
+                        
+                        return;
+                    }
+
+                    this.Printer.PrintLine(this.GetAlbumReport(album));
+                    break;
+                default:
+                    base.ExecuteReportMediaCommand(commandWords);
+                    break;
+            }
+        }
+
+        private string GetAlbumReport(IAlbum album)
+        {
+            SalesInfo albumSalesInfo = this.mediaSupplies[album];
+            StringBuilder albumInfoBuilder = new StringBuilder();
+            albumInfoBuilder.AppendFormat("{0} ({1}) by {2}", album.Title, album.Year, album.Performer.Name)
+                .AppendLine()
+                .AppendFormat("Genre: {0}, Price: ${1:F2}", album.Genre, album.Price)
+                .AppendLine()
+                //.AppendFormat("Rating: {0}", album.Songs.Select(s => s.Ratings.Sum()).Sum())
+                //.AppendLine()
+                //.AppendFormat("Rating: {0}", album.Songs.Select(s => s.Ratings.Average()).Average())
+                //.AppendLine()
+                .AppendFormat("Supplies: {0}, Sold: {1}", albumSalesInfo.Supplies, albumSalesInfo.QuantitySold)
+                .AppendLine();
+
+            if (album.Songs.Any())
+            {
+                IEnumerable<string> songs = album.Songs.Select(s => s.Title + " (" + s.Duration + ")");
+                albumInfoBuilder.AppendLine("Songs:")
+                    .Append(string.Join(Environment.NewLine, songs));
+            }
+            else
+            {
+                albumInfoBuilder.Append("No songs");
+            }
+
+            return albumInfoBuilder.ToString();
         }
 
         protected override void ExecuteRateCommand(string[] commandWords)
