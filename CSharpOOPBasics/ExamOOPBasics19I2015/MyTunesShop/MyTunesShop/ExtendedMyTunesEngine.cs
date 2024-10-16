@@ -49,28 +49,6 @@ namespace MyTunesShop
             }
         }
 
-        protected override void ExecuteRateCommand(string[] commandWords)
-        {
-            switch (commandWords[1])
-            {
-                case "song":
-                    ISong song = this.media.FirstOrDefault(s => s is ISong && s.Title == commandWords[2]) as ISong;
-                    if (song == null)
-                    {
-                        Printer.PrintLine("The song does not exist in the database.");
-                        
-                        return;
-                    }
-
-                    song.PlaceRating(int.Parse(commandWords[3]));
-                    this.Printer.PrintLine("The rating has been placed successfully.");
-                    break;
-                default:
-                    base.ExecuteRateCommand(commandWords);
-                    break;
-            }
-        }
-
         protected override void ExecuteInsertMediaCommand(string[] commandWords)
         {
             switch (commandWords[2])
@@ -250,6 +228,28 @@ namespace MyTunesShop
                     break;
                 default:
                     base.ExecuteSellCommand(commandWords);
+                    break;
+            }
+        }
+
+        protected override void ExecuteRateCommand(string[] commandWords)
+        {
+            switch (commandWords[1])
+            {
+                case "song":
+                    ISong song = this.media.FirstOrDefault(s => s is ISong && s.Title == commandWords[2]) as ISong;
+                    if (song == null)
+                    {
+                        Printer.PrintLine("The song does not exist in the database.");
+                        
+                        return;
+                    }
+
+                    song.PlaceRating(int.Parse(commandWords[3]));
+                    this.Printer.PrintLine("The rating has been placed successfully.");
+                    break;
+                default:
+                    base.ExecuteRateCommand(commandWords);
                     break;
             }
         }
