@@ -16,6 +16,7 @@ namespace MyTunesShop
                     if (album == null)
                     {
                         this.Printer.PrintLine("The album does not exist in the database.");
+                        
                         return;
                     }
 
@@ -23,6 +24,7 @@ namespace MyTunesShop
                     if (song == null)
                     {
                         this.Printer.PrintLine("The song does not exist in the database.");
+                        
                         return;
                     }
 
@@ -34,6 +36,7 @@ namespace MyTunesShop
                     if (band == null)
                     {
                         this.Printer.PrintLine("The band does not exist in the database.");
+                        
                         return;
                     }
 
@@ -55,6 +58,7 @@ namespace MyTunesShop
                     if (song == null)
                     {
                         Printer.PrintLine("The song does not exist in the database.");
+                        
                         return;
                     }
 
@@ -76,6 +80,7 @@ namespace MyTunesShop
                     if (performer == null)
                     {
                         this.Printer.PrintLine("The performer does not exist in the database.");
+                        
                         return;
                     }
 
@@ -104,6 +109,7 @@ namespace MyTunesShop
                     if (album == null)
                     {
                         Printer.PrintLine("The album does not exist in the database.");
+                        
                         return;
                     }
 
@@ -151,6 +157,7 @@ namespace MyTunesShop
                     if (band == null)
                     {
                         Printer.PrintLine("The band does not exist in the database.");
+                        
                         return;
                     }
 
@@ -172,10 +179,9 @@ namespace MyTunesShop
             }
 
             bandInfoBuilder.AppendLine();
-
             if (band.Songs.Any())
             {
-                IOrderedEnumerable<string> songs = band.Songs.Select(s => s.Title).OrderBy(s => s);
+                IOrderedEnumerable<string> songs = band.Songs.Select(s => s.Title).OrderBy(t => t);
                 bandInfoBuilder.Append(string.Join("; ", songs));
             }
             else
