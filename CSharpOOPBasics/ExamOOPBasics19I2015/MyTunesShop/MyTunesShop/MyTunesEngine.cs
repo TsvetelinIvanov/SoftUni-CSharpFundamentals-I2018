@@ -103,6 +103,7 @@ namespace MyTunesShop
                     if (performer == null)
                     {
                         this.Printer.PrintLine("The performer does not exist in the database.");
+                        
                         return;
                     }
 
@@ -119,6 +120,7 @@ namespace MyTunesShop
             this.media.Add(song);
             this.mediaSupplies.Add(song, new SalesInfo());
             performer.Songs.Add(song);
+            
             this.Printer.PrintLine("Song {0} by {1} added successfully", song.Title, performer.Name);
         }
 
@@ -131,11 +133,13 @@ namespace MyTunesShop
                     if (song == null)
                     {
                         this.Printer.PrintLine("The song does not exist in the database.");
+                        
                         return;
                     }
 
                     int quantity = int.Parse(commandWords[3]);
                     this.mediaSupplies[song].Supply(quantity);
+                    
                     this.Printer.PrintLine("{0} items of song {1} successfully supplied.", quantity, song.Title);
                     break;
                 default:
@@ -152,11 +156,13 @@ namespace MyTunesShop
                     if (song == null)
                     {
                         this.Printer.PrintLine("The song does not exist in the database.");
+                        
                         return;
                     }
 
                     int quantity = int.Parse(commandWords[3]);
                     this.mediaSupplies[song].Sell(quantity);
+                    
                     this.Printer.PrintLine("{0} items of song {1} successfully sold.", quantity, song.Title);
                     break;
                 default:
@@ -188,6 +194,7 @@ namespace MyTunesShop
                     if (singer == null)
                     {
                         this.Printer.PrintLine("The singer does not exist in the database.");
+                        
                         return;
                     }
 
@@ -204,7 +211,7 @@ namespace MyTunesShop
             singerInfo.Append(singer.Name + ": ");
             if (singer.Songs.Any())
             {
-                IOrderedEnumerable<string> songs = singer.Songs.Select(s => s.Title).OrderBy(s => s);
+                IOrderedEnumerable<string> songs = singer.Songs.Select(s => s.Title).OrderBy(t => t);
                 singerInfo.Append(string.Join("; ", songs));
             }
             else
@@ -224,6 +231,7 @@ namespace MyTunesShop
                     if (song == null)
                     {
                         this.Printer.PrintLine("The song does not exist in the database.");
+                        
                         return;
                     }
 
@@ -238,8 +246,10 @@ namespace MyTunesShop
         {
             SalesInfo songSalesInfo = this.mediaSupplies[song];
             StringBuilder songInfo = new StringBuilder();
-            songInfo.AppendFormat("{0} ({1}) by {2}", song.Title, song.Year, song.Performer.Name).AppendLine()
-                .AppendFormat("Genre: {0}, Price: ${1:F2}", song.Genre, song.Price).AppendLine()
+            songInfo.AppendFormat("{0} ({1}) by {2}", song.Title, song.Year, song.Performer.Name)
+                .AppendLine()
+                .AppendFormat("Genre: {0}, Price: ${1:F2}", song.Genre, song.Price)
+                .AppendLine()
                 .AppendFormat("Rating: {0:f0}", song.Ratings.Any() ? song.Ratings.Average() : 0)
                 .AppendLine()
                 .AppendFormat("Supplies: {0}, Sold: {1}", songSalesInfo.Supplies, songSalesInfo.QuantitySold);
