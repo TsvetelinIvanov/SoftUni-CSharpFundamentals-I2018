@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace MyTunesShop
 {    
     public class SalesInfo
