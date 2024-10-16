@@ -16,7 +16,6 @@ namespace MyTunesShop
         private static void StartOperations(MyTunesEngine engine)
         {
             string line = Console.ReadLine();
-
             while (line != "end")
             {
                 if (line == string.Empty)
