@@ -87,8 +87,7 @@ namespace MyTunesShop
             {
                 if (value < MinYear || value > MaxYear)
                 {
-                    throw new ArgumentException(string.Format("The year of a song must be between {0} and {1}.", 
-                        MinYear, MaxYear));
+                    throw new ArgumentException(string.Format("The year of a song must be between {0} and {1}.", MinYear, MaxYear));
                 }
 
                 this.year = value;
