@@ -49,6 +49,20 @@ namespace MyTunesShop
             }
         }
 
+        protected override void ExecuteInsertPerformerCommand(string[] commandWords)
+        {
+            switch (commandWords[2])
+            {
+                case "band":
+                    IBand band = new Band(commandWords[3]);
+                    this.InsertPerformer(band);
+                    break;
+                default:
+                    base.ExecuteInsertPerformerCommand(commandWords);
+                    break;
+            }
+        }
+
         protected override void ExecuteInsertMediaCommand(string[] commandWords)
         {
             switch (commandWords[2])
@@ -76,20 +90,6 @@ namespace MyTunesShop
             this.media.Add(album);
             this.mediaSupplies.Add(album, new SalesInfo());
             this.Printer.PrintLine("Album {0} by {1} added successfully", album.Title, performer.Name);
-        }
-        
-        protected override void ExecuteInsertPerformerCommand(string[] commandWords)
-        {
-            switch (commandWords[2])
-            {
-                case "band":
-                    IBand band = new Band(commandWords[3]);
-                    this.InsertPerformer(band);
-                    break;
-                default:
-                    base.ExecuteInsertPerformerCommand(commandWords);
-                    break;
-            }
         }
 
         protected override void ExecuteSupplyCommand(string[] commandWords)
