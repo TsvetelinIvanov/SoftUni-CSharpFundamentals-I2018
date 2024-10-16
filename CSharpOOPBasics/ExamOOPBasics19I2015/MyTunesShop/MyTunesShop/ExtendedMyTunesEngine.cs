@@ -215,11 +215,13 @@ namespace MyTunesShop
                     if (album == null)
                     {
                         Printer.PrintLine("The album does not exist in the database.");
+                        
                         return;
                     }
 
                     int quantity = int.Parse(commandWords[3]);
                     this.mediaSupplies[album].Supply(quantity);
+                    
                     this.Printer.PrintLine("{0} items of album {1} successfully supplied.", quantity, album.Title);
                     break;
                 default:
@@ -237,11 +239,13 @@ namespace MyTunesShop
                     if (album == null)
                     {
                         this.Printer.PrintLine("The album does not exist in the database.");
+                        
                         return;
                     }
 
                     int quantity = int.Parse(commandWords[3]);
                     this.mediaSupplies[album].Sell(quantity);
+                    
                     this.Printer.PrintLine("{0} items of album {1} successfully sold.", quantity, album.Title);
                     break;
                 default:
