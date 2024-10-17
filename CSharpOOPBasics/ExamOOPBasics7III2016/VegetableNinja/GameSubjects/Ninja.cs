@@ -68,7 +68,7 @@ public class Ninja : GameObject, INinja
 
     public void EatVegetables()
     {
-        foreach (var vegetable in this.collectedVegetables)
+        foreach (IVegetable vegetable in this.collectedVegetables)
         {
             if (vegetable.CharValue.Equals('*'))
             {
@@ -90,6 +90,7 @@ public class Ninja : GameObject, INinja
         if (newPosition == null)
         {
             this.Stamina--;
+            
             return;
         }
 
@@ -97,14 +98,15 @@ public class Ninja : GameObject, INinja
         this.Stamina--;
     }
 
+    public override string ToString()
+    {
+        return $"Winner: {this.Name}{Environment.NewLine}" +
+            $"Power: {this.Power}{Environment.NewLine}" +
+            $"Stamina: {this.Stamina}";
+    }
+
     //private bool IsInMatrix(char[][] matrix, int row, int col)
     //{
     //    return row >= 0 && row < matrix.Length && col >= 0 && col < matrix[row].Length;
-    //}    
-
-    public override string ToString()
-    {
-        return $"Winner: {this.Name}{Environment.NewLine}Power: {this.Power}{Environment.NewLine}" +
-            $"Stamina: {this.Stamina}";
-    }
+    //}
 }
