@@ -6,8 +6,8 @@ using System.Text;
 public class RaceTower
 {
     private const string CrashReason = "Crashed";
-    private const double OvertakingTimeDangerLimit = 3;
     private const double OvertakingTimeLimit = 2;
+    private const double OvertakingTimeDangerLimit = 3;
 
     private IList<Driver> racingDrivers;
     private Stack<Driver> failedDrivers;
@@ -17,10 +17,10 @@ public class RaceTower
 
     public RaceTower()
     {
-        this.tyreFactory = new TyreFactory();
-        this.driverFactory = new DriverFactory();
         this.racingDrivers = new List<Driver>();
         this.failedDrivers = new Stack<Driver>();
+        this.tyreFactory = new TyreFactory();
+        this.driverFactory = new DriverFactory();
     }
 
     public bool IsRaceOver => this.track.CurrentLap == this.track.LapsNumber;
