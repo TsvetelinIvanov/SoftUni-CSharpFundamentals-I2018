@@ -19,7 +19,6 @@ namespace StorageMaster
             private set { weight  = value; }
         }
 
-
         public double Price 
         {
             get { return price; }
