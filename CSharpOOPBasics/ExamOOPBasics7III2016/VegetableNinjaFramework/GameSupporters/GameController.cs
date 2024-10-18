@@ -59,7 +59,6 @@ public class GameController : IGameController
         foreach (char direction in inputLine)
         {
             IMatrixPosition newPosition = this.GetNewPosition(this.currentNinja.Position, direction);
-
             if (newPosition == null)
             {
                 this.currentNinja.Move(newPosition);
@@ -137,7 +136,8 @@ public class GameController : IGameController
             this.Database.RemoveVegetable(currentVegetable);
             this.currentNinja.CollectVegetable(currentVegetable);
 
-            IBlankSpace newBlankSpace = new BlankSpace(this.currentNinja.Position, currentVegetable.TimeToGrow, (VegetableType)Enum.Parse(typeof(VegetableType), currentVegetable.GetType().Name));
+            IBlankSpace newBlankSpace = new BlankSpace(this.currentNinja.Position, currentVegetable.TimeToGrow,
+                (VegetableType)Enum.Parse(typeof(VegetableType), currentVegetable.GetType().Name));
             this.Database.AddGrowingVegetable(newBlankSpace);
 
             IBlankSpace oldFieldPositionElement = new BlankSpace(oldNinjaPosition, -1, VegetableType.Blank);
