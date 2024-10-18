@@ -4,7 +4,8 @@
     private int staminaBonus;
     private int timeToGrow;
 
-    protected Vegetable(IMatrixPosition position, char charValue, int powerBonus, int staminaBonus, int timeToGrow) : base(position, charValue)
+    protected Vegetable(IMatrixPosition position, char charValue, int powerBonus, int staminaBonus, int timeToGrow)
+        : base(position, charValue)
     {
         this.PowerBonus = powerBonus;
         this.StaminaBonus = staminaBonus;
