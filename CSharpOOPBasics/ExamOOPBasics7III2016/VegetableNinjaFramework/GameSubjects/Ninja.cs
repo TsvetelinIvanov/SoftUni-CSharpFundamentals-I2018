@@ -105,7 +105,8 @@ public class Ninja : GameObject, INinja
 
     public override string ToString()
     {
-        return $"Winner: {this.Name}{Environment.NewLine}Power: {this.Power}{Environment.NewLine}" +
+        return $"Winner: {this.Name}{Environment.NewLine}" +
+            $"Power: {this.Power}{Environment.NewLine}" +
             $"Stamina: {this.Stamina}";
     }
 }
