@@ -9,6 +9,7 @@ namespace StorageMaster
         private string name;
         private int capacity;
         private int garageSlotsCount;
+        
         private readonly Vehicle[] garage;
         private readonly List<Product> products;
 
