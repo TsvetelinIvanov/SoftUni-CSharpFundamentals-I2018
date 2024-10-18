@@ -6,8 +6,7 @@ using System.Text;
 namespace StorageMaster
 {
     public class StorageMaster
-    {
-               
+    {               
         private Vehicle currentVehicle;
         private ProductFactory productFactory;
         private StorageFactory storageFactory;
@@ -117,8 +116,7 @@ namespace StorageMaster
                 .Select(p => $"{p.Name} ({p.Count})").ToArray();
 
             double productsWeight = storage.Products.Sum(p => p.Weight);
-            string stockFormat = string.Format("Stock ({0}/{1}): [{2}]", productsWeight, storage.Capacity,
-                string.Join(", ", stockInfo));
+            string stockFormat = string.Format("Stock ({0}/{1}): [{2}]", productsWeight, storage.Capacity, string.Join(", ", stockInfo));
             string[] vehicleNames = storage.Garage.Select(v => v?.GetType().Name ?? "empty").ToArray();
             string storageStatus = stockFormat + $"{Environment.NewLine}Garage: [{string.Join("|", vehicleNames)}]";
 
