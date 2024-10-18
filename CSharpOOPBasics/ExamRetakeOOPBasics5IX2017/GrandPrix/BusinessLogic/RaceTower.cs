@@ -32,22 +32,22 @@ public class RaceTower
 
     public void RegisterDriver(List<string> commandArgs)
     {
-        try
-        {
+        //try
+        //{
             Driver driver = driverFactory.CreateDriver(commandArgs);
             this.racingDrivers.Add(driver);
-        }
-        catch
-        {
-
-        }
+        //}
+        //catch
+        //{
+            //throw;
+        //}
     }
 
     public void DriverBoxes(List<string> commandArgs)
     {
         string boxReason = commandArgs[0];
-        string driversName = commandArgs[1];
-        Driver driver = racingDrivers.FirstOrDefault(d => d.Name == driversName);
+        string driverName = commandArgs[1];
+        Driver driver = racingDrivers.FirstOrDefault(d => d.Name == driverName);
 
         switch (boxReason)
         {
@@ -67,7 +67,6 @@ public class RaceTower
     {
         StringBuilder completeLapsBuilder = new StringBuilder();
         int numberOfLaps = int.Parse(commandArgs[0]);
-
         if (numberOfLaps > this.track.LapsNumber - this.track.CurrentLap)
         {
             try
@@ -141,13 +140,15 @@ public class RaceTower
 
         bool isAggressiveDriver = overtakingDriver is AggressiveDriver && overtakingDriver.Car.Tyre is UltrasoftTyre;
         bool isEnduranceDriver = overtakingDriver is EnduranceDriver && overtakingDriver.Car.Tyre is HardTyre;
-        bool isCrashHappened = (isAggressiveDriver && this.track.Weather == Weather.Foggy) || (isEnduranceDriver && this.track.Weather == Weather.Rainy);
+        bool isCrashHappened = (isAggressiveDriver && this.track.Weather == Weather.Foggy) 
+            || (isEnduranceDriver && this.track.Weather == Weather.Rainy);
 
         if ((isAggressiveDriver || isEnduranceDriver) && timeDifference <= OvertakingTimeDangerLimit)
         {
             if (isCrashHappened)
             {
                 overtakingDriver.Fail(CrashReason);
+                
                 return false;
             }
 
@@ -189,7 +190,6 @@ public class RaceTower
     {
         string weatherString = commandArgs[0];
         bool isValidWeather = Enum.TryParse(typeof(Weather), weatherString, out object weatherObjekt);
-
         if (!isValidWeather)
         {
             throw new ArgumentException(OutputMessages.InvalidWeatherType);
