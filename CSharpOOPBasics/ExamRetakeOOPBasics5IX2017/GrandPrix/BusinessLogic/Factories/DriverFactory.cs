@@ -8,9 +8,11 @@ public class DriverFactory
     {
         string type = commandArgs[0];
         string name = commandArgs[1];
+        
         int hp = int.Parse(commandArgs[2]);
         double fuelAmount = double.Parse(commandArgs[3]);
         List<string> tyreData = commandArgs.Skip(4).ToList();
+        
         TyreFactory tyreFactory = new TyreFactory();
         Tyre tyre = tyreFactory.CreateTyre(tyreData);
         Car car = new Car(hp, fuelAmount, tyre);
