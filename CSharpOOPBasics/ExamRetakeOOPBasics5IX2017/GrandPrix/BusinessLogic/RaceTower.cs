@@ -43,25 +43,23 @@ public class RaceTower
         //}
     }
 
-    public void DriverBoxes(List<string> commandArgs)
+    public string GetLeaderboard()
     {
-        string boxReason = commandArgs[0];
-        string driverName = commandArgs[1];
-        Driver driver = racingDrivers.FirstOrDefault(d => d.Name == driverName);
+        StringBuilder leaderboardBuilder = new StringBuilder();
+        leaderboardBuilder.AppendLine($"Lap {this.track.CurrentLap}/{this.track.LapsNumber}");
 
-        switch (boxReason)
+        IEnumerable<Driver> leaderboardDrivers = this.racingDrivers.OrderBy(d => d.TotalTime).Concat(this.failedDrivers);
+        int position = 1;
+        foreach (Driver driver in leaderboardDrivers)
         {
-            case "Refuel":
-                double fuelamount = double.Parse(commandArgs[2]);
-                driver.Refuel(fuelamount);
-                break;
-            case "ChangeTyres":
-                List<string> tyreData = commandArgs.Skip(2).ToList();
-                Tyre tyre = tyreFactory.CreateTyre(tyreData);
-                driver.ChangeTyres(tyre);
-                break;
+            leaderboardBuilder.AppendLine($"{position} {driver.ToString()}");
+            position++;
         }
-    }   
+
+        string leaderboard = leaderboardBuilder.ToString().TrimEnd();
+
+        return leaderboard;
+    }
 
     public string CompleteLaps(List<string> commandArgs)
     {
@@ -167,23 +165,25 @@ public class RaceTower
 
         return false;
     }
-    
-    public string GetLeaderboard()
+
+    public void DriverBoxes(List<string> commandArgs)
     {
-        StringBuilder leaderboardBuilder = new StringBuilder();
-        leaderboardBuilder.AppendLine($"Lap {this.track.CurrentLap}/{this.track.LapsNumber}");
+        string boxReason = commandArgs[0];
+        string driverName = commandArgs[1];
+        Driver driver = racingDrivers.FirstOrDefault(d => d.Name == driverName);
 
-        IEnumerable<Driver> leaderboardDrivers = this.racingDrivers.OrderBy(d => d.TotalTime).Concat(this.failedDrivers);
-        int position = 1;
-        foreach (Driver driver in leaderboardDrivers)
+        switch (boxReason)
         {
-            leaderboardBuilder.AppendLine($"{position} {driver.ToString()}");
-            position++;
+            case "Refuel":
+                double fuelamount = double.Parse(commandArgs[2]);
+                driver.Refuel(fuelamount);
+                break;
+            case "ChangeTyres":
+                List<string> tyreData = commandArgs.Skip(2).ToList();
+                Tyre tyre = tyreFactory.CreateTyre(tyreData);
+                driver.ChangeTyres(tyre);
+                break;
         }
-
-        string leaderboard = leaderboardBuilder.ToString().TrimEnd();
-
-        return leaderboard;
     }
 
     public void ChangeWeather(List<string> commandArgs)
