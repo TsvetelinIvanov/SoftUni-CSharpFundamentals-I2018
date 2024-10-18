@@ -36,6 +36,7 @@ public class Database : IDatabase
         get
         {
             this.growingVegetables.RemoveAll(v => v.GrowthTime <= 0);
+            
             return this.growingVegetables;
         }
     }
