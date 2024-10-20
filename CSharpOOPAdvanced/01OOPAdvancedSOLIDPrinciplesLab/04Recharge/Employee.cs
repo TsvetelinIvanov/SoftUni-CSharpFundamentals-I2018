@@ -10,7 +10,7 @@
         public void Sleep()
         {
             // sleep...
-            Console.WriteLine("Sleep...");            
+            Console.WriteLine("Sleep...");
         }
     }
 }
