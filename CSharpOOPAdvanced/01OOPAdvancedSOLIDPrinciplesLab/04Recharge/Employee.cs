@@ -4,11 +4,13 @@
     {
         public Employee(string id) : base(id)
         {
+        
         }
 
         public void Sleep()
         {
             // sleep...
+            Console.WriteLine("Sleep...");            
         }
     }
 }
