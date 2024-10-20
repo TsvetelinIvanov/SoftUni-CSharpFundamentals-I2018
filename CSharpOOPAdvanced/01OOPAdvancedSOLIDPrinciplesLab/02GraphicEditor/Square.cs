@@ -6,7 +6,7 @@ namespace _02.Graphic_Editor
     {
         public void Draw()
         {
-            Console.WriteLine("I'm Square");
+            Console.WriteLine("I'm a Square");
         }
     }
 }
