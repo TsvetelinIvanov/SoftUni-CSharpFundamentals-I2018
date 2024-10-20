@@ -60,7 +60,6 @@ public class Box<T> where T : IComparable<T>
     public T Min()
     {
         //T minItem = this.Items.FirstOrDefault();
-
         //foreach (T item in this.Items)
         //{
         //    if (item.CompareTo(minItem) < 0)
@@ -70,13 +69,13 @@ public class Box<T> where T : IComparable<T>
         //}
 
         T minItem = this.Items.Min();
+        
         return minItem;
     }
 
     public T Max()
     {
         //T maxItem = this.Items.FirstOrDefault();
-
         //foreach (T item in this.Items)
         //{
         //    if (item.CompareTo(maxItem) > 0)
@@ -86,6 +85,7 @@ public class Box<T> where T : IComparable<T>
         //}
 
         T maxItem = this.Items.Max();
+        
         return maxItem;
     }
 
