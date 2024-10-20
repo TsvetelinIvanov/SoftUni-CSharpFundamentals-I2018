@@ -21,7 +21,7 @@
 
         //public void Recharge(Robot robot)
         //{
-        //    robot.CurrentPower = robot.Capacity;
+        //    this.robot.CurrentPower = this.robot.Capacity;
         //}
     }
 }
