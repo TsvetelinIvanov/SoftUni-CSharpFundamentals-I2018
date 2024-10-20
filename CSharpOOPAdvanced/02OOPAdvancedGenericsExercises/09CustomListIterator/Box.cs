@@ -28,6 +28,7 @@ public class Box<T> : IEnumerable<T> where T : IComparable
     {
         T removedIndex = this.Items[index];
         this.Items.RemoveAt(index);
+        
         return removedIndex;
     }
 
@@ -60,7 +61,6 @@ public class Box<T> : IEnumerable<T> where T : IComparable
     public T Min()
     {
         //T minItem = this.Items.FirstOrDefault();
-
         //foreach (T item in this.Items)
         //{
         //    if (item.CompareTo(minItem) < 0)
@@ -70,13 +70,13 @@ public class Box<T> : IEnumerable<T> where T : IComparable
         //}
 
         T minItem = this.Items.Min();
+        
         return minItem;
     }
 
     public T Max()
     {
         //T maxItem = this.Items.FirstOrDefault();
-
         //foreach (T item in this.Items)
         //{
         //    if (item.CompareTo(maxItem) > 0)
@@ -86,6 +86,7 @@ public class Box<T> : IEnumerable<T> where T : IComparable
         //}
 
         T maxItem = this.Items.Max();
+        
         return maxItem;
     }
 
