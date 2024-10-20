@@ -4,8 +4,7 @@ namespace _01Logger
 {
     public class ConsoleAppender : Appender
     {
-        public ConsoleAppender(ILayout layout)
-            : base(layout)
+        public ConsoleAppender(ILayout layout) : base(layout)
         {
 
         }
