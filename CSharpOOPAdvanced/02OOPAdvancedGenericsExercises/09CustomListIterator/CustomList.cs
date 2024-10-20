@@ -10,7 +10,6 @@ public class CustomList
         {
             string[] commandArgs = input.Split();
             string command = commandArgs[0];
-
             switch (command)
             {
                 case "Add":
