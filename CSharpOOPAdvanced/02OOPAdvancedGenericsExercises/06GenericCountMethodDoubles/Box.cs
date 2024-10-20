@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class Box<T>
-    where T : IComparable<T>
+public class Box<T> where T : IComparable<T>
 {
     private List<T> items;
 
@@ -49,10 +48,11 @@ public class Box<T>
     //public override string ToString()
     //{
     //    StringBuilder resultBuilder = new StringBuilder();
-    //    foreach (var item in this.Items)
+    //    foreach (T item in this.Items)
     //    {
     //        resultBuilder.AppendLine($"{item.GetType().FullName}: {item}");
     //    }
+    
     //    return resultBuilder.ToString().TrimEnd();
     //}
 }
