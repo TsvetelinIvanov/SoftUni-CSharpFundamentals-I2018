@@ -27,6 +27,7 @@ public class Box<T> where T : IComparable<T>
     {
         T removedIndex = this.Items[index];
         this.Items.RemoveAt(index);
+        
         return removedIndex;
     }
 
