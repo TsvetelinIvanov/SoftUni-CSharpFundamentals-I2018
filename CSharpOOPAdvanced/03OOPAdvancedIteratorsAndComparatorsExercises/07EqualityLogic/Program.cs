@@ -14,6 +14,7 @@ public class Program
             string[] personData = Console.ReadLine().Split();
             string name = personData[0];
             int age = int.Parse(personData[1]);
+            
             Person person = new Person(name, age);
             sortedPeople.Add(person);
             hashPeople.Add(person);
