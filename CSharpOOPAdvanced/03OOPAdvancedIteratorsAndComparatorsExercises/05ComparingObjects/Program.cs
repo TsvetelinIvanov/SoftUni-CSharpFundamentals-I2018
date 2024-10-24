@@ -14,6 +14,7 @@ public class Program
             string name = personData[0];
             int age = int.Parse(personData[1]);
             string town = personData[2];
+            
             Person person = new Person(name, age, town);
             people.Add(person);
         }
@@ -29,7 +30,6 @@ public class Program
             {
                 matchesCounter++;
             }
-
         }
 
         if (matchesCounter == 1)
