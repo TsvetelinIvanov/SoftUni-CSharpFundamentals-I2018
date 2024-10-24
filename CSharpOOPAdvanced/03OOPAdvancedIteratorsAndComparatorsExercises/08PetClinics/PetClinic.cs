@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text;
 
-
 public class PetClinic
 {
     private Pet[] pets;
