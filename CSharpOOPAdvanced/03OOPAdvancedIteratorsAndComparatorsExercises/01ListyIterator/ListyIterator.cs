@@ -29,6 +29,7 @@ public class ListyIterator<T>
         else
         {
             currentIndex--;
+            
             return false;
         }
     }
