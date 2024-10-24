@@ -18,7 +18,6 @@ public class Person : IComparable<Person>
     public int CompareTo(Person other)
     {
         int result = this.Name.CompareTo(other.Name);
-
         if (result == 0)
         {
             result = this.Age.CompareTo(other.Age);
