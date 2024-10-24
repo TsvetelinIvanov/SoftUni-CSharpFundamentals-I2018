@@ -30,6 +30,7 @@ public class ListyIterator<T> : IEnumerable<T>
         else
         {
             currentIndex--;
+            
             return false;
         }
     }
