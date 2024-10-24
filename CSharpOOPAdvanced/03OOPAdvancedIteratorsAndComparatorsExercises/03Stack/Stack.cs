@@ -11,9 +11,9 @@ public class Stack<T> : IEnumerable<T>
         this.elements = new List<T>();
     }
 
-    public void Push(T[] commingElements)
+    public void Push(T[] comingElements)
     {
-        this.elements.AddRange(commingElements);
+        this.elements.AddRange(comingElements);
     }
 
     public void Pop()
