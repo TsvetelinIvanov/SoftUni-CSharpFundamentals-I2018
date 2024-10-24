@@ -23,6 +23,7 @@ public class Program
                         string name = commandArgs[2];
                         int age = int.Parse(commandArgs[3]);
                         string kind = commandArgs[4];
+                        
                         Pet pet = new Pet(name, age, kind);
                         pets.Add(pet);
                     }
@@ -32,6 +33,7 @@ public class Program
                         {
                             string name = commandArgs[2];
                             int roomsCount = int.Parse(commandArgs[3]);
+                            
                             PetClinic petClinic = new PetClinic(name, roomsCount);
                             petClinics.Add(petClinic);
                         }
