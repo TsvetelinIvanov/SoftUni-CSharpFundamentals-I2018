@@ -15,6 +15,7 @@ public class Program
             string name = personData[0];
             int age = int.Parse(personData[1]);
             Person person = new Person(name, age);
+            
             namePeople.Add(person);
             agePeople.Add(person);
         }
