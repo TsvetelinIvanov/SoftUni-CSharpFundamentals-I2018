@@ -13,8 +13,8 @@ public class LinkedList<T> : IEnumerable<T>
     public LinkedList(T item)
     {
         LinkedListNode<T> currentNode = new LinkedListNode<T>(item);
-        this.Head = currentNode;
         this.firstElement = currentNode;
+        this.Head = currentNode;
         this.Count = 1;
     }
 
