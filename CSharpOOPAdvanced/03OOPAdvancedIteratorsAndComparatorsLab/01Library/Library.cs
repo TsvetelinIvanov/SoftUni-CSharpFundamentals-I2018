@@ -14,18 +14,18 @@ public class Library : IEnumerable<Book>
             this.books = new List<Book>(books);
         }
 
+        public Book Current => this.books[this.currentIndex];
+
+        object IEnumerator.Current => this.Current;
+
+        public void Reset() => this.currentIndex = -1;
+
+        public bool MoveNext() => ++this.currentIndex < this.books.Count;
+
         public void Dispose()
         {
 
         }
-
-        public bool MoveNext() => ++this.currentIndex < this.books.Count;
-
-        public void Reset() => this.currentIndex = -1;
-
-        public Book Current => this.books[this.currentIndex];
-
-        object IEnumerator.Current => this.Current;
     }
 
     private List<Book> books;
