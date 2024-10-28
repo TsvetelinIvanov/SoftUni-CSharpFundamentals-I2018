@@ -7,7 +7,6 @@
         Book bookThree = new Book("The Documents in the Case", 1930);
 
         Library libraryOne = new Library();
-        Library libraryTwo = new Library(bookOne, bookTwo, bookThree);
-
+        Library libraryFull = new Library(bookOne, bookTwo, bookThree);
     }
 }
