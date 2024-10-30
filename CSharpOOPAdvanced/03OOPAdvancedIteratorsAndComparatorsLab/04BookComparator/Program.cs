@@ -11,7 +11,7 @@ public class Program
         Library library = new Library();
         Library libraryWithBooks = new Library(bookOne, bookTwo, bookThree);
 
-        foreach (Book book in libraryFull)
+        foreach (Book book in libraryWithBooks)
         {
             Console.WriteLine(book);
         }
