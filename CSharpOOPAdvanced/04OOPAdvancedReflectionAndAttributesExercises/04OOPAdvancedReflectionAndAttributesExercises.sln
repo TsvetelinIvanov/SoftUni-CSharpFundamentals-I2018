@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01HarvestingFields", "01Har
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02BlackBoxInteger", "02BlackBoxInteger\02BlackBoxInteger.csproj", "{E8CFBCCE-6CFA-47C8-84C4-307846A9ED85}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03BarrcksWarsANewFactory", "03BarrcksWarsANewFactory\03BarrcksWarsANewFactory.csproj", "{1200ED14-B089-47C5-9926-88DFB58A1000}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03BarracksWarsANewFactory", "03BarracksWarsANewFactory\03BarracksWarsANewFactory.csproj", "{1200ED14-B089-47C5-9926-88DFB58A1000}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04BarracksWarsTheCommandsStrikeBack", "04BarracksWarsTheCommandsStrikeBack\04BarracksWarsTheCommandsStrikeBack.csproj", "{E6BD6A3D-42F5-437F-87C2-B12C33CD9CED}"
 EndProject
