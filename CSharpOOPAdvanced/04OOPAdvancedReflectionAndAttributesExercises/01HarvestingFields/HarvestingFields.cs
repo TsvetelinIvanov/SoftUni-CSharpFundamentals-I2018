@@ -34,13 +34,13 @@ namespace _01HarvestingFields
         private object hiddenObject;
         protected object fatherMotherObject;
         private string anotherString;
-        protected string moarString;
+        protected string moreString;
         public int anotherIntBitesTheDust;
         private Exception internalException;
         protected Exception inheritableException;
         public Exception justException;
         public Stream aStream;
-        protected Stream moarStreamz;
+        protected Stream moreStream;
         private Stream secretStream;
     }
 }
