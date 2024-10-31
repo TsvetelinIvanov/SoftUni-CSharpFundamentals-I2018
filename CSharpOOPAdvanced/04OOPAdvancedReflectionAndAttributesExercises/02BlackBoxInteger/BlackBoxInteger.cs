@@ -16,14 +16,14 @@
             this.innerValue = DefaultValue;
         }
 
-        private void Add(int addend)
+        private void Add(int added)
         {
-            this.innerValue += addend;
+            this.innerValue += added;
         }
 
-        private void Subtract(int subtrahend)
+        private void Subtract(int subtracted)
         {
-            this.innerValue -= subtrahend;
+            this.innerValue -= subtracted;
         }
 
         private void Multiply(int multiplier)
