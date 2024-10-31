@@ -19,6 +19,7 @@ namespace _02BlackBoxInteger
                 string[] commandAndNumber = input.Split('_');
                 string command = commandAndNumber[0];
                 int number = int.Parse(commandAndNumber[1]);
+                
                 MethodInfo method = methods.First(m => m.Name == command);
                 method.Invoke(instance, new object[] { number });
                 //Console.WriteLine(innerValue.GetValue(instance));
