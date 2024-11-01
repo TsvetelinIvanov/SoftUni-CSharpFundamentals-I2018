@@ -1,8 +1,8 @@
-﻿namespace _05BarracksFactory.Models.Units
-{
-    using System;
-    using Contracts;
+using System;
+using _05BarracksFactory.Contracts;
 
+namespace _05BarracksFactory.Models.Units
+{
     public class Unit : IUnit
     {
         private int health;
