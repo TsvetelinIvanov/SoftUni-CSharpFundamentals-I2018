@@ -1,7 +1,7 @@
-﻿using _04BarracksFactory.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+﻿using _04BarracksFactory.Contracts;
 
 namespace _04BarracksFactory.Data
 {    
