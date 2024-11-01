@@ -60,6 +60,7 @@ namespace _03BarracksFactory.Core
             string unitType = data[1];
             IUnit unitToAdd = this.unitFactory.CreateUnit(unitType);
             this.repository.AddUnit(unitToAdd);
+            
             string output = unitType + " added!";
 
             return output;
