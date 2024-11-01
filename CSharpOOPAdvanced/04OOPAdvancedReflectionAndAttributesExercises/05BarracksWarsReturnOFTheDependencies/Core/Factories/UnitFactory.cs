@@ -11,7 +11,6 @@ namespace _05BarracksFactory.Core.Factories
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             Type unitType = assembly.GetTypes().FirstOrDefault(t => t.Name == unitTypeString);
-
             if (unitType == null)
             {
                 throw new ArgumentException("Invalid Unit Type!");
