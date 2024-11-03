@@ -8,7 +8,6 @@ public class Tracker
     {
         Type type = typeof(Program);
         MethodInfo[] methods = type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static);
-
         foreach (MethodInfo methodInfo in methods)
         {
             if (methodInfo.CustomAttributes.Any(m => m.AttributeType == typeof(SoftUniAttribute)))
