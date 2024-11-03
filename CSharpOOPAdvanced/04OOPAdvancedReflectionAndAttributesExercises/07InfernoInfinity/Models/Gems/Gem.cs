@@ -1,6 +1,5 @@
 ﻿public abstract class Gem : IGem, IQualitativeGem
 {
-
     protected Gem(GemClarity clarity, int strength, int agility, int vitality)
     {
         this.Clarity = clarity;
