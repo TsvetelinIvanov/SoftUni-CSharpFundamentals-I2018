@@ -6,7 +6,6 @@ public class Program
     {
         Type classType = typeof(Weapon);
         object[] attributes = classType.GetCustomAttributes(false);
-
         foreach (object attribute in attributes)
         {
             ClassAttribute classAttribute = attribute as ClassAttribute;
