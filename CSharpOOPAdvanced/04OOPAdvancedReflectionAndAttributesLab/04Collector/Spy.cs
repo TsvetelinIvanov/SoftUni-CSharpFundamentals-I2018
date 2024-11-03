@@ -8,9 +8,10 @@ public class Spy
     public string StealFieldInfo(string investigatedClass, params string[] requestedFields)
     {
         Type classType = Type.GetType(investigatedClass);
-        FieldInfo[] classFields = classType.GetFields(BindingFlags.Instance | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
-        StringBuilder stringBuilder = new StringBuilder();
+        FieldInfo[] classFields = classType.GetFields(BindingFlags.Instance | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);        
         Object classInstance = Activator.CreateInstance(classType, new object[] { });
+
+        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine($"Class under investigation: {investigatedClass}");
         foreach (FieldInfo field in classFields.Where(f => requestedFields.Contains(f.Name)))
         {
@@ -54,7 +55,6 @@ public class Spy
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine($"All Private Methods of Class: {investigatedClass}");
         stringBuilder.AppendLine($"Base Class: {classType.BaseType.Name}");
-
         foreach (MethodInfo method in classMethods)
         {
             stringBuilder.AppendLine(method.Name);
