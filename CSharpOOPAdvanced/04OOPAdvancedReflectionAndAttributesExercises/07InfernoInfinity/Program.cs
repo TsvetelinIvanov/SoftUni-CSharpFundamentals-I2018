@@ -2,10 +2,10 @@
 {
     static void Main(string[] args)
     {
-        IRepository repository = new WeaponRepository();
-        ICommandInterpreter commandInterpreter = new CommandInterpreter();
-        IWeaponFactory weaponFactory = new WeaponFactory();
         IGemFactory gemFactory = new GemFactory();
+        IWeaponFactory weaponFactory = new WeaponFactory();
+        ICommandInterpreter commandInterpreter = new CommandInterpreter();
+        IRepository repository = new WeaponRepository();
 
         IRunnable engine = new Engine(gemFactory, weaponFactory, commandInterpreter, repository);
         engine.Run();
