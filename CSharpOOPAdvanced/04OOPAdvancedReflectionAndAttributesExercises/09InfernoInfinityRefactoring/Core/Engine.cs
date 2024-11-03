@@ -27,7 +27,6 @@ public class Engine : IRunnable
             string[] inputData = this.reader.ReadLine().Split(';');
             IExecutable executable = this.commandInterpreter.InterpretCommand(inputData[0], inputData.Skip(1).ToArray());
             FieldInfo[] fields = executable.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
-
             if (fields.Any(f => f.FieldType == typeof(IRepository)))
             {
                 fields.Single(f => f.FieldType == typeof(IRepository)).SetValue(executable, this.repository);
