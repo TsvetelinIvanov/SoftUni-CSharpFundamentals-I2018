@@ -1,7 +1,7 @@
-﻿using _03IteratorTest;
-using NUnit.Framework;
 using System.Linq;
 using System.Reflection;
+using NUnit.Framework;
+﻿using _03IteratorTest;
 
 namespace _03IteratorTestTests
 {
