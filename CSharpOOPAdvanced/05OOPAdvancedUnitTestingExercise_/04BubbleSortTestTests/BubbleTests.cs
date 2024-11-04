@@ -1,6 +1,6 @@
-﻿using _04BubbleSortTest;
-using NUnit.Framework;
 using System.Linq;
+using NUnit.Framework;
+﻿using _04BubbleSortTest;
 
 namespace _04BobbleSortTestTests
 {
