@@ -8,9 +8,9 @@ namespace _03IteratorTest
     {
         static void Main(string[] args)
         {
-            string[] inputInteratorArgs = Console.ReadLine().Split();
-            string[] interatorArgs = inputInteratorArgs.Skip(1).ToArray();
-            ListIterator iterator = new ListIterator(interatorArgs);
+            string[] inputIteratorArgs = Console.ReadLine().Split();
+            string[] iteratorArgs = inputIteratorArgs.Skip(1).ToArray();
+            ListIterator iterator = new ListIterator(iteratorArgs);
 
             MethodInfo[] iteratorMethods = iterator.GetType().GetMethods();
 
@@ -19,8 +19,7 @@ namespace _03IteratorTest
             {
                 try
                 {
-                    MethodInfo parsedMethod = iteratorMethods
-                        .FirstOrDefault(m => m.Name == command);
+                    MethodInfo parsedMethod = iteratorMethods.FirstOrDefault(m => m.Name == command);
                     if (parsedMethod == null)
                     {
                         throw new ArgumentException("Invalid command!");
