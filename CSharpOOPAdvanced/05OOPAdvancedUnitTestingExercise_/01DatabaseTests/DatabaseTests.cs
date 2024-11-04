@@ -177,10 +177,9 @@ namespace _01DatabaseTests
             int[] databaseContent = this.database.Fetch();
 
             //Assert.AreEqual(firsNumber, databaseContent[0]);
-            //Assert.AreEqual(secondNumber, databaseContent[1]);
             Assert.That(databaseContent[0], Is.EqualTo(firsNumber));
+            //Assert.AreEqual(secondNumber, databaseContent[1]);
             Assert.That(databaseContent[1], Is.EqualTo(secondNumber));
-
         }
 
         [Test]
