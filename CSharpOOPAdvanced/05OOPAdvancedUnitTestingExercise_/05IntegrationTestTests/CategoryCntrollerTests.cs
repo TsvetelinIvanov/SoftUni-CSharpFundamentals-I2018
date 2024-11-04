@@ -1,8 +1,8 @@
-﻿using _05IntegrationTest;
-using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using NUnit.Framework;
+﻿using _05IntegrationTest;
 
 namespace _05IntegrationTestTests
 {
@@ -23,7 +23,7 @@ namespace _05IntegrationTestTests
         }
 
         [Test]
-        public void AddCategorySaveCategory()
+        public void AddCategorySavesCategory()
         {
             string categoryName = "Category Name";
 
@@ -37,7 +37,7 @@ namespace _05IntegrationTestTests
         [TestCase(8)]
         [TestCase(18)]
         [TestCase(38)]
-        public void AddCategorySaveCategories(int categoriesCount)
+        public void AddCategorySavesCategories(int categoriesCount)
         {
             string categoryName = "Category Name No ";
 
@@ -62,7 +62,7 @@ namespace _05IntegrationTestTests
         [TestCase("\r\n")]
         [TestCase("\n\r")]
         [TestCase(" \n \r \t \n\r \r\n")]
-        public void AddCategoryThrowsExceptionWitoutName(string name)
+        public void AddCategoryThrowsExceptionWithoutName(string name)
         {
             Assert.That(() => this.categoryController.AddCategory(name), Throws.ArgumentException.With.Message.EqualTo("Cannot create category without a name!"));
             //Assert.Throws<ArgumentException>(() => this.categoryControler.AddCategory(name));
@@ -167,35 +167,18 @@ namespace _05IntegrationTestTests
             string secondCategoryName = "First's child";
             string thirdCategoryName = "Second's child and First's sub-child";
             this.categoryController.AddCategory(firstCategoryName);
-            ICategory grandParent = this.categories.First();
-            this.categoryController.AddChild(grandParent, secondCategoryName);
-            this.categoryController.AddChild(grandParent.ChildCategories.First(), thirdCategoryName);
+            ICategory ancestor = this.categories.First();
+            this.categoryController.AddChild(ancestor, secondCategoryName);
+            this.categoryController.AddChild(ancestor.ChildCategories.First(), thirdCategoryName);
 
             this.categoryController.RemoveCategory(secondCategoryName);
 
             Assert.That(this.categories.First().ChildCategories.Count, Is.EqualTo(1));
-            Assert.That(this.categories.First().ChildCategories.First().Name, Is.EqualTo(thirdCategoryName));
             //Assert.AreEqual(1, this.categories.First().ChildCategories.Count);
+            Assert.That(this.categories.First().ChildCategories.First().Name, Is.EqualTo(thirdCategoryName));            
             //Assert.AreEqual(thirdCategoryName, this.categories.First().ChildCategories.First().Name);
         }
-
-        [Test]
-        public void RemoveCategoryAssignsAllOfItsUsersToItsParent()
-        {
-            string parentCategoryName = "Parent Category";
-            string childCategoryName = "Child Category";
-            this.categoryController.AddCategory(parentCategoryName);
-            this.categoryController.AddChild(this.categories.First(), childCategoryName);
-            string userName = "User's name";
-            ICategory childCategory = this.categories.First().ChildCategories.First();
-            this.categoryController.AddUser(childCategory, new User(userName));
-
-            this.categoryController.RemoveCategory(childCategoryName);
-
-            Assert.That(this.categories.First().ChildCategories.Count, Is.EqualTo(0));
-            //Assert.AreEqual(0, this.categories.First().ChildCategories.Count);
-        }
-
+        
         [Test]
         public void RemoveCategoryChangesItsUsersCorespondingRelationWithTheParentCategory()
         {
