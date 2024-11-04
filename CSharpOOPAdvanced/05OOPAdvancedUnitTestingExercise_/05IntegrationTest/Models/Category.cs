@@ -57,7 +57,7 @@ namespace _05IntegrationTest
                 return;
             }
 
-            foreach (var user in this.Users)
+            foreach (IUser user in this.Users)
             {
                 this.parent.AddUser(user);
             }
