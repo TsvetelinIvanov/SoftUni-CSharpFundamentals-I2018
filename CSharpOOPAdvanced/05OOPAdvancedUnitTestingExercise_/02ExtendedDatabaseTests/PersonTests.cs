@@ -1,8 +1,8 @@
-﻿using _02ExtendedDatabase;
-using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Reflection;
+using NUnit.Framework;
+﻿using _02ExtendedDatabase;
 
 namespace _02ExtendedDatabaseTests
 {
@@ -23,7 +23,7 @@ namespace _02ExtendedDatabaseTests
         }
 
         [Test]
-        public void PopertiesHaveNonPublicSetters()
+        public void PropertiesHaveNonPublicSetters()
         {
             Type personPype = typeof(Person);
             PropertyInfo[] proertiesWithPublicSetters = personPype.GetProperties().Where(p => p.SetMethod.IsPublic).ToArray();
