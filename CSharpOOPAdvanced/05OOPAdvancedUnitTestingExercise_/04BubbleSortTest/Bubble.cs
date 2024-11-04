@@ -5,7 +5,6 @@
         public void Sort(int[] numbers)
         {
             bool swapped = true;
-
             while (swapped)
             {
                 swapped = false;
