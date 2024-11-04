@@ -30,7 +30,7 @@ namespace _02ExtendedDatabase
         {
             if (this.people.Any(p => p.Id == person.Id || p.Username == person.Username))
             {
-                throw new InvalidOperationException("This person already exist in database!");
+                throw new InvalidOperationException("This person already exists in the database!");
             }
 
             this.people.Add(person);
