@@ -1,11 +1,11 @@
-﻿using _02ExtendedDatabase;
 using NUnit.Framework;
 using System;
+﻿using _02ExtendedDatabase;
 
 namespace _02ExtendedDatabaseTests
 {
     [TestFixture]
-    public class DatabaseTsts
+    public class DatabaseTests
     {
         private Database database;
 
@@ -16,7 +16,7 @@ namespace _02ExtendedDatabaseTests
         }
 
         [Test]
-        public void WorkDatabaseConstructor()
+        public void DatabaseConstructorWorks()
         {
             IPerson firstPerson = new Person(001L, "First");
             IPerson secondPerson = new Person(010L, "Second");
@@ -29,13 +29,13 @@ namespace _02ExtendedDatabaseTests
         }
 
         [Test]
-        public void WorkDatabaseConstructorWithNullParameter()
+        public void WorkDatabaseConstructorWorksWithNullParameter()
         {
             Assert.DoesNotThrow(() => this.database = new Database(null));
         }
 
         [Test]
-        public void DatabaseAddPerson()
+        public void DatabaseAddsPerson()
         {
             Person person = new Person(111, "TestUser");
 
@@ -56,7 +56,7 @@ namespace _02ExtendedDatabaseTests
 
             this.database.Add(firstPerson);
 
-            Assert.That(() => this.database.Add(secondPerson), Throws.InvalidOperationException.With.Message.EqualTo("This person already exist in database!"));
+            Assert.That(() => this.database.Add(secondPerson), Throws.InvalidOperationException.With.Message.EqualTo("This person already exists in the database!"));
             //Assert.Throws<InvalidOperationException>(() => this.database.Add(secondPerson));                
         }
 
@@ -65,13 +65,16 @@ namespace _02ExtendedDatabaseTests
         {
             Person firstPerson = new Person(1L, "First");
             Person secondPeson = new Person(10L, "Second");
-            Person againFirstPerson = new Person(1, "First");
+            Person thirdPerson = new Person(100L, "Third");
+            this.database.Add(firstPerson);
+            this.database.Add(secondPerson);
+            this.database.Add(thirdPerson);
 
             this.database.Remove(secondPeson);
-            this.database.Remove(againFirstPerson);
+            this.database.Remove(thirdPerson);
 
-            Assert.That(this.database.Count, Is.EqualTo(0), $"Removing {typeof(IPerson)} don't work!");
-            //Assert.AreEqual(0, this.database.Count, $"Removing {typeof(IPerson)} don't work!");
+            Assert.That(this.database.Count, Is.EqualTo(1), $"Removing {typeof(IPerson)} don't work!");
+            //Assert.AreEqual(1, this.database.Count, $"Removing {typeof(IPerson)} don't work!");
         }
 
         [Test]
@@ -113,7 +116,7 @@ namespace _02ExtendedDatabaseTests
         }
 
         [Test]
-        public void ThrowsExceptionBySearchingUnexistingId()
+        public void ThrowsExceptionBySearchingInexistandId()
         {
             this.database.Add(new Person(1, "First"));
 
@@ -130,7 +133,7 @@ namespace _02ExtendedDatabaseTests
         }
 
         [Test]
-        public void ThrowsExceptionBySearchingNullAssUsername()
+        public void ThrowsExceptionBySearchingNullAsUsername()
         {
             this.database.Add(new Person(1, "First"));
 
@@ -138,7 +141,7 @@ namespace _02ExtendedDatabaseTests
         }
 
         [Test]
-        public void ThrowsExceptionBySearchingUnexistentUsername()
+        public void ThrowsExceptionBySearchingInexistantUsername()
         {
             this.database.Add(new Person(1, "First"));
 
