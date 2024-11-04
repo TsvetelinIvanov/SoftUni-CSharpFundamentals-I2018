@@ -19,10 +19,10 @@ namespace _03IteratorTestTests
         }
 
         [Test]
-        public void ThrowsExceptionWithNullInicializationConstructor()
+        public void ThrowsExceptionWithNullInitializationConstructor()
         {
             Assert.That(() => new ListIterator(null), Throws.ArgumentNullException);
-            // Assert.Throws<ArgumentNullException>(() => new ListIterator(null));
+            //Assert.Throws<ArgumentNullException>(() => new ListIterator(null));
         }
 
         [Test]
@@ -46,7 +46,8 @@ namespace _03IteratorTestTests
         public void MoveMovesNextIndex()
         {
             this.listIterator.Move();
-            object internalIndexValue = typeof(ListIterator).GetFields(BindingFlags.Instance | BindingFlags.NonPublic).First(f => f.Name == "currentIndex").GetValue(this.listIterator);
+            object internalIndexValue = typeof(ListIterator).GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
+                .First(f => f.Name == "currentIndex").GetValue(this.listIterator);
 
             Assert.That(internalIndexValue, Is.EqualTo(1));
             //Assert.AreEqual(1, internalIndexValue);
@@ -85,7 +86,7 @@ namespace _03IteratorTestTests
         }
 
         [Test]
-        public void ThrowExceptionWhenPrintFromEmptyCollection()
+        public void ThrowsExceptionWhenPrintFromEmptyCollection()
         {
             this.listIterator = new ListIterator(new string[0]);
 
