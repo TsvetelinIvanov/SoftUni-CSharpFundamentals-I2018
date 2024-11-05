@@ -163,7 +163,7 @@ namespace _08CustomLinkedList
             if (currentNode != null)
             {
                 // The element is found in the list -> remove it
-                RemoveListNode(currentNode, prevNode);
+                this.RemoveListNode(currentNode, prevNode);
 
                 return currentIndex;
             }
@@ -205,7 +205,7 @@ namespace _08CustomLinkedList
         /// </returns>
         public bool Contains(T item)
         {
-            int index = IndexOf(item);
+            int index = this.IndexOf(item);
             bool found = index != -1;
 
             return found;
