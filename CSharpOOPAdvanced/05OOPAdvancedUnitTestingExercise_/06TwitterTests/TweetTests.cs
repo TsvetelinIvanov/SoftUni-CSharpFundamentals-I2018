@@ -1,7 +1,7 @@
-﻿using _06Twitter;
-using _06Twitter.Contracts;
 using Moq;
 using NUnit.Framework;
+﻿using _06Twitter;
+using _06Twitter.Contracts;
 
 namespace _06TweeterTests
 {
@@ -11,10 +11,12 @@ namespace _06TweeterTests
         [Test]
         public void ReceiveMessageInvokesClientToWriteTheMessage()
         {
+            //Arrange
             Mock<IClient> mockClient = new Mock<IClient>();
             mockClient.Setup(mc => mc.SendTweetToServer(It.IsAny<string>()));
             Tweet tweet = new Tweet(mockClient.Object);
-
+            
+            //Act
             tweet.ReceiveMessage("Test");
 
             // Assert - (Mock.Verify) Verifies that the method is Invoked during the Test exactly 1 time
@@ -24,10 +26,12 @@ namespace _06TweeterTests
         [Test]
         public void ReceiveMessageInvokesClientToSendMessage()
         {
+            //Arrange
             Mock<IClient> mockClient = new Mock<IClient>();
             mockClient.Setup(mc => mc.SendTweetToServer(It.IsAny<string>()));
             Tweet tweet = new Tweet(mockClient.Object);
-
+            
+            //Act
             tweet.ReceiveMessage("Test");
 
             //Assert
