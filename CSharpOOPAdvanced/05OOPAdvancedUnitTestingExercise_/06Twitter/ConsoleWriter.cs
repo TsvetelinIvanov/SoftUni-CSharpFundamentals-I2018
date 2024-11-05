@@ -1,5 +1,5 @@
-﻿using _06Twitter.Contracts;
 using System;
+﻿using _06Twitter.Contracts;
 
 namespace _06Twitter
 {
