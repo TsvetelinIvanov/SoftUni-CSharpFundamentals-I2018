@@ -1,7 +1,7 @@
-﻿using _06Twitter;
-using _06Twitter.Contracts;
 using Moq;
 using NUnit.Framework;
+﻿using _06Twitter;
+using _06Twitter.Contracts;
 
 namespace _06TweeterTests
 {
@@ -13,11 +13,13 @@ namespace _06TweeterTests
         [Test]
         public void SendTweetToServerWorks()
         {
+            //Arrange
             Mock<IWriter> mockWriter = new Mock<IWriter>();
             Mock<ITweetRepository> mockTweetRepository = new Mock<ITweetRepository>();
             mockTweetRepository.Setup(mtr => mtr.SaveTweet(It.IsAny<string>()));
             MicrowaveOven microwaveOven = new MicrowaveOven(mockWriter.Object, mockTweetRepository.Object);
-
+            
+            //Act
             microwaveOven.SendTweetToServer(Message);
 
             //Assert
@@ -27,12 +29,13 @@ namespace _06TweeterTests
         [Test]
         public void WriteTweetWorks()
         {
+            //Arrange
             Mock<IWriter> mockWriter = new Mock<IWriter>();
             mockWriter.Setup(mw => mw.WriteLine(It.IsAny<string>()));
             Mock<ITweetRepository> mockTweetRepository = new Mock<ITweetRepository>();
-            MicrowaveOven microwaveOven = new MicrowaveOven(mockWriter.Object,
-                mockTweetRepository.Object);
-
+            MicrowaveOven microwaveOven = new MicrowaveOven(mockWriter.Object, mockTweetRepository.Object);
+            
+            //Act
             microwaveOven.WriteTweet(Message);
 
             //Assert
