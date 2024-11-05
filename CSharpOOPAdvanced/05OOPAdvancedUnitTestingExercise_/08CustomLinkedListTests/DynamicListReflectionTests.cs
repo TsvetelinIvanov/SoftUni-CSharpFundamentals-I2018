@@ -1,7 +1,7 @@
-﻿using _08CustomLinkedList;
-using NUnit.Framework;
 using System;
 using System.Reflection;
+using NUnit.Framework;
+﻿using _08CustomLinkedList;
 
 namespace _08CustomLinkedListTests
 {
@@ -21,27 +21,9 @@ namespace _08CustomLinkedListTests
             DynamicList<string> classInstance = (DynamicList<string>)Activator.CreateInstance(dynamicListType);
 
             int elementsCount = (int)dynamicListType.GetProperty("Count").GetValue(classInstance);
-
-            //Assert.That(elementsCount, Is.EqualTo(ExpectedZeroCount), "Count doesn't return zero by empty collection!");
+            
             Assert.AreEqual(ExpectedZeroCount, elementsCount, "Count doesn't return zero by empty collection!");
-        }
-
-        [Test]
-        public void CountWorksByThreeElements()
-        {
-            string[] testElements = new string[] { "first", "second", "third" };
-            Type dynamicListType = typeof(DynamicList<string>);
-            DynamicList<string> classInstance = (DynamicList<string>)Activator.CreateInstance(dynamicListType);
-            MethodInfo addMethod = dynamicListType.GetMethod("Add", BindingFlags.Instance | BindingFlags.Public);
-            foreach (string element in testElements)
-            {
-                addMethod.Invoke(classInstance, new object[] { element });
-            }
-
-            int elementsCount = (int)dynamicListType.GetProperty("Count").GetValue(classInstance);
-
-            //Assert.That(elementsCount, Is.EqualTo(ExpectedThreeElementsCount), "Count doesn't work correctly!");
-            Assert.AreEqual(ExpectedThreeElementsCount, elementsCount, "Count doesn't work correctly!");
+            //Assert.That(elementsCount, Is.EqualTo(ExpectedZeroCount), "Count doesn't return zero by empty collection!");            
         }
 
         [Test]
@@ -60,25 +42,6 @@ namespace _08CustomLinkedListTests
                 Assert.AreEqual(testElements[i], classInstance[i], "Add doesn't work correctly!");
                 //Assert.That(classInstance[i], Is.EqualTo(testElements[i]), "Add doesn't work correctly!");
             }
-        }
-
-        [Test]
-        public void SetElementAtSpecificIndexShouldWorks()
-        {
-            string[] testElements = new string[] { "first", "second", "third" };
-            Type dynamicListType = typeof(DynamicList<string>);
-            DynamicList<string> classInstance = (DynamicList<string>)Activator.CreateInstance(dynamicListType);
-            foreach (var element in testElements)
-            {
-                classInstance.Add(element);
-            }
-
-            classInstance[0] = testElements[2];
-            string expectedElement = testElements[2];
-            string actualElement = classInstance[0];
-
-            Assert.AreEqual(expectedElement, actualElement, "Setting element at specific index doesn't work correctly!");
-            //Assert.That(actualElement, Is.EqualTo(expectedElement), "Setting element at specific index doesn't work correctly!");
         }
 
         [Test]
@@ -118,6 +81,43 @@ namespace _08CustomLinkedListTests
                 Assert.AreEqual(testElements[i], classInstance[i], "Add doesn't work correctly!");
                 //Assert.That(classInstance[i], Is.EqualTo(testElements[i]), "Add doesn't work correctly!");
             }
+        }
+
+        [Test]
+        public void CountWorksByThreeElements()
+        {
+            string[] testElements = new string[] { "first", "second", "third" };
+            Type dynamicListType = typeof(DynamicList<string>);
+            DynamicList<string> classInstance = (DynamicList<string>)Activator.CreateInstance(dynamicListType);
+            MethodInfo addMethod = dynamicListType.GetMethod("Add", BindingFlags.Instance | BindingFlags.Public);
+            foreach (string element in testElements)
+            {
+                addMethod.Invoke(classInstance, new object[] { element });
+            }
+
+            int elementsCount = (int)dynamicListType.GetProperty("Count").GetValue(classInstance);
+            
+            Assert.AreEqual(ExpectedThreeElementsCount, elementsCount, "Count doesn't work correctly!");
+            //Assert.That(elementsCount, Is.EqualTo(ExpectedThreeElementsCount), "Count doesn't work correctly!");            
+        }        
+
+        [Test]
+        public void SetElementAtSpecificIndexWorks()
+        {
+            string[] testElements = new string[] { "first", "second", "third" };
+            Type dynamicListType = typeof(DynamicList<string>);
+            DynamicList<string> classInstance = (DynamicList<string>)Activator.CreateInstance(dynamicListType);
+            foreach (string element in testElements)
+            {
+                classInstance.Add(element);
+            }
+
+            classInstance[0] = testElements[2];
+            string expectedElement = testElements[2];
+            string actualElement = classInstance[0];
+
+            Assert.AreEqual(expectedElement, actualElement, "Setting element at specific index doesn't work correctly!");
+            //Assert.That(actualElement, Is.EqualTo(expectedElement), "Setting element at specific index doesn't work correctly!");
         }
 
         [Test]
@@ -162,23 +162,23 @@ namespace _08CustomLinkedListTests
         }
 
         [Test]
-        public void RemoveNonExistingElementReturnsMinusOne()
+        public void RemoveNonExistentElementReturnsMinusOne()
         {
             string[] testElements = new string[] { "first", "second", "third" };
             Type dynamicListType = typeof(DynamicList<string>);
             DynamicList<string> classInstance = (DynamicList<string>)Activator.CreateInstance(dynamicListType);
-            MethodInfo removeMethod = dynamicListType.GetMethod("Remove", BindingFlags.Instance | BindingFlags.Public);
             MethodInfo addMethod = dynamicListType.GetMethod("Add", BindingFlags.Instance | BindingFlags.Public);
             foreach (string element in testElements)
             {
                 addMethod.Invoke(classInstance, new object[] { element });
             }
-
-            int nonValidElement = (int)removeMethod.Invoke(classInstance, new object[] { "NonExistingElement" });
+            
             int expectedReturn = -1;
+            MethodInfo removeMethod = dynamicListType.GetMethod("Remove", BindingFlags.Instance | BindingFlags.Public);
+            int nonValidElementIndex = (int)removeMethod.Invoke(classInstance, new object[] { "NonExistingElement" });
 
-            Assert.AreEqual(expectedReturn, nonValidElement, "Remove doesn't work correctly!");
-            //Assert.That(nonValidElement, Is.EqualTo(expectedReturn), "Remove doesn't work correctly!");
+            Assert.AreEqual(expectedReturn, nonValidElementIndex, "Remove doesn't work correctly!");
+            //Assert.That(nonValidElementIndex, Is.EqualTo(expectedReturn), "Remove doesn't work correctly!");
         }
 
         [Test]
@@ -205,23 +205,23 @@ namespace _08CustomLinkedListTests
         }
 
         [Test]
-        public void IndexOfNonExistingElementReturnsMinusOne()
+        public void IndexOfNonExistentElementReturnsMinusOne()
         {
             string[] testElements = new string[] { "first", "second", "third" };
             Type dynamicListType = typeof(DynamicList<string>);
-            DynamicList<string> classInstance = (DynamicList<string>)Activator.CreateInstance(dynamicListType);
-            MethodInfo indexOfMethod = dynamicListType.GetMethod("IndexOf", BindingFlags.Instance | BindingFlags.Public);
+            DynamicList<string> classInstance = (DynamicList<string>)Activator.CreateInstance(dynamicListType);            
             MethodInfo addMethod = dynamicListType.GetMethod("Add", BindingFlags.Instance | BindingFlags.Public);
             foreach (string element in testElements)
             {
                 addMethod.Invoke(classInstance, new object[] { element });
             }
-
-            int nonValidElement = (int)indexOfMethod.Invoke(classInstance, new object[] { "NonExistingElement" });
+            
             int expectedReturn = -1;
+            MethodInfo indexOfMethod = dynamicListType.GetMethod("IndexOf", BindingFlags.Instance | BindingFlags.Public);
+            int nonValidElementIndex = (int)indexOfMethod.Invoke(classInstance, new object[] { "NonExistentElement" });
 
-            Assert.AreEqual(expectedReturn, nonValidElement, "IndexOf doesn't work correctly!");
-            //Assert.That(nonValidElement, Is.EqualTo(expectedReturn), "IndexOf doesn't work correctly!");
+            Assert.AreEqual(expectedReturn, nonValidElementIndex, "IndexOf doesn't work correctly!");
+            //Assert.That(nonValidElementIndex, Is.EqualTo(expectedReturn), "IndexOf doesn't work correctly!");
         }
 
         [Test]
@@ -230,34 +230,34 @@ namespace _08CustomLinkedListTests
             string[] testElements = new string[] { "first", "second", "third" };
             Type dynamicListType = typeof(DynamicList<string>);
             DynamicList<string> classInstance = (DynamicList<string>)Activator.CreateInstance(dynamicListType);
-            MethodInfo indexOfMethod = dynamicListType.GetMethod("IndexOf", BindingFlags.Instance | BindingFlags.Public);
             MethodInfo addMethod = dynamicListType.GetMethod("Add", BindingFlags.Instance | BindingFlags.Public);
             foreach (string element in testElements)
             {
                 addMethod.Invoke(classInstance, new object[] { element });
             }
+            
+            int expectedReturn = 2;
+            MethodInfo indexOfMethod = dynamicListType.GetMethod("IndexOf", BindingFlags.Instance | BindingFlags.Public);
+            int actualReturn = (int)indexOfMethod.Invoke(classInstance, new object[] { testElements[2] });
 
-            int actualElement = (int)indexOfMethod.Invoke(classInstance, new object[] { testElements[2] });
-            int expectedElement = 2;
-
-            Assert.AreEqual(expectedElement, actualElement, "IndexOf doesn't work correctly!");
-            //Assert.That(actualElement, Is.EqualTo(expectedElement), "IndexOf doesn't work correctly!");
+            Assert.AreEqual(expectedReturn, actualReturn, "IndexOf doesn't work correctly!");
+            //Assert.That(actualReturn, Is.EqualTo(expectedReturn), "IndexOf doesn't work correctly!");
         }
 
         [Test]
-        public void ContainsNonExistingElementReturnsFalse()
+        public void ContainsNonExistentElementReturnsFalse()
         {
             string[] testElements = new string[] { "first", "second", "third" };
             Type dynamicListType = typeof(DynamicList<string>);
             DynamicList<string> classInstance = (DynamicList<string>)Activator.CreateInstance(dynamicListType);
-            MethodInfo containsMethod = dynamicListType.GetMethod("Contains", BindingFlags.Instance | BindingFlags.Public);
             MethodInfo addMethod = dynamicListType.GetMethod("Add", BindingFlags.Instance | BindingFlags.Public);
             foreach (string element in testElements)
             {
                 addMethod.Invoke(classInstance, new object[] { element });
             }
-
-            bool IsElementValid = (bool)containsMethod.Invoke(classInstance, new object[] { "NonExistingElement" });
+            
+            MethodInfo containsMethod = dynamicListType.GetMethod("Contains", BindingFlags.Instance | BindingFlags.Public);
+            bool IsElementValid = (bool)containsMethod.Invoke(classInstance, new object[] { "NonExistentElement" });
 
             Assert.IsFalse(IsElementValid, "Contains doesn't work correctly!");
             //Assert.That(IsElementValid, Is.EqualTo(false), "Contains doesn't work correctly!");
@@ -269,13 +269,13 @@ namespace _08CustomLinkedListTests
             string[] testElements = new string[] { "first", "second", "third" };
             Type dynamicListType = typeof(DynamicList<string>);
             DynamicList<string> classInstance = (DynamicList<string>)Activator.CreateInstance(dynamicListType);
-            MethodInfo containsMethod = dynamicListType.GetMethod("Contains", BindingFlags.Instance | BindingFlags.Public);
             MethodInfo addMethod = dynamicListType.GetMethod("Add", BindingFlags.Instance | BindingFlags.Public);
             foreach (string element in testElements)
             {
                 addMethod.Invoke(classInstance, new object[] { element });
             }
-
+            
+            MethodInfo containsMethod = dynamicListType.GetMethod("Contains", BindingFlags.Instance | BindingFlags.Public);
             bool IsElementValid = (bool)containsMethod.Invoke(classInstance, new object[] { "first" });
 
             Assert.IsTrue(IsElementValid, "Contains doesn't work correctly!");
