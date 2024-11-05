@@ -1,4 +1,4 @@
-﻿namespace _06Twitter_
+﻿namespace _06Twitter
 {
     class Program
     {
