@@ -5,7 +5,7 @@ namespace _06Twitter
     public class MicrowaveOven : IClient
     {
         private IWriter writer;
-        ITweetRepository tweetRepository;
+        private ITweetRepository tweetRepository;
 
         public MicrowaveOven(IWriter writer, ITweetRepository tweetRepository)
         {
