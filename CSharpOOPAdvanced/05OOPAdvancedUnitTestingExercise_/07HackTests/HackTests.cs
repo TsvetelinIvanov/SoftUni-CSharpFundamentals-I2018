@@ -1,7 +1,7 @@
-﻿using _07Hack;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using System;
+using _07Hack;
 
 namespace _07HackTests
 {
@@ -33,7 +33,8 @@ namespace _07HackTests
         {
             Mock<IInteger> mockInteger = new Mock<IInteger>();
             mockInteger.Setup(m => m.GetMathAbs(NegativeValueInteger)).Returns(Math.Abs(NegativeValueInteger));
-            int expectedValue = AbsoluteValueInteger;
+            
+            int expectedValue = AbsoluteValueInteger;            
             int actualValue = mockInteger.Object.GetMathAbs(NegativeValueInteger);
 
             //Assert.AreEqual(expectedValue, actualValue);
