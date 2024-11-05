@@ -12,6 +12,7 @@ namespace _07Hack
         public static decimal GetMatAbsZero()
         {
             decimal zero = 0m;
+            
             return Math.Abs(zero);
         }
     }
