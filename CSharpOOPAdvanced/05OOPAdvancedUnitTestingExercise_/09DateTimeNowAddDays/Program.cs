@@ -5,8 +5,7 @@ namespace _09DateTimeNowAddDays
 {
     class Program
     {
-        private static DateTime DateTimeNow = DateTime.Parse("04/09/2018",
-                CultureInfo.InvariantCulture);
+        private static DateTime DateTimeNow = DateTime.Parse("04/09/2018", CultureInfo.InvariantCulture);
 
         static void Main(string[] args)
         {
