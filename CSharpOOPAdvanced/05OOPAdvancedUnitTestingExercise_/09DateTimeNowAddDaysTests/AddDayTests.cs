@@ -1,8 +1,8 @@
-﻿using _09DateTimeNowAddDays;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using System;
 using System.Globalization;
+using _09DateTimeNowAddDays;
 
 namespace _09DateTimeNowAddDaysTests
 {
@@ -31,8 +31,8 @@ namespace _09DateTimeNowAddDaysTests
             //The DateTime format(expectedDate) depend from local settings and must be manipulate additionally (in this case it is copied from consoleprint, using the above expression)!
             //string expectedDate = "20.4.2018 г. 0:00:00";
 
-            //Assert.AreEqual(expectedDate, actualDate);
-            Assert.That(actualDate, Is.EqualTo(expectedDate));
+            Assert.AreEqual(expectedDate, actualDate);
+            //Assert.That(actualDate, Is.EqualTo(expectedDate));
         }
 
         [Test]
@@ -46,8 +46,8 @@ namespace _09DateTimeNowAddDaysTests
             //The DateTime format(expectedDate) depend from local settings and must be manipulate additionally (in this case it is copied from consoleprint, using the above expression)!
             //string expectedDate = "29.4.2018 г. 0:00:00";
 
-            //Assert.AreEqual(expectedDate, actualDate);
-            Assert.That(actualDate, Is.EqualTo(expectedDate));
+            Assert.AreEqual(expectedDate, actualDate);
+            //Assert.That(actualDate, Is.EqualTo(expectedDate));
         }
 
         [Test]
@@ -61,8 +61,8 @@ namespace _09DateTimeNowAddDaysTests
             //The DateTime format(expectedDate) depend from local settings and must be manipulate additionally (in this case it is copied from consoleprint, using the above expression)!
             //string expectedDate = "5.5.2018 г. 0:00:00";
 
-            //Assert.AreEqual(expectedDate, actualDate);
-            Assert.That(actualDate, Is.EqualTo(expectedDate));
+            Assert.AreEqual(expectedDate, actualDate);
+            //Assert.That(actualDate, Is.EqualTo(expectedDate));
         }
 
         [Test]
@@ -76,8 +76,8 @@ namespace _09DateTimeNowAddDaysTests
             //The DateTime format(expectedDate) depend from local settings and must be manipulate additionally (in this case it is copied from consoleprint, using the above expression)!
             //string expectedDate = "25.3.2018 г. 0:00:00";
 
-            //Assert.AreEqual(expectedDate, actualDate);
-            Assert.That(actualDate, Is.EqualTo(expectedDate));
+            Assert.AreEqual(expectedDate, actualDate);
+            //Assert.That(actualDate, Is.EqualTo(expectedDate));
         }
 
         [Test]
@@ -92,8 +92,8 @@ namespace _09DateTimeNowAddDaysTests
             //The DateTime format(expectedDate) depend from local settings and must be manipulate additionally (in this case it is copied from consoleprint, using the above expression)!
             //string expectedDate = "29.2.2020 г. 0:00:00";
 
-            //Assert.AreEqual(expectedDate, actualDate);
-            Assert.That(actualDate, Is.EqualTo(expectedDate));
+            Assert.AreEqual(expectedDate, actualDate);
+            //Assert.That(actualDate, Is.EqualTo(expectedDate));
 
             bool isDayCorrect = mockDateTimeNow.Object.GiveDateTimeNow().Day.ToString().Equals("29");
 
@@ -113,8 +113,8 @@ namespace _09DateTimeNowAddDaysTests
             //The DateTime format(expectedDate) depend from local settings and must be manipulate additionally (in this case it is copied from consoleprint, using the above expression)!
             //string expectedDate = "1.3.2018 г. 0:00:00";
 
-            //Assert.AreEqual(expectedDate, actualDate);
-            Assert.That(actualDate, Is.EqualTo(expectedDate));
+            Assert.AreEqual(expectedDate, actualDate);
+            //Assert.That(actualDate, Is.EqualTo(expectedDate));
 
             bool isDayCorrect = mockDateTimeNow.Object.GiveDateTimeNow().Day.ToString().Equals("1");
 
@@ -133,8 +133,8 @@ namespace _09DateTimeNowAddDaysTests
             //The DateTime format(expectedDate) depend from local settings and must be manipulate additionally (in this case it is copied from consoleprint, using the above expression)!
             //string expectedDate = "2.1.0001 г. 0:00:00";
 
-            //Assert.AreEqual(expectedDate, actualDate);
-            Assert.That(actualDate, Is.EqualTo(expectedDate));
+            Assert.AreEqual(expectedDate, actualDate);
+            //Assert.That(actualDate, Is.EqualTo(expectedDate));
         }
 
         [Test]
@@ -154,7 +154,7 @@ namespace _09DateTimeNowAddDaysTests
         }
 
         [Test]
-        public void AddDaysWorksToMaxValue()
+        public void AddDaysWithSubtractingOneDayWorksToMaxValue()
         {
             Mock<IDateTimeNow> mockDateTimeNow = new Mock<IDateTimeNow>();
             mockDateTimeNow.Setup(d => d.GiveDateTimeNow()).Returns(DateTimeMaxValue.AddDays(SubtractOneDay));
@@ -164,8 +164,8 @@ namespace _09DateTimeNowAddDaysTests
             //The DateTime format(expectedDate) depend from local settings and must be manipulate additionally (in this case it is copied from consoleprint, using the above expression)!
             //string expectedDate = "30.12.9999 г. 0:00:00";
 
-            //Assert.AreEqual(expectedDate, actualDate);
-            Assert.That(actualDate, Is.EqualTo(expectedDate));
+            Assert.AreEqual(expectedDate, actualDate);
+            //Assert.That(actualDate, Is.EqualTo(expectedDate));
         }
     }
 }
