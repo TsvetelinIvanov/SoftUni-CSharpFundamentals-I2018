@@ -1,17 +1,13 @@
-﻿using _09DateTimeNowAddDays;
 using Moq;
 using NUnit.Framework;
 using System;
 using System.Globalization;
+﻿using _09DateTimeNowAddDays;
 
 namespace _09DateTimeTests
 {
     public class DateTimeNowTest
     {
-        private static DateTime DateTimeNow = DateTime.Parse("04/09/2018", CultureInfo.InvariantCulture);
-        private static DateTime DateTimeMinValue = DateTime.MinValue;
-        private static DateTime DateTimeMaxValue = DateTime.MaxValue;
-
         private const int AddDaysToMiddle = 11;
         private const int AddDaysToEnd = 20;
         private const int AddDaysToNextMonth = 26;
@@ -19,12 +15,15 @@ namespace _09DateTimeTests
         private const int AddDayInLeapYear = 1;
         private const int AddOneDay = 1;
         private const int SubtractOneDay = -1;
+        
+        private static DateTime DateTimeNow = DateTime.Parse("04/09/2018", CultureInfo.InvariantCulture);
+        private static DateTime DateTimeMinValue = DateTime.MinValue;
+        private static DateTime DateTimeMaxValue = DateTime.MaxValue;
 
         [Test]
         public void AddDaysToTheMiddleOfMonthShouldWorkCorrectly()
         {
             Mock<IDateTimeNow> mockDateTimeNow = new Mock<IDateTimeNow>();
-
             mockDateTimeNow.Setup(d => d.GiveDateTimeNow()).Returns(DateTimeNow.AddDays(AddDaysToMiddle));
 
             string actualDate = mockDateTimeNow.Object.GiveDateTimeNow().Date.ToString();
@@ -37,7 +36,6 @@ namespace _09DateTimeTests
         public void AddDaysToTheEndOfMonthShouldWorkCorrectly()
         {
             Mock<IDateTimeNow> mockDateTimeNow = new Mock<IDateTimeNow>();
-
             mockDateTimeNow.Setup(d => d.GiveDateTimeNow()).Returns(DateTimeNow.AddDays(AddDaysToEnd));
 
             string actualDate = mockDateTimeNow.Object.GiveDateTimeNow().Date.ToString();
@@ -50,7 +48,6 @@ namespace _09DateTimeTests
         public void AddDaysToNextMonthShouldWorkCorrectly()
         {
             Mock<IDateTimeNow> mockDateTimeNow = new Mock<IDateTimeNow>();
-
             mockDateTimeNow.Setup(d => d.GiveDateTimeNow()).Returns(DateTimeNow.AddDays(AddDaysToNextMonth));
 
             string actualDate = mockDateTimeNow.Object.GiveDateTimeNow().Date.ToString();
@@ -63,7 +60,6 @@ namespace _09DateTimeTests
         public void AddDaysToPreviousMonthShouldWorkCorrectly()
         {
             Mock<IDateTimeNow> mockDateTimeNow = new Mock<IDateTimeNow>();
-
             mockDateTimeNow.Setup(d => d.GiveDateTimeNow()).Returns(DateTimeNow.AddDays(AddDaysToPreviousMonth));
 
             string actualDate = mockDateTimeNow.Object.GiveDateTimeNow().Date.ToString();
@@ -76,9 +72,7 @@ namespace _09DateTimeTests
         public void AddDayToLeapYearShouldWorkCorrectly()
         {
             DateTime leapYear = DateTime.Parse("02/28/2020", CultureInfo.InvariantCulture);
-
             Mock<IDateTimeNow> mockDateTimeNow = new Mock<IDateTimeNow>();
-
             mockDateTimeNow.Setup(d => d.GiveDateTimeNow()).Returns(leapYear.AddDays(AddDayInLeapYear));
 
             string actualDate = mockDateTimeNow.Object.GiveDateTimeNow().Date.ToString();
@@ -95,9 +89,7 @@ namespace _09DateTimeTests
         public void AddDayToNonLeapYearShouldWorkCorrectly()
         {
             DateTime leapYear = DateTime.Parse("02/28/2018", CultureInfo.InvariantCulture);
-
             Mock<IDateTimeNow> mockDateTimeNow = new Mock<IDateTimeNow>();
-
             mockDateTimeNow.Setup(d => d.GiveDateTimeNow()).Returns(leapYear.AddDays(AddDayInLeapYear));
 
             string actualDate = mockDateTimeNow.Object.GiveDateTimeNow().Date.ToString();
@@ -114,7 +106,6 @@ namespace _09DateTimeTests
         public void AddDayToMinValueShouldWorkCorrectly()
         {
             Mock<IDateTimeNow> mockDateTimeNow = new Mock<IDateTimeNow>();
-
             mockDateTimeNow.Setup(d => d.GiveDateTimeNow()).Returns(DateTimeMinValue.AddDays(AddOneDay));
 
             string actualDate = mockDateTimeNow.Object.GiveDateTimeNow().Date.ToString();
@@ -143,7 +134,6 @@ namespace _09DateTimeTests
         public void SubtractDayFromMaxValueShouldWorkCorrectly()
         {
             Mock<IDateTimeNow> mockDateTimeNow = new Mock<IDateTimeNow>();
-
             mockDateTimeNow.Setup(d => d.GiveDateTimeNow()).Returns(DateTimeMaxValue.AddDays(SubtractOneDay));
 
             string actualDate = mockDateTimeNow.Object.GiveDateTimeNow().Date.ToString();
