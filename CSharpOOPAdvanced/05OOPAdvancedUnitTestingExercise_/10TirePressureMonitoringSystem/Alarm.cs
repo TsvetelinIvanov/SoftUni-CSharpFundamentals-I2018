@@ -7,18 +7,18 @@ namespace _10TirePressureMonitoringSystem
         private const double LowPressureThreshold = 17;
         private const double HighPressureThreshold = 21;
 
-        private readonly ISensor _sensor = new Sensor();
+        private readonly ISensor sensor = new Sensor();
 
-        private bool _alarmOn = false;
+        private bool alarmOn = false;
 
         public bool AlarmOn
         {
-            get { return this._alarmOn; }
+            get { return this.alarmOn; }
         }
 
         public void Check()
         {
-            double psiPressureValue = this._sensor.PopNextPressurePsiValue();
+            double psiPressureValue = this.sensor.PopNextPressurePsiValue();
 
             if (psiPressureValue < 0)
             {
@@ -27,7 +27,7 @@ namespace _10TirePressureMonitoringSystem
 
             if (psiPressureValue < LowPressureThreshold || HighPressureThreshold < psiPressureValue)
             {
-                this._alarmOn = true;
+                this.alarmOn = true;
             }
         }
     }
