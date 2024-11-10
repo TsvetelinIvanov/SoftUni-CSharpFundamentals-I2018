@@ -1,5 +1,5 @@
-﻿using NUnit.Framework;
 using System;
+using NUnit.Framework;
 
 namespace _01SkeletonForTestingTests
 {
@@ -25,19 +25,21 @@ namespace _01SkeletonForTestingTests
         public void AxeLoosesDurabilityAfterAttack()
         {            
             this.axe.Attack(this.dummy);
-            Assert.That(axe.DurabilityPoints, Is.EqualTo(0), "Axe durability dosen't change after attack.");
+
             //Assert.AreEqual(0, this.axe.DurabilityPoints, "Durability doesn't change after atack");
+            Assert.That(axe.DurabilityPoints, Is.EqualTo(0), "Axe durability dosen't change after attack.");
         }
 
         [Test]
-        public void BrokenAxeCantAttack()
+        public void BrokenAxeCannotAttackAndThrowsException()
         {
             //Axe axe = new Axe(1, 1);
             //Dummy dummy = new Dummy(10, 10);
             this.axe.Attack(this.dummy);
-            Assert.That(() => axe.Attack(dummy), Throws.InvalidOperationException.With.Message.EqualTo("Axe is broken."));
-            InvalidOperationException invalidOperationException = Assert.Throws<InvalidOperationException>(() => this.axe.Attack(this.dummy));
-            //Assert.That(ex.Message, Is.EqualTo("Axe is broken."));
+
+            //InvalidOperationException invalidOperationException = Assert.Throws<InvalidOperationException>(() => this.axe.Attack(this.dummy));
+            //Assert.That(invalidOperationException.Message, Is.EqualTo("Axe is broken."));
+            Assert.That(() => axe.Attack(dummy), Throws.InvalidOperationException.With.Message.EqualTo("Axe is broken."));            
         }
     }
 }
