@@ -1,6 +1,6 @@
-﻿using _01SkeletonForTesting;
 using Moq;
 using NUnit.Framework;
+﻿using _01SkeletonForTesting;
 
 namespace _01SkeletonForTestingTests
 {
@@ -10,7 +10,7 @@ namespace _01SkeletonForTestingTests
         private const string HeroName = "Hero";
 
         [Test]
-        public void HeroGainExperienceAfterAttackIfTargetDies()
+        public void HeroGainsExperienceAfterAttackIfTargetDies()
         {
             FakeDeadTarget fakeDeadTarget = new FakeDeadTarget();
             FakeWeapon fakeWeapon = new FakeWeapon();
@@ -19,8 +19,8 @@ namespace _01SkeletonForTestingTests
             hero.Attack(fakeDeadTarget);
             int expectedExperience = fakeDeadTarget.GiveExperience();
 
-            Assert.That(hero.Experience, Is.EqualTo(expectedExperience));
             //Assert.AreEqual(expectedExperience, hero.Experience);
+            Assert.That(hero.Experience, Is.EqualTo(expectedExperience));
         }
 
         [Test]
@@ -36,8 +36,8 @@ namespace _01SkeletonForTestingTests
 
             hero.Attack(mockFakeDeadTarget.Object);
 
-            Assert.That(hero.Experience, Is.EqualTo(mockFakeDeadTarget.Object.GiveExperience()));
             //Assert.AreEqual(mockFakeDeadTarget.Object.GiveExperience(), hero.Experience);
+            Assert.That(hero.Experience, Is.EqualTo(mockFakeDeadTarget.Object.GiveExperience()));           
         }
     }    
 }
