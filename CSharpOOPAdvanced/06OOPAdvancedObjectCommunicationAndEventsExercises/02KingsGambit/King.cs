@@ -16,6 +16,6 @@ public class King
     public void OnAttack()
     {
         Console.WriteLine($"King {this.Name} is under attack!");
-        UnderAttackHandler?.Invoke();
+        this.UnderAttackHandler?.Invoke();
     }
 }
