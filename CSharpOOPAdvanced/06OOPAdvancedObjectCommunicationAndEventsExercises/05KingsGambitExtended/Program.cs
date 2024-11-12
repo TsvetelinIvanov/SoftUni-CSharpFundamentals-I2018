@@ -9,11 +9,12 @@ public class Program
         King king = new King(kingName);
         
         string[] royalGuardNames = Console.ReadLine().Split();
-        foreach (var name in royalGuardNames)
+        foreach (string name in royalGuardNames)
         {
             RoyalGuard royalGuard = new RoyalGuard(name);
             king.AddSoldier(royalGuard);
         }
+        
         string[] footmanNames = Console.ReadLine().Split();
         foreach (string name in footmanNames)
         {
@@ -26,7 +27,6 @@ public class Program
         {
             string[] commandArgs = input.Split();
             string command = commandArgs[0];
-
             switch (command)
             {
                 case "Kill":
