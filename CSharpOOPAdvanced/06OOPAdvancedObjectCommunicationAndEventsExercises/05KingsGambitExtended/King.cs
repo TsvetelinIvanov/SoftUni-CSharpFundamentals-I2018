@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public delegate void KingUnderAttackhandler();
+public delegate void KingUnderAttackHandler();
 
 public class King
 {
-    public event KingUnderAttackhandler UnderAttack;
+    public event KingUnderAttackHandler UnderAttackHandler;
 
     private List<Soldier> soldiers;
 
@@ -25,19 +25,19 @@ public class King
     public void AddSoldier(Soldier soldier)
     {
         this.soldiers.Add(soldier);
-        UnderAttack += soldier.KingUnderAttack;
-        soldier.SoldierDied += this.OnSoldierDead;
+        this.UnderAttackHandler += soldier.KingUnderAttack;
+        soldier.SoldierDiedHandler += this.OnSoldierDead;
     }
 
     public void OnAttack()
     {
         Console.WriteLine($"King {this.Name} is under attack!");
-        UnderAttack?.Invoke();
+        this.UnderAttackHandler?.Invoke();
     }
 
     public void OnSoldierDead(Soldier soldier)
     {
-        this.UnderAttack -= soldier.KingUnderAttack;
+        this.UnderAttackHandler -= soldier.KingUnderAttack;
         this.soldiers.Remove(soldier);
     }
 }
