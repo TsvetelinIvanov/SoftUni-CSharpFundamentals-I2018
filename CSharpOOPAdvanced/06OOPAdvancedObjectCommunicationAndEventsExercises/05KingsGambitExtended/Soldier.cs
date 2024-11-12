@@ -2,7 +2,7 @@
 
 public abstract class Soldier
 {
-    public event SoldierDiedHandler SoldierDied;
+    public event SoldierDiedHandler SoldierDiedHandler;
 
     public Soldier(string name, int health)
     {
@@ -19,7 +19,7 @@ public abstract class Soldier
         this.Health -= 1;
         if (this.Health == 0)
         {
-            SoldierDied?.Invoke(this);
+            SoldierDiedHandler?.Invoke(this);
         }
     }
 
