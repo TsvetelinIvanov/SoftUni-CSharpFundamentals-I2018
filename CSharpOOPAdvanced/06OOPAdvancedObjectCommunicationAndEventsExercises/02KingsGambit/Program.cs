@@ -22,7 +22,7 @@ public class Program
         {
             Footman footman = new Footman(name);
             soldiers.Add(footman);
-            king.UnderAttack += footman.KingUnderAttack;
+            king.UnderAttackHandler += footman.KingUnderAttack;
         }
 
         string input;
@@ -30,13 +30,12 @@ public class Program
         {
             string[] commandArgs = input.Split();
             string command = commandArgs[0];
-
             switch (command)
             {
                 case "Kill":
                     string soldierName = commandArgs[1];
                     Soldier soldier = soldiers.FirstOrDefault(s => s.Name == soldierName);
-                    king.UnderAttack -= soldier.KingUnderAttack;
+                    king.UnderAttackHandler -= soldier.KingUnderAttack;
                     soldiers.Remove(soldier);
                     break;
                 case "Attack":
