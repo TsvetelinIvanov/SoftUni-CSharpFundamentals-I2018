@@ -1,10 +1,10 @@
 ﻿using System;
 
-public delegate void KingUnderAttackhandler();
+public delegate void KingUnderAttackHandler();
 
 public class King
 {
-    public event KingUnderAttackhandler UnderAttack;
+    public event KingUnderAttackHandler UnderAttackHandler;
 
     public King(string name)
     {
@@ -16,6 +16,6 @@ public class King
     public void OnAttack()
     {
         Console.WriteLine($"King {this.Name} is under attack!");
-        UnderAttack?.Invoke();
+        UnderAttackHandler?.Invoke();
     }
 }
