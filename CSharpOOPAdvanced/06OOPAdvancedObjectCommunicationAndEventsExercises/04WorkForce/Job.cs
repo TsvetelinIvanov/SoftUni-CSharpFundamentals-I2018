@@ -4,28 +4,28 @@ public delegate void JobCompletedHandler(Job job);
 
 public class Job
 {
-    public event JobCompletedHandler JobCompleted;
+    public event JobCompletedHandler JobCompletedHandler;
 
     private int hoursRequired;
-    private Employee employeeAssigned;
+    private Employee assignedEmployee;
 
     public Job(string name, int hoursRequired, Employee employee)
     {
         this.Name = name;
         this.hoursRequired = hoursRequired;
-        this.employeeAssigned = employee;
+        this.assignedEmployee = employee;
     }
 
     public string Name { get; private set; }
 
     public void Update()
     {
-        this.hoursRequired -= this.employeeAssigned.HoursPerWeek;
+        this.hoursRequired -= this.assignedEmployee.HoursPerWeek;
 
         if (hoursRequired <= 0)
         {
             Console.WriteLine($"Job {this.Name} done!");
-            this.JobCompleted.Invoke(this);
+            this.JobCompletedHandler.Invoke(this);
         }
     }
 
