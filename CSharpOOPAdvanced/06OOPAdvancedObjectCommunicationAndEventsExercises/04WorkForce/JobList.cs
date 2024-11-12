@@ -5,7 +5,7 @@ public class JobList : List<Job>
     public void AddJob(Job job)
     {
         this.Add(job);
-        job.JobCompleted += this.OnJobComplete;
+        job.JobCompletedHandler += this.OnJobComplete;
     }
 
     public void OnJobComplete(Job job)
