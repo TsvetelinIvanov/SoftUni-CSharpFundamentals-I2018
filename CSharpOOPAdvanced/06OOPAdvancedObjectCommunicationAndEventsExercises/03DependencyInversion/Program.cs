@@ -15,7 +15,6 @@ public class Program
             {
                 char operator1 = char.Parse(inputData[1]);
                 ICalculationStrategy strategy = null;
-
                 switch (operator1)
                 {
                     case '+':
