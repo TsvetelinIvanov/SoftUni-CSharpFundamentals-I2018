@@ -1,9 +1,9 @@
-﻿public delegate void NameChangeEventHandler(object sender, NameChangeEventArgs e);
+﻿public delegate void NameChangeEventHandler(object sender, NameChangeEventArgs eventArgs);
 
 public class Dispatcher
 {
     private string name;
-    public event NameChangeEventHandler NameChange;
+    public event NameChangeEventHandler NameChangeHandler;
 
     public string Name
     {
@@ -15,8 +15,8 @@ public class Dispatcher
         }
     }
 
-    public void OnNameChange(NameChangeEventArgs args)
+    public void OnNameChange(NameChangeEventArgs nameChangeEventArgs)
     {
-        NameChange?.Invoke(this, args);
+        NameChangeHandler?.Invoke(this, nameChangeEventArgs);
     }
 }
