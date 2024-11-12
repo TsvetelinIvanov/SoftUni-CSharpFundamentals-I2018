@@ -2,9 +2,10 @@
 
 public class Dispatcher
 {
-    private string name;
     public event NameChangeEventHandler NameChangeHandler;
 
+    private string name;
+    
     public string Name
     {
         get => this.name;
