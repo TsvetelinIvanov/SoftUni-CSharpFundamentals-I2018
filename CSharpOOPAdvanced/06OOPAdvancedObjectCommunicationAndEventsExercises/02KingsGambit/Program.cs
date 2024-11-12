@@ -14,7 +14,7 @@ public class Program
         {
             RoyalGuard royalGuard = new RoyalGuard(name);
             soldiers.Add(royalGuard);
-            king.UnderAttack += royalGuard.KingUnderAttack;
+            king.UnderAttackHandler += royalGuard.KingUnderAttack;
         }
 
         string[] footmanNames = Console.ReadLine().Split();
