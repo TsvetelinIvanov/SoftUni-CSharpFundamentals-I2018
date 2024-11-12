@@ -39,7 +39,7 @@ public class Program
                     jobs.ToList().ForEach(j => j.Update());
                     break;
                 case "Status":
-                    foreach (var job1 in jobs)
+                    foreach (Job job1 in jobs)
                     {
                         Console.WriteLine(job1); 
                     }
