@@ -11,7 +11,10 @@ public class Program
         while (true)
         {
             string name = Console.ReadLine();
-            if (name == "End") break;
+            if (name == "End") 
+            {
+                break;
+            }
 
             dispatcher.Name = name;
         }
