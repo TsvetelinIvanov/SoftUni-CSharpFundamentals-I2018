@@ -4,7 +4,7 @@
 
     public Calculator(ICalculationStrategy calculationStrategy)
     {
-        ChangeStrategy(calculationStrategy);
+        this.ChangeStrategy(calculationStrategy);
     }
 
     public void ChangeStrategy(ICalculationStrategy calculationStrategy)
