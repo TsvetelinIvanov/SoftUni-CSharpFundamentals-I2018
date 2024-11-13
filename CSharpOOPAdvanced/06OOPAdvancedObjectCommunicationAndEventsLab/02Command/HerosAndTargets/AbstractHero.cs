@@ -35,6 +35,8 @@ public abstract class AbstractHero : IAttacker
         }
     }
 
+    protected abstract void ExecuteClassSpecificAttack(ITarget target, int damage);
+
     public void SetTarget(ITarget target)
     {
         if (target == null)
@@ -47,8 +49,6 @@ public abstract class AbstractHero : IAttacker
             Console.WriteLine(SetTargetMessage, this, target);
         }
     }
-
-    protected abstract void ExecuteClassSpecificAttack(ITarget target, int damage);
 
     public override string ToString()
     {
