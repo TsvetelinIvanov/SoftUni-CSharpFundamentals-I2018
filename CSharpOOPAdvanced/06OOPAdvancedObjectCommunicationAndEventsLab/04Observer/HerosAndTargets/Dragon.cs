@@ -49,13 +49,13 @@ public class Dragon : ITarget, ISubject
         this.observers.Add(observer);
     }
 
-    public override string ToString()
-    {
-        return this.id;
-    }
-
     public void Unregister(IObserver observer)
     {
         this.observers.Remove(observer);
+    }
+
+    public override string ToString()
+    {
+        return this.id;
     }
 }
