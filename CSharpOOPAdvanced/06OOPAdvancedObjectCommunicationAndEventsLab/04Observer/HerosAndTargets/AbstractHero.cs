@@ -36,6 +36,8 @@ public abstract class AbstractHero : IAttacker, IObserver
         }
     }
 
+    protected abstract void ExecuteClassSpecificAttack(ITarget target, int damage);
+
     public void SetTarget(ITarget target)
     {
         if (target == null)
@@ -49,15 +51,13 @@ public abstract class AbstractHero : IAttacker, IObserver
         }
     }
 
-    protected abstract void ExecuteClassSpecificAttack(ITarget target, int damage);
-
-    public override string ToString()
-    {
-        return this.id;
-    }
-
     public void Update(int number)
     {
         number += NumberToUpdateNumber;
     }
+
+    public override string ToString()
+    {
+        return this.id;
+    }    
 }
