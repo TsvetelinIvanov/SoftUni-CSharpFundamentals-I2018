@@ -1,7 +1,7 @@
-﻿using Forum.App.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+﻿using Forum.App.Contracts;
 
 namespace Forum.App.Commands
 {
@@ -17,6 +17,7 @@ namespace Forum.App.Commands
         public IMenu Execute(params string[] args)
         {
             IMenu menu = this.session.Back();
+            
             return menu;
         }
     }
