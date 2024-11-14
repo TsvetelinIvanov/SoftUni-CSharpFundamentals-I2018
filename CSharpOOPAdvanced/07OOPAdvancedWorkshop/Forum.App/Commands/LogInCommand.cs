@@ -7,6 +7,9 @@ namespace Forum.App.Commands
 {
     public class LogInCommand : ICommand
     {
+        private const int MinUsernameLength = 3;
+        private const int MinPasswordLength = 3;
+        
         private IUserService userService;
         private IMenuFactory menuFactory;
 
@@ -20,8 +23,8 @@ namespace Forum.App.Commands
         {
             string username = args[0];
             string password = args[1];
-            bool validUsername = !string.IsNullOrEmpty(username) && username.Length < 3;
-            bool validPassword = !string.IsNullOrEmpty(password) && password.Length < 3;
+            bool validUsername = !string.IsNullOrEmpty(username) && username.Length >= MinUsernameLength;
+            bool validPassword = !string.IsNullOrEmpty(password) && password.Length >= MinPasswordLength;
 
             if (!validUsername || !validPassword)
             {
