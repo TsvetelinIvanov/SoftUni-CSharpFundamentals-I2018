@@ -66,8 +66,8 @@ namespace Forum.App.Services
 
         public bool TrySignUpUser(string username, string password)
         {
-            bool validUsername = !string.IsNullOrWhiteSpace(username) && username.Length > MinUsernameLength;
-            bool validPassword = !string.IsNullOrWhiteSpace(password) && password.Length > MinPasswordLength;
+            bool validUsername = !string.IsNullOrWhiteSpace(username) && username.Length >= MinUsernameLength;
+            bool validPassword = !string.IsNullOrWhiteSpace(password) && password.Length >= MinPasswordLength;
             if (!validPassword || !validUsername)
             {
                 throw new ArgumentException($"Username and Password must be longer than {MinUsernameLength} symbols!");
