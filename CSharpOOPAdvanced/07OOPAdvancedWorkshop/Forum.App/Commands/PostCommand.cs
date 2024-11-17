@@ -1,7 +1,7 @@
-﻿using Forum.App.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+﻿using Forum.App.Contracts;
 
 namespace Forum.App.Commands
 {
@@ -9,7 +9,7 @@ namespace Forum.App.Commands
     {
         private IPostService postService;
         private ISession session;
-        IMenuFactory menuFactory;
+        private IMenuFactory menuFactory;
 
         public PostCommand(IPostService postService, ISession session, IMenuFactory menuFactory)
         {
@@ -39,6 +39,7 @@ namespace Forum.App.Commands
             {
                 iIdHoldingMenu.SetId(postId);
             }
+            
             return menu;
         }
     }
