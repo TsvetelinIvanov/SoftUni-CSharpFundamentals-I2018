@@ -1,7 +1,7 @@
-﻿using Forum.App.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Forum.App.Contracts;
 
 namespace Forum.App.Commands
 {
@@ -19,6 +19,7 @@ namespace Forum.App.Commands
             string commandName = this.GetType().Name;
             string menuName = commandName.Substring(0, commandName.Length - "Commannd".Length);
             IMenu menu = this.menuFactory.CreateMenu(menuName);
+            
             return menu;
         }
     }
