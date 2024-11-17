@@ -1,7 +1,7 @@
-﻿using Forum.App.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+﻿using Forum.App.Contracts;
 
 namespace Forum.App.Commands
 {
@@ -17,9 +17,9 @@ namespace Forum.App.Commands
         public IMenu Execute(params string[] args)
         {
             IMenu currentMenu = this.session.CurrentMenu;
-            if (currentMenu is IPaginatedMenu paginateMenu)
+            if (currentMenu is IPaginatedMenu paginatedMenu)
             {
-                paginateMenu.ChangePage(false);
+                paginatedMenu.ChangePage(false);
             }
 
             return currentMenu;
