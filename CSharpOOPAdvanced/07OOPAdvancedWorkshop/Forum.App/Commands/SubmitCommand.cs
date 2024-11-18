@@ -1,7 +1,7 @@
-﻿using Forum.App.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+﻿using Forum.App.Contracts;
 
 namespace Forum.App.Commands
 {
@@ -28,6 +28,7 @@ namespace Forum.App.Commands
             int authorId = this.session.UserId;
 
             this.postService.AddReplyToPost(postId, replyText, authorId);
+            
             return this.session.Back();
         }
     }
