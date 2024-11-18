@@ -1,7 +1,7 @@
-﻿using Forum.App.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Forum.App.Contracts;
 
 namespace Forum.App.Commands
 {
@@ -25,7 +25,6 @@ namespace Forum.App.Commands
             string password = args[1];
             bool validUsername = !string.IsNullOrEmpty(username) && username.Length >= MinUsernameLength;
             bool validPassword = !string.IsNullOrEmpty(password) && password.Length >= MinPasswordLength;
-
             if (!validUsername || !validPassword)
             {
                 throw new AggregateException("Invalid username or password!");
