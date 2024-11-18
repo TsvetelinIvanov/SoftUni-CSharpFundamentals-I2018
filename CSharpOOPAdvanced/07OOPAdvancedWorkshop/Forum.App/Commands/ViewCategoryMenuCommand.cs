@@ -1,7 +1,7 @@
-﻿using Forum.App.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+﻿using Forum.App.Contracts;
 
 namespace Forum.App.Commands
 {
@@ -19,8 +19,10 @@ namespace Forum.App.Commands
             int categoryId = int.Parse(args[0]);
             string commandName = this.GetType().Name;
             string menuName = commandName.Substring(0, commandName.Length - "Command".Length);
+            
             IIdHoldingMenu menu = (IIdHoldingMenu)this.menuFactory.CreateMenu(menuName);
             menu.SetId(categoryId);
+            
             return menu;
         }
     }
