@@ -1,7 +1,7 @@
-﻿namespace Forum.App.Contracts
-{
-	using Models;
+using Forum.App.Models;
 
+namespace Forum.App.Contracts
+{
     public interface ILabelFactory
     {
 		ILabel CreateLabel(string content, Position position, bool isHidden = false);
