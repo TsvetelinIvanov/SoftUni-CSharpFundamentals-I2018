@@ -1,7 +1,7 @@
-﻿namespace Forum.App.Contracts
-{
-	using Models;
+using Forum.App.Models;
 
+namespace Forum.App.Contracts
+{
     public interface IPositionable
     {
         Position Position { get; }
