@@ -1,9 +1,9 @@
-﻿using Forum.App.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+﻿using Forum.App.Contracts;
 
 namespace Forum.App.Factories
 {
@@ -18,9 +18,7 @@ namespace Forum.App.Factories
 
         public IMenu CreateMenu(string menuName)
         {
-            Type menuType = Assembly.GetExecutingAssembly().GetTypes()
-                .FirstOrDefault(t => t.Name == menuName);
-
+            Type menuType = Assembly.GetExecutingAssembly().GetTypes().FirstOrDefault(t => t.Name == menuName);
             if (menuType == null)
             {
                 throw new InvalidOperationException("Menu not found!");
@@ -31,14 +29,14 @@ namespace Forum.App.Factories
                 throw new ArgumentException($"{menuType} is not a menu!");
             }
 
-            ParameterInfo[] constructorParams = menuType.GetConstructors().First().GetParameters();
-            object[] args = new object[constructorParams.Length];
-            for (int i = 0; i < args.Length; i++)
+            ParameterInfo[] constructorParameters = menuType.GetConstructors().First().GetParameters();
+            object[] arguments = new object[constructorParameters.Length];
+            for (int i = 0; i < arguments.Length; i++)
             {
-                args[i] = this.serviceProvider.GetService(constructorParams[i].ParameterType);
+                arguments[i] = this.serviceProvider.GetService(constructorParameters[i].ParameterType);
             }
 
-            IMenu menu = (IMenu)Activator.CreateInstance(menuType, args);
+            IMenu menu = (IMenu)Activator.CreateInstance(menuType, arguments);
 
             return menu;
         }
