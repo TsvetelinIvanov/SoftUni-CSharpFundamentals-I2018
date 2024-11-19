@@ -1,18 +1,18 @@
-﻿namespace Forum.App.Factories
+using Forum.App.Contracts;
+using Forum.App.Models;
+
+namespace Forum.App.Factories
 {
-	using Models;
-	using Contracts;
-
-	public class LabelFactory : ILabelFactory
+    public class LabelFactory : ILabelFactory
+    {
+	public ILabel CreateLabel(string content, Position position, bool isHidden = false)
 	{
-		public ILabel CreateLabel(string contents, Position position, bool isHidden = false)
-		{
-			return new Label(contents, position, isHidden);
-		}
-
-		public IButton CreateButton(string contents, Position position, bool isHidden = false, bool isField = false)
-		{
-			return new Button(contents, position, isHidden, isField);
-		}
+	    return new Label(content, position, isHidden);
 	}
+
+	public IButton CreateButton(string content, Position position, bool isHidden = false, bool isField = false)
+	{
+	    return new Button(content, position, isHidden, isField);
+	}
+    }
 }
