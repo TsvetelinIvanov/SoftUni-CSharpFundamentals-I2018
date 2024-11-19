@@ -1,12 +1,12 @@
-﻿namespace Forum.App.Factories
-{
-	using Contracts;
-    using System;
-    using System.Linq;
-    using System.Reflection;
+using System;
+using System.Linq;
+using System.Reflection;
+using Forum.App.Contracts;
 
+namespace Forum.App.Factories
+{
     public class CommandFactory : ICommandFactory
-	{
+    {
         private IServiceProvider serviceProvider;
 
         public CommandFactory(IServiceProvider serviceProvider)
@@ -14,11 +14,10 @@
             this.serviceProvider = serviceProvider;
         }
 
-		public ICommand CreateCommand(string commandName)
-		{
+	public ICommand CreateCommand(string commandName)
+	{
             Assembly assembly = Assembly.GetExecutingAssembly();
             Type commandType = assembly.GetTypes().FirstOrDefault(t => t.Name == commandName + "Command");
-
             if (commandType == null)
             {
                 //throw new ArgumentException($"Command {commandName} not found!");
@@ -32,16 +31,16 @@
             }
 
             ConstructorInfo constructorInfo = commandType.GetConstructors().First();
-            ParameterInfo[] constructorParams = constructorInfo.GetParameters();
-            object[] args = new object[constructorParams.Length];
-            for (int i = 0; i < args.Length; i++)
+            ParameterInfo[] constructorParameters = constructorInfo.GetParameters();
+            object[] arguments = new object[constructorParameters.Length];
+            for (int i = 0; i < arguments.Length; i++)
             {
-                args[i] = this.serviceProvider.GetService(constructorParams[i].ParameterType);
+                arguments[i] = this.serviceProvider.GetService(constructorParameters[i].ParameterType);
             }
 
-            ICommand command = (ICommand)Activator.CreateInstance(commandType, args);
+            ICommand command = (ICommand)Activator.CreateInstance(commandType, arguments);
 
             return command;
-		}
 	}
+    }
 }
