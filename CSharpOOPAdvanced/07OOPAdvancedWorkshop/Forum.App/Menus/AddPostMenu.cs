@@ -32,6 +32,12 @@ namespace Forum.App.Menus
 
         public ITextInputArea TextArea { get; private set; }
 
+        private void InitializeTextArea()
+        {
+            Position consoleCenter = Position.ConsoleCenter();
+            this.TextArea = this.textAreaFactory.CreateTextArea(this.reader, consoleCenter.Left - 18, consoleCenter.Top - 7);
+        }
+
         protected override void InitializeStaticLabels(Position consoleCenter)
         {
             string[] labelContents = new string[] { errorMessage, "Title:", "Category:", "", "" };
@@ -69,7 +75,6 @@ namespace Forum.App.Menus
             };
 
             this.Buttons = new IButton[fieldPositions.Length + buttonPositions.Length];
-
             for (int i = 0; i < fieldPositions.Length; i++)
             {
                 this.Buttons[i] = this.labelFactory.CreateButton(" ", fieldPositions[i], false, true);
@@ -83,20 +88,13 @@ namespace Forum.App.Menus
             this.TextArea.Render();
         }
 
-        private void InitializeTextArea()
-        {
-            Position consoleCenter = Position.ConsoleCenter();
-            this.TextArea = this.textAreaFactory.CreateTextArea(this.reader, consoleCenter.Left - 18, consoleCenter.Top - 7);
-        }
-
         public override IMenu ExecuteCommand()
         {
             if (this.CurrentOption.IsField)
             {
-                string fieldInput = " " + this.reader.ReadLine(this.CurrentOption.Position.Left + 1,
-                    this.CurrentOption.Position.Top);
-                this.Buttons[currentIndex] = this.labelFactory.CreateButton(fieldInput,
-                    this.CurrentOption.Position, false, true);
+                string fieldInput = " " + this.reader.ReadLine(this.CurrentOption.Position.Left + 1, this.CurrentOption.Position.Top);
+                this.Buttons[currentIndex] = this.labelFactory.CreateButton(fieldInput, this.CurrentOption.Position, false, true);
+                
                 return this;
             }
             else
@@ -105,6 +103,7 @@ namespace Forum.App.Menus
                 {
                     string commandName = string.Join("", this.CurrentOption.Text.Split());
                     ICommand command = this.commandFactory.CreateCommand(commandName);
+                    
                     return command.Execute(this.TitleInput, this.CategoryInput, this.TextArea.Text);
                 }
                 catch (Exception e)
@@ -112,6 +111,7 @@ namespace Forum.App.Menus
                     this.error = true;
                     this.errorMessage = e.Message;
                     this.InitializeStaticLabels(Position.ConsoleCenter());
+                    
                     return this;
                 }
             }
