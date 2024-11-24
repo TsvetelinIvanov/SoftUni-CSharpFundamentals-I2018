@@ -1,20 +1,19 @@
-﻿namespace Forum.App.Menus
-{
-    using Models;
-    using Contracts;
-    using System;
+using System;
+using Forum.App.Models;
+using Forum.App.Contracts;
 
+namespace Forum.App.Menus
+{
     public class AddPostMenu : Menu, ITextAreaMenu
     {
+        private bool error;
+        private string errorMessage = "All fields must be filled!";
+        
         private ILabelFactory labelFactory;
         private ITextAreaFactory textAreaFactory;
         private IForumReader reader;
         private ICommandFactory commandFactory;
-
-        private bool error;
-        private string errorMessage = "All fields must be filled!";
-
-        //TODO: Inject Dependencies
+        
         public AddPostMenu(ILabelFactory labelFactory, ITextAreaFactory textAreaFactory, IForumReader forumReader,
             ICommandFactory commandFactory)
         {
