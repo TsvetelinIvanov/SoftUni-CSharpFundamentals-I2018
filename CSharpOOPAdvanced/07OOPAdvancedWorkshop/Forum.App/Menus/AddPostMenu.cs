@@ -93,7 +93,7 @@ namespace Forum.App.Menus
             if (this.CurrentOption.IsField)
             {
                 string fieldInput = " " + this.reader.ReadLine(this.CurrentOption.Position.Left + 1, this.CurrentOption.Position.Top);
-                this.Buttons[currentIndex] = this.labelFactory.CreateButton(fieldInput, this.CurrentOption.Position, false, true);
+                this.Buttons[this.currentIndex] = this.labelFactory.CreateButton(fieldInput, this.CurrentOption.Position, false, true);
                 
                 return this;
             }
