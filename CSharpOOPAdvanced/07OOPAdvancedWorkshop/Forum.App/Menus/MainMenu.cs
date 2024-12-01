@@ -17,6 +17,25 @@ namespace Forum.App.Menus
 			
             this.Open();
         }
+	
+	protected override void InitializeStaticLabels(Position consoleCenter)
+        {
+            string[] labelContents = new string[] { "FORUM", string.Format("Hi, {0}", this.session?.Username) };
+            Position[] labelPositions = new Position[]
+            {
+                new Position(consoleCenter.Left - 4, consoleCenter.Top - 6),
+                new Position(consoleCenter.Left - 4, consoleCenter.Top - 7),
+            };
+
+            this.Labels = new ILabel[labelContents.Length];
+            int lastIndex = this.Labels.Length - 1;
+            for (int i = 0; i < lastIndex; i++)
+            {
+                this.Labels[i] = labelFactory.CreateLabel(labelContents[i], labelPositions[i]);
+            }
+
+            this.Labels[lastIndex] = labelFactory.CreateLabel(labelContents[lastIndex], labelPositions[lastIndex], !session?.IsLoggedIn ?? true);
+        }
 
         protected override void InitializeButtons(Position consoleCenter)
         {
@@ -39,25 +58,6 @@ namespace Forum.App.Menus
             {
                 this.Buttons[i] = labelFactory.CreateButton(buttonContents[i], buttonPositions[i]);
             }
-        }
-
-	protected override void InitializeStaticLabels(Position consoleCenter)
-        {
-            string[] labelContents = new string[] { "FORUM", string.Format("Hi, {0}", this.session?.Username) };
-            Position[] labelPositions = new Position[]
-            {
-                new Position(consoleCenter.Left - 4, consoleCenter.Top - 6),
-                new Position(consoleCenter.Left - 4, consoleCenter.Top - 7),
-            };
-
-            this.Labels = new ILabel[labelContents.Length];
-            int lastIndex = this.Labels.Length - 1;
-            for (int i = 0; i < lastIndex; i++)
-            {
-                this.Labels[i] = labelFactory.CreateLabel(labelContents[i], labelPositions[i]);
-            }
-
-            this.Labels[lastIndex] = labelFactory.CreateLabel(labelContents[lastIndex], labelPositions[lastIndex], !session?.IsLoggedIn ?? true);
         }
 
 	public override IMenu ExecuteCommand()
