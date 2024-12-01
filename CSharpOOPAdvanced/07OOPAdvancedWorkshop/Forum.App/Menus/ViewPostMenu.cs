@@ -1,61 +1,86 @@
-﻿namespace Forum.App.Menus
+using System.Linq;
+using System.Collections.Generic;
+using Forum.App.Models;
+using Forum.App.Contracts;
+
+namespace Forum.App.Menus
 {
-	using System.Linq;
-	using System.Collections.Generic;
-
-	using Models;
-	using Contracts;
-
-	public class ViewPostMenu : Menu, IIdHoldingMenu
-	{
-		private const int leftOffset = 18;
-		private const int topOffset = 7;
-
-        private IPostService postService;
-		private ILabelFactory labelFactory;
-		private ISession session;
+    public class ViewPostMenu : Menu, IIdHoldingMenu
+    {
+	private const int LeftOffset = 18;
+	private const int TopOffset = 7;
+ 
+ 	private int postId;
+	private IPostViewModel post;
+        
+	private ILabelFactory labelFactory;
+	private ISession session;
         private ICommandFactory commandFactory;
-		private IForumViewEngine viewEngine;
-		
-		private int postId;
-		private IPostViewModel post;
-
-        //TODO: Inject Dependencies
-        //public ViewPostMenu(IPostService postService, ILabelFactory labelFactory, ISession session, 
-        //    ICommandFactory commandFactory, IForumViewEngine forumViewEngine)
+	private IPostService postService;
+	private IForumViewEngine viewEngine;
+        
         public ViewPostMenu(ILabelFactory labelFactory, ISession session, ICommandFactory commandFactory, 
             IPostService postService, IForumViewEngine forumViewEngine)
         {
-            this.postService = postService;
             this.labelFactory = labelFactory;
             this.session = session;
             this.commandFactory = commandFactory;
+	    this.postService = postService;
             this.viewEngine = forumViewEngine;
         }
 
+	protected override void InitializeStaticLabels(Position consoleCenter)
+	{
+	    Position titlePosition = new Position(consoleCenter.Left - this.post.Title.Length / 2, consoleCenter.Top - 10);
+	    Position authorPosition = new Position(consoleCenter.Left - this.post.Author.Length, consoleCenter.Top - 9);
+	    List<ILabel> labels = new List<ILabel>()
+	    {
+		this.labelFactory.CreateLabel(this.post.Title, titlePosition),
+		this.labelFactory.CreateLabel($"Author: {this.post.Author}", authorPosition),
+	    };
 
-        public override void Open()
-		{		
-			this.LoadPost();
-			this.ExtendBuffer();
+	    int leftPosition = consoleCenter.Left - LeftOffset;
+	    int linesCount = this.post.Content.Length;
+	    for (int i = 0; i < linesCount; i++)
+	    {
+		Position position = new Position(leftPosition, consoleCenter.Top - (TopOffset - i));
+		ILabel label = this.labelFactory.CreateLabel(this.post.Content[i], position);
+		labels.Add(label);
+	    }
 
-			Position consoleCenter = Position.ConsoleCenter();
+	    this.Labels = labels.ToArray();
+	}
 
-			InitializeStaticLabels(consoleCenter);
+	protected override void InitializeButtons(Position consoleCenter)
+	{
+	    this.Buttons = new IButton[2];
+	    this.Buttons[0] = this.labelFactory.CreateButton("Back", new Position(consoleCenter.Left + 15, consoleCenter.Top - 3));
+	    this.Buttons[1] = this.labelFactory.CreateButton("Add Reply", new Position(consoleCenter.Left + 10, consoleCenter.Top - 4), !this.session.IsLoggedIn);
+	}
 
-			InitializeButtons(consoleCenter);
+	public void SetId(int id)
+	{
+	    this.postId = id;
+            this.Open();            
+	}
+ 
+  	public override void Open()
+	{		
+	    this.LoadPost();
+	    this.ExtendBuffer();
+     
+	    Position consoleCenter = Position.ConsoleCenter();
+	    this.InitializeStaticLabels(consoleCenter);
+	    this.InitializeButtons(consoleCenter);
 
-			// Add replies
-			int currentRow = consoleCenter.Top - (consoleCenter.Top - topOffset - 3 - this.post.Content.Length) + 1;
+	    // Add replies
+	    int currentRow = consoleCenter.Top - (consoleCenter.Top - TopOffset - 3 - this.post.Content.Length) + 1;
+	    Position repliesStartPosition = new Position(consoleCenter.Left - LeftOffset, currentRow++);
+	    int repliesCount = this.post.Replies.Length;
 
-			Position repliesStartPosition = new Position(consoleCenter.Left - leftOffset, currentRow++);
-			int repliesCount = this.post.Replies.Length;
-
-			ICollection<ILabel> replyLabels = new List<ILabel>();
-
-			replyLabels.Add(this.labelFactory.CreateLabel($"Replies: {repliesCount}", repliesStartPosition));
-
-			foreach (var reply in this.post.Replies)
+	    ICollection<ILabel> replyLabels = new List<ILabel>();
+	    replyLabels.Add(this.labelFactory.CreateLabel($"Replies: {repliesCount}", repliesStartPosition));
+	    foreach (var reply in this.post.Replies)
 			{
 				Position replyAuthorPosition = new Position(repliesStartPosition.Left, ++currentRow);
 
@@ -71,50 +96,7 @@
 
 			this.Labels = this.Labels.Concat(replyLabels).ToArray();
 		}
-
-		protected override void InitializeStaticLabels(Position consoleCenter)
-		{
-			Position titlePosition =
-				new Position(consoleCenter.Left - this.post.Title.Length / 2, consoleCenter.Top - 10);
-			Position authorPosition =
-				new Position(consoleCenter.Left - this.post.Author.Length, consoleCenter.Top - 9);
-
-			var labels = new List<ILabel>()
-			{
-				this.labelFactory.CreateLabel(this.post.Title, titlePosition),
-				this.labelFactory.CreateLabel($"Author: {this.post.Author}", authorPosition),
-			};
-
-			int leftPosition = consoleCenter.Left - leftOffset;
-
-			int lineCount = this.post.Content.Length;
-
-			// Add post contents
-			for (int i = 0; i < lineCount; i++)
-			{
-				Position position = new Position(leftPosition, consoleCenter.Top - (topOffset - i));
-				ILabel label = this.labelFactory.CreateLabel(this.post.Content[i], position);
-				labels.Add(label);
-			}
-
-			this.Labels = labels.ToArray();
-		}
-
-		protected override void InitializeButtons(Position consoleCenter)
-		{
-			this.Buttons = new IButton[2];
-
-			this.Buttons[0] = this.labelFactory.CreateButton("Back",
-				new Position(consoleCenter.Left + 15, consoleCenter.Top - 3));
-			this.Buttons[1] = this.labelFactory.CreateButton("Add Reply",
-				new Position(consoleCenter.Left + 10, consoleCenter.Top - 4), !this.session.IsLoggedIn);
-		}
-
-		public void SetId(int id)
-		{
-			this.postId = id;
-            this.Open();            
-		}
+  
 
 		private void LoadPost()
 		{
