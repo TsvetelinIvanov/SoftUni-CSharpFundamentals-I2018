@@ -1,13 +1,12 @@
-﻿namespace Forum.App.Menus
-{
-    using Models;
-    using Contracts;
-    using System;
+using System;
+using Forum.App.Models;
+using Forum.App.Contracts;
 
+namespace Forum.App.Menus
+{
     public class LogInMenu : Menu
     {
         private string errorMessage = "Invalid username or password!";
-
         private bool error;
 
         private ILabelFactory labelFactory;
@@ -15,8 +14,7 @@
         private ISession session;
         private IUserService userService;
         private IForumReader forumReader;
-
-        //TODO: Inject Dependencies
+        
         public LogInMenu(ILabelFactory labelFactory, ICommandFactory commandFactory, ISession session,
             IUserService userService, IForumReader forumReader)
         {
@@ -36,7 +34,6 @@
         protected override void InitializeStaticLabels(Position consoleCenter)
         {
             string[] labelContents = new string[] { errorMessage, "Name:", "Password:" };
-
             Position[] labelPositions = new Position[]
             {
                 new Position(consoleCenter.Left - errorMessage.Length / 2, consoleCenter.Top - 13),   // Error: 
@@ -45,9 +42,7 @@
             };
 
             this.Labels = new ILabel[labelContents.Length];
-
             this.Labels[0] = new Label(labelContents[0], labelPositions[0], !this.error);
-
             for (int i = 1; i < this.Labels.Length; i++)
             {
                 this.Labels[i] = new Label(labelContents[i], labelPositions[i]);
@@ -56,11 +51,7 @@
 
         protected override void InitializeButtons(Position consoleCenter)
         {
-            string[] buttonContents = new string[]
-            {
-                " ", " ", "Log In", "Back"
-            };
-
+            string[] buttonContents = new string[] { " ", " ", "Log In", "Back" };
             Position[] buttonPositions = new Position[]
             {
                 new Position(consoleCenter.Left - 10, consoleCenter.Top - 10), // Name
@@ -70,7 +61,6 @@
             };
 
             this.Buttons = new IButton[buttonContents.Length];
-
             for (int i = 0; i < this.Buttons.Length; i++)
             {
                 string buttonContent = buttonContents[i];
@@ -83,12 +73,10 @@
         {
             if (this.CurrentOption.IsField)
             {
-                string fieldInput = " " + this.forumReader.ReadLine(this.CurrentOption.Position.Left + 1,
-                    this.CurrentOption.Position.Top);
+                string fieldInput = " " + this.forumReader.ReadLine(this.CurrentOption.Position.Left + 1, this.CurrentOption.Position.Top);
                 //this.Buttons[this.currentIndex] = this.labelFactory.CreateButton(fieldInput, this.CurrentOption
                 //    .Position, this.CurrentOption.IsHidden, this.CurrentOption.IsField);
-                this.Buttons[this.currentIndex] = this.labelFactory.CreateButton(fieldInput, this.CurrentOption
-                    .Position, false, true);
+                this.Buttons[this.currentIndex] = this.labelFactory.CreateButton(fieldInput, this.CurrentOption.Position, false, true);
 
                 return this;
             }
