@@ -80,13 +80,11 @@ namespace Forum.App.Menus
 
 	    ICollection<ILabel> replyLabels = new List<ILabel>();
 	    replyLabels.Add(this.labelFactory.CreateLabel($"Replies: {repliesCount}", repliesStartPosition));
-	    foreach (var reply in this.post.Replies)
-			{
-				Position replyAuthorPosition = new Position(repliesStartPosition.Left, ++currentRow);
-
-				replyLabels.Add(this.labelFactory.CreateLabel(reply.Author, replyAuthorPosition));
-
-				foreach (var line in reply.Content)
+	    foreach (IReplyViewModel reply in this.post.Replies)
+	    {
+		Position replyAuthorPosition = new Position(repliesStartPosition.Left, ++currentRow);
+		replyLabels.Add(this.labelFactory.CreateLabel(reply.Author, replyAuthorPosition));
+		foreach (var line in reply.Content)
 				{
 					Position rowPosition = new Position(repliesStartPosition.Left, ++currentRow);
 					replyLabels.Add(this.labelFactory.CreateLabel(line, rowPosition));
