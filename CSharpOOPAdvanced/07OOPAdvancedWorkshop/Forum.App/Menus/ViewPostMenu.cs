@@ -96,11 +96,6 @@ namespace Forum.App.Menus
 	    this.Labels = this.Labels.Concat(replyLabels).ToArray();
 	}
 
-	private void LoadPost()
-	{
-	    this.post = this.postService.GetPostViewModel(this.postId);            
-	}
-
 	public override IMenu ExecuteCommand()
 	{
             string commandName = string.Join("", this.CurrentOption.Text.Split());
@@ -109,6 +104,11 @@ namespace Forum.App.Menus
             this.viewEngine.ResetBuffer();
 	    
             return menu;
+	}
+ 
+ 	private void LoadPost()
+	{
+	    this.post = this.postService.GetPostViewModel(this.postId);            
 	}
 
 	private void ExtendBuffer()
