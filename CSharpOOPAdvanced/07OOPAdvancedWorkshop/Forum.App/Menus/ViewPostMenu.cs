@@ -84,45 +84,45 @@ namespace Forum.App.Menus
 	    {
 		Position replyAuthorPosition = new Position(repliesStartPosition.Left, ++currentRow);
 		replyLabels.Add(this.labelFactory.CreateLabel(reply.Author, replyAuthorPosition));
-		foreach (var line in reply.Content)
-				{
-					Position rowPosition = new Position(repliesStartPosition.Left, ++currentRow);
-					replyLabels.Add(this.labelFactory.CreateLabel(line, rowPosition));
-				}
-				currentRow++;
-			}
-
-			this.Labels = this.Labels.Concat(replyLabels).ToArray();
+		foreach (string line in reply.Content)
+		{
+		    Position rowPosition = new Position(repliesStartPosition.Left, ++currentRow);
+		    replyLabels.Add(this.labelFactory.CreateLabel(line, rowPosition));
 		}
   
+		currentRow++;
+	    }
 
-		private void LoadPost()
-		{
-			this.post = this.postService.GetPostViewModel(this.postId);            
-		}
+	    this.Labels = this.Labels.Concat(replyLabels).ToArray();
+	}
 
-		public override IMenu ExecuteCommand()
-		{
+	private void LoadPost()
+	{
+	    this.post = this.postService.GetPostViewModel(this.postId);            
+	}
+
+	public override IMenu ExecuteCommand()
+	{
             string commandName = string.Join("", this.CurrentOption.Text.Split());
             ICommand command = this.commandFactory.CreateCommand(commandName);
             IMenu menu = command.Execute(this.postId.ToString());
             this.viewEngine.ResetBuffer();
+	    
             return menu;
-		}
-
-		private void ExtendBuffer()
-		{
-			int totalLines = 13 + this.post.Content.Length;
-
-			foreach (var reply in this.post.Replies)
-			{
-				totalLines += 2 + reply.Content.Length;
-			}
-
-			if (totalLines > 30)
-			{
-				viewEngine.SetBufferHeight(totalLines);
-			}
-		}
 	}
+
+	private void ExtendBuffer()
+	{
+	    int totalLinesCount = 13 + this.post.Content.Length;
+	    foreach (IReplyViewModel reply in this.post.Replies)
+	    {
+		totalLinesCount += 2 + reply.Content.Length;
+	    }
+
+	    if (totalLinesCount > 30)
+	    {
+		viewEngine.SetBufferHeight(totalLines);			
+  	    }
+	}
+    }
 }
