@@ -1,36 +1,34 @@
-﻿namespace Forum.App.Models
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-	using System.Threading;
-	using Contracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using Forum.App.Contracts;
 
+namespace Forum.App.Models
+{
     public class TextInputArea : ITextInputArea
     {
-		private const int lineLength = 37;
+	private const int LineLength = 37;
+	private const int PostMaxLength = 660;
+	private const int PostAreaHeight = 18;
+	private const int ReplyMaxLength = 220;
+	private const int ReplyAreaHeight = 6;
 
-		private const int postMaxLength = 660;
-		private const int postAreaHeight = 18;
-
-		private const int replyMaxLength = 220;
-		private const int replyAreaHeight = 6;
-
-		private int x;
+	private int x;
         private int y;
         private int height;
-		private int maxLength;
-
-        private int textCursorPosition;
+	private int maxLength;
+        private int textCursorPosition;	
         private Position displayCursor;
-		private IForumReader reader;
+	private IForumReader reader;
 
         private IEnumerable<string> lines = new List<string>();
         private string text = string.Empty;
+	
         private static char[] forbiddenCharacters = { ';' };
 
-		public TextInputArea(IForumReader reader, int x, int y, bool isPost = true)
-		{
+	public TextInputArea(IForumReader reader, int x, int y, bool isPost = true)
+	{
 			this.reader = reader;
 
 			this.x = x;
