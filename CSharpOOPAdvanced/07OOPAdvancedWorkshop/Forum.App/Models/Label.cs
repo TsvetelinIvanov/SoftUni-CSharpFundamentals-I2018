@@ -1,7 +1,7 @@
-﻿namespace Forum.App.Models
-{
-    using Forum.App.Contracts;
+using Forum.App.Contracts;
 
+namespace Forum.App.Models
+{
     internal class Label : ILabel
     {
         public Label(string text, Position position, bool isHidden = false)
