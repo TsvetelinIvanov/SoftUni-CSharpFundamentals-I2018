@@ -1,4 +1,4 @@
-﻿namespace Forum.DataModels
+﻿namespace Forum.Models
 {
 	using System;
 	using System.Collections.Generic;
