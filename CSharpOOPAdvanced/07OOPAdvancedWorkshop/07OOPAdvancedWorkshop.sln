@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forum.Models", "..\07Workshop\Forom.Models\Forum.Models.csproj", "{1D677B5B-3031-4641-A56F-F211946A56A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forum.Models", "..\07Workshop\Forum.Models\Forum.Models.csproj", "{1D677B5B-3031-4641-A56F-F211946A56A1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forum.App", "..\07Workshop\Forum.App\Forum.App.csproj", "{4A21AD2F-4981-4D8A-ABB0-EDAC478ECAAE}"
 EndProject
