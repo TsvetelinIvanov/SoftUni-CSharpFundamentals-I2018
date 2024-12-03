@@ -1,11 +1,11 @@
-﻿using Forum.App.Contracts;
-using Forum.App.ViewModels;
-using Forum.Data;
-using Forum.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Forum.Data;
+using Forum.Models;
+using Forum.App.Contracts;
+using Forum.App.ViewModels;
 
 namespace Forum.App.Services
 {
