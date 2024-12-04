@@ -6,6 +6,6 @@
 
 	string Title { get; }
 
-	int ReplyCount { get; }
+	int RepliesCount { get; }
     }
 }
