@@ -7,11 +7,11 @@ namespace Forum.App.ViewModels
 {
     public class ContentViewModel
     {
-        private const int lineLength = 37;
+        private const int LineLength = 37;
 
         public ContentViewModel(string content)
         {
-            this.Content = GetLines(content);
+            this.Content = this.GetLines(content);
         }
 
         public string[] Content { get; }
@@ -20,12 +20,13 @@ namespace Forum.App.ViewModels
         {
             char[] contentChars = content.ToCharArray();
             ICollection<string> lines = new List<string>();
-            for (int i = 0; i < content.Length; i += lineLength)
+            for (int i = 0; i < content.Length; i += LineLength)
             {
-                char[] row = contentChars.Skip(i).Take(lineLength).ToArray();
-                string rowString = string.Join("", row);
-                lines.Add(rowString);
+                char[] lineChars = contentChars.Skip(i).Take(LineLength).ToArray();
+                string line = string.Join("", lineChars);
+                lines.Add(line);
             }
+            
             return lines.ToArray();
         }
     }
