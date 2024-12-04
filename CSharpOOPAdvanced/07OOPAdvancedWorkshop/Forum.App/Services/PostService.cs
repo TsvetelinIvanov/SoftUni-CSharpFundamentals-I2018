@@ -29,11 +29,12 @@ namespace Forum.App.Services
             }
 
             int postId = this.forumData.Posts.LastOrDefault()?.Id + 1 ?? 1;
-            Category category = EnsureCategory(postCategory);
+            Category category = this.EnsureCategory(postCategory);
             Post post = new Post(postId, postTitle, postContent, category.Id, userId, new List<int>());
-            this.forumData.Posts.Add(post);
+            
+            this.forumData.Posts.Add(post);            
             author.Posts.Add(postId);
-            category.Posts.Add(postId);
+            category.Posts.Add(postId);            
             this.forumData.SaveChanges();
 
             return postId;
@@ -52,12 +53,12 @@ namespace Forum.App.Services
             return category;
         }
 
-        public void AddReplyToPost(int postId, string replyContents, int userId)
+        public void AddReplyToPost(int postId, string replyContent, int userId)
         {
             Post post = this.forumData.Posts.Find(p => p.Id == postId);
             User author = this.userService.GetUserById(userId);
             int replyId = this.forumData.Replies.LastOrDefault()?.Id + 1 ?? 1; 
-            Reply reply = new Reply(replyId, replyContents, userId, postId);
+            Reply reply = new Reply(replyId, replyContent, userId, postId);
 
             this.forumData.Replies.Add(reply);
             post.Replies.Add(replyId);
@@ -68,6 +69,7 @@ namespace Forum.App.Services
         {
             IEnumerable<ICategoryInfoViewModel> categories = this.forumData.Categories
                 .Select(c => new CategoryInfoViewModel(c.Id, c.Name, c.Posts.Count));
+                
             return categories;
         }
 
@@ -78,6 +80,7 @@ namespace Forum.App.Services
             {
                 throw new ArgumentException($"Category with id {categoryId} not found!");
             }
+            
             return categoryName;
         }
 
@@ -86,6 +89,7 @@ namespace Forum.App.Services
             ICollection<Post> categoryPosts = this.forumData.Posts.Where(p => p.CategoryId == categoryId).ToArray();
             IEnumerable<IPostInfoViewModel> categoryPostsInfo = categoryPosts
                 .Select(p => new PostInfoViewModel(p.Id, p.Title, p.Replies.Count));
+                
             return categoryPostsInfo;
         }
 
@@ -98,8 +102,8 @@ namespace Forum.App.Services
             }
 
             string author = this.userService.GetUserName(post.AuthorId);
-            IPostViewModel postViewModel = new PostViewModel(post.Title, author, post.Content, 
-                this.GetPostReplies(postId));
+            IPostViewModel postViewModel = new PostViewModel(post.Title, author, post.Content, this.GetPostReplies(postId));
+            
             return postViewModel;
         }
 
@@ -107,6 +111,7 @@ namespace Forum.App.Services
         {
             IEnumerable<IReplyViewModel> replies = this.forumData.Replies.Where(r => r.PostId == postId)
                 .Select(r => new ReplyViewModel(this.userService.GetUserName(r.AuthorId), r.Content));
+                
             return replies;
         }
     }
