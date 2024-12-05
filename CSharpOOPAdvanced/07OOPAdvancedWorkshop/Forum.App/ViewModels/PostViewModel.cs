@@ -1,15 +1,14 @@
-﻿using Forum.App.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+﻿using Forum.App.Contracts;
 
 namespace Forum.App.ViewModels
 {
     public class PostViewModel : ContentViewModel, IPostViewModel
     {
-        public PostViewModel(string title, string author, string content, IEnumerable<IReplyViewModel> replies)
-            : base(content)
+        public PostViewModel(string title, string author, string content, IEnumerable<IReplyViewModel> replies) : base(content)
         {
             this.Title = title;
             this.Author = author;
