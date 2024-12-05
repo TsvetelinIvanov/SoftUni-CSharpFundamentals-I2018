@@ -6,6 +6,6 @@
 
 	string Name { get; }
 
-	int PostCount { get; }
+	int PostsCount { get; }
     }
 }
