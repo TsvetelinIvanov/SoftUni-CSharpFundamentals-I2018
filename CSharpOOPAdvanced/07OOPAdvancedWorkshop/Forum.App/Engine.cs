@@ -1,28 +1,27 @@
-﻿namespace Forum.App
+using System;
+using Forum.App.Contracts;
+
+namespace Forum.App
 {
-	using System;
-
-	using Contracts;
-
     public class Engine
     {
         private IMainController menu;
 
         public Engine(IMainController menuController)
         {
-			this.menu = menuController;
+	    this.menu = menuController;
         }
 
         internal void Run()
         {
             while (true)
             {
-                menu.MarkOption();
+                this.menu.MarkOption();
 
                 var keyInfo = Console.ReadKey(true);
                 var key = keyInfo.Key;
 
-				menu.UnmarkOption();
+		this.menu.UnmarkOption();
 
                 switch (key)
                 {
@@ -47,5 +46,5 @@
                 }
             }
         }
-	}
+    }
 }
