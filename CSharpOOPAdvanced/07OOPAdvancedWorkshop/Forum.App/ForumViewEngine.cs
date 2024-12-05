@@ -79,12 +79,12 @@ namespace Forum.App
 	{
 	    this.Clear();
 
-	    foreach (var label in menu.Labels.Where(l => !l.IsHidden))
+	    foreach (ILabel label in menu.Labels.Where(l => !l.IsHidden))
 	    {
 		this.DisplayLabel(label);
 	    }
 
-	    foreach (var button in menu.Buttons.Where(b => !b.IsHidden))
+	    foreach (IButton button in menu.Buttons.Where(b => !b.IsHidden))
 	    {
 		this.DisplayLabel(button);
 	    }
