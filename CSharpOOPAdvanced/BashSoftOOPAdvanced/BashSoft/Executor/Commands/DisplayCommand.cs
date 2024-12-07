@@ -1,9 +1,9 @@
-﻿using BashSoft.Attributes;
-using BashSoft.Exceptions;
-using BashSoft.Executor.Contracts;
-using BashSoft.IO.Commands;
 using System;
 using System.Collections.Generic;
+using BashSoft.Attributes;
+using BashSoft.Exceptions;
+using BashSoft.IO.Commands;
+using BashSoft.Executor.Contracts;
 
 namespace BashSoft.Executor.Commands
 {
@@ -49,21 +49,6 @@ namespace BashSoft.Executor.Commands
             }
         }
 
-        private IComparer<ICourse> CreateCourseComparator(string sortType)
-        {
-            if (sortType.Equals("ascending", StringComparison.OrdinalIgnoreCase))
-            {
-                return Comparer<ICourse>.Create((courseOne, courseTwo) => courseOne.CompareTo(courseTwo));
-            }
-
-            if (sortType.Equals("descending", StringComparison.OrdinalIgnoreCase))
-            {
-                return Comparer<ICourse>.Create((courseOne, courseTwo) => courseTwo.CompareTo(courseOne));
-            }
-
-            throw new InvalidCommandException(this.Input);
-        }
-
         private IComparer<IStudent> CreateStudentComparator(string sortType)
         {
             if (sortType.Equals("ascending", StringComparison.OrdinalIgnoreCase))
@@ -74,6 +59,21 @@ namespace BashSoft.Executor.Commands
             if (sortType.Equals("descending", StringComparison.OrdinalIgnoreCase))
             {
                 return Comparer<IStudent>.Create((studentOne, studentTwo) => studentTwo.CompareTo(studentOne));
+            }
+
+            throw new InvalidCommandException(this.Input);
+        }
+
+        private IComparer<ICourse> CreateCourseComparator(string sortType)
+        {
+            if (sortType.Equals("ascending", StringComparison.OrdinalIgnoreCase))
+            {
+                return Comparer<ICourse>.Create((courseOne, courseTwo) => courseOne.CompareTo(courseTwo));
+            }
+
+            if (sortType.Equals("descending", StringComparison.OrdinalIgnoreCase))
+            {
+                return Comparer<ICourse>.Create((courseOne, courseTwo) => courseTwo.CompareTo(courseOne));
             }
 
             throw new InvalidCommandException(this.Input);
@@ -119,21 +119,6 @@ namespace BashSoft.Executor.Commands
     //        }
     //    }
 
-    //    private IComparer<ICourse> CreateCourseComparator(string sortType)
-    //    {
-    //        if (sortType.Equals("ascending", StringComparison.OrdinalIgnoreCase))
-    //        {
-    //            return Comparer<ICourse>.Create((courseOne, courseTwo) => courseOne.CompareTo(courseTwo));
-    //        }
-
-    //        if (sortType.Equals("descending", StringComparison.OrdinalIgnoreCase))
-    //        {
-    //            return Comparer<ICourse>.Create((courseOne, courseTwo) => courseTwo.CompareTo(courseOne));
-    //        }
-
-    //        throw new InvalidCommandException(this.Input);
-    //    }
-
     //    private IComparer<IStudent> CreateStudentComparator(string sortType)
     //    {
     //        if (sortType.Equals("ascending", StringComparison.OrdinalIgnoreCase))
@@ -144,6 +129,21 @@ namespace BashSoft.Executor.Commands
     //        if (sortType.Equals("descending", StringComparison.OrdinalIgnoreCase))
     //        {
     //            return Comparer<IStudent>.Create((studentOne, studentTwo) => studentTwo.CompareTo(studentOne));
+    //        }
+
+    //        throw new InvalidCommandException(this.Input);
+    //    }
+
+    //    private IComparer<ICourse> CreateCourseComparator(string sortType)
+    //    {
+    //        if (sortType.Equals("ascending", StringComparison.OrdinalIgnoreCase))
+    //        {
+    //            return Comparer<ICourse>.Create((courseOne, courseTwo) => courseOne.CompareTo(courseTwo));
+    //        }
+
+    //        if (sortType.Equals("descending", StringComparison.OrdinalIgnoreCase))
+    //        {
+    //            return Comparer<ICourse>.Create((courseOne, courseTwo) => courseTwo.CompareTo(courseOne));
     //        }
 
     //        throw new InvalidCommandException(this.Input);
