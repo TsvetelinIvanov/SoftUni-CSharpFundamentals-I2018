@@ -1,9 +1,9 @@
-﻿namespace Forum.Models
-{
-	using System;
-	using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 
-	public class Post
+namespace Forum.Models
+{
+    public class Post
     {
         public Post(int id, string title, string content, int categoryId, int authorId, IEnumerable<int> replies)
         {
@@ -17,14 +17,14 @@
 
         public int Id { get; set; }
         
-		public string Title { get; set; }
+	public string Title { get; set; }
 
-		public string Content { get; set; }
+	public string Content { get; set; }
 
-	    public int CategoryId { get; set; }
+	public int CategoryId { get; set; }
 
-		public int AuthorId { get; set; }
+	public int AuthorId { get; set; }
 
-		public ICollection<int> Replies { get; set; } = new List<int>();
-	}
+	public ICollection<int> Replies { get; set; } = new List<int>();
+    }
 }
