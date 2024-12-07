@@ -1,9 +1,9 @@
-﻿using BashSoft.Exceptions;
-using BashSoft.Executor.Contracts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+﻿using BashSoft.Exceptions;
+using BashSoft.Executor.Contracts;
 
 namespace BashSoft.DataStructures
 {
@@ -63,14 +63,14 @@ namespace BashSoft.DataStructures
                 throw new ArgumentNullException();
             }
 
-            if (this.innerCollection.Length <= this.size)
+            if (this.innerCollection.Length <= this.Size)
             {
                 this.Resize();
             }
 
-            this.innerCollection[this.size] = element;
+            this.innerCollection[this.Size] = element;
             this.size++;
-            Array.Sort(this.innerCollection, 0, size, comparison);
+            Array.Sort(this.innerCollection, 0, this.Size, this.comparison);
         }
 
         private void Resize()
@@ -98,7 +98,7 @@ namespace BashSoft.DataStructures
                 this.size++;
             }
 
-            Array.Sort(this.innerCollection, 0, this.size, this.comparison);
+            Array.Sort(this.innerCollection, 0, this.Size, this.comparison);
         }
 
         private void MultyResize(ICollection<T> collection)
@@ -110,7 +110,7 @@ namespace BashSoft.DataStructures
             }
 
             T[] newCollection = new T[newSize];
-            Array.Copy(this.innerCollection, newCollection, this.size);
+            Array.Copy(this.innerCollection, newCollection, this.Size);
             this.innerCollection = newCollection;
         }
 
@@ -149,9 +149,9 @@ namespace BashSoft.DataStructures
             return hasBeenRemoved;
         }        
 
-        public string JoinWith(string joiner)
+        public string JoinWith(string coupler)
         {
-            if (joiner == null)
+            if (coupler == null)
             {
                 throw new ArgumentNullException();
             }
@@ -160,10 +160,10 @@ namespace BashSoft.DataStructures
             foreach (T element in this)
             {
                 builder.Append(element);
-                builder.Append(joiner);
+                builder.Append(coupler);
             }
 
-            builder.Remove(builder.Length - joiner.Length, joiner.Length);
+            builder.Remove(builder.Length - coupler.Length, coupler.Length);
 
             return builder.ToString();
         }
