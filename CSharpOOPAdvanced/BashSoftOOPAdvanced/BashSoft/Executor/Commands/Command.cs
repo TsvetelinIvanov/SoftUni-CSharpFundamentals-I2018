@@ -2,7 +2,7 @@ using System;
 using BashSoft.Exceptions;
 using BashSoft.Executor.Contracts;
 
-namespace BashSoft.IO.Commands
+namespace BashSoft.Executor.Commands
 {
     public abstract class Command : IExecutable
     {
