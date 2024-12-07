@@ -8,8 +8,8 @@ namespace BashSoft.Executor.Contracts
 
         void GetAllStudentsFromCourse(string courseName);
 
-        ISimpleOrderedBag<ICourse> GetAllCoursesSorted(IComparer<ICourse> cmp);
+        ISimpleOrderedBag<ICourse> GetAllCoursesSorted(IComparer<ICourse> comparer);
 
-        ISimpleOrderedBag<IStudent> GetAllStudentsSorted(IComparer<IStudent> cmp);
+        ISimpleOrderedBag<IStudent> GetAllStudentsSorted(IComparer<IStudent> comparer);
     }
 }
