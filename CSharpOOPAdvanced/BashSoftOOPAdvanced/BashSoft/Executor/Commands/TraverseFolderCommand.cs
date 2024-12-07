@@ -2,7 +2,7 @@
 using BashSoft.Exceptions;
 using BashSoft.Executor.Contracts;
 
-namespace BashSoft.IO.Commands
+namespace BashSoft.Executor.Commands
 {
     [Alias(InitializingCommand)]
     public class TraverseFolderCommand : Command, IExecutable
