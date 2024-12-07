@@ -3,7 +3,7 @@ using BashSoft.Attributes;
 using BashSoft.Exceptions;
 using BashSoft.Executor.Contracts;
 
-namespace BashSoft.IO.Commands
+namespace BashSoft.Executor.Commands
 {
     [Alias(InitializingCommand)]
     public class OpenFileCommand : Command, IExecutable
