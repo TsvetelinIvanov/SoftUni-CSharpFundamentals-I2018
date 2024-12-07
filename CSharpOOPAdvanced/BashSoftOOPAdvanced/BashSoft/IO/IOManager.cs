@@ -1,10 +1,10 @@
-﻿using BashSoft.Exceptions;
-using BashSoft.Executor.Contracts;
 using System;
 using System.Collections.Generic;
 using System.IO;
+﻿using BashSoft.Exceptions;
+using BashSoft.Executor.Contracts;
 
-namespace BashSoft
+namespace BashSoft.IO
 {
     public class IOManager : IDirectoryManager
     {
