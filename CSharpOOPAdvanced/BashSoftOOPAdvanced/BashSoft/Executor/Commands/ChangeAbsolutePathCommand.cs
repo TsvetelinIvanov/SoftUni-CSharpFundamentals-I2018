@@ -2,7 +2,6 @@
 using BashSoft.Exceptions;
 using BashSoft.Executor.Contracts;
 
-
 namespace BashSoft.IO.Commands
 {
     [Alias(InitializingCommand)]
@@ -27,7 +26,6 @@ namespace BashSoft.IO.Commands
             }
 
             string absolutePath = this.Data[1];
-
             this.inputOutputManager.ChangeCurrentDirectoryAbsolute(absolutePath);
         }
     }
