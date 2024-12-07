@@ -1,13 +1,12 @@
 ﻿using BashSoft.Attributes;
 using BashSoft.Exceptions;
-using BashSoft.Executor.Commands;
 using BashSoft.Executor.Contracts;
-using BashSoft.IO.Commands;
+using BashSoft.Executor.Commands;
 using System;
 using System.Linq;
 using System.Reflection;
 
-namespace BashSoft
+namespace BashSoft.Executor
 {
     public class CommandInterpreter : IInterpreter
     {
