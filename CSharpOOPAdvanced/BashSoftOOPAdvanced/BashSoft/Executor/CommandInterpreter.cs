@@ -1,10 +1,10 @@
-﻿using BashSoft.Attributes;
-using BashSoft.Exceptions;
-using BashSoft.Executor.Contracts;
-using BashSoft.Executor.Commands;
 using System;
 using System.Linq;
 using System.Reflection;
+using BashSoft.Attributes;
+using BashSoft.Exceptions;
+using BashSoft.Executor.Contracts;
+using BashSoft.Executor.Commands;
 
 namespace BashSoft.Executor
 {
@@ -39,16 +39,13 @@ namespace BashSoft.Executor
 
         private IExecutable ParseCommand(string input, string command, string[] data)
         {
-            object[] parametersForConstruction = new object[]
-            {
-                input, data
-            };
+            object[] parametersForConstruction = new object[] { input, data };
 
             Type typeOfCommand = Assembly.GetExecutingAssembly().GetTypes()
                 .First(t => t.GetCustomAttributes(typeof(AliasAttribute))
                 .Where(a => a.Equals(command)).ToArray().Length > 0);
             Type typeofInterpreter = typeof(CommandInterpreter);
-            Command exe = (Command)Activator.CreateInstance(typeOfCommand, parametersForConstruction);
+            Command commandInstance = (Command)Activator.CreateInstance(typeOfCommand, parametersForConstruction);
             FieldInfo[] fieldsOfCommand = typeOfCommand.GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
             FieldInfo[] fieldsOfInterpreter = typeofInterpreter.GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -59,12 +56,12 @@ namespace BashSoft.Executor
                 {
                     if (fieldsOfInterpreter.Any(f => f.FieldType == fieldOfCommand.FieldType))
                     {
-                        fieldOfCommand.SetValue(exe, fieldsOfInterpreter.First(f => f.FieldType == fieldOfCommand.FieldType).GetValue(this));
+                        fieldOfCommand.SetValue(commandInstance, fieldsOfInterpreter.First(f => f.FieldType == fieldOfCommand.FieldType).GetValue(this));
                     }
                 }
             }
 
-            return exe;
+            return commandInstance;
         }
     }
 
