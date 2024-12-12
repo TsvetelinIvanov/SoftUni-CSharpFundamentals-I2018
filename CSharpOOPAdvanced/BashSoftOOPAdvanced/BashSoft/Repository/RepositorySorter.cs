@@ -1,9 +1,11 @@
-﻿using BashSoft.Executor.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+﻿using BashSoft.IO;
+﻿using BashSoft.StaticData;
+﻿using BashSoft.Executor.Contracts;
 
-namespace BashSoft
+namespace BashSoft.Repository
 {
     public class RepositorySorter : IDataSorter
     {
@@ -13,11 +15,11 @@ namespace BashSoft
             comparison = comparison.ToLower();
             if (comparison == "ascending")
             {
-                PrintStudents(studentsWithMarks.OrderBy(s => s.Value).Take(studentsToTake).ToDictionary(s => s.Key, s => s.Value));
+                this.PrintStudents(studentsWithMarks.OrderBy(s => s.Value).Take(studentsToTake).ToDictionary(s => s.Key, s => s.Value));
             }
             else if (comparison == "descending")
             {
-                PrintStudents(studentsWithMarks.OrderByDescending(s => s.Value).Take(studentsToTake).ToDictionary(s => s.Key, s => s.Value));
+                this.PrintStudents(studentsWithMarks.OrderByDescending(s => s.Value).Take(studentsToTake).ToDictionary(s => s.Key, s => s.Value));
             }
             else
             {
@@ -26,9 +28,9 @@ namespace BashSoft
             }
         }
 
-        private void PrintStudents(Dictionary<string, double> studentsSorted)
+        private void PrintStudents(Dictionary<string, double> sortedStudents)
         {
-            foreach (KeyValuePair<string, double> student in studentsSorted)
+            foreach (KeyValuePair<string, double> student in sortedStudents)
             {
                 OutputWriter.PrintStudent(student);
             }
@@ -40,11 +42,11 @@ namespace BashSoft
         //    comparison = comparison.ToLower();
         //    if (comparison == "ascending")
         //    {
-        //        PrintStudents(wantedData.OrderBy(s => s.Value.Sum()).Take(studentsToTake).ToDictionary(s => s.Key, s => s.Value));
+        //        this.PrintStudents(wantedData.OrderBy(s => s.Value.Sum()).Take(studentsToTake).ToDictionary(s => s.Key, s => s.Value));
         //    }
         //    else if (comparison == "descending")
         //    {
-        //        PrintStudents(wantedData.OrderByDescending(s => s.Value.Sum()).Take(studentsToTake).ToDictionary(s => s.Key, s => s.Value));
+        //        this.PrintStudents(wantedData.OrderByDescending(s => s.Value.Sum()).Take(studentsToTake).ToDictionary(s => s.Key, s => s.Value));
         //    }
         //    else
         //    {
@@ -52,9 +54,9 @@ namespace BashSoft
         //    }
         //}
 
-        //private void PrintStudents(Dictionary<string, List<int>> studentsSorted)
+        //private void PrintStudents(Dictionary<string, List<int>> sortedStudents)
         //{
-        //    foreach (KeyValuePair<string, List<int>> student in studentsSorted)
+        //    foreach (KeyValuePair<string, List<int>> student in sortedStudents)
         //    {
         //        OutputWriter.PrintStudent(student);
         //    }
