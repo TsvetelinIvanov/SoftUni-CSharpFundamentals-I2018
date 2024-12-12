@@ -1,4 +1,4 @@
-﻿namespace BashSoft
+﻿namespace BashSoft.StaticData
 {
     public static class ExceptionMessages
     {
@@ -8,21 +8,21 @@
 
         public const string DataNotInitializedExceptionMessage = "The data structure must be initialized first in order to make any operation with it!";
 
-        public const string InexistingCourseInDataBase = "The course you are trying to get does not exist in the data base!";
+        public const string InexistantCourseInDatabase = "The course you are trying to get does not exist in the database!";
 
-        public const string InexistingStudentInDataBase = "The user name for the student you are trying to get does not exist!";
+        public const string InexistantStudentInDatabase = "The user name for the student you are trying to get does not exist!";
 
         public const string InvalidPath = "The folder/file you are trying to access at the current address, does not exist!";
 
         public const string UnauthorizedAccessExceptionMessage = "The folder/file you are trying to get access needs a higher level of rights than you currently have!";
 
-        public const string ComparisionOfFilesWithDifferentSizes = "Files not of equal size, certain mismatch!";
+        public const string ComparisonOfFilesWithDifferentSizes = "Files not of equal size, certain mismatch!";
 
         public const string ForbiddenSymbolsContainedInName = "The given name contains symbols that are not allowed to be used in names of files and folders!";
 
         public const string UnableToGoHigherInPartitionHierarchy = "The program is unable to go higher in partition hierarchy!";
 
-        public const string UnableToParseNumberExceptionMessage = "The sequence you've written is not a valid number!";
+        public const string UnableToParseNumberExceptionMessage = "The sequence you have written is not a valid number!";
 
         public const string InvalidStudentFilterExceptionMessage = "The given filter is not one of the following: excellent/average/poor!";
 
@@ -36,7 +36,7 @@
 
         public const string InvalidNumberOfScoresExceptionMessage = "The number of scores for the given course is greater than the possible!";
 
-        public const string InvalidScoreExceptionMessage = "The number for the score you've entered is not in the range of 0-100!";
+        public const string InvalidScoreExceptionMessage = "The number for the score you have entered is not in the range of 0-100!";
 
         public const string NullOrEmptyValueExceptionMessage = "The value of the variable cannot be null or empty!";
 
