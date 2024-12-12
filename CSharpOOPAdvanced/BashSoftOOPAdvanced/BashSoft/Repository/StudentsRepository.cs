@@ -200,7 +200,7 @@ namespace BashSoft.Repository
                 }
                 else
                 {
-                    OutputWriter.DisplayException(ExceptionMessages.InexistantCourseInDataBase);
+                    OutputWriter.DisplayException(ExceptionMessages.InexistantCourseInDatabase);
                 }
             }
             else
@@ -219,7 +219,7 @@ namespace BashSoft.Repository
             }
             else
             {
-                OutputWriter.DisplayException(ExceptionMessages.InexistantStudentInDataBase);
+                OutputWriter.DisplayException(ExceptionMessages.InexistantStudentInDatabase);
             }
 
             return false;
