@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 ﻿using BashSoft.Exceptions;
 using BashSoft.Executor.Contracts;
-using System.Collections.Generic;
 
 namespace BashSoft.Models
 {
