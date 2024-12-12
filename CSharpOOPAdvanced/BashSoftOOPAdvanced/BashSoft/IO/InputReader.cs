@@ -1,7 +1,8 @@
-﻿using BashSoft.Executor.Contracts;
 using System;
+﻿using BashSoft.StaticData;
+﻿using BashSoft.Executor.Contracts;
 
-namespace BashSoft
+namespace BashSoft.IO
 {
     public class InputReader : IReader
     {
@@ -19,7 +20,6 @@ namespace BashSoft
             OutputWriter.WriteMessage($"{SessionData.currentPath}>");
             string input = Console.ReadLine();
             input = input.Trim();
-
             while (true)
             {
                 if (input == EndCommand)
@@ -33,6 +33,5 @@ namespace BashSoft
                 input = input.Trim();
             }
         }
-
     }
 }
