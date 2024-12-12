@@ -1,9 +1,10 @@
-﻿using BashSoft.Exceptions;
-using BashSoft.Executor.Contracts;
-using System;
+﻿using System;
 using System.IO;
+using BashSoft.IO;
+using BashSoft.Exceptions;
+using BashSoft.Executor.Contracts;
 
-namespace BashSoft
+namespace BashSoft.Judge
 {
     public class Tester : IContentComparer
     {
@@ -12,16 +13,16 @@ namespace BashSoft
             try
             {
                 OutputWriter.WriteMessageOnNewLine("Reading files...");
+                
                 string mismatchPath = this.GetMismatchPath(expectedOutputPath);
 
                 string[] actualOutputLines = File.ReadAllLines(userOutputPath);
                 string[] expectedOutputLines = File.ReadAllLines(expectedOutputPath);
 
                 bool hasMismatch;
-                string[] mismatches = this.GetLineWithPossibleMismatches(actualOutputLines, expectedOutputLines,
-                    out hasMismatch);
+                string[] mismatches = this.GetLinesWithPossibleMismatches(actualOutputLines, expectedOutputLines, out hasMismatch);
 
-                PrintOutput(mismatches, hasMismatch, mismatchPath);
+                this.PrintOutput(mismatches, hasMismatch, mismatchPath);
                 OutputWriter.WriteMessageOnNewLine("Files read!");
             }
             catch (IOException)
@@ -33,14 +34,14 @@ namespace BashSoft
 
         private string GetMismatchPath(string expectedOutputPath)
         {
-            int indexOf = expectedOutputPath.LastIndexOf('\\');
-            string directoryPath = expectedOutputPath.Substring(0, indexOf);
+            int lastIndexOf = expectedOutputPath.LastIndexOf('\\');
+            string directoryPath = expectedOutputPath.Substring(0, lastIndexOf);
             string finalPath = directoryPath + @"Mismatches.txt";
 
             return finalPath;
         }
 
-        private string[] GetLineWithPossibleMismatches(string[] actualOutputLines, string[] expectedOutputLines, out bool hasMismatch)
+        private string[] GetLinesWithPossibleMismatches(string[] actualOutputLines, string[] expectedOutputLines, out bool hasMismatch)
         {
             hasMismatch = false;
             string output = string.Empty;
