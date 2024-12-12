@@ -1,7 +1,9 @@
-﻿using BashSoft.Exceptions;
-using BashSoft.Executor.Contracts;
 using System.Collections.Generic;
 using System.Linq;
+﻿using BashSoft.IO;
+﻿using BashSoft.StaticData;
+﻿using BashSoft.Exceptions;
+using BashSoft.Executor.Contracts;
 
 namespace BashSoft.Models
 {
@@ -48,10 +50,8 @@ namespace BashSoft.Models
             if (this.enrolledCourses.ContainsKey(course.Name))
             {
                 throw new DuplicateEntryInStructureException(this.UserName, course.Name);
-                //throw new ArgumentException(string.Format(ExceptionMessages.StudentAlreadyEnrolledInGivenCourse, 
-                //    this.userName, course.Name));
-                //OutputWriter.DisplayException(string.Format(ExceptionMessages.StudentAlreadyEnrolledInGivenCourse,
-                //    this.userName, course.Name));
+                //throw new ArgumentException(string.Format(ExceptionMessages.StudentAlreadyEnrolledInGivenCourse, this.userName, course.Name));
+                //OutputWriter.DisplayException(string.Format(ExceptionMessages.StudentAlreadyEnrolledInGivenCourse, this.userName, course.Name));
                 //return;
             }
 
@@ -81,8 +81,8 @@ namespace BashSoft.Models
 
         private double CalculateMark(int[] scores)
         {
-            double percentageOfSolvedExam = scores.Sum() / (double)(SoftUniCourse.NumberOfTasksOnExam * SoftUniCourse.MaxScoreOnExamTask);
-            double mark = percentageOfSolvedExam * 4 + 2;
+            double partsOfSolvedExam = scores.Sum() / (double)(SoftUniCourse.NumberOfTasksOnExam * SoftUniCourse.MaxScoreOnExamTask);
+            double mark = partsOfSolvedExam * 4 + 2;
 
             return mark;
         }
