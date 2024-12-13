@@ -1,9 +1,9 @@
+using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 ﻿using BashSoft.DataStructures;
 using BashSoft.Exceptions;
 using BashSoft.Executor.Contracts;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 
 namespace BashSoftTests
 {
@@ -13,7 +13,7 @@ namespace BashSoftTests
         private const int DefaultCapacity = 16;
         private const int DefaultSize = 0;
         private const int ExampleInitialCapacity = 20;
-        private const int ExampleCapacityForAllParams = 30;
+        private const int ExampleCapacityForAllParameters = 30;
         private const int ExampleExpectedSize = 20;
         private const int ExampleExpectedCapacity = 32;
 
@@ -26,45 +26,45 @@ namespace BashSoftTests
         }
 
         [Test]
-        public void TestEmptyCtor()
+        public void TestEmptyConstructor()
         {
-            Assert.That(this.names.Capacity, Is.EqualTo(DefaultCapacity), "Initial capacity have to be 16!");
-            Assert.That(this.names.Size, Is.EqualTo(DefaultSize), "Initial size have to be 0!");
-            //Assert.AreEqual(DefaultCapacity, this.names.Capacity, "Initial capacity have to be 16");
-            //Assert.AreEqual(DefaultSize, this.names.Size, "Initial size have to be 0");
+            Assert.That(this.names.Capacity, Is.EqualTo(DefaultCapacity), $"Initial capacity must be {DefaultCapacity}!");
+            Assert.That(this.names.Size, Is.EqualTo(DefaultSize), $"Initial size must be {DefaultSize}!");
+            //Assert.AreEqual(DefaultCapacity, this.names.Capacity, $"Initial capacity must be {DefaultCapacity}");
+            //Assert.AreEqual(DefaultSize, this.names.Size, $"Initial size must be {DefaultSize}");
         }
 
         [Test]
-        public void TestCtorWithInitialCapacity()
+        public void TestConstructorWithInitialCapacity()
         {            
             this.names = new SimpleSortedList<string>(ExampleInitialCapacity);
 
-            Assert.That(this.names.Capacity, Is.EqualTo(ExampleInitialCapacity), "Capacity must be equal to provided one!");
-            Assert.That(this.names.Size, Is.EqualTo(DefaultSize), "Initial size have to be 0!");
+            Assert.That(this.names.Capacity, Is.EqualTo(ExampleInitialCapacity), "Capacity must be equal to the provided one!");
+            Assert.That(this.names.Size, Is.EqualTo(DefaultSize), $"Initial size must be {DefaultSize}!");
             //Assert.AreEqual(ExampleInitialCapacity, this.names.Capacity, "Capacity must be equal to the provided one");
-            //Assert.AreEqual(DefaultSize, this.names.Size, "Initial size have to be 0");
+            //Assert.AreEqual(DefaultSize, this.names.Size, "Initial size must be {DefaultSize}");
         }
 
         [Test]
-        public void TestCtorWithAllParams()
+        public void TestConstructorWithAllParameters()
         {            
-            this.names = new SimpleSortedList<string>(StringComparer.OrdinalIgnoreCase, ExampleCapacityForAllParams);
+            this.names = new SimpleSortedList<string>(StringComparer.OrdinalIgnoreCase, ExampleCapacityForAllParameters);
 
-            Assert.That(this.names.Capacity, Is.EqualTo(ExampleCapacityForAllParams), "Capacity must be equal to provided one!");
-            Assert.That(this.names.Size, Is.EqualTo(DefaultSize), "Initial size have to be 0!");
-            //Assert.AreEqual(ExampleCapacityForAllParams, this.names.Capacity, "Capacity must be equal to the provided one");
-            //Assert.AreEqual(DefaultSize, this.names.Size, "Initial size have to be 0");
+            Assert.That(this.names.Capacity, Is.EqualTo(ExampleCapacityForAllParameters), "Capacity must be equal to the provided one!");
+            Assert.That(this.names.Size, Is.EqualTo(DefaultSize), $"Initial size must be {DefaultSize}!");
+            //Assert.AreEqual(ExampleCapacityForAllParameters, this.names.Capacity, "Capacity must be equal to the provided one");
+            //Assert.AreEqual(DefaultSize, this.names.Size, $"Initial size must be {DefaultSize}");
         }
 
         [Test]
-        public void TestCtorWithInitialComparer()
+        public void TestConstructorWithInitialComparer()
         {            
             this.names = new SimpleSortedList<string>(StringComparer.OrdinalIgnoreCase);
 
-            Assert.That(this.names.Capacity, Is.EqualTo(DefaultCapacity), "Initial capacity have to be 16!");
-            Assert.That(this.names.Size, Is.EqualTo(DefaultSize), "Initial size have to be 0!");
-            //Assert.AreEqual(DefaultCapacity, this.names.Capacity, "Initial capacity have to be 16");
-            //Assert.AreEqual(DefaultSize, this.names.Size, "Initial size have to be 0");
+            Assert.That(this.names.Capacity, Is.EqualTo(DefaultCapacity), $"Initial capacity must be {DefaultCapacity}!");
+            Assert.That(this.names.Size, Is.EqualTo(DefaultSize), $"Initial size must be {DefaultSize}!");
+            //Assert.AreEqual(DefaultCapacity, this.names.Capacity, $"Initial capacity must be {DefaultCapacity}");
+            //Assert.AreEqual(DefaultSize, this.names.Size, $"Initial size must be {DefaultSize}");
         }
 
         [Test]
@@ -86,8 +86,8 @@ namespace BashSoftTests
         [Test]
         public void AddElementsMustSortThemAutomatically()
         {
-            this.names.Add("Rosen");
             this.names.Add("Georgi");
+            this.names.Add("Rosen");
             this.names.Add("Balkan");
 
             Assert.That(this.names.JoinWith(", "), Is.EqualTo("Balkan, Georgi, Rosen"), "Elements are not sorted!");
@@ -101,8 +101,7 @@ namespace BashSoftTests
         [Test]
         public void AddElementsMoreThanCapacityMustHaveCorrectSize()
         {            
-            int expectedSize = ExampleExpectedSize;
-            
+            int expectedSize = ExampleExpectedSize;            
             for (int i = 0; i < expectedSize; i++)
             {
                 this.names.Add($"Name {i}");
@@ -122,7 +121,7 @@ namespace BashSoftTests
             }
 
             Assert.That(this.names.Capacity, Is.EqualTo(ExampleExpectedCapacity), "Capacity must be doubled!");
-            //Assert.AreEqual(ExampleExpectedSize, this.names.Capacity, "Capacity must be doubled");
+            //Assert.AreEqual(ExampleExpectedCapacity, this.names.Capacity, "Capacity must be doubled");
         }
 
         [Test]
@@ -137,12 +136,12 @@ namespace BashSoftTests
             
             this.names.AddAll(collecion);
 
-            Assert.That(this.names.Size, Is.EqualTo(3), "AddAll Method don't work correct!");
-            //Assert.AreEqual(3, this.names.Size, "AddAll Method don't work correct");
+            Assert.That(this.names.Size, Is.EqualTo(3), "AddAll Method don't work correctly!");
+            //Assert.AreEqual(3, this.names.Size, "AddAll Method don't work correctly");
         }
 
         [Test]        
-        public void AddAllCanNotWorkWithNull()
+        public void AddAllCannotWorkWithNull()
         {
             Assert.That(() => this.names.AddAll(null), Throws.ArgumentNullException);
             //Assert.Throws<ArgumentNullException>(() => this.names.AddAll(null));
@@ -150,12 +149,12 @@ namespace BashSoftTests
         }
 
         [Test]
-        public void AddAllStoresTheElementInSortedOrder()
+        public void AddAllStoresTheElementsInSortedOrder()
         {
             List<string> collection = new List<string>()
             {
-                "Rosen",
                 "Georgi",
+                "Rosen",
                 "Balkan"
             };
 
@@ -181,7 +180,7 @@ namespace BashSoftTests
         }
 
         [Test]
-        public void RemoveShouldTheExactOneSpecified()
+        public void RemoveShouldRemoveTheExactOneSpecified()
         {
             this.names.AddAll(new string[] { "1", "2", "3" });
 
@@ -226,13 +225,13 @@ namespace BashSoftTests
         {
             this.names.AddAll(new string[] { "1", "2", "3" });           
 
-            Assert.That(this.names.TakeElement(0), Is.EqualTo("1"), "TakeElement does not return desired element!");
-            Assert.That(this.names.TakeElement(1), Is.EqualTo("2"), "TakeElement does not return desired element!");
-            Assert.That(this.names.TakeElement(2), Is.EqualTo("3"), "TakeElement does not return desired element!");
+            Assert.That(this.names.TakeElement(0), Is.EqualTo("1"), "TakeElement does not return the desired element!");
+            Assert.That(this.names.TakeElement(1), Is.EqualTo("2"), "TakeElement does not return the desired element!");
+            Assert.That(this.names.TakeElement(2), Is.EqualTo("3"), "TakeElement does not return the desired element!");
 
-            //Assert.AreEqual("1", this.names.TakeElement(0), "TakeElement does not return desired element!");
-            //Assert.AreEqual("2", this.names.TakeElement(1), "TakeElement does not return desired element!");
-            //Assert.AreEqual("3", this.names.TakeElement(2), "TakeElement does not return desired element!");
+            //Assert.AreEqual("1", this.names.TakeElement(0), "TakeElement does not return the desired element!");
+            //Assert.AreEqual("2", this.names.TakeElement(1), "TakeElement does not return the desired element!");
+            //Assert.AreEqual("3", this.names.TakeElement(2), "TakeElement does not return the desired element!");
         }
 
         [Test]
