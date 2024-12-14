@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
+using BashSoft.IO;
+using BashSoft.Repository;
+using BashSoft.StaticData;
 
-namespace BashSoft
+namespace BashSoft.Judge
 {
     public static class Tester
     {
