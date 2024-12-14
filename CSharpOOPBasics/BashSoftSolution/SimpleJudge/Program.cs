@@ -1,6 +1,9 @@
 using System;
 using System.Text.RegularExpressions;
 ﻿using BashSoft;
+using BashSoft.IO;
+using BashSoft.Repository;
+using BashSoft.StaticData;
 
 namespace SimpleJudge
 {
