@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BashSoft.IO;
+using BashSoft.StaticData;
 
-namespace BashSoft
+namespace BashSoft.Repository
 {
     public static class RepositoryFilters
     {
@@ -32,7 +34,7 @@ namespace BashSoft
         private static void FilterAndTake(Dictionary<string, List<int>> wantedData, Predicate<double> givenFilter, int studentsToTake)
         {
             int counterForPrinted = 0;
-            foreach (KeyValuePair<string, List<int>> studentPoints in wantedData)
+            foreach (KeyValuePair<string, List<int>> studentWithPoints in wantedData)
             {
                 if (counterForPrinted == studentsToTake)
                 {
@@ -44,7 +46,7 @@ namespace BashSoft
                 double averageMark = percentageOfFullfilment * 4 + 2;
                 if (givenFilter(averageMark))
                 {
-                    OutputWriter.PrintStudent(studentPoints);
+                    OutputWriter.PrintStudent(studentWithPoints);
                     counterForPrinted++;
                 }
             }
