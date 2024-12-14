@@ -1,5 +1,9 @@
 ﻿using System;
 using System.IO;
+using BashSoft.IO;
+using BashSoft.Judge;
+using BashSoft.Repository;
+using BashSoft.StaticData;
 
 namespace BashSoft
 {
