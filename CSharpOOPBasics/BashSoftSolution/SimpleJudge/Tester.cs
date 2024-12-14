@@ -1,6 +1,9 @@
 using System;
 using System.IO;
 using BashSoft;
+using BashSoft.IO;
+using BashSoft.Repository;
+using BashSoft.StaticData;
 
 namespace SimpleJudge
 {
