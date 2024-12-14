@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using BashSoft.IO;
+using BashSoft.StaticData;
 
-namespace BashSoft
+namespace BashSoft.Repository
 {
     public static class OldStudentsRepository
     {
