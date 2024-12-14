@@ -2,7 +2,7 @@
 using System.IO;
 using BashSoft.StaticData;
 
-namespace BashSoft
+namespace BashSoft.IO
 {
     public static class OldIOManager
     {
