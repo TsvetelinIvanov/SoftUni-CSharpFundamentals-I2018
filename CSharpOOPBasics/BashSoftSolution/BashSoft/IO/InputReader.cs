@@ -1,6 +1,7 @@
 ﻿using System;
+﻿using BashSoft.StaticData;
 
-namespace BashSoft
+namespace BashSoft.IO
 {
     public static class InputReader
     {
@@ -11,7 +12,6 @@ namespace BashSoft
             OutputWriter.WriteMessage($"{SessionData.currentPath}>");
             string input = Console.ReadLine();
             input = input.Trim();
-
             while (true)
             {
                 if (input == EndCommand)
