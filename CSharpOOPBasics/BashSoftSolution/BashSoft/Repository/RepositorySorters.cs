@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BashSoft.IO;
+using BashSoft.StaticData;
 
-namespace BashSoft
+namespace BashSoft.Repository
 {
     public static class RepositorySorters
     {
